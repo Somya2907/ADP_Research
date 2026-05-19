@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "lex-drl"
+version = "0.1.0"
+description = "Legal Differential Reasoning Learning for US AI Law"
+authors = ["Anand S. Rao"]
+readme = "README.md"
+packages = [{include = "lex_drl", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+anthropic = ">=0.40.0"
+openai = ">=1.54.0"
+pydantic = ">=2.9.0"
+python-dotenv = ">=1.0.0"
+pyyaml = ">=6.0"
+rich = ">=13.9.0"
+diskcache = ">=5.6.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.3.0"
+ruff = ">=0.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

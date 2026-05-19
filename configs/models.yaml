@@ -1,0 +1,42 @@
+# Model configurations for L-DRL experiments
+# Sprint uses only teacher + agent_frontier
+# Full JURIX experiments use all three tiers
+
+teacher:
+  name: claude-opus-4-6
+  provider: anthropic
+  role: "Reference graph construction (G_ref)"
+
+# ── Tier 1: 8B Open-Source (via OpenRouter) ──
+agent_8b:
+  - name: qwen/qwen3-8b
+    provider: openrouter
+  - name: meta-llama/llama-3.1-8b-instruct
+    provider: openrouter
+  - name: mistralai/mistral-7b-instruct
+    provider: openrouter
+
+# ── Tier 2: Legal-Specialized (via OpenRouter) ──
+agent_legal:
+  - name: saulml/saullm-7b-instruct
+    provider: openrouter
+  - name: chatlaw/chatlaw-13b
+    provider: openrouter
+  - name: lawllm/lawllm-7b
+    provider: openrouter
+
+# ── Tier 3: Frontier (direct SDK) ──
+agent_frontier:
+  - name: gpt-5
+    provider: openai
+  - name: claude-opus-4-6
+    provider: anthropic
+    note: "When used as agent, teacher must use a DIFFERENT model or different prompt to avoid self-preferencing"
+  - name: gemini-3
+    provider: google
+
+# ── Sprint configuration ──
+sprint:
+  teacher: claude-opus-4-6
+  agent: gpt-5
+  note: "Sprint uses single agent for speed. Full matrix in JURIX experiments."
