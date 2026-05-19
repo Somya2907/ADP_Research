@@ -17,6 +17,23 @@ This project implements Legal DRL (L-DRL), which:
 
 ## Quickstart
 
+Four commands from a fresh clone to a first extraction:
+
+```bash
+git clone <your-private-repo-url> && cd l-drl-us-ai-law
+cp .env.example .env             # then fill in API keys (see Detailed Setup)
+make setup                       # poetry install + create output dirs
+make check                       # verify env, schema, and the three model providers
+make extract-teacher             # produce the 6 reference (teacher) graphs
+```
+
+Then `make breakdown` for a per-graph node-type table, or
+`poetry run streamlit run scripts/view_graph.py` to inspect graphs interactively.
+
+Full list of `make` targets: `make help`.
+
+## Detailed Setup
+
 ```bash
 # 1. Clone and install
 git clone <your-private-repo-url>
@@ -25,18 +42,22 @@ poetry install
 
 # 2. Configure API keys
 cp .env.example .env
-# Edit .env with your Anthropic and OpenAI keys
+# Edit .env with your Anthropic, OpenAI, and OpenRouter keys.
+# Also set TEACHER_MODEL, AGENT_MODEL, SMALL_MODEL.
 
 # 3. Populate statute texts (see data/statutes/README.md)
 # Download CO AIA, NYC LL 144, and optionally TX TRAIGA
 
-# 4. Run schema tests
+# 4. Verify environment (Python, venv, env vars, dirs, schema, API pings)
+poetry run python scripts/check_setup.py
+
+# 5. Run schema tests
 poetry run pytest
 
-# 5. Day 1 smoke test (single case E1)
+# 6. Day 1 smoke test (single case E1)
 poetry run python scripts/smoke_test_e1.py
 
-# 6. Day 2 wide run (all 6 cases)
+# 7. Day 2 wide run (all 6 cases × 3 models)
 poetry run python scripts/run_extraction.py
 ```
 

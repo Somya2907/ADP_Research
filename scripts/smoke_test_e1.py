@@ -46,6 +46,18 @@ def main():
         rprint(f"  [green]✓ Schema valid[/green]")
         rprint(f"  Nodes: {g_ref.node_summary()}")
         rprint(f"  Saved: {path}")
+
+        # Completeness check — a healthy F-I-R-A-C-O graph has all 6 types
+        missing_types = []
+        if not g_ref.issues: missing_types.append("I")
+        if not g_ref.rules: missing_types.append("R")
+        if not g_ref.applications: missing_types.append("A")
+        if not g_ref.conclusions: missing_types.append("C")
+        if not g_ref.obligations: missing_types.append("O")
+        if missing_types:
+            rprint(f"  [red]⚠ WARNING: Missing node types: {missing_types}[/red]")
+            rprint(f"  [red]  Graph likely got truncated or malformed.[/red]")
+            rprint(f"  [red]  Inspect data/outputs/analysis/E1_reference_raw.txt[/red]")
     except Exception as e:
         rprint(f"  [red]✗ FAILED: {e}[/red]")
         rprint("  Fix the teacher prompt and re-run.")

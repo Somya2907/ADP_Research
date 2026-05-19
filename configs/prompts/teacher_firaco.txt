@@ -7,7 +7,7 @@ You have access to the authoritative statutory and regulatory text below.
 Use this text as the primary source; cite specific sections precisely.
 
 === AUTHORITATIVE SOURCES ===
-{statutes}
+<<STATUTES>>
 === END SOURCES ===
 
 The current operative date for analysis is April 16, 2026. Be precise about
@@ -18,10 +18,10 @@ which statutes are in force as of this date:
     but obligations should be analyzed for readiness)
 
 CASE:
-{case_facts}
+<<CASE_FACTS>>
 
 QUESTION:
-{case_question}
+<<CASE_QUESTION>>
 
 Respond in exactly two parts separated by the marker "=== JSON GRAPH ===".
 
@@ -41,16 +41,80 @@ PART 1 — Written analysis using the F-I-R-A-C-O structure:
   O (Obligations): Specific required remedial actions, organized by
                    jurisdiction. Include deadlines where statutory.
 
-PART 2 — The reasoning as a JSON object conforming exactly to the
-LegalReasoningGraph schema. Use node IDs: F1, F2, ...; I1, I2, ...;
-R1, R2, ...; A1, A2, ...; C1, C2, ...; O1, O2, ...; E1, E2, ....
+PART 2 — The reasoning as a JSON object. You MUST use EXACTLY this structure
+with these exact top-level keys: case_id, source, model_name, facts, issues,
+rules, applications, conclusions, obligations, edges.
 
-Every substantive claim in PART 1 must be traceable to a node or edge
-in PART 2. Edges should connect:
-  - Facts to Issues (triggers)
-  - Rules to Applications (applies-to)
-  - Facts to Applications (supports / contradicts)
-  - Applications to Conclusions (satisfies-element / fails-element)
-  - Rules to Obligations (triggers)
+DO NOT use a generic "nodes" array. DO NOT add a "metadata" wrapper.
+Use the EXACT structure shown in this skeleton:
+
+{
+  "case_id": "E1",
+  "source": "reference",
+  "model_name": "claude-opus-4-6",
+  "facts": [
+    {"fid": "F1", "label": "...", "polarity": "present", "support_quote": "..."},
+    {"fid": "F2", "label": "...", "polarity": "present", "support_quote": null}
+  ],
+  "issues": [
+    {"iid": "I1", "label": "...", "status": "dispositive"}
+  ],
+  "rules": [
+    {"rid": "R1", "citation": "NYC LL 144 §20-871", "label": "...",
+     "authority": "binding", "jurisdiction": "NYC", "effective_as_of": null}
+  ],
+  "applications": [
+    {"aid": "A1", "rule_ref": "R1", "fact_refs": ["F1", "F2"],
+     "issue_ref": "I1", "result": "violated", "reasoning": "..."}
+  ],
+  "conclusions": [
+    {"cid": "C1", "determination": "non-compliant",
+     "confidence": "high", "support_refs": ["A1"]}
+  ],
+  "obligations": [
+    {"oid": "O1", "label": "...", "required_by": "R1",
+     "status": "mandatory", "jurisdiction": "NYC", "deadline": null}
+  ],
+  "edges": [
+    {"eid": "E1", "src": "F1", "dst": "I1", "type": "triggers", "justification": null},
+    {"eid": "E2", "src": "R1", "dst": "A1", "type": "applies-to", "justification": null},
+    {"eid": "E3", "src": "A1", "dst": "C1", "type": "fails-element", "justification": null},
+    {"eid": "E4", "src": "R1", "dst": "O1", "type": "triggers", "justification": null}
+  ]
+}
+
+Node ID rules:
+  - Facts: F1, F2, F3, ...
+  - Issues: I1, I2, I3, ...
+  - Rules: R1, R2, R3, ...
+  - Applications: A1, A2, A3, ...
+  - Conclusions: C1, C2, C3, ...
+  - Obligations: O1, O2, O3, ...
+  - Edges: E1, E2, E3, ...
+
+Valid values:
+  - polarity: "present" | "disputed" | "absent" | "unknown"
+  - status (issues): "dispositive" | "collateral" | "waived"
+  - authority: "binding" | "persuasive" | "advisory" | "overruled"
+  - result: "satisfied" | "violated" | "requires-fact" | "partial"
+  - determination: "compliant" | "non-compliant" | "conditional"
+  - confidence: "high" | "medium" | "low"
+  - status (obligations): "mandatory" | "recommended" | "safe-harbor"
+  - type (edges): "supports" | "contradicts" | "applies-to" | "triggers" |
+                  "satisfies-element" | "fails-element" | "preempts" | "distinguishes"
+
+Every substantive claim in PART 1 must be traceable to a node in PART 2.
+
+IMPORTANT JSON SAFETY RULES (to avoid parsing failures):
+  1. Do NOT include unescaped double quotes inside any string value.
+     If you need to quote statutory text inside a support_quote, use
+     single quotes or paraphrase. Example: "support_quote": "HireFlow 
+     sells 'ResumeRank', an ML-based tool" — NOT with escaped double quotes.
+  2. Do NOT include raw newline characters inside string values. Keep
+     each string on one line.
+  3. Keep support_quote values SHORT (under 150 characters each). For
+     longer passages, paraphrase in the label field instead.
+  4. Ensure every string is properly closed with a matching quote before
+     the next comma or closing bracket.
 
 Output ONLY the JSON inside PART 2, with no markdown fences or commentary.

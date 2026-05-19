@@ -1,19 +1,10 @@
 """F-I-R-A-C-O legal reasoning graph schema.
 
-This is the typed representation of a legal reasoning trace.
-Both G_ref (teacher) and G_agent (agent) conform to this schema,
+Both G_ref (teacher) and G_agent (student) conform to this schema,
 enabling structural comparison via Legal-Weighted Graph Edit Distance (L-GED).
 
-Node types:
-  F (Facts)        — Material facts including jurisdictional anchors
-  I (Issues)       — Legal questions raised by the facts
-  R (Rules)        — Statutory provisions, regulations, framework controls
-  A (Application)  — Element-by-element subsumption / analogical reasoning
-  C (Conclusion)   — Compliance determinations
-  O (Obligations)  — Required remedial actions (novel to L-DRL; no DRL analogue)
-
-Edge types encode legal reasoning relations: supports, contradicts,
-applies-to, triggers, satisfies-element, fails-element, preempts, distinguishes.
+Node types: F (Facts), I (Issues), R (Rules), A (Application),
+            C (Conclusion), O (Obligations)
 """
 from __future__ import annotations
 
@@ -41,23 +32,23 @@ class IssueStatus(str, Enum):
 
 
 class Authority(str, Enum):
-    BINDING = "binding"           # controlling statute or regulation in jurisdiction
-    PERSUASIVE = "persuasive"     # out-of-jurisdiction or secondary authority
-    ADVISORY = "advisory"         # framework or guidance (NIST AI RMF, ISO)
-    OVERRULED = "overruled"       # superseded or contradicted authority
+    BINDING = "binding"
+    PERSUASIVE = "persuasive"
+    ADVISORY = "advisory"
+    OVERRULED = "overruled"
 
 
 class ApplicationResult(str, Enum):
     SATISFIED = "satisfied"
     VIOLATED = "violated"
-    REQUIRES_FACT = "requires-fact"   # element requires fact not in the record
-    PARTIAL = "partial"               # partially satisfied
+    REQUIRES_FACT = "requires-fact"
+    PARTIAL = "partial"
 
 
 class ConclusionDetermination(str, Enum):
     COMPLIANT = "compliant"
     NON_COMPLIANT = "non-compliant"
-    CONDITIONAL = "conditional"       # compliant if condition X is met
+    CONDITIONAL = "conditional"
 
 
 class Confidence(str, Enum):
@@ -69,7 +60,7 @@ class Confidence(str, Enum):
 class ObligationStatus(str, Enum):
     MANDATORY = "mandatory"
     RECOMMENDED = "recommended"
-    SAFE_HARBOR = "safe-harbor"       # optional but provides affirmative defense
+    SAFE_HARBOR = "safe-harbor"
 
 
 class EdgeType(str, Enum):
@@ -107,18 +98,18 @@ class Issue(BaseModel):
 
 class Rule(BaseModel):
     rid: str = Field(pattern=r"^R\d+$")
-    citation: str                             # e.g., "Colo. Rev. Stat. §6-1-1703(3)"
+    citation: str
     label: str
     authority: Authority = Authority.BINDING
-    jurisdiction: str                         # "CO", "NYC", "TX", "US-federal"
-    effective_as_of: Optional[str] = None     # ISO date; None if in force indefinitely
+    jurisdiction: str
+    effective_as_of: Optional[str] = None
 
 
 class Application(BaseModel):
     aid: str = Field(pattern=r"^A\d+$")
-    rule_ref: str                             # rid of the R node being applied
-    fact_refs: list[str]                      # fids of F nodes in the subsumption
-    issue_ref: str                            # iid of the I node
+    rule_ref: str
+    fact_refs: list[str]
+    issue_ref: str
     result: ApplicationResult
     reasoning: str
 
@@ -127,16 +118,16 @@ class Conclusion(BaseModel):
     cid: str = Field(pattern=r"^C\d+$")
     determination: ConclusionDetermination
     confidence: Confidence = Confidence.MEDIUM
-    support_refs: list[str]                   # Application aids that support this
+    support_refs: list[str]
 
 
 class Obligation(BaseModel):
     oid: str = Field(pattern=r"^O\d+$")
-    label: str                                # e.g., "Complete annual impact assessment"
-    required_by: str                          # rid of triggering rule
+    label: str
+    required_by: str
     status: ObligationStatus
     jurisdiction: str
-    deadline: Optional[str] = None            # ISO date or descriptive
+    deadline: Optional[str] = None
 
 
 class Edge(BaseModel):
@@ -156,7 +147,13 @@ class LegalReasoningGraph(BaseModel):
 
     case_id: str
     source: GraphSource
-    model_name: str                           # e.g., "claude-opus-4-6"
+    model_name: str
+
+    # agent_id identifies WHICH student model produced this graph.
+    # None for reference graphs.
+    # Values: "gpt5", "qwen3_4b" (or any future student key).
+    # Used to name output files as {case_id}_agent_{agent_id}.json
+    agent_id: Optional[str] = None
 
     facts: list[Fact] = Field(default_factory=list)
     issues: list[Issue] = Field(default_factory=list)
@@ -182,22 +179,20 @@ class LegalReasoningGraph(BaseModel):
                     all_ids.add(getattr(node, id_field))
                 elif isinstance(node, dict):
                     all_ids.add(node[id_field])
-
         for edge in edges:
             if edge.src not in all_ids:
                 raise ValueError(
-                    f"Edge {edge.eid} src '{edge.src}' references "
-                    f"nonexistent node. Valid IDs: {sorted(all_ids)}"
+                    f"Edge {edge.eid} src '{edge.src}' references nonexistent node. "
+                    f"Valid IDs: {sorted(all_ids)}"
                 )
             if edge.dst not in all_ids:
                 raise ValueError(
-                    f"Edge {edge.eid} dst '{edge.dst}' references "
-                    f"nonexistent node. Valid IDs: {sorted(all_ids)}"
+                    f"Edge {edge.eid} dst '{edge.dst}' references nonexistent node. "
+                    f"Valid IDs: {sorted(all_ids)}"
                 )
         return edges
 
     def node_count(self) -> int:
-        """Total number of nodes across all types."""
         return (
             len(self.facts) + len(self.issues) + len(self.rules)
             + len(self.applications) + len(self.conclusions)
@@ -205,9 +200,20 @@ class LegalReasoningGraph(BaseModel):
         )
 
     def node_summary(self) -> str:
-        """Human-readable node count string."""
         return (
             f"F={len(self.facts)} I={len(self.issues)} R={len(self.rules)} "
             f"A={len(self.applications)} C={len(self.conclusions)} "
             f"O={len(self.obligations)} E={len(self.edges)}"
         )
+
+    def save_path(self, output_dir: str = "data/outputs/graphs") -> str:
+        """Canonical file path for this graph."""
+        from pathlib import Path
+        base = Path(output_dir)
+        if self.source == GraphSource.REFERENCE:
+            fname = f"{self.case_id}_reference.json"
+        elif self.agent_id:
+            fname = f"{self.case_id}_agent_{self.agent_id}.json"
+        else:
+            fname = f"{self.case_id}_agent.json"
+        return str(base / fname)
