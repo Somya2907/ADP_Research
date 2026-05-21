@@ -29,7 +29,7 @@ from .schema import (
     Rule,
 )
 
-DEFAULT_THRESHOLD = 0.4
+DEFAULT_THRESHOLD = 0.10
 
 
 # ──────────────────────────────────────────────
