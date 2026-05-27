@@ -1,0 +1,567 @@
+{
+  "case_id": "H2",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "F14",
+      "node_type": "F",
+      "label": "AutoApprove is used for lending decisions - financial or lending services",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F15",
+      "node_type": "F",
+      "label": "Helix has 310 employees, far exceeding the 50-employee small deployer threshold",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "I2",
+      "node_type": "I",
+      "label": "Whether AutoApprove Stage 2 (human-reviewed) constitutes a high-risk AI system and whether AI is a substantial factor under 6-1-1701(9)",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I7",
+      "node_type": "I",
+      "label": "Whether Helix qualifies for the small deployer exception under 6-1-1703(6)",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R1",
+      "node_type": "R",
+      "label": "Definition of AI system: machine-based system processing inputs to produce outputs such as predictions, recommendations, decisions",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R5",
+      "node_type": "R",
+      "label": "Deployer: person doing business in the state that deploys a high-risk AI system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R6",
+      "node_type": "R",
+      "label": "Developer: person doing business in the state that develops or substantially modifies an AI system intended or known to be used as high-risk",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R7",
+      "node_type": "R",
+      "label": "Deployer must implement risk management policy consistent with NIST AI 100-1 or substantially equivalent framework",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems, annually thereafter",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Deployer must review deployment at least annually to ensure no algorithmic discrimination",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "Deployer must publish website statement summarizing high-risk AI systems and discrimination risk management",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "node_type": "R",
+      "label": "Deployer must provide pre-decision consumer notice of AI use, purpose, contact info, description, and website statement access",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Deployer must provide consumer opportunity to correct incorrect personal data processed by AI system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "node_type": "R",
+      "label": "Deployer must provide consumer meaningful opportunity to appeal consequential decision where AI was substantial factor",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "node_type": "R",
+      "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "node_type": "R",
+      "label": "Developer must publish public statement summarizing high-risk AI systems developed or substantially modified",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R17",
+      "node_type": "R",
+      "label": "Deployer or developer must notify AG and affected consumers within 90 days of discovering algorithmic discrimination",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "node_type": "R",
+      "label": "Violations are deceptive trade practices; AG exclusive enforcement; up to $20,000 per violation; rebuttable presumption for self-discovery and cure within 60 days",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R20",
+      "node_type": "R",
+      "label": "Impact assessment must include purpose, discrimination risk analysis, training data categories, output description, known limitations, and oversight processes",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A1",
+      "node_type": "A",
+      "label": "AutoApprove is a machine-based system that processes loan application inputs and produces credit-risk scores, risk narratives, and approval/denial decisions - outputs that influence real environments. Squarely meets the AI system definition.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A2",
+      "node_type": "A",
+      "label": "Loan approval/denial decisions have material legal or similarly significant effect on provision or denial of financial or lending services under 6-1-1701(3)(c). AutoApprove decisions directly determine whether consumers receive loans.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A4",
+      "node_type": "A",
+      "label": "In Stage 2, AutoApprove is a substantial factor: the underwriter receives the AI risk score and AI-generated risk narrative as 2 of 3 inputs. The 71% agreement rate indicates material contribution. Under 6-1-1701(9), human review does not negate substantial factor status when review is based primarily on AI output. The AI narrative frames the analysis by identifying key factors, creating anchoring effects. The anti-rubber-stamping provision directly applies.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A6",
+      "node_type": "A",
+      "label": "Helix did not develop or substantially modify AutoApprove - FinLogic AI developed it. No facts indicate Helix retrained or substantially modified the model. Helix is not a developer under 6-1-1701(6).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A7",
+      "node_type": "A",
+      "label": "The small deployer exception requires BOTH fewer than 50 employees AND not using own data to train. Helix has 310 employees, failing condition (a). The exception does not apply regardless of condition (b). All deployer obligations apply in full.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "Helix has implemented a risk management program aligned with NIST AI 100-1, documented in January 2026. This satisfies 6-1-1703(2)(a)(III) which requires consistency with NIST AI RMF or substantially equivalent framework.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "Helix has NOT issued consumer notices to loan applicants regarding AI involvement. Section 6-1-1703(2)(e) requires pre-decision notice of AI use, purpose, contact info, plain-language description, and website statement access instructions. This is a critical compliance gap.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A14",
+      "node_type": "A",
+      "label": "FinLogic provided a model card and training data summary, likely covering 6-1-1702(2)(b) training data description and possibly (c) intended uses. However, no indication FinLogic provided: (a) algorithmic discrimination limitation documentation, (d) human monitoring guidance for consequential decisions, or (e) additional impact assessment support materials. Documentation is necessary but insufficient.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A15",
+      "node_type": "A",
+      "label": "No facts indicate whether FinLogic has published a public use case inventory as required by 6-1-1702(3). FinLogic must do so if it is doing business in Colorado. The doing-business-in-state question for a San Francisco company selling to Colorado deployers requires further factual analysis.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A16",
+      "node_type": "A",
+      "label": "The statutory text of 6-1-1701(9) controls over both memos. The GC memo fails to engage with the anti-rubber-stamping provision and ignores that 62% of decisions are fully automated. The Morrison memo correctly applies the statute. Neither memo is binding authority - the statute is the supreme authority. The GC memo is legally deficient; the Morrison memo is persuasive because it correctly interprets binding statutory text.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C2",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C4",
+      "node_type": "C",
+      "label": "compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C5",
+      "node_type": "C",
+      "label": "conditional",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C6",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O4",
+      "node_type": "O",
+      "label": "Publish clear and readily accessible website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management per 6-1-1703(2)(d)",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O5",
+      "node_type": "O",
+      "label": "Verify February 2026 impact assessment meets all six content requirements of 6-1-1701(8)(a)-(f); supplement if gaps exist",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Establish annual review process for AutoApprove deployment to ensure no algorithmic discrimination per 6-1-1703(2)(c)",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O7",
+      "node_type": "O",
+      "label": "Request from FinLogic AI additional developer documentation: algorithmic discrimination limitations (6-1-1702(2)(a)), human monitoring guidance (6-1-1702(2)(d)), and impact assessment support materials (6-1-1702(2)(e))",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O9",
+      "node_type": "O",
+      "label": "Formally adopt Morrison & Partners analysis and reject GC memo conclusion; document decision in board or compliance committee minutes",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F5",
+      "node_type": "F",
+      "label": "Stage 1: AI auto-denies <40th percentile",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F7",
+      "node_type": "F",
+      "label": "Stage 2: 40th-70th sent to human underwriter",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F10",
+      "node_type": "F",
+      "label": "62% of all apps decided at Stage 1",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F11",
+      "node_type": "F",
+      "label": "38% of apps go to Stage 2",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F12",
+      "node_type": "F",
+      "label": "Overall 38% final decisions by a human",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "R4",
+      "node_type": "R",
+      "label": "Deployer duties: notices, rights, RM, records",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R5",
+      "node_type": "R",
+      "label": "Developer duties: docs, public stmt, incident notice",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R7",
+      "node_type": "R",
+      "label": "APA: binding rules via rulemaking; memos nonbinding",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R8",
+      "node_type": "R",
+      "label": "AG enforcement; incident reporting timelines",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R9",
+      "node_type": "R",
+      "label": "Effective June 30, 2026",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "A1",
+      "node_type": "A",
+      "label": "AI alone makes lending decisions in 62% of cases",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A2",
+      "node_type": "A",
+      "label": "AI outputs frame human review and influence outcomes",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A4",
+      "node_type": "A",
+      "label": "Statute binds; memos are nonbinding opinions",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A6",
+      "node_type": "A",
+      "label": "RM program exists but other duties remain",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A8",
+      "node_type": "A",
+      "label": "No consumer AI notices in place",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A12",
+      "node_type": "A",
+      "label": "No incident response and AG notice process",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A13",
+      "node_type": "A",
+      "label": "Model card alone lacks full §1703 disclosures",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A14",
+      "node_type": "A",
+      "label": "NIST RMF aids safe harbor but not other duties",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "C1",
+      "node_type": "C",
+      "label": "compliant",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "C2",
+      "node_type": "C",
+      "label": "compliant",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "O1",
+      "node_type": "O",
+      "label": "Implement pre-use AI notices for both stages",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O2",
+      "node_type": "O",
+      "label": "Provide adverse decision reasons and AI disclosure",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O6",
+      "node_type": "O",
+      "label": "Maintain impact assessments and RM records",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O7",
+      "node_type": "O",
+      "label": "Set incident response and AG notice (90 days)",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O8",
+      "node_type": "O",
+      "label": "Strengthen vendor contract for §1703 docs",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O10",
+      "node_type": "O",
+      "label": "Staff training on notices, correction, appeals",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O11",
+      "node_type": "O",
+      "label": "FinLogic: provide full developer disclosures",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O13",
+      "node_type": "O",
+      "label": "FinLogic: AG and deployer notice of incidents",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O14",
+      "node_type": "O",
+      "label": "Map NIST RMF controls to §1704 duties",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E1",
+      "teacher_src": "F2",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F3",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F3",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F6",
+      "student_dst": "I1",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E9",
+      "teacher_src": "R3",
+      "teacher_dst": "A3",
+      "teacher_type": "applies-to",
+      "student_src": "R1",
+      "student_dst": "A3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E11",
+      "teacher_src": "A3",
+      "teacher_dst": "C1",
+      "teacher_type": "fails-element",
+      "student_src": "A3",
+      "student_dst": "C4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E47",
+      "teacher_src": "F1",
+      "teacher_dst": "I4",
+      "teacher_type": "triggers",
+      "student_src": "F2",
+      "student_dst": "I3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E49",
+      "teacher_src": "F11",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F18",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E50",
+      "teacher_src": "F12",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F19",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E51",
+      "teacher_src": "F13",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F20",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E52",
+      "teacher_src": "F16",
+      "teacher_dst": "I6",
+      "teacher_type": "triggers",
+      "student_src": "F1",
+      "student_dst": "I5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    }
+  ],
+  "l_ged": 196.0,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 2,
+      "v_halluc": 5
+    },
+    "I": {
+      "v_miss": 2,
+      "v_halluc": 0
+    },
+    "R": {
+      "v_miss": 15,
+      "v_halluc": 5
+    },
+    "A": {
+      "v_miss": 10,
+      "v_halluc": 8
+    },
+    "C": {
+      "v_miss": 4,
+      "v_halluc": 2
+    },
+    "O": {
+      "v_miss": 5,
+      "v_halluc": 9
+    }
+  }
+}

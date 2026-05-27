@@ -1,0 +1,431 @@
+{
+  "case_id": "E2",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "F10",
+      "node_type": "F",
+      "label": "PromoteAI was custom-built by Metropolitan's IT department in 2022, making Metropolitan both developer and deployer",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F12",
+      "node_type": "F",
+      "label": "Promotion candidates are employees residing in NYC",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "I3",
+      "node_type": "I",
+      "label": "Does the bias auditor satisfy the independence requirement under Section 20-870?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I5",
+      "node_type": "I",
+      "label": "Does the candidate notice satisfy the 10-business-day timing requirement of DCWP Rules Section 5-304(c)?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I7",
+      "node_type": "I",
+      "label": "Does the public disclosure satisfy Section 20-873 and DCWP Rules Section 5-303?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I9",
+      "node_type": "I",
+      "label": "What is Metropolitan's compliance readiness under Colorado AIA for June 30, 2026?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R5",
+      "node_type": "R",
+      "label": "Notice to promotion candidates must be provided at least 10 business days before AEDT use",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R7",
+      "node_type": "R",
+      "label": "Civil penalties of $500-$1,500 per violation; each candidate screening may be a separate violation",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Notice must include instructions for requesting alternative process but employer not required to provide one",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Prohibits AI deployment with intent to unlawfully discriminate; requires intentional discrimination not mere disparate impact",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "AI disclosure obligations apply only to government agencies, not private employers",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "node_type": "R",
+      "label": "Deployers must complete impact assessments before deployment and annually thereafter",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A3",
+      "node_type": "A",
+      "label": "Compliance Analytics Group has no employment relationship with Metropolitan, no financial interest in Metropolitan, and was not involved in developing PromoteAI (which was built internally by Metropolitan IT). All three independence prongs are satisfied.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A6",
+      "node_type": "A",
+      "label": "DCWP Rules Section 5-304(a) explicitly states nothing requires an employer to provide an alternative selection process. Not offering one is not independently a violation. However, the failure to include instructions about requesting one in the notice is a notice content violation captured in A4.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "No facts establish Metropolitan operates in Texas. Even if TRAIGA applied, it only prohibits intentional discrimination and imposes no audit, notice, or assessment requirements on private employers. No facts suggest intentional discriminatory intent. No violation.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A9",
+      "node_type": "A",
+      "label": "TRAIGA Section 551.101 disclosure obligations apply only to government agencies. Metropolitan is a private health system. No disclosure obligation exists under TRAIGA.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "Colorado AIA is not in force until June 30, 2026. No current binding obligation exists. Whether Metropolitan must comply depends on whether it does business in Colorado, which is not established in the facts. If applicable, it would need impact assessments within 90 days of the effective date for already-deployed systems.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "Each use of a non-compliant AEDT to screen a single candidate is a separate violation. With 22,000 employees and multiple nursing promotion candidates, Metropolitan faces per-candidate penalties of $500-$1,500 for each of the stale audit, deficient notice content, and deficient notice timing violations.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C2",
+      "node_type": "C",
+      "label": "compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C4",
+      "node_type": "C",
+      "label": "compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "If Metropolitan operates in Colorado, prepare impact assessment for PromoteAI per Colorado AIA Section 6-1-1703(2)(b) before June 30, 2026 or within 90 days thereafter",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O8",
+      "node_type": "O",
+      "label": "If Metropolitan operates in Colorado, develop consumer notice and appeal mechanisms per Colorado AIA Section 6-1-1703(2)(e)-(g)",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F5",
+      "node_type": "F",
+      "label": "Audit evaluated sex, race/ethnicity, and intersectional categories.",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F11",
+      "node_type": "F",
+      "label": "Record is silent on posting AEDT distribution date.",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "I4",
+      "node_type": "I",
+      "label": "Were posting requirements satisfied, incl. distribution date and data disclosures?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "I6",
+      "node_type": "I",
+      "label": "Does Colorado AI Act SB 24-205 apply on these facts?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "I8",
+      "node_type": "I",
+      "label": "What NIST AI RMF practices are advisable?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "R4",
+      "node_type": "R",
+      "label": "Bias audit content: selection rates, impact ratios incl. intersectional",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R9",
+      "node_type": "R",
+      "label": "TX AI governance applicability",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "A4",
+      "node_type": "A",
+      "label": "Notice lacks qualifications/characteristics; says may, not will.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A8",
+      "node_type": "A",
+      "label": "Auditor independent; no other relationship.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A9",
+      "node_type": "A",
+      "label": "Law needs instructions to request; no duty to offer alternative.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A10",
+      "node_type": "A",
+      "label": "No CO residents indicated; confirm residency to rule out scope.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A11",
+      "node_type": "A",
+      "label": "No TX operations/residents indicated; confirm to rule out scope.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A12",
+      "node_type": "A",
+      "label": "NIST RMF applicable as guidance; adopt for governance.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "C3",
+      "node_type": "C",
+      "label": "conditional",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "O4",
+      "node_type": "O",
+      "label": "Include in notice: AEDT will be used; list evaluated qualifications/characteristics.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O7",
+      "node_type": "O",
+      "label": "Maintain an internal workflow to receive and act on such requests.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O8",
+      "node_type": "O",
+      "label": "If later used for CO residents, implement CO AI Act deployer program.",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F3",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F3",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E3",
+      "teacher_src": "F9",
+      "teacher_dst": "I2",
+      "teacher_type": "triggers",
+      "student_src": "F10",
+      "student_dst": "I2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E4",
+      "teacher_src": "F6",
+      "teacher_dst": "I4",
+      "teacher_type": "triggers",
+      "student_src": "F7",
+      "student_dst": "I3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E10",
+      "teacher_src": "R4",
+      "teacher_dst": "A4",
+      "teacher_type": "applies-to",
+      "student_src": "R7",
+      "student_dst": "A5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E18",
+      "teacher_src": "A4",
+      "teacher_dst": "C1",
+      "teacher_type": "fails-element",
+      "student_src": "A5",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E21",
+      "teacher_src": "A7",
+      "teacher_dst": "C3",
+      "teacher_type": "satisfies-element",
+      "student_src": "A6",
+      "student_dst": "C4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E26",
+      "teacher_src": "R4",
+      "teacher_dst": "O2",
+      "teacher_type": "triggers",
+      "student_src": "R7",
+      "student_dst": "O5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E28",
+      "teacher_src": "R6",
+      "teacher_dst": "O4",
+      "teacher_type": "triggers",
+      "student_src": "R6",
+      "student_dst": "O2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E29",
+      "teacher_src": "R4",
+      "teacher_dst": "O5",
+      "teacher_type": "triggers",
+      "student_src": "R7",
+      "student_dst": "O6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E35",
+      "teacher_src": "F11",
+      "teacher_dst": "I8",
+      "teacher_type": "triggers",
+      "student_src": "F12",
+      "student_dst": "I7",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E36",
+      "teacher_src": "F8",
+      "teacher_dst": "I6",
+      "teacher_type": "triggers",
+      "student_src": "F9",
+      "student_dst": "I5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E38",
+      "teacher_src": "R14",
+      "teacher_dst": "A12",
+      "teacher_type": "applies-to",
+      "student_src": "R3",
+      "student_dst": "A7",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E39",
+      "teacher_src": "A12",
+      "teacher_dst": "C3",
+      "teacher_type": "supports",
+      "student_src": "A7",
+      "student_dst": "C4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    }
+  ],
+  "l_ged": 128.5,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 2,
+      "v_halluc": 2
+    },
+    "I": {
+      "v_miss": 4,
+      "v_halluc": 3
+    },
+    "R": {
+      "v_miss": 6,
+      "v_halluc": 2
+    },
+    "A": {
+      "v_miss": 6,
+      "v_halluc": 6
+    },
+    "C": {
+      "v_miss": 2,
+      "v_halluc": 1
+    },
+    "O": {
+      "v_miss": 2,
+      "v_halluc": 3
+    }
+  }
+}

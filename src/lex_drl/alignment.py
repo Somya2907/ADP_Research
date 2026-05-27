@@ -6,14 +6,20 @@ Two-stage matching:
    statutory section (after normalising "§ 20-871(d)(2)" vs "Section
    20-871(d)(2)" to a canonical form), they are aligned with high confidence.
 2. Everything else (facts, issues, applications, conclusions, obligations) and
-   any rules left unaligned after step 1 fall back to **TF-IDF cosine** on a
-   text field with a configurable threshold (default 0.4).
+   any rules left unaligned after step 1 fall back to text similarity. Two
+   backends are available, selected by ``LEX_DRL_SIMILARITY``:
+
+   * ``tfidf`` (default) — n-gram TF-IDF cosine, threshold tuned to 0.10.
+   * ``embedding`` — sentence-transformers cosine via
+     ``BAAI/bge-small-en-v1.5``, threshold tuned to 0.55. Survives legal
+     paraphrases that TF-IDF misses.
 
 The output is an :class:`AlignmentReport` consumed by
 :mod:`lex_drl.discrepancy`.
 """
 from __future__ import annotations
 
+import os
 import re
 from typing import Callable, Iterable, Optional
 
@@ -29,7 +35,21 @@ from .schema import (
     Rule,
 )
 
-DEFAULT_THRESHOLD = 0.10
+SIMILARITY_METHOD = os.environ.get("LEX_DRL_SIMILARITY", "tfidf").lower()
+EMBEDDING_MODEL_NAME = os.environ.get(
+    "LEX_DRL_EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5"
+)
+DEFAULT_THRESHOLD = 0.55 if SIMILARITY_METHOD == "embedding" else 0.10
+
+_EMBED_MODEL = None  # lazy-loaded SentenceTransformer instance
+
+
+def _get_embed_model():
+    global _EMBED_MODEL
+    if _EMBED_MODEL is None:
+        from sentence_transformers import SentenceTransformer
+        _EMBED_MODEL = SentenceTransformer(EMBEDDING_MODEL_NAME)
+    return _EMBED_MODEL
 
 
 # ──────────────────────────────────────────────
@@ -110,6 +130,23 @@ def citations_match(a: str, b: str) -> bool:
 # ──────────────────────────────────────────────
 # TF-IDF helper
 # ──────────────────────────────────────────────
+
+def _embedding_cosine_matrix(teacher_texts: list[str], student_texts: list[str]):
+    """Return cosine-similarity matrix using a sentence-transformer model.
+
+    Texts are encoded with L2-normalised embeddings so cosine reduces to a
+    matrix multiply. Falls back to TF-IDF if sentence-transformers is missing.
+    """
+    if not teacher_texts or not student_texts:
+        return [[0.0] * len(student_texts) for _ in teacher_texts]
+    try:
+        model = _get_embed_model()
+        t_emb = model.encode(teacher_texts, normalize_embeddings=True, show_progress_bar=False)
+        s_emb = model.encode(student_texts, normalize_embeddings=True, show_progress_bar=False)
+        return (t_emb @ s_emb.T).tolist()
+    except (ImportError, OSError):
+        return _cosine_matrix(teacher_texts, student_texts)
+
 
 def _cosine_matrix(teacher_texts: list[str], student_texts: list[str]):
     """Return a (len(teacher) × len(student)) cosine-similarity matrix.
@@ -207,7 +244,10 @@ def _align_by_text(
     t_text = [text_fn(n) or "" for n in teacher_list]
     s_text = [text_fn(n) or "" for n in student_list]
 
-    sim = _cosine_matrix(t_text, s_text)
+    if SIMILARITY_METHOD == "embedding":
+        sim = _embedding_cosine_matrix(t_text, s_text)
+    else:
+        sim = _cosine_matrix(t_text, s_text)
     assignments = _greedy_assign(t_ids, s_ids, sim, threshold)
 
     mapping: dict[str, Optional[str]] = {}
@@ -218,7 +258,7 @@ def _align_by_text(
             teacher_id=tid,
             student_id=sid,
             similarity=float(score),
-            method="tfidf" if sid is not None else "none",
+            method=SIMILARITY_METHOD if sid is not None else "none",
         ))
     return mapping, matches
 
@@ -416,12 +456,12 @@ def align_all(
     unaligned_student = sorted(student_ids - aligned_student_ids)
 
     matches: list[AlignmentMatch] = []
-    matches += _matches_for([f.fid for f in teacher.facts], fact_map, "tfidf")
-    matches += _matches_for([i.iid for i in teacher.issues], issue_map, "tfidf")
+    matches += _matches_for([f.fid for f in teacher.facts], fact_map, SIMILARITY_METHOD)
+    matches += _matches_for([i.iid for i in teacher.issues], issue_map, SIMILARITY_METHOD)
     matches += _matches_for([r.rid for r in teacher.rules], rule_map, "citation")
-    matches += _matches_for([a.aid for a in teacher.applications], app_map, "tfidf")
-    matches += _matches_for([c.cid for c in teacher.conclusions], conc_map, "tfidf")
-    matches += _matches_for([o.oid for o in teacher.obligations], obl_map, "tfidf")
+    matches += _matches_for([a.aid for a in teacher.applications], app_map, SIMILARITY_METHOD)
+    matches += _matches_for([c.cid for c in teacher.conclusions], conc_map, SIMILARITY_METHOD)
+    matches += _matches_for([o.oid for o in teacher.obligations], obl_map, SIMILARITY_METHOD)
 
     return AlignmentReport(
         case_id=teacher.case_id,

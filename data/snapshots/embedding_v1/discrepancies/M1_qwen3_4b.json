@@ -1,0 +1,424 @@
+{
+  "case_id": "M1",
+  "student_id": "qwen3_4b",
+  "v_miss": [
+    {
+      "teacher_id": "F3",
+      "node_type": "F",
+      "label": "LoanScore is used for financial/lending service decisions",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F4",
+      "node_type": "F",
+      "label": "Sub-$15K loans (73% of applications) are fully automated with no human review",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F5",
+      "node_type": "F",
+      "label": "For $15K+ loans, human officer agrees with AI recommendation 94% of the time",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F8",
+      "node_type": "F",
+      "label": "FinSpark has never conducted an impact assessment of LoanScore",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F10",
+      "node_type": "F",
+      "label": "FinSpark does not notify loan applicants that AI is used in underwriting",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F11",
+      "node_type": "F",
+      "label": "No mechanism exists for applicants to correct personal data processed by AI",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F12",
+      "node_type": "F",
+      "label": "No mechanism exists for applicants to appeal AI-involved adverse decisions",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F13",
+      "node_type": "F",
+      "label": "CEO memo (Oct 2025) defers compliance to Q2 2026; no action taken as of April 2026",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F14",
+      "node_type": "F",
+      "label": "FinSpark has 240 full-time employees, exceeding the 50-employee small deployer threshold",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F15",
+      "node_type": "F",
+      "label": "Current date is April 16, 2026; CO AIA effective June 30, 2026 (75 days away)",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "I6",
+      "node_type": "I",
+      "label": "Does the small deployer exception under Section 6-1-1703(6) apply to FinSpark?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I7",
+      "node_type": "I",
+      "label": "What must FinSpark do to achieve compliance by June 30, 2026?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R2",
+      "node_type": "R",
+      "label": "Consequential decision includes financial or lending service",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "node_type": "R",
+      "label": "Substantial factor definition: human review based primarily on AI output does not negate",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Deployer must implement risk management policy consistent with NIST AI RMF or equivalent",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "Deployer must conduct annual review for algorithmic discrimination",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "node_type": "R",
+      "label": "Deployer must publish website statement on high-risk AI systems and discrimination risk management",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Deployer must notify consumers before AI-assisted consequential decision",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "node_type": "R",
+      "label": "Deployer must provide data correction opportunity to consumers",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "node_type": "R",
+      "label": "Deployer must provide meaningful appeal opportunity for AI-involved consequential decisions",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "node_type": "R",
+      "label": "Small deployer exception: fewer than 50 FTEs AND does not use own data to train",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "node_type": "R",
+      "label": "Developer must provide documentation on limitations, training data, uses, and monitoring guidance",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R17",
+      "node_type": "R",
+      "label": "Notification to AG and consumers within 90 days if algorithmic discrimination discovered",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "node_type": "R",
+      "label": "Enforcement: deceptive trade practice, AG exclusive authority, up to $20K per violation",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R19",
+      "node_type": "R",
+      "label": "Impact assessment must include six specified elements",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A2",
+      "node_type": "A",
+      "label": "Credit underwriting decisions on loan approval/denial and interest rate terms have material legal or similarly significant effect on provision, denial, cost, or terms of a financial or lending service under Section 6-1-1701(3)(c).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A3",
+      "node_type": "A",
+      "label": "For sub-$15K loans (73% of volume), LoanScore makes the consequential decision with zero human review. The system directly makes the decision, satisfying the high-risk threshold.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A4",
+      "node_type": "A",
+      "label": "The 94% agreement rate demonstrates human review is based primarily on AI output. Section 6-1-1701(9) explicitly provides that such human review does not negate substantial factor finding. LoanScore is a substantial factor in $15K+ decisions.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A7",
+      "node_type": "A",
+      "label": "FinSpark has no written risk management policy or program, let alone one consistent with NIST AI RMF 1.0 or ISO/IEC 42001. Complete non-compliance with Section 6-1-1703(2)(a).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "FinSpark has never conducted an impact assessment. For pre-existing deployments, the 90-day grace period runs from June 30, 2026 to September 28, 2026. While not yet technically in violation, no preparatory work has begun.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "FinSpark provides no notice to loan applicants that AI is used in underwriting decisions. Fails all five sub-requirements of Section 6-1-1703(2)(e).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "No mechanism exists for applicants to correct incorrect personal data processed by LoanScore. Complete non-compliance with Section 6-1-1703(2)(f).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A12",
+      "node_type": "A",
+      "label": "No mechanism exists for applicants to appeal adverse AI-involved lending decisions. Complete non-compliance with Section 6-1-1703(2)(g).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A13",
+      "node_type": "A",
+      "label": "The totality of FinSparks failures — no risk management, no impact assessment, no notice, no correction mechanism, no appeal process — demonstrates failure to use reasonable care to protect consumers from algorithmic discrimination risks.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A14",
+      "node_type": "A",
+      "label": "FinSpark has 240 FTEs, far exceeding the 50-employee threshold. Condition (a) of the small deployer exception is not met. The exception is inapplicable regardless of condition (b).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A16",
+      "node_type": "A",
+      "label": "FinSpark has conducted no annual review of LoanScore for algorithmic discrimination. While the first annual review deadline is June 30, 2027, no review infrastructure exists.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A17",
+      "node_type": "A",
+      "label": "Without developer documentation and having conducted no independent analysis, FinSpark cannot complete the six required elements of an impact assessment, particularly training data categories and known limitations.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C2",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C3",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C4",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O2",
+      "node_type": "O",
+      "label": "Complete impact assessment of LoanScore with all six elements of Section 6-1-1701(8)",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O3",
+      "node_type": "O",
+      "label": "Conduct annual deployment review for algorithmic discrimination",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O4",
+      "node_type": "O",
+      "label": "Publish website statement summarizing high-risk AI systems and discrimination risk management",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O5",
+      "node_type": "O",
+      "label": "Implement consumer notice system with all five sub-elements before each AI-assisted lending decision",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Implement mechanism for applicants to correct incorrect personal data processed by LoanScore",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O7",
+      "node_type": "O",
+      "label": "Implement meaningful appeal process for adverse AI-involved lending decisions",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O9",
+      "node_type": "O",
+      "label": "Establish reasonable care posture through totality of compliance measures to support rebuttable presumption",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O10",
+      "node_type": "O",
+      "label": "Establish internal protocol for detecting and reporting algorithmic discrimination to AG and consumers within 90 days",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O11",
+      "node_type": "O",
+      "label": "Reassess human review protocols for $15K+ loans to ensure meaningful independent review",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [],
+  "e_diff": [
+    {
+      "teacher_eid": "E1",
+      "teacher_src": "F2",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F2",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E5",
+      "teacher_src": "F6",
+      "teacher_dst": "I2",
+      "teacher_type": "triggers",
+      "student_src": "F3",
+      "student_dst": "I2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E6",
+      "teacher_src": "F7",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F4",
+      "student_dst": "I5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E8",
+      "teacher_src": "R1",
+      "teacher_dst": "A1",
+      "teacher_type": "applies-to",
+      "student_src": "R5",
+      "student_dst": "A1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E12",
+      "teacher_src": "R5",
+      "teacher_dst": "A5",
+      "teacher_type": "applies-to",
+      "student_src": "R2",
+      "student_dst": "A2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E13",
+      "teacher_src": "R6",
+      "teacher_dst": "A6",
+      "teacher_type": "applies-to",
+      "student_src": "R3",
+      "student_dst": "A3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E23",
+      "teacher_src": "A1",
+      "teacher_dst": "C1",
+      "teacher_type": "satisfies-element",
+      "student_src": "A1",
+      "student_dst": "C1",
+      "student_type": "fails-element",
+      "kind": "type_mismatch",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E47",
+      "teacher_src": "F9",
+      "teacher_dst": "I3",
+      "teacher_type": "triggers",
+      "student_src": "F5",
+      "student_dst": "I3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    }
+  ],
+  "l_ged": 146.5,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 10,
+      "v_halluc": 0
+    },
+    "I": {
+      "v_miss": 2,
+      "v_halluc": 0
+    },
+    "R": {
+      "v_miss": 14,
+      "v_halluc": 0
+    },
+    "A": {
+      "v_miss": 12,
+      "v_halluc": 0
+    },
+    "C": {
+      "v_miss": 3,
+      "v_halluc": 0
+    },
+    "O": {
+      "v_miss": 9,
+      "v_halluc": 0
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 Teacher:  Claude Opus 4.6 (Anthropic) — streaming, produces G_ref
 Student1: GPT-5 (OpenAI) — frontier student, no statutory context
-Student2: Llama-3.2-3B-Instruct (OpenRouter) — small student <7B, no statutory context
+Student2: Qwen3-4B-Instruct (OpenRouter) — small student <7B, no statutory context
 
 Fixes (v3):
   - Teacher uses streaming API to avoid Anthropic 10-min non-streaming limit
@@ -121,11 +121,11 @@ class AgentClient:
 
 
 # ──────────────────────────────────────────────
-# Student 2: Llama-3.2-3B-Instruct via OpenRouter
+# Student 2: Qwen3-4B via OpenRouter
 # ──────────────────────────────────────────────
 
 class SmallModelClient:
-    """Llama-3.2-3B-Instruct (Student 2 — small, <7B parameters) via OpenRouter."""
+    """Qwen3-4B (Student 2 — small, <7B parameters) via OpenRouter."""
 
     def __init__(self, model: str | None = None):
         api_key = os.environ.get("OPENROUTER_API_KEY")
@@ -138,9 +138,9 @@ class SmallModelClient:
             base_url="https://openrouter.ai/api/v1",
             api_key=api_key,
         )
-        self.model = model or os.environ.get("SMALL_MODEL", "meta-llama/llama-3.2-3b-instruct")
+        self.model = model or os.environ.get("SMALL_MODEL", "qwen/qwen3-4b")
 
-    @cached_call(namespace="agent_llama3_2b")
+    @cached_call(namespace="agent_qwen3_4b")
     def generate(
         self,
         system: str,

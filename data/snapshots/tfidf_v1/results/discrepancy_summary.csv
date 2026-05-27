@@ -1,0 +1,13 @@
+case_id,student,v_miss_count,v_halluc_count,e_diff_count,l_ged_score
+E1,gpt5,40,19,11,167.0
+E1,qwen3_4b,59,3,5,167.5
+E2,gpt5,22,17,13,128.5
+E2,qwen3_4b,43,7,3,129.5
+M1,gpt5,24,24,15,176.5
+M1,qwen3_4b,57,7,4,175.5
+M2,gpt5,41,18,10,166.5
+M2,qwen3_4b,54,5,3,144.5
+H1,gpt5,51,36,8,248.0
+H1,qwen3_4b,63,12,4,200.5
+H2,gpt5,38,29,9,196.0
+H2,qwen3_4b,67,1,1,164.5

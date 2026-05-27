@@ -10,6 +10,7 @@ Features:
   - Node-type bar chart (F/I/R/A/C/O totals)
   - Interactive node-link diagram colored by node type
   - Side-by-side comparison mode highlighting alignment-style diffs
+  - Alignment method comparison: TF-IDF vs sentence-embedding results
   - Collapsible raw JSON
 
 Requires: streamlit, streamlit-agraph (preferred) OR pyvis (fallback), pandas.
@@ -185,6 +186,141 @@ def show_counts_chart(graph: dict, label: str = "Node types"):
     st.bar_chart(df, x="Type", y="Count", color="#2E86C1")
 
 
+# ── Alignment-method comparison helpers ──
+
+TFIDF_SNAPSHOT_DIR = Path("data/snapshots/tfidf_v1")
+EMBED_SNAPSHOT_DIR = Path("data/snapshots/embedding_v1")
+TIER_FROM_PREFIX = {"E": "easy", "M": "medium", "H": "hard"}
+
+
+def load_summary_csv(path: Path) -> pd.DataFrame | None:
+    if not path.is_file():
+        return None
+    df = pd.read_csv(path)
+    df["tier"] = df["case_id"].str[0].map(TIER_FROM_PREFIX).fillna("?")
+    return df
+
+
+def merge_methods(tfidf: pd.DataFrame, embed: pd.DataFrame) -> pd.DataFrame:
+    """Wide-format join on (case_id, student) with one suffix per method."""
+    return tfidf.merge(
+        embed, on=["case_id", "student", "tier"],
+        suffixes=("_tfidf", "_embed"),
+    )
+
+
+def ranking_per_case(df_method: pd.DataFrame) -> pd.DataFrame:
+    """For each case, return GPT-5 L-GED, Qwen L-GED, and whether GPT-5 < Qwen."""
+    pivot = df_method.pivot_table(
+        index=["case_id", "tier"], columns="student", values="l_ged_score",
+    ).reset_index()
+    pivot["correct"] = pivot["gpt5"] < pivot["qwen3_4b"]
+    return pivot
+
+
+def render_method_comparison():
+    st.header("Alignment method comparison")
+    st.caption(
+        "Compares the **TF-IDF baseline** against the **sentence-embedding** "
+        "alignment under `BAAI/bge-small-en-v1.5`. The discrepancy scorer is "
+        "identical; only the similarity backend changes."
+    )
+
+    tfidf_df = load_summary_csv(TFIDF_SNAPSHOT_DIR / "results" / "discrepancy_summary.csv")
+    embed_df = load_summary_csv(EMBED_SNAPSHOT_DIR / "results" / "discrepancy_summary.csv")
+    if tfidf_df is None or embed_df is None:
+        st.error(
+            "Snapshot CSVs not found. Expected:\n"
+            f"- `{TFIDF_SNAPSHOT_DIR / 'results' / 'discrepancy_summary.csv'}`\n"
+            f"- `{EMBED_SNAPSHOT_DIR / 'results' / 'discrepancy_summary.csv'}`"
+        )
+        return
+
+    # ── Headline: ranking correctness ──
+    tfidf_rank = ranking_per_case(tfidf_df)
+    embed_rank = ranking_per_case(embed_df)
+    tfidf_ok = int(tfidf_rank["correct"].sum())
+    embed_ok = int(embed_rank["correct"].sum())
+    total = len(tfidf_rank)
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("TF-IDF: GPT-5 < Qwen", f"{tfidf_ok}/{total}", help="Number of cases where GPT-5 L-GED is lower than Qwen.")
+    c2.metric("Embedding: GPT-5 < Qwen", f"{embed_ok}/{total}", delta=embed_ok - tfidf_ok)
+    c3.metric("Ranking improvement", f"+{embed_ok - tfidf_ok}", help="Cases flipped from incorrect to correct.")
+
+    # ── Side-by-side L-GED table ──
+    st.subheader("L-GED side-by-side")
+    merged = merge_methods(tfidf_df, embed_df)
+    merged_view = merged[[
+        "case_id", "tier", "student",
+        "l_ged_score_tfidf", "l_ged_score_embed",
+    ]].copy()
+    merged_view["Δ (embed − tfidf)"] = (
+        merged_view["l_ged_score_embed"] - merged_view["l_ged_score_tfidf"]
+    ).round(2)
+    merged_view = merged_view.rename(columns={
+        "case_id": "Case", "tier": "Tier", "student": "Student",
+        "l_ged_score_tfidf": "L-GED (TF-IDF)",
+        "l_ged_score_embed": "L-GED (embed)",
+    }).sort_values(["Case", "Student"])
+    st.dataframe(merged_view, use_container_width=True, hide_index=True)
+
+    # ── Ranking grid ──
+    st.subheader("Per-case ranking correctness")
+    rank_view = tfidf_rank.merge(
+        embed_rank, on=["case_id", "tier"], suffixes=("_tfidf", "_embed"),
+    )
+    rank_view["TF-IDF ✓"] = rank_view["correct_tfidf"].map({True: "✓", False: "✗"})
+    rank_view["Embed ✓"] = rank_view["correct_embed"].map({True: "✓", False: "✗"})
+    rank_view = rank_view.rename(columns={
+        "case_id": "Case", "tier": "Tier",
+        "gpt5_tfidf": "GPT-5 (tfidf)", "qwen3_4b_tfidf": "Qwen (tfidf)",
+        "gpt5_embed": "GPT-5 (embed)", "qwen3_4b_embed": "Qwen (embed)",
+    })[["Case", "Tier",
+        "GPT-5 (tfidf)", "Qwen (tfidf)", "TF-IDF ✓",
+        "GPT-5 (embed)", "Qwen (embed)", "Embed ✓"]]
+    st.dataframe(rank_view, use_container_width=True, hide_index=True)
+
+    # ── L-GED bar chart ──
+    st.subheader("L-GED per case, grouped by method × student")
+    long = pd.concat([
+        tfidf_df.assign(method="TF-IDF"),
+        embed_df.assign(method="Embedding"),
+    ], ignore_index=True)
+    long["series"] = long["student"] + " — " + long["method"]
+    chart_df = long.pivot_table(
+        index="case_id", columns="series", values="l_ged_score",
+    ).reset_index().sort_values("case_id")
+    st.bar_chart(chart_df, x="case_id", y=[c for c in chart_df.columns if c != "case_id"])
+
+    # ── Component breakdown (v_miss / v_halluc / e_diff) ──
+    st.subheader("Component breakdown")
+    comp_tabs = st.tabs(["v_miss", "v_halluc", "e_diff"])
+    for tab, col in zip(comp_tabs, ["v_miss_count", "v_halluc_count", "e_diff_count"]):
+        with tab:
+            comp = merged[["case_id", "tier", "student", f"{col}_tfidf", f"{col}_embed"]].copy()
+            comp["Δ"] = comp[f"{col}_embed"] - comp[f"{col}_tfidf"]
+            comp = comp.rename(columns={
+                "case_id": "Case", "tier": "Tier", "student": "Student",
+                f"{col}_tfidf": f"{col} (tfidf)",
+                f"{col}_embed": f"{col} (embed)",
+            }).sort_values(["Case", "Student"])
+            st.dataframe(comp, use_container_width=True, hide_index=True)
+
+    # ── Method explainer ──
+    with st.expander("Why embedding wins"):
+        st.markdown(
+            "- **TF-IDF** scores paraphrases like *\"based in Austin\"* vs *\"operates "
+            "out of Austin\"* near zero because the n-grams don't overlap, so GPT-5's "
+            "verbose paraphrases are counted as hallucinations (`v_halluc` inflated).\n"
+            "- **Sentence embeddings** assign such paraphrases ≈0.95 cosine — they align "
+            "as the same node, so `v_halluc` drops and GPT-5 (a more capable, more "
+            "verbose model) finally scores below Qwen.\n"
+            "- Toggle at runtime via `LEX_DRL_SIMILARITY=embedding|tfidf` before running "
+            "`scripts/run_discrepancy_analysis.py`."
+        )
+
+
 # ── Comparison helpers ──
 
 def compute_diff_highlights(g1: dict, g2: dict) -> tuple[set[str], set[str]]:
@@ -247,7 +383,11 @@ def main():
 
     with st.sidebar:
         st.header("Mode")
-        mode = st.radio("View", ["Single graph", "Side-by-side comparison"], index=0)
+        mode = st.radio(
+            "View",
+            ["Single graph", "Side-by-side comparison", "Alignment method comparison"],
+            index=0,
+        )
         st.caption(f"Graphs dir: `{graphs_dir}` ({len(graph_files)} files)")
         st.markdown("**Legend**")
         for k in "FIRACO":
@@ -257,6 +397,10 @@ def main():
                 f"{k} — {NODE_NAMES[k]}",
                 unsafe_allow_html=True,
             )
+
+    if mode == "Alignment method comparison":
+        render_method_comparison()
+        return
 
     if mode == "Single graph":
         if args.graph:

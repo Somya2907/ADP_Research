@@ -1,0 +1,405 @@
+{
+  "case_id": "M1",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "I6",
+      "node_type": "I",
+      "label": "Does the small deployer exception under Section 6-1-1703(6) apply to FinSpark?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R1",
+      "node_type": "R",
+      "label": "Definition of artificial intelligence system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "node_type": "R",
+      "label": "Developer must provide documentation on limitations, training data, uses, and monitoring guidance",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A1",
+      "node_type": "A",
+      "label": "LoanScore is a machine-based system that processes financial inputs and produces outputs (approval/denial, interest rate tier) influencing real environments. Satisfies AI system definition.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A3",
+      "node_type": "A",
+      "label": "For sub-$15K loans (73% of volume), LoanScore makes the consequential decision with zero human review. The system directly makes the decision, satisfying the high-risk threshold.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C1",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C3",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C4",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F8",
+      "node_type": "F",
+      "label": "Contract claims model documentation is proprietary",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F17",
+      "node_type": "F",
+      "label": "Use is for credit underwriting, a consequential decision",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F18",
+      "node_type": "F",
+      "label": "FinSpark deploys LoanScore in Colorado operations",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "R11",
+      "node_type": "R",
+      "label": "NIST RMF alignment gives safe harbor presumption",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "A3",
+      "node_type": "A",
+      "label": "Full automation and 94% rubber-stamp show no meaningful review.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A14",
+      "node_type": "A",
+      "label": "No facts on logs or inventory.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O7",
+      "node_type": "O",
+      "label": "Maintain AI inventory, logs, and records",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O13",
+      "node_type": "O",
+      "label": "Update IA annually and revise public statement",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E3",
+      "teacher_src": "F4",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F4",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E6",
+      "teacher_src": "F7",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F7",
+      "student_dst": "I5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E11",
+      "teacher_src": "R4",
+      "teacher_dst": "A4",
+      "teacher_type": "applies-to",
+      "student_src": "R3",
+      "student_dst": "A2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E14",
+      "teacher_src": "R8",
+      "teacher_dst": "A7",
+      "teacher_type": "applies-to",
+      "student_src": "R5",
+      "student_dst": "A11",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E15",
+      "teacher_src": "R9",
+      "teacher_dst": "A8",
+      "teacher_type": "applies-to",
+      "student_src": "R13",
+      "student_dst": "A13",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E16",
+      "teacher_src": "R11",
+      "teacher_dst": "A9",
+      "teacher_type": "applies-to",
+      "student_src": "R9",
+      "student_dst": "A5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E17",
+      "teacher_src": "R12",
+      "teacher_dst": "A10",
+      "teacher_type": "applies-to",
+      "student_src": "R7",
+      "student_dst": "A9",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E18",
+      "teacher_src": "R13",
+      "teacher_dst": "A11",
+      "teacher_type": "applies-to",
+      "student_src": "R10",
+      "student_dst": "A8",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E19",
+      "teacher_src": "R14",
+      "teacher_dst": "A12",
+      "teacher_type": "applies-to",
+      "student_src": "R8",
+      "student_dst": "A7",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E20",
+      "teacher_src": "R7",
+      "teacher_dst": "A13",
+      "teacher_type": "applies-to",
+      "student_src": "R4",
+      "student_dst": "A4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E21",
+      "teacher_src": "R15",
+      "teacher_dst": "A14",
+      "teacher_type": "applies-to",
+      "student_src": "R15",
+      "student_dst": "A15",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E27",
+      "teacher_src": "A7",
+      "teacher_dst": "C2",
+      "teacher_type": "fails-element",
+      "student_src": "A11",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E28",
+      "teacher_src": "A8",
+      "teacher_dst": "C2",
+      "teacher_type": "fails-element",
+      "student_src": "A13",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E30",
+      "teacher_src": "A10",
+      "teacher_dst": "C2",
+      "teacher_type": "fails-element",
+      "student_src": "A9",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E33",
+      "teacher_src": "A13",
+      "teacher_dst": "C2",
+      "teacher_type": "fails-element",
+      "student_src": "A4",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E37",
+      "teacher_src": "R9",
+      "teacher_dst": "O2",
+      "teacher_type": "triggers",
+      "student_src": "R13",
+      "student_dst": "O2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E38",
+      "teacher_src": "R10",
+      "teacher_dst": "O3",
+      "teacher_type": "triggers",
+      "student_src": "R14",
+      "student_dst": "O11",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E41",
+      "teacher_src": "R13",
+      "teacher_dst": "O6",
+      "teacher_type": "triggers",
+      "student_src": "R10",
+      "student_dst": "O6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E44",
+      "teacher_src": "R7",
+      "teacher_dst": "O9",
+      "teacher_type": "triggers",
+      "student_src": "R4",
+      "student_dst": "O4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E46",
+      "teacher_src": "R4",
+      "teacher_dst": "O11",
+      "teacher_type": "triggers",
+      "student_src": "R3",
+      "student_dst": "O12",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E49",
+      "teacher_src": "F10",
+      "teacher_dst": "I3",
+      "teacher_type": "triggers",
+      "student_src": "F11",
+      "student_dst": "I3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E50",
+      "teacher_src": "F13",
+      "teacher_dst": "I7",
+      "teacher_type": "triggers",
+      "student_src": "F14",
+      "student_dst": "I6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E52",
+      "teacher_src": "R18",
+      "teacher_dst": "C2",
+      "teacher_type": "applies-to",
+      "student_src": "R12",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E53",
+      "teacher_src": "R19",
+      "teacher_dst": "A17",
+      "teacher_type": "applies-to",
+      "student_src": "R6",
+      "student_dst": "A6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 116.0,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 0,
+      "v_halluc": 3
+    },
+    "I": {
+      "v_miss": 1,
+      "v_halluc": 0
+    },
+    "R": {
+      "v_miss": 2,
+      "v_halluc": 1
+    },
+    "A": {
+      "v_miss": 2,
+      "v_halluc": 2
+    },
+    "C": {
+      "v_miss": 3,
+      "v_halluc": 0
+    },
+    "O": {
+      "v_miss": 0,
+      "v_halluc": 2
+    }
+  }
+}
