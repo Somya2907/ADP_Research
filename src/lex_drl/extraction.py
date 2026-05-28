@@ -13,6 +13,7 @@ Fixes (v3):
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
@@ -24,8 +25,8 @@ from .clients import TeacherClient, get_agent_client, LLMResponse
 from .schema import GraphSource, LegalReasoningGraph
 
 PROMPT_DIR = Path("configs/prompts")
-OUTPUT_DIR = Path("data/outputs/graphs")
-ANALYSIS_DIR = Path("data/outputs/analysis")
+OUTPUT_DIR = Path(os.environ.get("LEX_DRL_GRAPHS_DIR", "data/outputs/graphs"))
+ANALYSIS_DIR = Path(os.environ.get("LEX_DRL_ANALYSIS_DIR", "data/outputs/analysis"))
 
 VALID_EDGE_TYPES = {
     "supports", "contradicts", "applies-to", "triggers",
@@ -257,6 +258,6 @@ def _parse_response(
 
 def save_graph(graph: LegalReasoningGraph) -> Path:
     _ensure_dirs()
-    out = Path(graph.save_path())
+    out = Path(graph.save_path(str(OUTPUT_DIR)))
     out.write_text(graph.model_dump_json(indent=2), encoding="utf-8")
     return out

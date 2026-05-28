@@ -83,7 +83,494 @@ def node_counts(graph: dict) -> dict[str, int]:
     return {label: len(graph.get(field, [])) for label, field in zip("FIRACO", NODE_FIELDS)}
 
 
+def node_label_index(graph: dict) -> dict[str, str]:
+    """{node_id: label} across all six node types, for resolving edge endpoints."""
+    return {n["id"]: n["label"] for n in collect_nodes(graph)}
+
+
+def _derive_edge_justification(edge: dict, apps_by_id: dict, obls_by_id: dict) -> str | None:
+    """Fall back to related node's text when an edge has no own justification.
+
+    Many models (e.g. Qwen) leave ``edge.justification`` null but still populate
+    ``application.reasoning`` and ``obligation.label``. This walks the canonical
+    edge-type → adjacent-node-field mapping to surface that text, tagged so the
+    reader knows it isn't the edge's own justification.
+    """
+    src, dst = edge.get("src", ""), edge.get("dst", "")
+    etype = edge.get("type", "")
+
+    # Edges pointing into an application — the app's reasoning explains it.
+    if dst in apps_by_id and etype in {"applies-to", "supports", "contradicts"}:
+        r = apps_by_id[dst].get("reasoning")
+        if r:
+            return f"*(from {dst}'s reasoning)* {r}"
+
+    # Edges out of an application into a conclusion — app reasoning + result.
+    if src in apps_by_id and etype in {"satisfies-element", "fails-element", "supports"}:
+        a = apps_by_id[src]
+        r = a.get("reasoning")
+        result = a.get("result", "")
+        if r:
+            return f"*(from {src} — result={result})* {r}"
+
+    if etype == "triggers":
+        # F → I: find an application that subsumes this (fact, issue) pair.
+        for aid, a in apps_by_id.items():
+            if src in (a.get("fact_refs") or []) and a.get("issue_ref") == dst:
+                r = a.get("reasoning")
+                if r:
+                    return f"*(from {aid} which subsumes {src} under {dst})* {r}"
+        # R → O: use the obligation's own label.
+        if dst in obls_by_id:
+            o = obls_by_id[dst]
+            label = o.get("label", "")
+            if label:
+                return f"*(from obligation {dst})* {label}"
+
+    return None
+
+
+def build_edge_table(graph: dict) -> pd.DataFrame:
+    """One row per edge with src/dst node labels and the LLM's justification.
+
+    When the edge has no ``justification`` of its own, fall back to the
+    reasoning carried on adjacent nodes (application.reasoning,
+    obligation.label) so the column is informative even for terse models.
+    """
+    labels = node_label_index(graph)
+    apps_by_id = {a.get("aid", ""): a for a in graph.get("applications", [])}
+    obls_by_id = {o.get("oid", ""): o for o in graph.get("obligations", [])}
+    rows = []
+    for e in graph.get("edges", []):
+        src, dst = e.get("src", ""), e.get("dst", "")
+        justification = e.get("justification")
+        if not justification:
+            justification = _derive_edge_justification(e, apps_by_id, obls_by_id) or "—"
+        rows.append({
+            "Edge": e.get("eid", ""),
+            "Source": f"{src} — {labels.get(src, '(missing)')[:60]}",
+            "Type": e.get("type", ""),
+            "Target": f"{dst} — {labels.get(dst, '(missing)')[:60]}",
+            "Justification": justification,
+        })
+    return pd.DataFrame(rows)
+
+
+def build_application_traces(graph: dict) -> list[dict]:
+    """One trace per application: rule + facts + issue + result + reasoning."""
+    labels = node_label_index(graph)
+    traces = []
+    for a in graph.get("applications", []):
+        rule_id = a.get("rule_ref", "")
+        issue_id = a.get("issue_ref", "")
+        fact_ids = a.get("fact_refs", []) or []
+        traces.append({
+            "aid": a.get("aid", ""),
+            "rule": f"{rule_id}: {labels.get(rule_id, '(missing)')}",
+            "facts": [f"{fid}: {labels.get(fid, '(missing)')}" for fid in fact_ids],
+            "issue": f"{issue_id}: {labels.get(issue_id, '(missing)')}",
+            "result": a.get("result", ""),
+            "reasoning": a.get("reasoning", "") or "",
+        })
+    return traces
+
+
+ANALYSIS_DIR = Path("data/outputs/analysis")
+
+
+def raw_response_path(graph: dict) -> Path:
+    """Derive the analysis file path from a graph's source/agent_id metadata."""
+    case_id = graph.get("case_id", "")
+    if graph.get("source") == "reference":
+        label = "reference"
+    else:
+        label = f"agent_{graph.get('agent_id', 'unknown')}"
+    return ANALYSIS_DIR / f"{case_id}_{label}_raw.txt"
+
+
+def load_raw_response(graph: dict) -> tuple[str | None, str | None]:
+    """Return (prose, json_text) from the saved LLM response.
+
+    Splits on the "=== JSON GRAPH ===" marker. If the marker is absent (agent
+    prompt strictly emitted JSON), prose is None.
+    """
+    path = raw_response_path(graph)
+    if not path.is_file():
+        return None, None
+    text = path.read_text(encoding="utf-8")
+    marker = "=== JSON GRAPH ==="
+    if marker in text:
+        prose, json_text = text.split(marker, 1)
+        # Some models wrap the marker (e.g. **=== JSON GRAPH ===**), leaving
+        # trailing markdown chars before the actual JSON. Drop everything
+        # before the first '{' so the JSON block is clean.
+        json_text = json_text.lstrip()
+        brace = json_text.find("{")
+        if brace > 0:
+            json_text = json_text[brace:]
+        return prose.strip() or None, json_text.strip() or None
+    # No marker: try to detect prose-only (no JSON block) vs JSON-only output.
+    stripped = text.strip()
+    if stripped.startswith("{"):
+        return None, stripped
+    return stripped, None
+
+
+def _edges_by_target(graph: dict) -> dict[str, list[dict]]:
+    """Group edges by their destination node id."""
+    by_target: dict[str, list[dict]] = {}
+    for e in graph.get("edges", []):
+        by_target.setdefault(e.get("dst", ""), []).append(e)
+    return by_target
+
+
+def _format_inbound_edges(node_id: str, edges_by_target: dict[str, list[dict]]) -> list[str]:
+    """Render inbound edges with justifications as Markdown sub-bullets.
+
+    Skips edges whose ``justification`` is empty. For applications, the
+    ``reasoning`` field carries the why-connected information already, so an
+    edge without its own justification is structural noise and we drop it.
+    """
+    inbound = [e for e in edges_by_target.get(node_id, []) if e.get("justification")]
+    if not inbound:
+        return []
+    lines = ["    - *Why connected:*"]
+    for e in inbound:
+        src = e.get("src", "?")
+        etype = e.get("type", "?")
+        lines.append(
+            f"        - **{src}** →[*{etype}*]→ **{node_id}**: {e['justification']}"
+        )
+    return lines
+
+
+def synthesize_narrative(graph: dict) -> str:
+    """Build a prose-style F-I-R-A-C-O narrative from the structured JSON.
+
+    Used when the LLM emitted JSON only (no PART 1 prose). Walks each section
+    in canonical order, folds the structured fields into readable Markdown,
+    and attaches every node's inbound edges (with their justifications) so the
+    reader sees *why* each component connects to its neighbours.
+    """
+    labels = node_label_index(graph)
+    edges_in = _edges_by_target(graph)
+    parts: list[str] = []
+
+    facts = graph.get("facts", [])
+    if facts:
+        parts.append("**F — Facts**")
+        parts.append("*(Source nodes — facts don't have inbound edges in the canonical flow.)*")
+        for f in facts:
+            polarity = f.get("polarity") or "present"
+            tag = "" if polarity == "present" else f" *({polarity})*"
+            parts.append(f"- **{f.get('fid', '')}**{tag}: {f.get('label', '')}")
+        parts.append("")
+
+    issues = graph.get("issues", [])
+    if issues:
+        parts.append("**I — Issues**")
+        for i in issues:
+            iid = i.get("iid", "")
+            status = i.get("status") or ""
+            tag = f" *({status})*" if status else ""
+            parts.append(f"- **{iid}**{tag}: {i.get('label', '')}")
+            parts.extend(_format_inbound_edges(iid, edges_in))
+        parts.append("")
+
+    rules = graph.get("rules", [])
+    if rules:
+        parts.append("**R — Rules**")
+        for r in rules:
+            rid = r.get("rid", "")
+            authority = r.get("authority") or ""
+            jurisdiction = r.get("jurisdiction") or ""
+            meta = ", ".join(x for x in [authority, jurisdiction] if x)
+            citation = r.get("citation") or ""
+            parts.append(
+                f"- **{rid}** ({meta}) — *{citation}*: {r.get('label', '')}"
+            )
+            parts.extend(_format_inbound_edges(rid, edges_in))
+        parts.append("")
+
+    apps = graph.get("applications", [])
+    if apps:
+        parts.append("**A — Application**")
+        for a in apps:
+            aid = a.get("aid", "")
+            rule_id = a.get("rule_ref", "")
+            issue_id = a.get("issue_ref", "")
+            fact_ids = a.get("fact_refs", []) or []
+            facts_inline = ", ".join(fact_ids) if fact_ids else "(no facts cited)"
+            result = a.get("result", "")
+            parts.append(
+                f"- **{aid}** [*{result}*]: "
+                f"Rule **{rule_id}** ({labels.get(rule_id, '?')[:60]}) "
+                f"applied to facts **{facts_inline}** "
+                f"for issue **{issue_id}** ({labels.get(issue_id, '?')[:60]})"
+            )
+            reasoning = a.get("reasoning") or ""
+            if reasoning:
+                parts.append(f"    - *Reasoning:* {reasoning}")
+            parts.extend(_format_inbound_edges(aid, edges_in))
+        parts.append("")
+
+    concs = graph.get("conclusions", [])
+    if concs:
+        parts.append("**C — Conclusions**")
+        for c in concs:
+            cid = c.get("cid", "")
+            det = c.get("determination", "")
+            conf = c.get("confidence", "")
+            support = ", ".join(c.get("support_refs", []) or []) or "(no support refs)"
+            parts.append(
+                f"- **{cid}** — *{det}* (confidence: {conf}); "
+                f"supported by {support}"
+            )
+            parts.extend(_format_inbound_edges(cid, edges_in))
+        parts.append("")
+
+    obls = graph.get("obligations", [])
+    if obls:
+        parts.append("**O — Obligations**")
+        for o in obls:
+            oid = o.get("oid", "")
+            jurisdiction = o.get("jurisdiction") or ""
+            status = o.get("status") or ""
+            deadline = o.get("deadline") or ""
+            meta = ", ".join(x for x in [status, jurisdiction, deadline] if x)
+            required_by = o.get("required_by") or ""
+            parts.append(
+                f"- **{oid}** ({meta}) — {o.get('label', '')}"
+                + (f" *(required by {required_by})*" if required_by else "")
+            )
+            parts.extend(_format_inbound_edges(oid, edges_in))
+
+    return "\n".join(parts)
+
+
+def render_generation_reasoning(graph: dict):
+    """Show the LLM's own prose narrative that produced this graph."""
+    st.subheader("Generation reasoning")
+    st.caption(
+        "The LLM's prose write-up that produced this graph — its actual "
+        "thought process before emitting the JSON."
+    )
+
+    path = raw_response_path(graph)
+    prose, json_text = load_raw_response(graph)
+
+    if prose:
+        tab_prose, tab_synth = st.tabs(["LLM prose (as emitted)", "Reconstructed narrative (from JSON)"])
+        with tab_prose:
+            st.caption(f"Source: `{path}` (LLM-emitted prose)")
+            with st.container(height=500, border=True):
+                st.markdown(prose)
+        with tab_synth:
+            st.caption(
+                "Walks the JSON in F-I-R-A-C-O order and inlines each node's "
+                "incoming edge justifications."
+            )
+            with st.container(height=500, border=True):
+                st.markdown(synthesize_narrative(graph))
+        with st.expander(f"Raw JSON (PART 2 only) — `{path}`"):
+            if json_text:
+                st.code(json_text, language="json")
+            else:
+                st.info("No JSON block found after the marker in this raw file.")
+    elif path.is_file():
+        agent_id = graph.get("agent_id")
+        st.caption(
+            f"`{agent_id}` emitted JSON only (per "
+            f"[configs/prompts/agent_firaco.txt:99](configs/prompts/agent_firaco.txt#L99)). "
+            f"Reconstructed F-I-R-A-C-O narrative below from the structured fields."
+        )
+        with st.container(height=500, border=True):
+            st.markdown(synthesize_narrative(graph))
+        with st.expander(f"Raw response (JSON only) — `{path}`"):
+            st.code(path.read_text(encoding="utf-8"), language="json")
+    else:
+        st.warning(f"Raw response file not found: `{path}`")
+
+
+def render_reasoning_panel(graph: dict):
+    """Show why nodes are connected: edge justifications + application traces."""
+    edges = graph.get("edges", [])
+    apps = graph.get("applications", [])
+
+    st.subheader("Reasoning trace")
+    st.caption(
+        "Why these nodes are connected. Edge **justifications** explain each "
+        "individual link; **application traces** show the rule-to-facts "
+        "subsumption that drives each conclusion."
+    )
+
+    apps_by_id = {a.get("aid", ""): a for a in graph.get("applications", [])}
+    obls_by_id = {o.get("oid", ""): o for o in graph.get("obligations", [])}
+    edge_count = len(edges)
+    edges_with_own = sum(1 for e in edges if e.get("justification"))
+    edges_derived = sum(
+        1 for e in edges
+        if not e.get("justification")
+        and _derive_edge_justification(e, apps_by_id, obls_by_id)
+    )
+    edges_unknown = edge_count - edges_with_own - edges_derived
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Edges", edge_count)
+    c2.metric("With own justification", edges_with_own,
+              help="The LLM populated edge.justification directly.")
+    c3.metric("Derived from adjacent nodes", edges_derived,
+              help="Edge.justification was null but text was reconstructed "
+                   "from application.reasoning or obligation.label.")
+    if edges_unknown:
+        st.caption(f"⚠ {edges_unknown} edge(s) have neither own nor derivable justification.")
+
+    with st.expander(f"Edge justifications ({edge_count})", expanded=True):
+        if not edges:
+            st.info("No edges in this graph.")
+        else:
+            st.dataframe(build_edge_table(graph), use_container_width=True, hide_index=True)
+
+    with st.expander(f"Application traces ({len(apps)})", expanded=False):
+        if not apps:
+            st.info("No applications in this graph.")
+        else:
+            for trace in build_application_traces(graph):
+                result_color = {
+                    "satisfied": "#229954", "violated": "#C0392B",
+                    "partial": "#D4AC0D", "requires-fact": "#7D3C98",
+                }.get(trace["result"], "#888")
+                st.markdown(
+                    f"**{trace['aid']}** — "
+                    f"<span style='color:{result_color};font-weight:600;'>"
+                    f"{trace['result']}</span>",
+                    unsafe_allow_html=True,
+                )
+                st.markdown(f"- **Rule applied:** {trace['rule']}")
+                st.markdown(f"- **Issue:** {trace['issue']}")
+                if trace["facts"]:
+                    st.markdown("- **Facts:**")
+                    for fact in trace["facts"]:
+                        st.markdown(f"    - {fact}")
+                if trace["reasoning"]:
+                    st.markdown(f"- **Reasoning:** {trace['reasoning']}")
+                st.divider()
+
+
 # ── Renderers ──
+
+NODE_LAYER = {"F": 0, "I": 1, "R": 2, "A": 3, "C": 4, "O": 5}
+
+
+def render_with_plotly(nodes: list[dict], edges: list[dict], highlights: set[str] | None = None):
+    """Layered Plotly+NetworkX graph: F → I → R → A → C → O top-to-bottom."""
+    try:
+        import networkx as nx
+        import plotly.graph_objects as go
+    except ImportError:
+        return False
+
+    highlights = highlights or set()
+    valid_ids = {n["id"] for n in nodes}
+
+    g = nx.DiGraph()
+    for n in nodes:
+        g.add_node(n["id"], **n, layer=NODE_LAYER.get(n["type"], 6))
+    for e in edges:
+        if e.get("src") in valid_ids and e.get("dst") in valid_ids:
+            g.add_edge(e["src"], e["dst"], **e)
+
+    if not g.nodes:
+        return False
+
+    pos = nx.multipartite_layout(g, subset_key="layer", align="horizontal")
+    pos = {n: (p[0], -p[1]) for n, p in pos.items()}
+
+    edge_x: list[float | None] = []
+    edge_y: list[float | None] = []
+    for src, dst in g.edges():
+        x0, y0 = pos[src]
+        x1, y1 = pos[dst]
+        edge_x.extend([x0, x1, None])
+        edge_y.extend([y0, y1, None])
+
+    traces = [go.Scatter(
+        x=edge_x, y=edge_y, mode="lines",
+        line=dict(width=1, color="rgba(140,140,140,0.35)"),
+        hoverinfo="none", showlegend=False,
+    )]
+
+    for t, color in NODE_COLORS.items():
+        ids = [nid for nid, data in g.nodes(data=True) if data.get("type") == t]
+        if not ids:
+            continue
+        xs, ys, texts, hovers, sizes, borders, border_widths = [], [], [], [], [], [], []
+        for nid in ids:
+            x, y = pos[nid]
+            xs.append(x); ys.append(y)
+            data = g.nodes[nid]
+            full = data.get("label", "") or ""
+            texts.append(nid)
+            hovers.append(f"<b>{nid}</b> ({NODE_NAMES.get(t, t)})<br>{full[:200]}")
+            is_hi = nid in highlights
+            sizes.append(46 if is_hi else 36)
+            borders.append("#FF1744" if is_hi else "rgba(30,30,30,0.65)")
+            border_widths.append(3 if is_hi else 1.5)
+        traces.append(go.Scatter(
+            x=xs, y=ys, text=texts, hovertext=hovers, hoverinfo="text",
+            mode="markers+text", name=f"{t} — {NODE_NAMES[t]}",
+            marker=dict(
+                color=color, size=sizes, opacity=0.95,
+                line=dict(color=borders, width=border_widths),
+            ),
+            textposition="middle center",
+            textfont=dict(size=11, color="white", family="Arial Black"),
+        ))
+
+    annotations = []
+    for src, dst in g.edges():
+        x0, y0 = pos[src]
+        x1, y1 = pos[dst]
+        annotations.append(dict(
+            ax=x0, ay=y0, x=x1, y=y1,
+            xref="x", yref="y", axref="x", ayref="y",
+            showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=1.1,
+            arrowcolor="rgba(100,100,100,0.55)",
+            standoff=20,
+        ))
+
+    # Layer band labels on the left margin
+    layer_xs = [p[0] for p in pos.values()]
+    left_x = (min(layer_xs) - 0.1) if layer_xs else 0
+    for t in "FIRACO":
+        ys_in_layer = [p[1] for nid, p in pos.items()
+                       if g.nodes[nid].get("type") == t]
+        if ys_in_layer:
+            annotations.append(dict(
+                x=left_x, y=sum(ys_in_layer) / len(ys_in_layer),
+                xref="x", yref="y", showarrow=False,
+                text=f"<b>{t}</b>",
+                font=dict(size=20, color=NODE_COLORS[t]),
+                xanchor="right",
+            ))
+
+    fig = go.Figure(data=traces, layout=go.Layout(
+        showlegend=True,
+        legend=dict(orientation="h", yanchor="bottom", y=1.02,
+                    xanchor="center", x=0.5),
+        hovermode="closest",
+        margin=dict(b=20, l=40, r=10, t=40),
+        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        paper_bgcolor="white",
+        plot_bgcolor="rgba(247,249,252,1)",
+        annotations=annotations,
+        height=680,
+    ))
+
+    st.plotly_chart(fig, use_container_width=True)
+    return True
+
 
 def render_with_agraph(nodes: list[dict], edges: list[dict], highlights: set[str] | None = None):
     """Try streamlit-agraph; return True on success."""
@@ -149,6 +636,8 @@ def render_with_pyvis(nodes: list[dict], edges: list[dict], highlights: set[str]
 def render_graph(graph: dict, highlights: set[str] | None = None):
     nodes = collect_nodes(graph)
     edges = graph.get("edges", [])
+    if render_with_plotly(nodes, edges, highlights):
+        return
     if render_with_agraph(nodes, edges, highlights):
         return
     render_with_pyvis(nodes, edges, highlights)
@@ -422,6 +911,12 @@ def main():
             st.caption("Reasoning graph")
             render_graph(graph)
 
+        st.divider()
+        render_generation_reasoning(graph)
+
+        st.divider()
+        render_reasoning_panel(graph)
+
         with st.expander("Raw JSON"):
             st.json(graph)
 
@@ -454,6 +949,22 @@ def main():
             show_counts_chart(gb, label="B · Node types")
             st.caption(f"Highlighted (no match in A): {len(only_b)}")
             render_graph(gb, highlights=only_b)
+
+        st.divider()
+        st.subheader("Generation reasoning — side by side")
+        col_a, col_b = st.columns(2)
+        with col_a:
+            render_generation_reasoning(ga)
+        with col_b:
+            render_generation_reasoning(gb)
+
+        st.divider()
+        st.subheader("Reasoning trace — side by side")
+        col_a, col_b = st.columns(2)
+        with col_a:
+            render_reasoning_panel(ga)
+        with col_b:
+            render_reasoning_panel(gb)
 
         with st.expander("Diff summary"):
             cnts_a = node_counts(ga)
