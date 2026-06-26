@@ -1,0 +1,29 @@
+{
+  "provenance": {
+    "co_aia": "verbatim",
+    "nyc_ll144": "statute-only",
+    "nyc_dcwp_rules": "MISSING",
+    "tx_traiga": "summary"
+  },
+  "_provenance_notes": {
+    "co_aia": "Verbatim from 2024a_205_signed-act.pdf (26pp enacted SB 24-205). Sections 6-1-1701..6-1-1707 confirmed present in the PDF (incl. 6-1-1705 and 6-1-1707). NOTE: the co_aia_sb24_205.txt study-aid OMITS 6-1-1705 and 6-1-1707 and adds interpretive annotations; it is NOT used to build this index.",
+    "nyc_ll144": "Verbatim from 'Legislation Text.pdf' (4pp, Int. 1894-A). Real sections: 20-870 (Definitions), 20-871 (Requirements; subdivisions a, b), 20-872 (Penalties; a-d), 20-873 (Enforcement), 20-874 (Construction). There is NO 20-875. NOTE: the nyc_ll144_statute.txt study-aid fabricates a 20-875, mislabels 20-873/20-874, and invents a 20-871(d); it is NOT used. Marked 'statute-only' because NYC citations also reference the DCWP Final Rules (6 RCNY 5-3xx), a separate source that is MISSING.",
+    "nyc_dcwp_rules": "6 RCNY 5-300 et seq. NOT in corpus as authoritative text. Teacher/students cite 5-300/5-301/5-302/5-303. The nyc_ll144_dcwp_rules.txt file is an unverified study-aid (not an authoritative DCWP extract) and is NOT used. Source the adopted DCWP rules to populate.",
+    "tx_traiga": "No authoritative TX text in corpus. 89RDAY81FINAL.pdf is a HOUSE JOURNAL (floor proceedings/roll call for the 81st day), NOT the HB 149 enrolled statute. tx_traiga_hb149.txt is an AI-generated summary with comparative cross-state annotations and a non-contiguous section list (551.001/051/101/102/201/301) that almost certainly omits real sections. Both unusable; source the HB 149 enrolled text to populate."
+  },
+  "sections": {
+    "co_aia": [
+      "6-1-1701", "6-1-1701(2)", "6-1-1701(3)(c)", "6-1-1701(5)", "6-1-1701(6)",
+      "6-1-1701(7)", "6-1-1701(8)", "6-1-1701(9)",
+      "6-1-1702", "6-1-1702(2)",
+      "6-1-1703", "6-1-1703(1)", "6-1-1703(2)(a)", "6-1-1703(2)(b)", "6-1-1703(2)(c)",
+      "6-1-1703(2)(d)", "6-1-1703(2)(e)", "6-1-1703(2)(f)", "6-1-1703(2)(g)", "6-1-1703(6)",
+      "6-1-1704", "6-1-1705", "6-1-1706", "6-1-1707"
+    ],
+    "nyc_ll144": [
+      "20-870", "20-871", "20-871(a)", "20-871(b)",
+      "20-872", "20-872(a)", "20-872(b)", "20-872(c)", "20-872(d)",
+      "20-873", "20-874"
+    ]
+  }
+}

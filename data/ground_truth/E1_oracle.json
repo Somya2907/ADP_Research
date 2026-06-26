@@ -1,0 +1,14 @@
+{
+  "case_id": "E1",
+  "provenance": "Hand-verified by A. Rao earlier in the project, against an earlier extraction. The four misgrounding pairs do NOT all reproduce against the current frozen E1 graphs (current GPT-5 citations are mostly correct; Llama shows ~1-2 coarse misgroundings). Use as a detector-logic fixture, not as an end-to-end snapshot oracle.",
+  "misgroundings": [
+    {"cited": "§20-871",    "correct": "§20-870", "topic": "AEDT definition"},
+    {"cited": "§20-872(a)", "correct": "§20-871", "topic": "bias audit requirement"},
+    {"cited": "§20-874",    "correct": "§20-875", "topic": "penalties"},
+    {"cited": "§6-1-1704",  "correct": "§6-1-1703", "topic": "CO deployer duties"}
+  ],
+  "missing_rules_count": 7,
+  "orphan_applications_count": 3,
+  "stale_effective_date": {"was": "2026-02-01", "corrected_to": "2026-06-30", "authority": "CO AIA per SB 25B-004"},
+  "notes": "Missing-rule and orphan-application counts hand-verified for magnitude only; not itemized by node ID. M1 and H1 have no machine-readable oracle (never hand-diffed)."
+}

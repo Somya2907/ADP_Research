@@ -1,6 +1,6 @@
 {
   "case_id": "H2",
-  "student_id": "qwen3_4b",
+  "student_id": "llama3_2b",
   "v_miss": [
     {
       "teacher_id": "F2",
@@ -66,12 +66,6 @@
       "teacher_id": "F13",
       "node_type": "F",
       "label": "Helix has NOT established an appeal process for AI-involved adverse decisions",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F14",
-      "node_type": "F",
-      "label": "AutoApprove is used for lending decisions - financial or lending services",
       "weight": 1.0
     },
     {
@@ -243,15 +237,15 @@
       "weight": 4.0
     },
     {
-      "teacher_id": "A2",
+      "teacher_id": "A1",
       "node_type": "A",
-      "label": "Loan approval/denial decisions have material legal or similarly significant effect on provision or denial of financial or lending services under 6-1-1701(3)(c). AutoApprove decisions directly determine whether consumers receive loans.",
+      "label": "AutoApprove is a machine-based system that processes loan application inputs and produces credit-risk scores, risk narratives, and approval/denial decisions - outputs that influence real environments. Squarely meets the AI system definition.",
       "weight": 2.5
     },
     {
-      "teacher_id": "A3",
+      "teacher_id": "A2",
       "node_type": "A",
-      "label": "In Stage 1, AutoApprove directly makes the consequential decision - auto-approving or auto-denying with no human review. The AI system makes the decision, not merely contributes to it. No exceptions under 6-1-1701(7)(a)-(d) apply: it is not a narrow procedural task, does not improve prior human activity, does not merely detect patterns, and is not preparatory.",
+      "label": "Loan approval/denial decisions have material legal or similarly significant effect on provision or denial of financial or lending services under 6-1-1701(3)(c). AutoApprove decisions directly determine whether consumers receive loans.",
       "weight": 2.5
     },
     {
@@ -327,13 +321,13 @@
       "weight": 2.5
     },
     {
-      "teacher_id": "C2",
+      "teacher_id": "C1",
       "node_type": "C",
       "label": "non-compliant",
       "weight": 1.5
     },
     {
-      "teacher_id": "C3",
+      "teacher_id": "C2",
       "node_type": "C",
       "label": "non-compliant",
       "weight": 1.5
@@ -405,15 +399,7 @@
       "weight": 2.5
     }
   ],
-  "v_halluc": [
-    {
-      "student_id": "F2",
-      "node_type": "F",
-      "label": "AutoApprove operates in a two-stage workflow",
-      "reason": "unaligned",
-      "weight": 1.0
-    }
-  ],
+  "v_halluc": [],
   "e_diff": [
     {
       "teacher_eid": "E2",
@@ -427,11 +413,22 @@
       "weight": 1.5
     }
   ],
-  "l_ged": 164.5,
+  "v_misground": [
+    {
+      "teacher_id": "R3",
+      "student_id": "R1",
+      "teacher_citation": "CO AIA 6-1-1701(7)",
+      "student_citation": "Colorado AI Act §6-1-1703",
+      "proposition": "High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 162.5,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 16,
-      "v_halluc": 1
+      "v_miss": 15,
+      "v_halluc": 0
     },
     "I": {
       "v_miss": 5,

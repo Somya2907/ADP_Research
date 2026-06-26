@@ -1,6 +1,6 @@
 {
   "case_id": "M1",
-  "student_id": "qwen3_4b",
+  "student_id": "llama3_2b",
   "v_miss": [
     {
       "teacher_id": "F2",
@@ -440,6 +440,26 @@
       "student_type": null,
       "kind": "missing",
       "weight": 1.5
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R1",
+      "student_id": "R1",
+      "teacher_citation": "CO AIA Section 6-1-1701(2)",
+      "student_citation": "Colorado AI Act (SB 24-205), Section 1-1-101(1)(a)(I)",
+      "proposition": "Definition of artificial intelligence system",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "student_id": "R5",
+      "teacher_citation": "CO AIA Section 6-1-1702(2)",
+      "student_citation": "Colorado AI Act (SB 24-205), Section 1-1-103",
+      "proposition": "Developer must provide documentation on limitations, training data, uses, and monitoring guidance",
+      "student_section_exists": null,
+      "weight": 4.0
     }
   ],
   "l_ged": 175.5,

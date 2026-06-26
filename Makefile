@@ -41,7 +41,7 @@ test:  ## run pytest on tests/
 	@echo "<<< test: done"
 
 extract:  ## run full extraction (teacher + both students, all 6 cases)
-	@echo ">>> extract: teacher + gpt5 + qwen3_4b on all 6 cases"
+	@echo ">>> extract: teacher + gpt5 + llama3_2b on all 6 cases"
 	$(PYTHON) scripts/run_extraction.py
 	@echo "<<< extract: done"
 
@@ -55,9 +55,9 @@ extract-gpt5:  ## GPT-5 only
 	$(PYTHON) scripts/run_extraction.py --gpt5
 	@echo "<<< extract-gpt5: done"
 
-extract-small:  ## small model only (qwen3_4b)
+extract-small:  ## small model only (llama3_2b)
 	@echo ">>> extract-small"
-	$(PYTHON) scripts/run_extraction.py --qwen
+	$(PYTHON) scripts/run_extraction.py --llama
 	@echo "<<< extract-small: done"
 
 breakdown:  ## run the node-type breakdown diagnostic

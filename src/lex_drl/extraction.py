@@ -3,7 +3,7 @@
 Supports three model tiers:
   Teacher:  Claude Opus 4.6 + statutes → G_ref
   Student1: GPT-5, no statutes → G_agent (agent_id="gpt5")
-  Student2: Qwen3-4B, no statutes → G_agent (agent_id="qwen3_4b")
+  Student2: Llama-3.2-3B-Instruct, no statutes → G_agent (agent_id="llama3_2b")
 
 Fixes (v3):
   - case_id forced from code, not from LLM output (was overwriting all to E1)
@@ -81,7 +81,7 @@ def extract_agent_graph(case: Case, model_key: str = "gpt5") -> LegalReasoningGr
 
     Args:
         case:      The case to analyze.
-        model_key: "gpt5" or "qwen3_4b"
+        model_key: "gpt5" or "llama3_2b"
     """
     client = get_agent_client(model_key)
     template = (PROMPT_DIR / "agent_firaco.txt").read_text(encoding="utf-8")

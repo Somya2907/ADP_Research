@@ -72,6 +72,51 @@ poetry run python scripts/run_extraction.py
 | H1 | PeopleScore Multi-State | NYC+CO+TX | Hard | Training | Multi-jurisdictional scoping, authority confusion |
 | H2 | AutoApprove Lending | CO | Hard | Test | Substantial-factor ambiguity, authority hierarchy |
 
+## Alignment & Discrepancy Scoring
+
+Each student graph is scored against the teacher graph with **L-GED** (legal-weighted
+graph edit distance: `v_miss` + `v_halluc` + `e_diff`, lower = closer to teacher).
+The one tunable step is **node alignment** — matching student nodes to teacher nodes.
+Rules align by citation token first; everything else falls back to a text-similarity
+backend selected at runtime by the `LEX_DRL_SIMILARITY` environment variable:
+
+| `LEX_DRL_SIMILARITY` | Backend | Threshold |
+|---|---|---|
+| `tfidf` *(default)* | n-gram (1,2) TF-IDF cosine | 0.10 |
+| `embedding` | `BAAI/bge-small-en-v1.5` sentence-embedding cosine | 0.55 |
+
+```bash
+# Default (TF-IDF)
+poetry run python scripts/run_discrepancy_analysis.py --force
+
+# Embedding backend
+LEX_DRL_SIMILARITY=embedding poetry run python scripts/run_discrepancy_analysis.py --force
+```
+
+The embedding model name is overridable via `LEX_DRL_EMBEDDING_MODEL`. The backend
+falls back to TF-IDF if `sentence-transformers` is unavailable.
+
+**Why two backends.** TF-IDF is brittle to paraphrase: it mislabels the frontier
+model's reworded nodes as hallucinations, which inverts the model ranking on the
+medium/hard cases. The embedding backend ranks GPT-5 below the 3B model (the expected
+ordering, since L-GED is distance-from-teacher) on **6/6** cases vs **2/6** for TF-IDF.
+Full comparison: [`docs/ALIGNMENT_METHODS.md`](docs/ALIGNMENT_METHODS.md) (auto-generated
+from the snapshots). **Caveat:** the 0.55 embedding threshold is calibrated on E1 only.
+
+**Snapshot layout.** Each backend's scored output is frozen for reproducibility:
+
+```
+data/snapshots/
+├── tfidf_v1/
+│   ├── discrepancies/       # {case}_{student}.json — per-pair reports
+│   └── results/
+│       └── discrepancy_summary.csv
+└── embedding_v1/            # same layout, embedding backend
+```
+
+Graphs are frozen; the two snapshots score the *same* graphs with different backends.
+Regenerate the comparison doc with `poetry run python scripts/build_alignment_doc.py`.
+
 ## Project Structure
 
 ```
@@ -80,6 +125,9 @@ src/lex_drl/
 ├── clients.py         # Anthropic + OpenAI SDK wrappers with caching
 ├── cache.py           # Disk-backed response cache (saves API costs)
 ├── cases.py           # Case file loader
+├── alignment.py       # Node alignment (tfidf | embedding backend)
+├── discrepancy.py     # v_miss / v_halluc / e_diff + L-GED scoring
+├── results.py         # Aggregate discrepancy reports → DataFrames
 └── extraction.py      # Case → graph pipeline
 
 configs/

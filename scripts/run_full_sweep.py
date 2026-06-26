@@ -50,7 +50,7 @@ load_dotenv()
 console = Console()
 
 CASES = ["E1", "E2", "M1", "M2", "H1", "H2"]
-STUDENTS = ["gpt5", "qwen3_4b"]
+STUDENTS = ["gpt5", "llama3_2b"]
 
 GRAPHS_DIR = Path("data/outputs/graphs")
 DISCREPANCIES_DIR = Path("data/outputs/discrepancies")

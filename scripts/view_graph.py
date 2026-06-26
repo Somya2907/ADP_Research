@@ -91,7 +91,7 @@ def node_label_index(graph: dict) -> dict[str, str]:
 def _derive_edge_justification(edge: dict, apps_by_id: dict, obls_by_id: dict) -> str | None:
     """Fall back to related node's text when an edge has no own justification.
 
-    Many models (e.g. Qwen) leave ``edge.justification`` null but still populate
+    Many models (e.g. Llama) leave ``edge.justification`` null but still populate
     ``application.reasoning`` and ``obligation.label``. This walks the canonical
     edge-type → adjacent-node-field mapping to surface that text, tagged so the
     reader knows it isn't the edge's own justification.
@@ -699,11 +699,11 @@ def merge_methods(tfidf: pd.DataFrame, embed: pd.DataFrame) -> pd.DataFrame:
 
 
 def ranking_per_case(df_method: pd.DataFrame) -> pd.DataFrame:
-    """For each case, return GPT-5 L-GED, Qwen L-GED, and whether GPT-5 < Qwen."""
+    """For each case, return GPT-5 L-GED, Llama L-GED, and whether GPT-5 < Llama."""
     pivot = df_method.pivot_table(
         index=["case_id", "tier"], columns="student", values="l_ged_score",
     ).reset_index()
-    pivot["correct"] = pivot["gpt5"] < pivot["qwen3_4b"]
+    pivot["correct"] = pivot["gpt5"] < pivot["llama3_2b"]
     return pivot
 
 
@@ -733,8 +733,8 @@ def render_method_comparison():
     total = len(tfidf_rank)
 
     c1, c2, c3 = st.columns(3)
-    c1.metric("TF-IDF: GPT-5 < Qwen", f"{tfidf_ok}/{total}", help="Number of cases where GPT-5 L-GED is lower than Qwen.")
-    c2.metric("Embedding: GPT-5 < Qwen", f"{embed_ok}/{total}", delta=embed_ok - tfidf_ok)
+    c1.metric("TF-IDF: GPT-5 < Llama", f"{tfidf_ok}/{total}", help="Number of cases where GPT-5 L-GED is lower than Llama.")
+    c2.metric("Embedding: GPT-5 < Llama", f"{embed_ok}/{total}", delta=embed_ok - tfidf_ok)
     c3.metric("Ranking improvement", f"+{embed_ok - tfidf_ok}", help="Cases flipped from incorrect to correct.")
 
     # ── Side-by-side L-GED table ──
@@ -763,11 +763,11 @@ def render_method_comparison():
     rank_view["Embed ✓"] = rank_view["correct_embed"].map({True: "✓", False: "✗"})
     rank_view = rank_view.rename(columns={
         "case_id": "Case", "tier": "Tier",
-        "gpt5_tfidf": "GPT-5 (tfidf)", "qwen3_4b_tfidf": "Qwen (tfidf)",
-        "gpt5_embed": "GPT-5 (embed)", "qwen3_4b_embed": "Qwen (embed)",
+        "gpt5_tfidf": "GPT-5 (tfidf)", "llama3_2b_tfidf": "Llama (tfidf)",
+        "gpt5_embed": "GPT-5 (embed)", "llama3_2b_embed": "Llama (embed)",
     })[["Case", "Tier",
-        "GPT-5 (tfidf)", "Qwen (tfidf)", "TF-IDF ✓",
-        "GPT-5 (embed)", "Qwen (embed)", "Embed ✓"]]
+        "GPT-5 (tfidf)", "Llama (tfidf)", "TF-IDF ✓",
+        "GPT-5 (embed)", "Llama (embed)", "Embed ✓"]]
     st.dataframe(rank_view, use_container_width=True, hide_index=True)
 
     # ── L-GED bar chart ──
@@ -804,7 +804,7 @@ def render_method_comparison():
             "verbose paraphrases are counted as hallucinations (`v_halluc` inflated).\n"
             "- **Sentence embeddings** assign such paraphrases ≈0.95 cosine — they align "
             "as the same node, so `v_halluc` drops and GPT-5 (a more capable, more "
-            "verbose model) finally scores below Qwen.\n"
+            "verbose model) finally scores below Llama.\n"
             "- Toggle at runtime via `LEX_DRL_SIMILARITY=embedding|tfidf` before running "
             "`scripts/run_discrepancy_analysis.py`."
         )

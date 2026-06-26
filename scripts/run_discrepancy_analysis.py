@@ -6,7 +6,8 @@ compute alignment + discrepancy, and write one report per pair to
 
 Also writes a summary CSV at ``results/discrepancy_summary.csv`` with one row
 per (case, student) and columns:
-``case_id, student, v_miss_count, v_halluc_count, e_diff_count, l_ged_score``.
+``case_id, student, v_miss_count, v_halluc_count, e_diff_count,
+v_misground_count, l_ged_score``.
 
 Usage:
     poetry run python scripts/run_discrepancy_analysis.py
@@ -27,8 +28,14 @@ from rich.console import Console
 from rich.table import Table
 
 from lex_drl.alignment import align_all
-from lex_drl.discrepancy import DiscrepancyReport, compute_discrepancies
+from lex_drl.discrepancy import (
+    DiscrepancyReport,
+    _default_validity_check,
+    compute_discrepancies,
+    make_statute_validity_check,
+)
 from lex_drl.schema import LegalReasoningGraph
+from lex_drl.statute_index import load_statute_index, make_section_exists_fn
 
 console = Console()
 
@@ -38,7 +45,7 @@ RESULTS_DIR = Path("results")
 SUMMARY_CSV = RESULTS_DIR / "discrepancy_summary.csv"
 
 CASES = ["E1", "E2", "M1", "M2", "H1", "H2"]
-STUDENTS = ["gpt5", "qwen3_4b"]
+STUDENTS = ["gpt5", "llama3_2b"]
 
 
 def load_graph(path: Path) -> LegalReasoningGraph:
@@ -69,8 +76,24 @@ def main() -> None:
     case_ids = [args.case] if args.case else CASES
     student_ids = [args.student] if args.student else STUDENTS
 
+    # Statute-grounded validity check + misgrounding subtype, gated on a
+    # provenance-confirmed index. make_section_exists_fn returns None when the
+    # index is untrustworthy (e.g. DCWP rules MISSING / TX summary), in which
+    # case we fall back to the default validity check and leave the subtype
+    # unset — so an incomplete corpus never drives a false "fabricated" verdict.
+    section_exists_fn = make_section_exists_fn(load_statute_index())
+    if section_exists_fn is not None:
+        validity_check = make_statute_validity_check(section_exists_fn)
+        console.print("[green]statute index trustworthy[/green] — "
+                      "statute-grounded v_halluc + misgrounding subtype ENABLED")
+    else:
+        validity_check = _default_validity_check
+        console.print("[yellow]statute index untrustworthy or absent[/yellow] — "
+                      "using default validity check; misgrounding subtype unset "
+                      "(see data/statutes/index/PROVENANCE_AUDIT.md)")
+
     table = Table(title="Discrepancy summary")
-    for col in ("Case", "Student", "v_miss", "v_halluc", "e_diff", "L-GED"):
+    for col in ("Case", "Student", "v_miss", "v_halluc", "e_diff", "v_misg", "L-GED"):
         table.add_column(col, justify="right" if col != "Case" else "left")
 
     rows: list[dict[str, object]] = []
@@ -96,7 +119,11 @@ def main() -> None:
             else:
                 student_graph = load_graph(student_path)
                 alignment = align_all(teacher, student_graph)
-                report = compute_discrepancies(teacher, student_graph, alignment)
+                report = compute_discrepancies(
+                    teacher, student_graph, alignment,
+                    validity_check=validity_check,
+                    section_exists_fn=section_exists_fn,
+                )
                 target.write_text(report.model_dump_json(indent=2))
                 console.print(f"[green]wrote[/green] {target}")
 
@@ -106,13 +133,15 @@ def main() -> None:
                 "v_miss_count": report.v_miss_count,
                 "v_halluc_count": report.v_halluc_count,
                 "e_diff_count": report.e_diff_count,
+                "v_misground_count": report.v_misground_count,
                 "l_ged_score": round(report.l_ged, 4),
             }
             rows.append(row)
             table.add_row(
                 case_id, student,
                 str(report.v_miss_count), str(report.v_halluc_count),
-                str(report.e_diff_count), f"{report.l_ged:.2f}",
+                str(report.e_diff_count), str(report.v_misground_count),
+                f"{report.l_ged:.2f}",
             )
 
     # Write summary CSV.
@@ -120,7 +149,7 @@ def main() -> None:
         with summary_csv.open("w", newline="") as fh:
             writer = csv.DictWriter(fh, fieldnames=[
                 "case_id", "student", "v_miss_count", "v_halluc_count",
-                "e_diff_count", "l_ged_score",
+                "e_diff_count", "v_misground_count", "l_ged_score",
             ])
             writer.writeheader()
             for r in rows:

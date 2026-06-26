@@ -653,6 +653,44 @@
       "weight": 4.0
     }
   ],
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R2",
+      "teacher_citation": "NYC LL 144 Section 20-871(a)(1); DCWP Section 5-301(a)",
+      "student_citation": "NYC Admin Code §20-871",
+      "proposition": "Bias audit required no more than one year prior to use of AEDT",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "student_id": "R4",
+      "teacher_citation": "NYC LL 144 Section 20-870; DCWP Section 5-300 Independent Auditor definition",
+      "student_citation": "6 RCNY §5-301",
+      "proposition": "Independent auditor must not have financial interest in employer or AEDT developer; subsidiary of developer does not qualify",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "student_id": "R5",
+      "teacher_citation": "Colorado AIA Section 6-1-1701(7) and Section 6-1-1701(3)(b)",
+      "student_citation": "C.R.S. §6-1-1701",
+      "proposition": "High-risk AI system: AI system that makes or is substantial factor in consequential decision; employment is consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "student_id": "R10",
+      "teacher_citation": "Colorado AIA Section 6-1-1703(2)(c)",
+      "student_citation": "Tex. Bus. & Com. Code §509.051",
+      "proposition": "Annual review of deployment to ensure no algorithmic discrimination",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
   "l_ged": 248.0,
   "node_type_breakdown": {
     "F": {

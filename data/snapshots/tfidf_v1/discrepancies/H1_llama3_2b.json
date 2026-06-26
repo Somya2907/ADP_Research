@@ -1,6 +1,6 @@
 {
   "case_id": "H1",
-  "student_id": "qwen3_4b",
+  "student_id": "llama3_2b",
   "v_miss": [
     {
       "teacher_id": "F1",
@@ -15,9 +15,27 @@
       "weight": 1.0
     },
     {
+      "teacher_id": "F4",
+      "node_type": "F",
+      "label": "PeopleScore used to evaluate candidates for hourly retail associate positions (employment decisions)",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F5",
+      "node_type": "F",
+      "label": "PeopleScore deployed in 400 TX stores (since 2024), 80 CO stores (since March 2026), 30 NYC stores (since 2023)",
+      "weight": 1.0
+    },
+    {
       "teacher_id": "F7",
       "node_type": "F",
       "label": "Audit conducted by TM Analytics LLC, wholly owned subsidiary of TalentMatrix",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F8",
+      "node_type": "F",
+      "label": "Audit used RetailCo 2024-2025 historical data, covered selection rates across sex/race/intersectional categories, impact ratios above 0.80",
       "weight": 1.0
     },
     {
@@ -57,6 +75,12 @@
       "weight": 1.5
     },
     {
+      "teacher_id": "I5",
+      "node_type": "I",
+      "label": "Does Colorado AIA apply to RetailCo deployment of PeopleScore and what is compliance timeline",
+      "weight": 1.5
+    },
+    {
       "teacher_id": "I6",
       "node_type": "I",
       "label": "Does NIST 800-53 satisfy Colorado AIA risk management framework requirement",
@@ -66,6 +90,12 @@
       "teacher_id": "I7",
       "node_type": "I",
       "label": "Is RetailCo December 2025 impact assessment compliant with Colorado AIA",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I8",
+      "node_type": "I",
+      "label": "What are TalentMatrix developer obligations under Colorado AIA",
       "weight": 1.5
     },
     {
@@ -99,9 +129,9 @@
       "weight": 4.0
     },
     {
-      "teacher_id": "R7",
+      "teacher_id": "R5",
       "node_type": "R",
-      "label": "Penalties $500-$1500 per violation; each screening of single candidate may be separate violation",
+      "label": "Published results must be on employment section of website in clear and conspicuous manner with audit date, data source, unknowns, applicant counts, rates, impact ratios, and distribution date",
       "weight": 4.0
     },
     {
@@ -126,6 +156,12 @@
       "teacher_id": "R11",
       "node_type": "R",
       "label": "Impact assessment required before deployment or within 90 days of effective date for pre-existing systems; must include six enumerated elements",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Pre-decision consumer notice required: AI system use, purpose, decision nature, contact info, plain-language description, link to public statement",
       "weight": 4.0
     },
     {
@@ -171,6 +207,12 @@
       "weight": 4.0
     },
     {
+      "teacher_id": "R21",
+      "node_type": "R",
+      "label": "Prohibits deploying AI with intent to unlawfully discriminate; requires intentional discrimination, not disparate impact",
+      "weight": 4.0
+    },
+    {
       "teacher_id": "R22",
       "node_type": "R",
       "label": "Consumer excludes individuals acting in employment context; TRAIGA consumer protections do not apply to job applicants",
@@ -180,12 +222,6 @@
       "teacher_id": "R23",
       "node_type": "R",
       "label": "AI disclosure obligation applies only to government agencies, not private employers",
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R24",
-      "node_type": "R",
-      "label": "No private employer obligations for bias audits, impact assessments, risk management, candidate notices, or appeals",
       "weight": 4.0
     },
     {
@@ -207,6 +243,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A2",
+      "node_type": "A",
+      "label": "PeopleScore deployed in 30 NYC stores since 2023. Last audit August 2025. As of April 2026, the audit is within one year. However, the audit is invalid due to auditor independence failure (see A3), so the one-year timing is moot.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A3",
       "node_type": "A",
       "label": "TM Analytics LLC is a wholly owned subsidiary of TalentMatrix, the developer of PeopleScore. Under Section 20-870 and DCWP Section 5-300, an auditor with a financial interest in the AEDT developer is not independent. A wholly owned subsidiary has a direct financial interest in its parent. TM Analytics does not qualify as an independent auditor. The August 2025 audit is therefore invalid.",
@@ -216,12 +258,6 @@
       "teacher_id": "A4",
       "node_type": "A",
       "label": "PeopleScore generates a composite score (0-100), making it a scoring AEDT under DCWP Section 5-301(c). The audit used selection rate methodology rather than scoring rate methodology (median score, scoring rates, impact ratios). Even if the auditor were independent, the methodology would be deficient for a scoring AEDT.",
-      "weight": 2.5
-    },
-    {
-      "teacher_id": "A5",
-      "node_type": "A",
-      "label": "The bias audit summary is posted on a sub-page labeled NYC Applicants that is not visible from the main careers page or job listings. DCWP Section 5-303(a) requires posting on the employment section of the website in a clear and conspicuous manner. Requiring candidates to navigate to a hidden sub-page fails the clear and conspicuous standard. Additionally, the published results are based on an invalid audit.",
       "weight": 2.5
     },
     {
@@ -255,6 +291,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A15",
+      "node_type": "A",
+      "label": "Small deployer exception requires fewer than 50 employees AND not using own data to train. RetailCo has 85,000 employees, failing the first condition. Exception is inapplicable; all deployer obligations apply.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A16",
       "node_type": "A",
       "label": "TRAIGA Section 551.051(a) prohibits deploying AI with intent to unlawfully discriminate. No facts suggest RetailCo has discriminatory intent. RetailCo is not in violation of this prohibition. However, the general counsel position is incomplete because it ignores the available safe harbor and federal law exposure.",
@@ -267,9 +309,33 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A18",
+      "node_type": "A",
+      "label": "TRAIGA imposes no private employer obligations for bias audits, impact assessments, risk management, candidate notices, or appeals. RetailCo has no affirmative compliance obligations under TRAIGA for its hiring process beyond the prohibition on intentional discrimination.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A19",
       "node_type": "A",
       "label": "TRAIGA Section 551.301(d) provides safe harbor for substantial compliance with NIST AI 100-1. RetailCo has not aligned with NIST AI 100-1 and therefore does not benefit from this safe harbor. While not currently required, failing to obtain the safe harbor leaves RetailCo without an affirmative defense if intent is ever alleged.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C2",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C3",
+      "node_type": "C",
+      "label": "conditional",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Implement pre-decision consumer notice for Colorado applicants with all Section 6-1-1703(2)(e) elements",
       "weight": 2.5
     },
     {
@@ -303,112 +369,137 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "O12",
+      "node_type": "O",
+      "label": "Ensure federal Title VII disparate impact compliance for AI hiring tools across all jurisdictions",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "O13",
       "node_type": "O",
       "label": "Implement annual review of PeopleScore deployment in Colorado for algorithmic discrimination",
       "weight": 2.5
     }
   ],
-  "v_halluc": [],
-  "e_diff": [
+  "v_halluc": [
     {
-      "teacher_eid": "E6",
-      "teacher_src": "F5",
-      "teacher_dst": "I5",
-      "teacher_type": "triggers",
-      "student_src": "F1",
-      "student_dst": "I2",
-      "student_type": null,
-      "kind": "missing",
+      "student_id": "F1",
+      "node_type": "F",
+      "label": "RetailCo uses PeopleScore in NYC",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F2",
+      "node_type": "F",
+      "label": "RetailCo uses PeopleScore in CO",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F8",
+      "node_type": "F",
+      "label": "RetailCo has not completed Colorado-specific impact assessment",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "I2",
+      "node_type": "I",
+      "label": "Colorado AI Act compliance",
+      "reason": "unaligned",
       "weight": 1.5
     },
     {
-      "teacher_eid": "E12",
-      "teacher_src": "R2",
-      "teacher_dst": "A2",
-      "teacher_type": "applies-to",
-      "student_src": "R1",
-      "student_dst": "A2",
-      "student_type": null,
-      "kind": "missing",
+      "student_id": "I3",
+      "node_type": "I",
+      "label": "Texas Responsible AI Governance Act compliance",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "R5",
+      "node_type": "R",
+      "label": "Consumer notifications",
+      "reason": "unaligned",
       "weight": 4.0
     },
+    {
+      "student_id": "A1",
+      "node_type": "A",
+      "label": "RetailCo has not conducted independent bias audits within 12 months.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A3",
+      "node_type": "A",
+      "label": "RetailCo has not provided candidate notice at time of application submission.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "C2",
+      "node_type": "C",
+      "label": "non-compliant",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "C3",
+      "node_type": "C",
+      "label": "non-compliant",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "O5",
+      "node_type": "O",
+      "label": "Provide consumer notifications to CO applicants within 6 months",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O7",
+      "node_type": "O",
+      "label": "Develop and implement governance policies within 12 months",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
     {
       "teacher_eid": "E16",
       "teacher_src": "R6",
       "teacher_dst": "A6",
       "teacher_type": "applies-to",
       "student_src": "R2",
-      "student_dst": "A3",
+      "student_dst": "A7",
       "student_type": null,
       "kind": "missing",
       "weight": 4.0
     },
     {
-      "teacher_eid": "E21",
-      "teacher_src": "R12",
-      "teacher_dst": "A11",
-      "teacher_type": "applies-to",
-      "student_src": "R5",
-      "student_dst": "A5",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
-    },
-    {
-      "teacher_eid": "E33",
-      "teacher_src": "A6",
+      "teacher_eid": "E32",
+      "teacher_src": "A5",
       "teacher_dst": "C1",
       "teacher_type": "fails-element",
-      "student_src": "A3",
+      "student_src": "A2",
       "student_dst": "C1",
       "student_type": null,
       "kind": "missing",
       "weight": 2.5
     },
     {
-      "teacher_eid": "E35",
-      "teacher_src": "A9",
-      "teacher_dst": "C2",
+      "teacher_eid": "E33",
+      "teacher_src": "A6",
+      "teacher_dst": "C1",
       "teacher_type": "fails-element",
-      "student_src": "A6",
-      "student_dst": "C2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 2.5
-    },
-    {
-      "teacher_eid": "E37",
-      "teacher_src": "A11",
-      "teacher_dst": "C2",
-      "teacher_type": "fails-element",
-      "student_src": "A5",
-      "student_dst": "C2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 2.5
-    },
-    {
-      "teacher_eid": "E42",
-      "teacher_src": "A18",
-      "teacher_dst": "C3",
-      "teacher_type": "satisfies-element",
       "student_src": "A7",
-      "student_dst": "C3",
+      "student_dst": "C1",
       "student_type": null,
       "kind": "missing",
       "weight": 2.5
-    },
-    {
-      "teacher_eid": "E45",
-      "teacher_src": "R5",
-      "teacher_dst": "O2",
-      "teacher_type": "triggers",
-      "student_src": "R3",
-      "student_dst": "O2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
     },
     {
       "teacher_eid": "E46",
@@ -420,44 +511,80 @@
       "student_type": null,
       "kind": "missing",
       "weight": 4.0
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R1",
+      "teacher_citation": "NYC LL 144 Section 20-871(a)(1); DCWP Section 5-301(a)",
+      "student_citation": "NYC LL 144 §20-871",
+      "proposition": "Bias audit required no more than one year prior to use of AEDT",
+      "student_section_exists": null,
+      "weight": 4.0
     },
     {
-      "teacher_eid": "E49",
-      "teacher_src": "R12",
-      "teacher_dst": "O6",
-      "teacher_type": "triggers",
-      "student_src": "R5",
-      "student_dst": "O5",
-      "student_type": null,
-      "kind": "missing",
+      "teacher_id": "R7",
+      "student_id": "R3",
+      "teacher_citation": "NYC LL 144 Section 20-875",
+      "student_citation": "NYC LL 144 §20-873",
+      "proposition": "Penalties $500-$1500 per violation; each screening of single candidate may be separate violation",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "student_id": "R6",
+      "teacher_citation": "Colorado AIA Section 6-1-1703(2)(d)",
+      "student_citation": "Texas Responsible AI Governance Act §1-1-101",
+      "proposition": "Public website statement summarizing deployed high-risk AI systems and discrimination risk management",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R24",
+      "student_id": "R4",
+      "teacher_citation": "Texas TRAIGA HB 149 (enacted text)",
+      "student_citation": "Colorado AI Act §5-1-101",
+      "proposition": "No private employer obligations for bias audits, impact assessments, risk management, candidate notices, or appeals",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R26",
+      "student_id": "R7",
+      "teacher_citation": "Texas TRAIGA Section 551.301(d)",
+      "student_citation": "Texas Responsible AI Governance Act §1-1-102",
+      "proposition": "Safe harbor for substantial compliance with NIST AI 100-1 or recognized AI governance standards",
+      "student_section_exists": null,
       "weight": 4.0
     }
   ],
-  "l_ged": 177.0,
+  "l_ged": 200.5,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 6,
-      "v_halluc": 0
+      "v_miss": 9,
+      "v_halluc": 3
     },
     "I": {
-      "v_miss": 7,
-      "v_halluc": 0
+      "v_miss": 9,
+      "v_halluc": 2
     },
     "R": {
-      "v_miss": 20,
-      "v_halluc": 0
+      "v_miss": 21,
+      "v_halluc": 1
     },
     "A": {
-      "v_miss": 12,
-      "v_halluc": 0
+      "v_miss": 14,
+      "v_halluc": 2
     },
     "C": {
-      "v_miss": 0,
-      "v_halluc": 0
+      "v_miss": 2,
+      "v_halluc": 2
     },
     "O": {
-      "v_miss": 6,
-      "v_halluc": 0
+      "v_miss": 8,
+      "v_halluc": 2
     }
   }
 }

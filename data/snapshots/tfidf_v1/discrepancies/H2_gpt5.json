@@ -537,6 +537,53 @@
       "weight": 1.5
     }
   ],
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R2",
+      "teacher_citation": "CO AIA 6-1-1701(3)(c)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Consequential decision includes material legal or significant effect on provision or denial of financial or lending services",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "student_id": "R1",
+      "teacher_citation": "CO AIA 6-1-1701(7)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "student_id": "R3",
+      "teacher_citation": "CO AIA 6-1-1701(9)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "student_id": "R10",
+      "teacher_citation": "CO AIA 6-1-1702(2)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, and impact assessment support",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R19",
+      "student_id": "R6",
+      "teacher_citation": "CO AIA 6-1-1703(3)",
+      "student_citation": "C.R.S. § 6-1-1707",
+      "proposition": "Deployer rebuttable presumption of reasonable care if complied with 6-1-1703 and AG requirements",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
   "l_ged": 196.0,
   "node_type_breakdown": {
     "F": {

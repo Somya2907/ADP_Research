@@ -1,6 +1,6 @@
 {
   "case_id": "E1",
-  "student_id": "qwen3_4b",
+  "student_id": "llama3_2b",
   "v_miss": [
     {
       "teacher_id": "F1",
@@ -373,6 +373,26 @@
       "student_type": null,
       "kind": "missing",
       "weight": 2.5
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R1",
+      "teacher_citation": "NYC LL 144 §20-871(a)(1); DCWP Rules §5-301(a)",
+      "student_citation": "NYC LL 144 §20-871",
+      "proposition": "Bias audit required no more than one year prior to AEDT use; cannot use AEDT if more than one year since most recent audit",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "student_id": "R2",
+      "teacher_citation": "TX TRAIGA §551.301(d)",
+      "student_citation": "Texas Responsible AI Governance Act (HB 149) §3",
+      "proposition": "Safe harbor for substantial compliance with NIST AI RMF or recognized AI governance standards",
+      "student_section_exists": null,
+      "weight": 4.0
     }
   ],
   "l_ged": 151.0,

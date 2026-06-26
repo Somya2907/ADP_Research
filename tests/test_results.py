@@ -82,9 +82,9 @@ def synth_tree(tmp_path: Path) -> dict[str, Path]:
 
     spec = [
         # (case_id, tier, role, teacher_n_facts, students[(name, n_facts, v_miss, v_halluc, e_diff, l_ged)])
-        ("E1", "easy",   "training", 5, [("gpt5", 5, 0, 0, 0, 0.0), ("qwen3_4b", 2, 3, 0, 0, 6.0)]),
-        ("M1", "medium", "training", 5, [("gpt5", 4, 1, 0, 0, 2.0), ("qwen3_4b", 2, 3, 1, 0, 8.0)]),
-        ("H1", "hard",   "test",     5, [("gpt5", 3, 2, 1, 0, 6.0), ("qwen3_4b", 1, 4, 2, 1, 14.0)]),
+        ("E1", "easy",   "training", 5, [("gpt5", 5, 0, 0, 0, 0.0), ("llama3_2b", 2, 3, 0, 0, 6.0)]),
+        ("M1", "medium", "training", 5, [("gpt5", 4, 1, 0, 0, 2.0), ("llama3_2b", 2, 3, 1, 0, 8.0)]),
+        ("H1", "hard",   "test",     5, [("gpt5", 3, 2, 1, 0, 6.0), ("llama3_2b", 1, 4, 2, 1, 14.0)]),
     ]
 
     for case_id, tier, role, teacher_n, students in spec:
@@ -115,7 +115,7 @@ def test_load_all_discrepancies_returns_one_row_per_pair(synth_tree):
     )
     assert len(df) == 6
     assert set(df["case_id"]) == {"E1", "M1", "H1"}
-    assert set(df["student"]) == {"gpt5", "qwen3_4b"}
+    assert set(df["student"]) == {"gpt5", "llama3_2b"}
     assert set(df.columns) >= {
         "case_id", "tier", "role", "student", "teacher_nodes", "student_nodes",
         "f", "i", "r", "a", "c", "o", "v_miss", "v_halluc", "e_diff", "l_ged",
@@ -184,7 +184,7 @@ def test_tier_summary_has_one_row_per_tier_student(synth_tree):
     summary = tier_summary(df)
     assert len(summary) == 6  # 3 tiers × 2 students
     assert set(summary["tier"]) == {"easy", "medium", "hard"}
-    assert set(summary["student"]) == {"gpt5", "qwen3_4b"}
+    assert set(summary["student"]) == {"gpt5", "llama3_2b"}
 
 
 def test_tier_summary_means_match_inputs(synth_tree):
@@ -197,8 +197,8 @@ def test_tier_summary_means_match_inputs(synth_tree):
     # Each tier has exactly one case in the fixture, so means equal the single value.
     easy_gpt5 = summary[(summary["tier"] == "easy") & (summary["student"] == "gpt5")].iloc[0]
     assert easy_gpt5["l_ged"] == pytest.approx(0.0)
-    hard_qwen = summary[(summary["tier"] == "hard") & (summary["student"] == "qwen3_4b")].iloc[0]
-    assert hard_qwen["l_ged"] == pytest.approx(14.0)
+    hard_llama = summary[(summary["tier"] == "hard") & (summary["student"] == "llama3_2b")].iloc[0]
+    assert hard_llama["l_ged"] == pytest.approx(14.0)
 
 
 def test_tier_summary_lged_monotone_across_tiers(synth_tree):
@@ -209,6 +209,6 @@ def test_tier_summary_lged_monotone_across_tiers(synth_tree):
         cases_dir=synth_tree["cases"],
     )
     summary = tier_summary(df)
-    for student in ["gpt5", "qwen3_4b"]:
+    for student in ["gpt5", "llama3_2b"]:
         sub = summary[summary["student"] == student].set_index("tier")
         assert sub.loc["easy", "l_ged"] <= sub.loc["medium", "l_ged"] <= sub.loc["hard", "l_ged"]

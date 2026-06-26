@@ -1,6 +1,6 @@
 {
   "case_id": "M2",
-  "student_id": "qwen3_4b",
+  "student_id": "llama3_2b",
   "v_miss": [
     {
       "teacher_id": "F4",
@@ -12,12 +12,6 @@
       "teacher_id": "F5",
       "node_type": "F",
       "label": "TenantRank was trained on five years of GreenRidge's own tenant data",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F6",
-      "node_type": "F",
-      "label": "TenantRank is used to screen prospective tenants for rental housing",
       "weight": 1.0
     },
     {
@@ -93,15 +87,15 @@
       "weight": 1.0
     },
     {
-      "teacher_id": "R2",
+      "teacher_id": "R1",
       "node_type": "R",
-      "label": "Housing as a consequential decision domain",
+      "label": "Definition of artificial intelligence system",
       "weight": 4.0
     },
     {
-      "teacher_id": "R3",
+      "teacher_id": "R2",
       "node_type": "R",
-      "label": "Definition of high-risk AI system",
+      "label": "Housing as a consequential decision domain",
       "weight": 4.0
     },
     {
@@ -189,18 +183,6 @@
       "weight": 2.5
     },
     {
-      "teacher_id": "A7",
-      "node_type": "A",
-      "label": "GreenRidge does business in Colorado and deploys TenantRank, a high-risk AI system, in its property management operations. It meets the deployer definition under Section 6-1-1701(5).",
-      "weight": 2.5
-    },
-    {
-      "teacher_id": "A8",
-      "node_type": "A",
-      "label": "GreenRidge aligned its risk management program with NIST AI RMF 1.0, satisfying the framework requirement of Section 6-1-1703(2)(a)(III). However, the VP of Operations who directed heavy reliance on TenantRank scores also serves as AI risk officer, creating a governance conflict. The program has not identified or addressed the de facto determinative weight given to scores, undermining substantive adequacy under Section 6-1-1703(2)(a)(I).",
-      "weight": 2.5
-    },
-    {
       "teacher_id": "A9",
       "node_type": "A",
       "label": "An impact assessment was completed in January 2026 covering purpose, data inputs, discrimination risks, and mitigation. However, the facts do not confirm all six elements of Section 6-1-1701(8) are addressed, particularly known limitations analysis, output description, and oversight processes. Under Section 6-1-1703(2)(b)(I), pre-deployment systems have until September 28, 2026 to complete a compliant assessment.",
@@ -228,12 +210,6 @@
       "teacher_id": "A13",
       "node_type": "A",
       "label": "GreenRidge has not published a website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management as required by Section 6-1-1703(2)(d).",
-      "weight": 2.5
-    },
-    {
-      "teacher_id": "A14",
-      "node_type": "A",
-      "label": "If TenantRank produces disparate outcomes on protected characteristics, each non-compliant application decision could constitute a separate violation at up to $20,000 per violation under Section 6-1-1706. With 1,200 rental units, exposure is significant. Actual discrimination outcomes require further factual investigation.",
       "weight": 2.5
     },
     {
@@ -309,12 +285,6 @@
       "weight": 2.5
     },
     {
-      "teacher_id": "O10",
-      "node_type": "O",
-      "label": "Implement meaningful appeal process for consequential housing decisions involving TenantRank",
-      "weight": 2.5
-    },
-    {
       "teacher_id": "O11",
       "node_type": "O",
       "label": "If algorithmic discrimination discovered, notify AG and affected consumers within 90 days",
@@ -327,43 +297,7 @@
       "weight": 2.5
     }
   ],
-  "v_halluc": [
-    {
-      "student_id": "F4",
-      "node_type": "F",
-      "label": "TenantRank's decisions significantly affect the rights or interests of individuals",
-      "reason": "unaligned",
-      "weight": 1.0
-    },
-    {
-      "student_id": "A3",
-      "node_type": "A",
-      "label": "GreenRidge is acting as both developer and deployer of TenantRank.",
-      "reason": "unaligned",
-      "weight": 2.5
-    },
-    {
-      "student_id": "A4",
-      "node_type": "A",
-      "label": "GreenRidge's current compliance measures are not sufficient because it has not provided clear and transparent information about TenantRank's decision-making process to applicants.",
-      "reason": "unaligned",
-      "weight": 2.5
-    },
-    {
-      "student_id": "A5",
-      "node_type": "A",
-      "label": "GreenRidge must provide clear and transparent information about TenantRank's decision-making process to applicants and implement additional mitigation steps to address potential risks of algorithmic discrimination.",
-      "reason": "unaligned",
-      "weight": 2.5
-    },
-    {
-      "student_id": "O1",
-      "node_type": "O",
-      "label": "Provide clear and transparent information about TenantRank's decision-making process to applicants",
-      "reason": "unaligned",
-      "weight": 2.5
-    }
-  ],
+  "v_halluc": [],
   "e_diff": [
     {
       "teacher_eid": "E1",
@@ -371,6 +305,17 @@
       "teacher_dst": "I1",
       "teacher_type": "triggers",
       "student_src": "F2",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F6",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F4",
       "student_dst": "I1",
       "student_type": null,
       "kind": "missing",
@@ -393,17 +338,77 @@
       "teacher_dst": "A5",
       "teacher_type": "applies-to",
       "student_src": "R3",
-      "student_dst": "A2",
+      "student_dst": "A4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E20",
+      "teacher_src": "R6",
+      "teacher_dst": "A7",
+      "teacher_type": "applies-to",
+      "student_src": "R2",
+      "student_dst": "A3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E25",
+      "teacher_src": "R16",
+      "teacher_dst": "A8",
+      "teacher_type": "applies-to",
+      "student_src": "R4",
+      "student_dst": "A5",
       "student_type": null,
       "kind": "missing",
       "weight": 4.0
     }
   ],
-  "l_ged": 144.5,
+  "v_misground": [
+    {
+      "teacher_id": "R3",
+      "student_id": "R1",
+      "teacher_citation": "CO AIA Section 6-1-1701(7)",
+      "student_citation": "Colorado AI Act (SB 24-205), Section 2(3)(a)(I)",
+      "proposition": "Definition of high-risk AI system",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R6",
+      "student_id": "R2",
+      "teacher_citation": "CO AIA Section 6-1-1701(5)",
+      "student_citation": "Colorado AI Act (SB 24-205), Section 3(1)(a)",
+      "proposition": "Definition of deployer",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "student_id": "R3",
+      "teacher_citation": "CO AIA Section 6-1-1703(6)",
+      "student_citation": "Colorado AI Act (SB 24-205), Section 4(1)(a)",
+      "proposition": "Small-deployer exception requires BOTH fewer than 50 employees AND not using own data to train",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "student_id": "R4",
+      "teacher_citation": "CO AIA Section 6-1-1703(2)(a)(III)",
+      "student_citation": "NIST AI Risk Management Framework 1.0, Section 2.1",
+      "proposition": "Risk management program must be consistent with NIST AI RMF 1.0 or equivalent",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 132.0,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 15,
-      "v_halluc": 1
+      "v_miss": 14,
+      "v_halluc": 0
     },
     "I": {
       "v_miss": 0,
@@ -414,16 +419,16 @@
       "v_halluc": 0
     },
     "A": {
-      "v_miss": 12,
-      "v_halluc": 3
+      "v_miss": 9,
+      "v_halluc": 0
     },
     "C": {
       "v_miss": 4,
       "v_halluc": 0
     },
     "O": {
-      "v_miss": 11,
-      "v_halluc": 1
+      "v_miss": 10,
+      "v_halluc": 0
     }
   }
 }

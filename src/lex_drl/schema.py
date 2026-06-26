@@ -151,7 +151,7 @@ class LegalReasoningGraph(BaseModel):
 
     # agent_id identifies WHICH student model produced this graph.
     # None for reference graphs.
-    # Values: "gpt5", "qwen3_4b" (or any future student key).
+    # Values: "gpt5", "llama3_2b" (or any future student key).
     # Used to name output files as {case_id}_agent_{agent_id}.json
     agent_id: Optional[str] = None
 

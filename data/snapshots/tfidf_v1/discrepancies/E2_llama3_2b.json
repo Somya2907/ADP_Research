@@ -1,6 +1,6 @@
 {
   "case_id": "E2",
-  "student_id": "qwen3_4b",
+  "student_id": "llama3_2b",
   "v_miss": [
     {
       "teacher_id": "F7",
@@ -15,6 +15,18 @@
       "weight": 1.0
     },
     {
+      "teacher_id": "F12",
+      "node_type": "F",
+      "label": "Promotion candidates are employees residing in NYC",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "I1",
+      "node_type": "I",
+      "label": "Does PromoteAI qualify as an AEDT under NYC LL 144 Section 20-870?",
+      "weight": 1.5
+    },
+    {
       "teacher_id": "I2",
       "node_type": "I",
       "label": "Is the March 2025 bias audit timely for the May 2026 promotion cycle under Section 20-871(a)(1)?",
@@ -24,6 +36,12 @@
       "teacher_id": "I3",
       "node_type": "I",
       "label": "Does the bias auditor satisfy the independence requirement under Section 20-870?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I4",
+      "node_type": "I",
+      "label": "Does the candidate notice satisfy the content requirements of Section 20-872(a)?",
       "weight": 1.5
     },
     {
@@ -57,12 +75,6 @@
       "weight": 4.0
     },
     {
-      "teacher_id": "R2",
-      "node_type": "R",
-      "label": "Bias audit must be conducted no more than one year prior to use of AEDT",
-      "weight": 4.0
-    },
-    {
       "teacher_id": "R3",
       "node_type": "R",
       "label": "Auditor must not be employed by, have financial interest in, or have been involved in developing the AEDT within past three years",
@@ -84,6 +96,12 @@
       "teacher_id": "R7",
       "node_type": "R",
       "label": "Civil penalties of $500-$1,500 per violation; each candidate screening may be a separate violation",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Notice must include instructions for requesting alternative process but employer not required to provide one",
       "weight": 4.0
     },
     {
@@ -165,6 +183,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "Each use of a non-compliant AEDT to screen a single candidate is a separate violation. With 22,000 employees and multiple nursing promotion candidates, Metropolitan faces per-candidate penalties of $500-$1,500 for each of the stale audit, deficient notice content, and deficient notice timing violations.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A12",
       "node_type": "A",
       "label": "PromoteAI is a scoring AEDT, so the bias audit must follow DCWP Rules Section 5-301(c) requirements for scoring AEDTs: median score calculation, scoring rates, and impact ratios across sex, race/ethnicity, and intersectional categories. The facts state the audit evaluated impact on these categories but do not confirm all scoring-specific calculations were performed.",
@@ -195,9 +219,21 @@
       "weight": 1.5
     },
     {
-      "teacher_id": "O1",
+      "teacher_id": "O2",
       "node_type": "O",
-      "label": "Commission and complete a new bias audit of PromoteAI before the May 2026 promotion cycle, conducted by an independent auditor per DCWP Rules Section 5-301(c) for scoring AEDTs",
+      "label": "Revise candidate notice to explicitly state AEDT use, name PromoteAI, identify evaluated characteristics (performance scores, experience, patient satisfaction, continuing education), state whether other info is considered, and include instructions for requesting alternative process",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O3",
+      "node_type": "O",
+      "label": "Send revised notice at least 10 business days before the promotion evaluation cycle begins, not 3 business days",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O4",
+      "node_type": "O",
+      "label": "Update public disclosure on careers page with new bias audit summary including all required elements: audit date, distribution date, data source explanation, unknown category counts, applicant numbers, scoring rates, and impact ratios",
       "weight": 2.5
     },
     {
@@ -232,63 +268,72 @@
       "label": "MHS employs approximately 22,000 staff.",
       "reason": "unaligned",
       "weight": 1.0
+    },
+    {
+      "student_id": "F7",
+      "node_type": "F",
+      "label": "The audit was completed in March 2025 and evaluated PromoteAI's impact on selection rates across sex, race/ethnicity, and intersectional categories.",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "I1",
+      "node_type": "I",
+      "label": "Does MHS's use of PromoteAI for promotion decisions comply with applicable US AI law?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "I2",
+      "node_type": "I",
+      "label": "Is MHS's failure to provide clear notice about the use of PromoteAI and its evaluation criteria a violation of applicable law?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "A2",
+      "node_type": "A",
+      "label": "MHS does not offer an alternative evaluation process for candidates who wish to opt out of automated assessment.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O1",
+      "node_type": "O",
+      "label": "Provide clear notice about the use of PromoteAI in promotion decisions, including the evaluation criteria used by the system.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O2",
+      "node_type": "O",
+      "label": "Offer an alternative evaluation process for candidates who wish to opt out of automated assessment.",
+      "reason": "unaligned",
+      "weight": 2.5
     }
   ],
   "e_diff": [
     {
-      "teacher_eid": "E1",
-      "teacher_src": "F2",
-      "teacher_dst": "I1",
-      "teacher_type": "triggers",
-      "student_src": "F3",
-      "student_dst": "I1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E2",
-      "teacher_src": "F3",
-      "teacher_dst": "I1",
-      "teacher_type": "triggers",
-      "student_src": "F5",
-      "student_dst": "I1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E12",
-      "teacher_src": "R8",
-      "teacher_dst": "A6",
+      "teacher_eid": "E10",
+      "teacher_src": "R4",
+      "teacher_dst": "A4",
       "teacher_type": "applies-to",
       "student_src": "R2",
-      "student_dst": "A2",
+      "student_dst": "A1",
       "student_type": null,
       "kind": "missing",
       "weight": 4.0
     },
     {
-      "teacher_eid": "E33",
-      "teacher_src": "A11",
-      "teacher_dst": "C1",
-      "teacher_type": "fails-element",
-      "student_src": "A3",
-      "student_dst": "C1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 2.5
-    },
-    {
-      "teacher_eid": "E34",
-      "teacher_src": "F12",
-      "teacher_dst": "I1",
+      "teacher_eid": "E25",
+      "teacher_src": "R2",
+      "teacher_dst": "O1",
       "teacher_type": "triggers",
-      "student_src": "F7",
-      "student_dst": "I1",
+      "student_src": "R1",
+      "student_dst": "O3",
       "student_type": null,
       "kind": "missing",
-      "weight": 1.5
+      "weight": 4.0
     },
     {
       "teacher_eid": "E36",
@@ -302,31 +347,51 @@
       "weight": 1.5
     }
   ],
-  "l_ged": 109.5,
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R1",
+      "teacher_citation": "NYC LL 144 Section 20-871(a)(1); DCWP Rules Section 5-301(a)",
+      "student_citation": "NYC LL 144 §20-871",
+      "proposition": "Bias audit must be conducted no more than one year prior to use of AEDT",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "student_id": "R2",
+      "teacher_citation": "NYC LL 144 Section 20-872(a)(1)-(3); DCWP Rules Section 5-304(a)",
+      "student_citation": "NYC LL 144 §20-872",
+      "proposition": "Notice must identify AEDT use, job qualifications assessed, consideration of other info, and right to request alternative process",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 129.5,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 2,
-      "v_halluc": 1
+      "v_miss": 3,
+      "v_halluc": 2
     },
     "I": {
-      "v_miss": 6,
-      "v_halluc": 0
+      "v_miss": 8,
+      "v_halluc": 2
     },
     "R": {
       "v_miss": 11,
       "v_halluc": 0
     },
     "A": {
-      "v_miss": 9,
-      "v_halluc": 0
+      "v_miss": 10,
+      "v_halluc": 1
     },
     "C": {
       "v_miss": 4,
       "v_halluc": 0
     },
     "O": {
-      "v_miss": 5,
-      "v_halluc": 0
+      "v_miss": 7,
+      "v_halluc": 2
     }
   }
 }

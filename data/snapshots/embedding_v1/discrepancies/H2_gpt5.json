@@ -383,6 +383,89 @@
       "weight": 1.5
     }
   ],
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R2",
+      "teacher_citation": "CO AIA 6-1-1701(3)(c)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Consequential decision includes material legal or significant effect on provision or denial of financial or lending services",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "student_id": "R1",
+      "teacher_citation": "CO AIA 6-1-1701(7)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "student_id": "R3",
+      "teacher_citation": "CO AIA 6-1-1701(9)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R7",
+      "student_id": "R6",
+      "teacher_citation": "CO AIA 6-1-1703(2)(a)",
+      "student_citation": "C.R.S. § 6-1-1707",
+      "proposition": "Deployer must implement risk management policy consistent with NIST AI 100-1 or substantially equivalent framework",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "student_id": "R5",
+      "teacher_citation": "CO AIA 6-1-1703(2)(d)",
+      "student_citation": "C.R.S. § 6-1-1703",
+      "proposition": "Deployer must publish website statement summarizing high-risk AI systems and discrimination risk management",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "student_id": "R10",
+      "teacher_citation": "CO AIA 6-1-1702(2)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, and impact assessment support",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "student_id": "R7",
+      "teacher_citation": "CO AIA 6-1-1702(3)",
+      "student_citation": "C.R.S. § 24-4-103",
+      "proposition": "Developer must publish public statement summarizing high-risk AI systems developed or substantially modified",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "student_id": "R8",
+      "teacher_citation": "CO AIA 6-1-1706",
+      "student_citation": "C.R.S. § 6-1-1708",
+      "proposition": "Violations are deceptive trade practices; AG exclusive enforcement; up to $20,000 per violation; rebuttable presumption for self-discovery and cure within 60 days",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R19",
+      "student_id": "R4",
+      "teacher_citation": "CO AIA 6-1-1703(3)",
+      "student_citation": "C.R.S. § 6-1-1704",
+      "proposition": "Deployer rebuttable presumption of reasonable care if complied with 6-1-1703 and AG requirements",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
   "l_ged": 125.5,
   "node_type_breakdown": {
     "F": {

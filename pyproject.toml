@@ -22,6 +22,7 @@ plotly = "^6.7.0"
 streamlit = "^1.57.0"
 streamlit-agraph = "^0.0.45"
 sentence-transformers = "^5.5.1"
+rank-bm25 = "^0.2.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=8.3.0"

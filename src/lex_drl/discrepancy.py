@@ -1,18 +1,25 @@
 """Compute structural discrepancies between a teacher and a student graph.
 
-Three discrepancy types are reported:
+Four discrepancy types are reported:
 
-* ``v_miss``   — nodes in the teacher graph with no student-side alignment.
-* ``v_halluc`` — student nodes that don't align to any teacher node and fail
-  a pluggable validity check. The default validity check flags every
-  unaligned student node as a candidate.
-* ``e_diff``   — edges whose aligned ``(src, dst)`` pair exists in the
+* ``v_miss``       — nodes in the teacher graph with no student-side alignment.
+* ``v_halluc``     — student nodes that don't align to any teacher node and fail
+  a pluggable validity check. The default validity check flags every unaligned
+  student node as a candidate.
+* ``e_diff``       — edges whose aligned ``(src, dst)`` pair exists in the
   teacher graph but is absent in the student graph or carries a different
   edge type.
+* ``v_misground``  — (NEW) an *aligned* Rule pair whose citations conflict:
+  the student grounded the right proposition in the wrong (or fabricated)
+  statutory section. This is the Magesh pattern and is, by construction,
+  invisible to the other three categories — both endpoints are aligned, so it
+  is neither a miss nor a hallucination nor an edge difference.
 
 The aggregate L-GED (Legal-weighted Graph Edit Distance) score weighs each
-discrepancy by node-type weight × authority multiplier (the latter applies
-to Rule nodes only).
+discrepancy by node-type weight × authority multiplier (the latter applies to
+Rule nodes only). ``v_misground`` is reported as a diagnostic and is **not**
+folded into L-GED unless ``include_misground_in_lged=True`` (kept off by default
+so existing snapshot scores stay comparable).
 """
 from __future__ import annotations
 
@@ -20,8 +27,8 @@ from typing import Callable, Optional
 
 from pydantic import BaseModel, Field
 
-from .alignment import AlignmentReport
-from .schema import Authority, EdgeType, LegalReasoningGraph
+from .alignment import AlignmentReport, citations_match, extract_citation_tokens
+from .schema import Authority, EdgeType, LegalReasoningGraph, Rule
 
 # Per-node-type weights for L-GED scoring (per onboarding spec).
 NODE_TYPE_WEIGHTS: dict[str, float] = {
@@ -69,12 +76,31 @@ class EdgeDiff(BaseModel):
     weight: float
 
 
+class Misgrounding(BaseModel):
+    """An aligned Rule pair whose citations conflict (the Magesh pattern).
+
+    Detection is index-independent: a misgrounding is flagged purely from the
+    citation conflict between an aligned teacher/student rule pair. The statute
+    index only sets ``student_section_exists`` (the real-but-wrong vs fabricated
+    subtype), which is ``None`` until a provenance-confirmed index is supplied.
+    """
+
+    teacher_id: str
+    student_id: str
+    teacher_citation: str
+    student_citation: str
+    proposition: str
+    student_section_exists: Optional[bool] = None
+    weight: float
+
+
 class DiscrepancyReport(BaseModel):
     case_id: str
     student_id: Optional[str] = None
     v_miss: list[MissingNode] = Field(default_factory=list)
     v_halluc: list[HallucinatedNode] = Field(default_factory=list)
     e_diff: list[EdgeDiff] = Field(default_factory=list)
+    v_misground: list[Misgrounding] = Field(default_factory=list)
     l_ged: float = 0.0
     node_type_breakdown: dict[str, dict[str, int]] = Field(default_factory=dict)
 
@@ -89,6 +115,10 @@ class DiscrepancyReport(BaseModel):
     @property
     def e_diff_count(self) -> int:
         return len(self.e_diff)
+
+    @property
+    def v_misground_count(self) -> int:
+        return len(self.v_misground)
 
 
 # ──────────────────────────────────────────────
@@ -138,11 +168,7 @@ def _node_weight(node: BaseModel) -> float:
 
 
 def _edge_weight(src_node: Optional[BaseModel], dst_node: Optional[BaseModel]) -> float:
-    """Edge weight = max of its endpoints' node weights (sensible default).
-
-    Using the heavier endpoint means a teacher rule wired into a teacher
-    conclusion contributes more than a fact-to-issue edge.
-    """
+    """Edge weight = max of its endpoints' node weights (sensible default)."""
     weights = [_node_weight(n) for n in (src_node, dst_node) if n is not None]
     return max(weights) if weights else 1.0
 
@@ -150,6 +176,36 @@ def _edge_weight(src_node: Optional[BaseModel], dst_node: Optional[BaseModel]) -
 # Default validity check: flag every unaligned student node as candidate halluc.
 def _default_validity_check(node: BaseModel) -> tuple[bool, str]:
     return True, "unaligned"
+
+
+def make_statute_validity_check(
+    section_exists_fn: Callable[[str], bool],
+) -> Callable[[BaseModel], tuple[bool, str]]:
+    """Build a statute-grounded ``validity_check`` for ``compute_discrepancies``.
+
+    Refines hallucination detection for unaligned student **Rule** nodes only:
+
+    * Rule citing section token(s), none of which are a real section →
+      ``(True, "fabricated_citation")`` — a grounded-but-invented rule.
+    * Rule citing a real section → ``(False, "cites_real_section")`` — a real
+      rule the teacher simply omitted; not a hallucination.
+    * Uncited Rule, or any non-Rule node → ``(True, "unaligned")`` — the statute
+      index can't speak to it, so behaviour is unchanged (matches the default).
+
+    Gate this behind a provenance-confirmed index: build it from
+    ``make_section_exists_fn(load_statute_index())`` and fall back to
+    ``_default_validity_check`` when that returns ``None`` (untrustworthy index).
+    """
+    def check(node: BaseModel) -> tuple[bool, str]:
+        if isinstance(node, Rule):
+            tokens = extract_citation_tokens(node.citation)
+            if tokens:
+                if section_exists_fn(node.citation):
+                    return False, "cites_real_section"
+                return True, "fabricated_citation"
+        return True, "unaligned"
+
+    return check
 
 
 # ──────────────────────────────────────────────
@@ -161,12 +217,22 @@ def compute_discrepancies(
     student: LegalReasoningGraph,
     alignment: AlignmentReport,
     validity_check: Callable[[BaseModel], tuple[bool, str]] = _default_validity_check,
+    *,
+    section_exists_fn: Optional[Callable[[str], bool]] = None,
+    include_misground_in_lged: bool = False,
 ) -> DiscrepancyReport:
-    """Compute v_miss / v_halluc / e_diff and the aggregate L-GED score.
+    """Compute v_miss / v_halluc / e_diff / v_misground and the L-GED score.
 
-    ``validity_check`` is a pluggable callable applied to each unaligned
-    student node; if it returns ``(True, reason)`` the node is recorded as a
-    v_halluc. The default flags every unaligned student node.
+    ``validity_check`` is a pluggable callable applied to each unaligned student
+    node; if it returns ``(True, reason)`` the node is recorded as v_halluc.
+
+    ``section_exists_fn`` is an optional callable ``citation -> bool`` from the
+    statute index; when supplied, misgroundings record whether the student's
+    section is real-but-wrong (True) or fabricated (False). When ``None`` (no
+    provenance-confirmed index yet), ``student_section_exists`` is left ``None``.
+
+    ``include_misground_in_lged`` folds misgrounding weights into L-GED. Default
+    off, so this addition does not change existing snapshot scores.
     """
     t_index = _index_nodes(teacher)
     s_index = _index_nodes(student)
@@ -220,34 +286,56 @@ def compute_discrepancies(
         mapped_src = teacher_to_student.get(edge.src)
         mapped_dst = teacher_to_student.get(edge.dst)
         if mapped_src is None or mapped_dst is None:
-            # Endpoint unaligned: covered by v_miss; don't double-count here.
             continue
         student_candidates = student_edge_index.get((mapped_src, mapped_dst), [])
         if not student_candidates:
             e_diff.append(EdgeDiff(
-                teacher_eid=edge.eid,
-                teacher_src=edge.src,
-                teacher_dst=edge.dst,
-                teacher_type=edge.type.value,
-                student_src=mapped_src,
-                student_dst=mapped_dst,
-                student_type=None,
-                kind="missing",
+                teacher_eid=edge.eid, teacher_src=edge.src, teacher_dst=edge.dst,
+                teacher_type=edge.type.value, student_src=mapped_src,
+                student_dst=mapped_dst, student_type=None, kind="missing",
                 weight=_edge_weight(t_index.get(edge.src), t_index.get(edge.dst)),
             ))
             continue
         if not any(stype == edge.type.value for _, stype in student_candidates):
             e_diff.append(EdgeDiff(
-                teacher_eid=edge.eid,
-                teacher_src=edge.src,
-                teacher_dst=edge.dst,
-                teacher_type=edge.type.value,
-                student_src=mapped_src,
-                student_dst=mapped_dst,
-                student_type=student_candidates[0][1],
+                teacher_eid=edge.eid, teacher_src=edge.src, teacher_dst=edge.dst,
+                teacher_type=edge.type.value, student_src=mapped_src,
+                student_dst=mapped_dst, student_type=student_candidates[0][1],
                 kind="type_mismatch",
                 weight=_edge_weight(t_index.get(edge.src), t_index.get(edge.dst)),
             ))
+
+    # ── v_misground (NEW) ──
+    # For each aligned Rule pair, flag a misgrounding iff the student cites a
+    # (non-empty) section that shares no canonical token with the teacher's
+    # citation — i.e. the pair aligned by *text* despite conflicting citations.
+    # This is deliberately recomputed from citations_match rather than read from
+    # AlignmentMatch.method, which is hardcoded to "citation" for all rules.
+    v_misground: list[Misgrounding] = []
+    for tid, sid in alignment.rule_map.items():
+        if sid is None:
+            continue
+        t_rule = t_index.get(tid)
+        s_rule = s_index.get(sid)
+        if not isinstance(t_rule, Rule) or not isinstance(s_rule, Rule):
+            continue
+        s_tokens = extract_citation_tokens(s_rule.citation)
+        if not s_tokens:
+            continue  # uncited student rule — a different defect, not a misgrounding
+        if citations_match(t_rule.citation, s_rule.citation):
+            continue  # citations agree → correctly grounded
+        exists: Optional[bool] = None
+        if section_exists_fn is not None:
+            exists = section_exists_fn(s_rule.citation)
+        v_misground.append(Misgrounding(
+            teacher_id=tid,
+            student_id=sid,
+            teacher_citation=t_rule.citation,
+            student_citation=s_rule.citation,
+            proposition=t_rule.label,
+            student_section_exists=exists,
+            weight=_node_weight(t_rule),
+        ))
 
     # ── Breakdown ──
     breakdown: dict[str, dict[str, int]] = {
@@ -263,6 +351,8 @@ def compute_discrepancies(
         + sum(h.weight for h in v_halluc)
         + sum(e.weight for e in e_diff)
     )
+    if include_misground_in_lged:
+        score += sum(mg.weight for mg in v_misground)
 
     return DiscrepancyReport(
         case_id=teacher.case_id,
@@ -270,6 +360,7 @@ def compute_discrepancies(
         v_miss=v_miss,
         v_halluc=v_halluc,
         e_diff=e_diff,
+        v_misground=v_misground,
         l_ged=score,
         node_type_breakdown=breakdown,
     )
@@ -280,13 +371,12 @@ def l_ged(
     student: LegalReasoningGraph,
     alignment: AlignmentReport,
     validity_check: Callable[[BaseModel], tuple[bool, str]] = _default_validity_check,
+    **kwargs,
 ) -> float:
-    """Legal-weighted Graph Edit Distance, as a single number.
-
-    Sum over all discrepancies of: node_type_weight × authority_multiplier.
-    The multiplier applies only to Rule nodes; defaults to 1.0 elsewhere.
-    """
-    return compute_discrepancies(teacher, student, alignment, validity_check).l_ged
+    """Legal-weighted Graph Edit Distance, as a single number."""
+    return compute_discrepancies(
+        teacher, student, alignment, validity_check, **kwargs
+    ).l_ged
 
 
 __all__ = [
@@ -294,8 +384,10 @@ __all__ = [
     "DiscrepancyReport",
     "EdgeDiff",
     "HallucinatedNode",
+    "Misgrounding",
     "MissingNode",
     "NODE_TYPE_WEIGHTS",
     "compute_discrepancies",
     "l_ged",
+    "make_statute_validity_check",
 ]

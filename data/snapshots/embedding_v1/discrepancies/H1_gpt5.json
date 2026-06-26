@@ -493,6 +493,89 @@
       "weight": 4.0
     }
   ],
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R2",
+      "teacher_citation": "NYC LL 144 Section 20-871(a)(1); DCWP Section 5-301(a)",
+      "student_citation": "NYC Admin Code §20-871",
+      "proposition": "Bias audit required no more than one year prior to use of AEDT",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "student_id": "R4",
+      "teacher_citation": "NYC LL 144 Section 20-870; DCWP Section 5-300 Independent Auditor definition",
+      "student_citation": "6 RCNY §5-301",
+      "proposition": "Independent auditor must not have financial interest in employer or AEDT developer; subsidiary of developer does not qualify",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "student_id": "R5",
+      "teacher_citation": "Colorado AIA Section 6-1-1701(7) and Section 6-1-1701(3)(b)",
+      "student_citation": "C.R.S. §6-1-1701",
+      "proposition": "High-risk AI system: AI system that makes or is substantial factor in consequential decision; employment is consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "student_id": "R7",
+      "teacher_citation": "Colorado AIA Section 6-1-1703(2)(d)",
+      "student_citation": "C.R.S. §6-1-1702",
+      "proposition": "Public website statement summarizing deployed high-risk AI systems and discrimination risk management",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "student_id": "R6",
+      "teacher_citation": "Colorado AIA Section 6-1-1702(2)-(3)",
+      "student_citation": "C.R.S. §6-1-1703",
+      "proposition": "Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, impact assessment support; must publish public use case inventory",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R17",
+      "student_id": "R11",
+      "teacher_citation": "Colorado AIA Section 6-1-1703(6)",
+      "student_citation": "Tex. Bus. & Com. Code §§509.101-104",
+      "proposition": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R21",
+      "student_id": "R10",
+      "teacher_citation": "Texas TRAIGA Section 551.051(a)",
+      "student_citation": "Tex. Bus. & Com. Code §509.051",
+      "proposition": "Prohibits deploying AI with intent to unlawfully discriminate; requires intentional discrimination, not disparate impact",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R25",
+      "student_id": "R9",
+      "teacher_citation": "Texas TRAIGA Section 551.201",
+      "student_citation": "Tex. Bus. & Com. Code §509.001",
+      "proposition": "TRAIGA preempts local Texas AI ordinances; does not preempt other states laws",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R26",
+      "student_id": "R12",
+      "teacher_citation": "Texas TRAIGA Section 551.301(d)",
+      "student_citation": "Tex. Bus. & Com. Code §§509.151-152",
+      "proposition": "Safe harbor for substantial compliance with NIST AI 100-1 or recognized AI governance standards",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
   "l_ged": 171.0,
   "node_type_breakdown": {
     "F": {

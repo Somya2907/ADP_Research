@@ -47,7 +47,7 @@ def run_calibration():
 
     teacher = load_graph(GRAPHS_DIR / f"{CASE_ID}_reference.json")
     gpt5_graph = load_graph(GRAPHS_DIR / f"{CASE_ID}_agent_gpt5.json")
-    llama_graph = load_graph(GRAPHS_DIR / f"{CASE_ID}_agent_qwen3_4b.json")
+    llama_graph = load_graph(GRAPHS_DIR / f"{CASE_ID}_agent_llama3_2b.json")
 
     table = Table(title="Threshold calibration sweep")
     table.add_column("Threshold", justify="right")

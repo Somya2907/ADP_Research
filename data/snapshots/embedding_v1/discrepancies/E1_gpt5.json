@@ -412,6 +412,53 @@
       "weight": 2.5
     }
   ],
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R5",
+      "teacher_citation": "NYC LL 144 §20-871(a)(1); DCWP Rules §5-301(a)",
+      "student_citation": "6 RCNY §5-301",
+      "proposition": "Bias audit required no more than one year prior to AEDT use; cannot use AEDT if more than one year since most recent audit",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "student_id": "R2",
+      "teacher_citation": "NYC LL 144 §20-871(d)(2)",
+      "student_citation": "NYC Admin. Code §20-871(a)",
+      "proposition": "New bias audit required after substantial modification including retraining on new or updated data",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R5",
+      "student_id": "R6",
+      "teacher_citation": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
+      "student_citation": "6 RCNY §5-302",
+      "proposition": "Published results: bias audit date, summary of results with data source, unknown categories, applicant counts, rates, impact ratios, and distribution date must be on employer website before AEDT use",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "student_id": "R3",
+      "teacher_citation": "NYC LL 144 §20-874",
+      "student_citation": "NYC Admin. Code §20-871(b)",
+      "proposition": "Geographic scope: applies based on candidate/employee location, not employer HQ; covers NYC positions and NYC-resident candidates",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "student_id": "R8",
+      "teacher_citation": "TX TRAIGA §551.201",
+      "student_citation": "Colo. Rev. Stat. §6-1-1701 et seq.",
+      "proposition": "TRAIGA preempts local TX ordinances on AI but does not preempt other states laws",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
   "l_ged": 131.0,
   "node_type_breakdown": {
     "F": {
