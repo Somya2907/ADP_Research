@@ -1,0 +1,4 @@
+case_id,student,k,baseline_l_ged,patched_l_ged,delta_l_ged,pct_drop,baseline_v_miss,patched_v_miss,baseline_v_halluc,patched_v_halluc,baseline_e_diff,patched_e_diff
+E2,llama3_2b,,110.5,114.5,4.0,3.6,46,47,0,0,1,1
+M2,llama3_2b,,138.5,138.5,0.0,0.0,58,57,0,0,1,2
+H2,llama3_2b,,162.5,146.0,-16.5,-10.2,63,58,0,0,3,1
