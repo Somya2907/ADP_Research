@@ -99,10 +99,10 @@ def run_patched(case, model_key: str, store: PatchStore, k: int):
         resp.text, case_id=case.case_id, source=GraphSource.AGENT,
         model=resp.model, agent_id=model_key,
     )
-    out = PATCHED_DIR / f"{case.case_id}_agent_{model_key}_patched.json"
+    out = PATCHED_DIR / f"{case.case_id}_agent_{model_key}_patched_k{k}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(graph.model_dump_json(indent=2), encoding="utf-8")
-    print(f"  {case.case_id}/{model_key}: retrieved {len(patches)} patches → {out.name}")
+    print(f"  {case.case_id}/{model_key} (k={k}): retrieved {len(patches)} patches → {out.name}")
     return out
 
 
