@@ -17,7 +17,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_5c1548fe16c7",
@@ -39,7 +40,8 @@
       "E1",
       "H1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "fabricated"
   },
   {
     "patch_id": "p_8ae739d30eff",
@@ -58,7 +60,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_75aadca06f03",
@@ -80,7 +83,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_44eae4d22c00",
@@ -97,9 +101,11 @@
       "R"
     ],
     "source_cases": [
-      "E1"
+      "E1",
+      "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_2d73d17a3f4a",
@@ -121,7 +127,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_d504cd8489fc",
@@ -143,7 +150,8 @@
       "E1",
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_5b464534ff41",
@@ -165,7 +173,8 @@
       "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_f9358693cd4b",
@@ -190,7 +199,8 @@
       "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_478984803e77",
@@ -210,7 +220,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_d1596baa2401",
@@ -229,7 +240,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_a44342a3ad91",
@@ -251,7 +263,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_31804710d2d2",
@@ -279,7 +292,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_3ecdb263fa41",
@@ -301,7 +315,8 @@
       "E1",
       "H1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_7a56ecfeb82a",
@@ -322,7 +337,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "verified"
   },
   {
     "patch_id": "p_c5caa6f0b1ca",
@@ -346,7 +362,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_062aff446c38",
@@ -364,7 +381,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "verified"
   },
   {
     "patch_id": "p_7b83a2212bae",
@@ -383,7 +401,8 @@
       "E1",
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_f91076f1e88e",
@@ -406,7 +425,30 @@
       "E1",
       "H1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
+  },
+  {
+    "patch_id": "p_3819875a6309",
+    "patch_family": "missing_rule",
+    "trigger_keywords": [
+      "20-871(a)(1)",
+      "5-301(a)",
+      "nyc",
+      "bias audit",
+      "aedt"
+    ],
+    "controlling_authority": "NYC LL 144 §20-871(a)(1); DCWP Rules §5-301(a)",
+    "prevention_step": "When a matter involves 20-871(a)(1), apply NYC LL 144 §20-871(a)(1); DCWP Rules §5-301(a) (nyc, binding): Bias audit required no more than one year prior to AEDT use; cannot use AEDT if more than one year since most recent audit.",
+    "contraindication": "Applies only in NYC; not triggered for matters outside it.",
+    "node_types_addressed": [
+      "R"
+    ],
+    "source_cases": [
+      "E1"
+    ],
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_3dab45c198ba",
@@ -427,31 +469,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
-  },
-  {
-    "patch_id": "p_51585e60a4ac",
-    "patch_family": "missing_rule",
-    "trigger_keywords": [
-      "20-871(a)(2)",
-      "20-873",
-      "5-303",
-      "nyc",
-      "bias audit",
-      "impact ratio",
-      "distribution date",
-      "aedt"
-    ],
-    "controlling_authority": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
-    "prevention_step": "When a matter involves 20-871(a)(2), apply NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303 (nyc, binding): Published results: bias audit date, summary of results with data source, unknown categories, applicant counts, rates, impact ratios, and distribution date must be on employer website before AEDT use.",
-    "contraindication": "Applies only in NYC; not triggered for matters outside it.",
-    "node_types_addressed": [
-      "R"
-    ],
-    "source_cases": [
-      "E1"
-    ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "verified"
   },
   {
     "patch_id": "p_52ff4b56fac4",
@@ -473,7 +492,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_04612423926f",
@@ -491,7 +511,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "verified"
   },
   {
     "patch_id": "p_9215c159ac85",
@@ -507,36 +528,10 @@
       "R"
     ],
     "source_cases": [
-      "E1",
-      "H1"
-    ],
-    "jurisdiction": "texas"
-  },
-  {
-    "patch_id": "p_3b9999491818",
-    "patch_family": "missing_rule",
-    "trigger_keywords": [
-      "6-1-1703(2)(a)-(g)",
-      "colorado",
-      "deployer",
-      "risk management",
-      "impact assessment",
-      "annual review",
-      "consumer",
-      "notice",
-      "data correction",
-      "appeal"
-    ],
-    "controlling_authority": "CO AIA §6-1-1703(2)(a)-(g)",
-    "prevention_step": "When a matter involves 6-1-1703(2)(a)-(g), apply CO AIA §6-1-1703(2)(a)-(g) (colorado, binding): Deployer obligations: NIST AI RMF-aligned risk management program, impact assessments, annual reviews, website statement, consumer notice, data correction, appeal rights.",
-    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
-    "node_types_addressed": [
-      "R"
-    ],
-    "source_cases": [
       "E1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_984f89fb5cba",
@@ -558,7 +553,32 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
+  },
+  {
+    "patch_id": "p_b6c7b9855749",
+    "patch_family": "missing_obligation",
+    "trigger_keywords": [
+      "20-871(a)(2)",
+      "20-873",
+      "5-303",
+      "nyc",
+      "bias audit",
+      "impact ratio",
+      "distribution date"
+    ],
+    "controlling_authority": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
+    "prevention_step": "Where 20-871(a)(2) applies, NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303 imposes a mandatory obligation: Publish bias audit date, summary of results (data source, unknown categories, applicant counts, selection/scoring rates, impact ratios), and distribution date on employment section of website (deadline: Before any further use of AEDT).",
+    "contraindication": "Applies only in NYC; not triggered for matters outside it.",
+    "node_types_addressed": [
+      "O"
+    ],
+    "source_cases": [
+      "E1"
+    ],
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_086de0195cd1",
@@ -580,17 +600,19 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
-    "patch_id": "p_8e081351c24d",
+    "patch_id": "p_5a917042a105",
     "patch_family": "missing_obligation",
     "trigger_keywords": [
-      "20-875",
-      "nyc"
+      "5-304(d)",
+      "nyc",
+      "aedt"
     ],
-    "controlling_authority": "NYC LL 144 §20-875",
-    "prevention_step": "Where 20-875 applies, NYC LL 144 §20-875 imposes a mandatory obligation: Respond to pending DCWP complaint; engage LL 144 counsel; preserve all records of ResumeRank use.",
+    "controlling_authority": "DCWP Rules §5-304(d)",
+    "prevention_step": "Where 5-304(d) applies, DCWP Rules §5-304(d) imposes a mandatory obligation: Post AEDT data retention policy, data types collected, data sources, and written request instructions on employment section of website (deadline: Before any further use of AEDT).",
     "contraindication": "Applies only in NYC; not triggered for matters outside it.",
     "node_types_addressed": [
       "O"
@@ -598,7 +620,8 @@
     "source_cases": [
       "E1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_c304442aeefa",
@@ -609,7 +632,7 @@
       "safe harbor"
     ],
     "controlling_authority": "TX TRAIGA §551.301(d)",
-    "prevention_step": "Ground the proposition \"Safe harbor for substantial compliance with NIST AI RMF or recognized AI governance standards\" in TX TRAIGA §551.301(d), not Texas Responsible AI Governance Act (HB 149) §3.",
+    "prevention_step": "Ground the proposition \"Safe harbor for substantial compliance with NIST AI RMF or recognized AI governance standards\" in TX TRAIGA §551.301(d), not Texas Responsible AI Governance Act § 2.051.",
     "contraindication": "Applies only in TEXAS; not triggered for matters outside it.",
     "node_types_addressed": [
       "R"
@@ -618,7 +641,8 @@
       "E1",
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_0632cc0faf2f",
@@ -636,7 +660,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_1b2144086782",
@@ -656,7 +681,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_63747ab6343f",
@@ -675,17 +701,19 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
-    "patch_id": "p_8c8cc3ad7276",
+    "patch_id": "p_8d91fb99c0d2",
     "patch_family": "missing_rule",
     "trigger_keywords": [
-      "6-1-1701(9)",
-      "colorado"
+      "6-1-1701(6)",
+      "colorado",
+      "developer"
     ],
-    "controlling_authority": "CO AIA Section 6-1-1701(9)",
-    "prevention_step": "When a matter involves 6-1-1701(9), apply CO AIA Section 6-1-1701(9) (colorado, binding): Substantial factor definition: human review based primarily on AI output does not negate.",
+    "controlling_authority": "CO AIA Section 6-1-1701(6)",
+    "prevention_step": "When a matter involves 6-1-1701(6), apply CO AIA Section 6-1-1701(6) (colorado, binding): Developer definition: person that develops or substantially modifies AI system.",
     "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
     "node_types_addressed": [
       "R"
@@ -693,7 +721,30 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
+  },
+  {
+    "patch_id": "p_1f2f2aad9a5d",
+    "patch_family": "missing_rule",
+    "trigger_keywords": [
+      "6-1-1703(1)",
+      "colorado",
+      "deployer",
+      "reasonable care",
+      "algorithmic discrimination"
+    ],
+    "controlling_authority": "CO AIA Section 6-1-1703(1)",
+    "prevention_step": "When a matter involves 6-1-1703(1), apply CO AIA Section 6-1-1703(1) (colorado, binding): Deployer duty of reasonable care against algorithmic discrimination.",
+    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
+    "node_types_addressed": [
+      "R"
+    ],
+    "source_cases": [
+      "M1"
+    ],
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_4b3934a5ecdc",
@@ -714,27 +765,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
-  },
-  {
-    "patch_id": "p_ca794d59d9ff",
-    "patch_family": "missing_rule",
-    "trigger_keywords": [
-      "6-1-1703(2)(b)",
-      "colorado",
-      "deployer",
-      "impact assessment"
-    ],
-    "controlling_authority": "CO AIA Section 6-1-1703(2)(b)",
-    "prevention_step": "When a matter involves 6-1-1703(2)(b), apply CO AIA Section 6-1-1703(2)(b) (colorado, binding): Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems.",
-    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
-    "node_types_addressed": [
-      "R"
-    ],
-    "source_cases": [
-      "M1"
-    ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_ea1d06d0d3fa",
@@ -756,7 +788,8 @@
       "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_f8284ac6fca6",
@@ -775,9 +808,11 @@
       "R"
     ],
     "source_cases": [
+      "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_1f39ae012775",
@@ -800,7 +835,8 @@
       "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_8adcd8c86a87",
@@ -821,7 +857,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_f44428f4d864",
@@ -842,7 +879,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_e3c85f6f3ee2",
@@ -862,7 +900,8 @@
       "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_d0678c4a8d09",
@@ -881,18 +920,20 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
-    "patch_id": "p_bd76ef31532b",
+    "patch_id": "p_215af45aa260",
     "patch_family": "missing_obligation",
     "trigger_keywords": [
-      "6-1-1703(2)(b)",
+      "6-1-1703(2)(a)",
       "colorado",
-      "impact assessment"
+      "risk management policy",
+      "risk management"
     ],
-    "controlling_authority": "CO AIA Section 6-1-1703(2)(b)",
-    "prevention_step": "Where 6-1-1703(2)(b) applies, CO AIA Section 6-1-1703(2)(b) imposes a mandatory obligation: Complete impact assessment of LoanScore with all six elements of Section 6-1-1701(8) (deadline: 2026-09-28).",
+    "controlling_authority": "CO AIA Section 6-1-1703(2)(a)",
+    "prevention_step": "Where 6-1-1703(2)(a) applies, CO AIA Section 6-1-1703(2)(a) imposes a mandatory obligation: Implement risk management policy and program consistent with NIST AI RMF 1.0 or ISO/IEC 42001 (deadline: 2026-06-30).",
     "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
     "node_types_addressed": [
       "O"
@@ -900,7 +941,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_07bf6674d30e",
@@ -921,7 +963,8 @@
       "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_b6ade26371ca",
@@ -942,7 +985,8 @@
       "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_2fa421a24c3c",
@@ -960,9 +1004,11 @@
       "O"
     ],
     "source_cases": [
+      "H1",
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_a187bf323186",
@@ -980,7 +1026,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_d00b22fa3e35",
@@ -999,7 +1046,29 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
+  },
+  {
+    "patch_id": "p_4e84bf9d3d67",
+    "patch_family": "missing_obligation",
+    "trigger_keywords": [
+      "6-1-1702(2)",
+      "colorado",
+      "developer",
+      "documentation"
+    ],
+    "controlling_authority": "CO AIA Section 6-1-1702(2)",
+    "prevention_step": "Where 6-1-1702(2) applies, CO AIA Section 6-1-1702(2) imposes a mandatory obligation: Demand and obtain developer documentation from DataCredit per Section 6-1-1702(2) requirements.",
+    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
+    "node_types_addressed": [
+      "O"
+    ],
+    "source_cases": [
+      "M1"
+    ],
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_fdbb651bda4e",
@@ -1019,7 +1088,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_0bdc3fd53f18",
@@ -1039,7 +1109,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_848c411f59d3",
@@ -1057,25 +1128,8 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
-  },
-  {
-    "patch_id": "p_cf04195ecb46",
-    "patch_family": "misgrounding",
-    "trigger_keywords": [
-      "6-1-1701(2)",
-      "colorado"
-    ],
-    "controlling_authority": "CO AIA Section 6-1-1701(2)",
-    "prevention_step": "Ground the proposition \"Definition of artificial intelligence system\" in CO AIA Section 6-1-1701(2), not Colorado AI Act (SB 24-205), Section 1-1-103.",
-    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
-    "node_types_addressed": [
-      "R"
-    ],
-    "source_cases": [
-      "M1"
-    ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_d12fbaee5a42",
@@ -1087,7 +1141,7 @@
       "consequential decision"
     ],
     "controlling_authority": "CO AIA Section 6-1-1701(7)",
-    "prevention_step": "Ground the proposition \"High-risk AI system definition: makes or is substantial factor in consequential decision\" in CO AIA Section 6-1-1701(7), not Colorado AI Act (SB 24-205), Section 1-1-101(1)(a)(I).",
+    "prevention_step": "Ground the proposition \"High-risk AI system definition: makes or is substantial factor in consequential decision\" in CO AIA Section 6-1-1701(7), not CO SB 24-205 § 2-101(1).",
     "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
     "node_types_addressed": [
       "R"
@@ -1095,7 +1149,27 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
+  },
+  {
+    "patch_id": "p_de34db88f3db",
+    "patch_family": "misgrounding",
+    "trigger_keywords": [
+      "6-1-1701(9)",
+      "colorado"
+    ],
+    "controlling_authority": "CO AIA Section 6-1-1701(9)",
+    "prevention_step": "Ground the proposition \"Substantial factor definition: human review based primarily on AI output does not negate\" in CO AIA Section 6-1-1701(9), not CO SB 24-205 § 2-103.",
+    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
+    "node_types_addressed": [
+      "R"
+    ],
+    "source_cases": [
+      "M1"
+    ],
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_c1eb55088ab5",
@@ -1107,7 +1181,7 @@
       "high-risk"
     ],
     "controlling_authority": "CO AIA Section 6-1-1701(5)",
-    "prevention_step": "Ground the proposition \"Deployer definition: person doing business in state that deploys high-risk AI system\" in CO AIA Section 6-1-1701(5), not Colorado AI Act (SB 24-205), Section 1-1-101(1)(a)(II).",
+    "prevention_step": "Ground the proposition \"Deployer definition: person doing business in state that deploys high-risk AI system\" in CO AIA Section 6-1-1701(5), not CO SB 24-205 § 2-101(2).",
     "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
     "node_types_addressed": [
       "R"
@@ -1115,39 +1189,20 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
-    "patch_id": "p_ede5a3c64d31",
+    "patch_id": "p_00b34e403641",
     "patch_family": "misgrounding",
     "trigger_keywords": [
-      "6-1-1701(6)",
-      "colorado",
-      "developer"
-    ],
-    "controlling_authority": "CO AIA Section 6-1-1701(6)",
-    "prevention_step": "Ground the proposition \"Developer definition: person that develops or substantially modifies AI system\" in CO AIA Section 6-1-1701(6), not Colorado AI Act (SB 24-205), Section 1-1-101(1)(a)(III).",
-    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
-    "node_types_addressed": [
-      "R"
-    ],
-    "source_cases": [
-      "M1"
-    ],
-    "jurisdiction": "colorado"
-  },
-  {
-    "patch_id": "p_cb917e3ce8e1",
-    "patch_family": "misgrounding",
-    "trigger_keywords": [
-      "6-1-1703(1)",
+      "6-1-1703(2)(b)",
       "colorado",
       "deployer",
-      "reasonable care",
-      "algorithmic discrimination"
+      "impact assessment"
     ],
-    "controlling_authority": "CO AIA Section 6-1-1703(1)",
-    "prevention_step": "Ground the proposition \"Deployer duty of reasonable care against algorithmic discrimination\" in CO AIA Section 6-1-1703(1), not Colorado AI Act (SB 24-205), Section 1-1-102.",
+    "controlling_authority": "CO AIA Section 6-1-1703(2)(b)",
+    "prevention_step": "Ground the proposition \"Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems\" in CO AIA Section 6-1-1703(2)(b), not CO SB 24-205 § 2-102.",
     "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
     "node_types_addressed": [
       "R"
@@ -1155,7 +1210,29 @@
     "source_cases": [
       "M1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
+  },
+  {
+    "patch_id": "p_e1cad4e11d75",
+    "patch_family": "misgrounding",
+    "trigger_keywords": [
+      "6-1-1702(2)",
+      "colorado",
+      "developer",
+      "documentation"
+    ],
+    "controlling_authority": "CO AIA Section 6-1-1702(2)",
+    "prevention_step": "Ground the proposition \"Developer must provide documentation on limitations, training data, uses, and monitoring guidance\" in CO AIA Section 6-1-1702(2), not CO SB 24-205 § 2-104.",
+    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
+    "node_types_addressed": [
+      "R"
+    ],
+    "source_cases": [
+      "M1"
+    ],
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_a64e7386d64d",
@@ -1176,7 +1253,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_694e7157ded3",
@@ -1197,7 +1275,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_eaa02f5c8483",
@@ -1215,7 +1294,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_c443a9050ba7",
@@ -1234,7 +1314,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_46cc45151653",
@@ -1255,7 +1336,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_4b419b6d1aa2",
@@ -1276,7 +1358,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_68f49efcfb33",
@@ -1294,7 +1377,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_31f2b4835c02",
@@ -1313,7 +1397,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_017dad6f5ea2",
@@ -1332,7 +1417,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_586ed4b580c4",
@@ -1355,7 +1441,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_02fcce3c7b2f",
@@ -1373,7 +1460,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_9e3d83473680",
@@ -1395,7 +1483,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "nyc"
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_691b80901230",
@@ -1416,7 +1505,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_cb80acec9ac0",
@@ -1436,7 +1526,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_35f8133dd0f8",
@@ -1458,7 +1549,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_b1f7166c1fe3",
@@ -1478,7 +1570,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_55ee52e734c3",
@@ -1497,7 +1590,31 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
+  },
+  {
+    "patch_id": "p_24ad8b6adafc",
+    "patch_family": "missing_rule",
+    "trigger_keywords": [
+      "20-872",
+      "5-304",
+      "nyc",
+      "candidate notice",
+      "notice",
+      "aedt"
+    ],
+    "controlling_authority": "NYC LL 144 Section 20-872; DCWP Section 5-304",
+    "prevention_step": "When a matter involves 20-872, apply NYC LL 144 Section 20-872; DCWP Section 5-304 (nyc, binding): Candidate notice at least 10 business days before AEDT use identifying AEDT use, qualifications assessed, and right to request alternative process.",
+    "contraindication": "Applies only in NYC; not triggered for matters outside it.",
+    "node_types_addressed": [
+      "R"
+    ],
+    "source_cases": [
+      "H1"
+    ],
+    "jurisdiction": "nyc",
+    "verification": "unverified"
   },
   {
     "patch_id": "p_80dae319fa97",
@@ -1519,7 +1636,114 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
+  },
+  {
+    "patch_id": "p_8a481969da38",
+    "patch_family": "missing_rule",
+    "trigger_keywords": [
+      "551.051(a)",
+      "texas",
+      "intentional discrimination"
+    ],
+    "controlling_authority": "Texas TRAIGA Section 551.051(a)",
+    "prevention_step": "When a matter involves 551.051(a), apply Texas TRAIGA Section 551.051(a) (texas, binding): Prohibits deploying AI with intent to unlawfully discriminate; requires intentional discrimination, not disparate impact.",
+    "contraindication": "Applies only in TEXAS; not triggered for matters outside it.",
+    "node_types_addressed": [
+      "R"
+    ],
+    "source_cases": [
+      "H1"
+    ],
+    "jurisdiction": "texas",
+    "verification": "unverified"
+  },
+  {
+    "patch_id": "p_3a74f5215de8",
+    "patch_family": "missing_obligation",
+    "trigger_keywords": [
+      "20-871(a)(2)",
+      "5-303(a)",
+      "nyc",
+      "bias audit"
+    ],
+    "controlling_authority": "NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a)",
+    "prevention_step": "Where 20-871(a)(2) applies, NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a) imposes a mandatory obligation: Repost bias audit results on employment section of website in clear and conspicuous manner with all required elements per DCWP Section 5-303(a) (deadline: Before continued use of AEDT after new audit completed).",
+    "contraindication": "Applies only in NYC; not triggered for matters outside it.",
+    "node_types_addressed": [
+      "O"
+    ],
+    "source_cases": [
+      "H1"
+    ],
+    "jurisdiction": "nyc",
+    "verification": "unverified"
+  },
+  {
+    "patch_id": "p_e3e1675ed857",
+    "patch_family": "missing_obligation",
+    "trigger_keywords": [
+      "20-872",
+      "5-304",
+      "nyc",
+      "candidate notice",
+      "notice",
+      "aedt"
+    ],
+    "controlling_authority": "NYC LL 144 Section 20-872; DCWP Section 5-304",
+    "prevention_step": "Where 20-872 applies, NYC LL 144 Section 20-872; DCWP Section 5-304 imposes a mandatory obligation: Revise candidate notice to identify AEDT use, specify qualifications assessed, include alternative process instructions, and provide 10 business days advance (deadline: At least 10 business days before next AEDT use in NYC).",
+    "contraindication": "Applies only in NYC; not triggered for matters outside it.",
+    "node_types_addressed": [
+      "O"
+    ],
+    "source_cases": [
+      "H1"
+    ],
+    "jurisdiction": "nyc",
+    "verification": "unverified"
+  },
+  {
+    "patch_id": "p_b9693e605915",
+    "patch_family": "missing_obligation",
+    "trigger_keywords": [
+      "6-1-1703(2)(a)(iii)",
+      "colorado",
+      "risk management policy",
+      "risk management"
+    ],
+    "controlling_authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+    "prevention_step": "Where 6-1-1703(2)(a)(iii) applies, Colorado AIA Section 6-1-1703(2)(a)(III) imposes a mandatory obligation: Develop and implement AI risk management policy aligned with NIST AI 100-1 or ISO/IEC 42001 (deadline: 2026-06-30).",
+    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
+    "node_types_addressed": [
+      "O"
+    ],
+    "source_cases": [
+      "H1"
+    ],
+    "jurisdiction": "colorado",
+    "verification": "verified"
+  },
+  {
+    "patch_id": "p_b57fb8ae88fd",
+    "patch_family": "missing_obligation",
+    "trigger_keywords": [
+      "6-1-1701(8)",
+      "6-1-1703(2)(b)",
+      "colorado",
+      "impact assessment"
+    ],
+    "controlling_authority": "Colorado AIA Section 6-1-1703(2)(b); Section 6-1-1701(8)",
+    "prevention_step": "Where 6-1-1701(8) applies, Colorado AIA Section 6-1-1703(2)(b); Section 6-1-1701(8) imposes a mandatory obligation: Complete Colorado AIA-compliant impact assessment with all Section 6-1-1701(8) elements (deadline: 2026-09-28).",
+    "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
+    "node_types_addressed": [
+      "O"
+    ],
+    "source_cases": [
+      "H1"
+    ],
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_d6f8ef949a99",
@@ -1538,7 +1762,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_3fb90aaf9f03",
@@ -1558,7 +1783,8 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "verified"
   },
   {
     "patch_id": "p_81183185a423",
@@ -1576,40 +1802,18 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "texas"
+    "jurisdiction": "texas",
+    "verification": "unverified"
   },
   {
-    "patch_id": "p_b2aa4e8d8c1b",
+    "patch_id": "p_e28cc0d9ef45",
     "patch_family": "misgrounding",
     "trigger_keywords": [
-      "20-871(a)(2)",
-      "5-303(a)",
-      "nyc",
-      "impact ratio",
-      "distribution date"
-    ],
-    "controlling_authority": "NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a)",
-    "prevention_step": "Ground the proposition \"Published results must be on employment section of website in clear and conspicuous manner with audit date, data source, unknowns, applicant counts, rates, impact ratios, and distribution date\" in NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a), not NYC LL 144 §20-873.",
-    "contraindication": "Applies only in NYC; not triggered for matters outside it.",
-    "node_types_addressed": [
-      "R"
-    ],
-    "source_cases": [
-      "H1"
-    ],
-    "jurisdiction": "nyc"
-  },
-  {
-    "patch_id": "p_33b1a72e8e9b",
-    "patch_family": "misgrounding",
-    "trigger_keywords": [
-      "6-1-1703(2)(e)",
       "colorado",
-      "consumer",
-      "notice"
+      "effective date"
     ],
-    "controlling_authority": "Colorado AIA Section 6-1-1703(2)(e)",
-    "prevention_step": "Ground the proposition \"Pre-decision consumer notice required: AI system use, purpose, decision nature, contact info, plain-language description, link to public statement\" in Colorado AIA Section 6-1-1703(2)(e), not Colorado AI Act §5-1-102.",
+    "controlling_authority": "Colorado AIA SB 24-205 as amended by SB 25B-004",
+    "prevention_step": "Ground the proposition \"Colorado AIA effective date June 30, 2026; not yet in force as of April 16, 2026\" in Colorado AIA SB 24-205 as amended by SB 25B-004, not CO AIA §13-202-101.",
     "contraindication": "Applies only in COLORADO; not triggered for matters outside it. Not yet enforceable as of the operative date (effective 2026-06-30).",
     "node_types_addressed": [
       "R"
@@ -1617,6 +1821,7 @@
     "source_cases": [
       "H1"
     ],
-    "jurisdiction": "colorado"
+    "jurisdiction": "colorado",
+    "verification": "unverified"
   }
 ]

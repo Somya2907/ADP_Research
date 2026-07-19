@@ -1,15 +1,21 @@
-"""Task 6 — k-ablation table: mean L-GED drop per (student, k) for k in {1,3,5}.
+"""k-ablation table: mean L-GED drop per (student, k) for k in {1,3,5}.
 
 Baseline is fixed per (student, case); only the patched graph varies with k.
-Baseline source is per-student (parity): GPT-5 from the cloud embedding snapshot,
-Llama from the locally-extracted baseline (data/outputs/graphs_local). Patched
-graphs are the k-tagged outputs from run_patch_injection.
+Baseline source is per-student (parity): GPT-5 from the embedding snapshot, Llama
+recomputed from the pinned local baseline (data/outputs/graphs_local). Patched
+graphs are the k-tagged outputs from run_patch_injection, per store variant.
+
+Guard: each cell's baseline L-GED must equal the frozen snapshot value (Task 1
+pins one generation). Drift fails loudly.
 
 Run under the alignment backend the baselines were scored with (embedding):
     LEX_DRL_SIMILARITY=embedding poetry run python scripts/run_k_ablation.py
+    LEX_DRL_SIMILARITY=embedding poetry run python scripts/run_k_ablation.py \\
+        --variants clean clean_jfilter --out results/k_ablation_clean.csv
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import sys
 from pathlib import Path
@@ -48,73 +54,96 @@ def _baseline_lged(teacher, student: str, case: str) -> float | None:
     mode, loc = BASELINE[student]
     if mode == "snapshot":
         p = Path("data/snapshots") / loc / "discrepancies" / f"{case}_{student}.json"
-        if not p.exists():
-            return None
-        return DiscrepancyReport.model_validate_json(p.read_text()).l_ged
+        return DiscrepancyReport.model_validate_json(p.read_text()).l_ged if p.exists() else None
     p = Path(loc) / f"{case}_agent_{student}.json"
     return _lged(teacher, _load(p)) if p.exists() else None
 
 
+def _snapshot_lged(student: str, case: str, snapshot: str) -> float | None:
+    p = Path("data/snapshots") / snapshot / "discrepancies" / f"{case}_{student}.json"
+    return DiscrepancyReport.model_validate_json(p.read_text()).l_ged if p.exists() else None
+
+
+def _patched_path(case: str, student: str, variant: str, k: int) -> Path:
+    suffix = f"_patched_k{k}" if variant == "dirty" else f"_patched_{variant}_k{k}"
+    return GRAPHS / f"{case}_agent_{student}{suffix}.json"
+
+
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--variants", nargs="+", default=["dirty"],
+                    help="store variants: dirty | clean | clean_jfilter")
+    ap.add_argument("--out", default="results/k_ablation.csv")
+    ap.add_argument("--snapshot", default="embedding_v1", help="baseline snapshot for the guard")
+    ap.add_argument("--no-guard", action="store_true",
+                    help="skip the baseline==snapshot assertion (e.g. before Task-1 pinning)")
+    args = ap.parse_args()
+
     console.print(f"[bold]k-ablation[/bold] (alignment={alignment_module.SIMILARITY_METHOD}, "
-                  f"threshold={alignment_module.DEFAULT_THRESHOLD})")
+                  f"threshold={alignment_module.DEFAULT_THRESHOLD}, variants={args.variants})")
 
     teachers = {c: _load(GRAPHS / f"{c}_reference.json") for c in CASES}
-    # baseline per (student, case) — computed once, reused across k
-    base = {}
+
+    # baseline per (student, case) — computed once, GUARDED against the snapshot.
+    base: dict[tuple[str, str], float | None] = {}
     for student in BASELINE:
         for c in CASES:
-            base[(student, c)] = _baseline_lged(teachers[c], student, c)
+            b = _baseline_lged(teachers[c], student, c)
+            if b is not None and not args.no_guard:
+                snap = _snapshot_lged(student, c, args.snapshot)
+                assert snap is not None and abs(b - snap) < 1e-6, (
+                    f"BASELINE DRIFT {student}/{c}: ablation={b} vs snapshot={snap} "
+                    f"(pin one generation — see docs/BASELINE_PROVENANCE.md)"
+                )
+            base[(student, c)] = b
 
-    rows: list[dict] = []
     per_case_rows: list[dict] = []
-    for student in BASELINE:
-        for k in KS:
-            deltas, present = [], 0
-            for c in CASES:
-                b = base[(student, c)]
-                pp = GRAPHS / f"{c}_agent_{student}_patched_k{k}.json"
-                if b is None or not pp.exists():
-                    continue
-                patched = _lged(teachers[c], _load(pp))
-                d = patched - b
-                deltas.append(d); present += 1
-                per_case_rows.append({"student": student, "k": k, "case": c,
-                                      "baseline": round(b, 1), "patched": round(patched, 1),
-                                      "delta": round(d, 1)})
-            if deltas:
-                mean_d = sum(deltas) / len(deltas)
-                rows.append({"student": student, "k": k, "cases": present,
-                             "mean_delta": round(mean_d, 2),
-                             "improved": sum(1 for d in deltas if d < 0)})
+    agg: list[dict] = []
+    for variant in args.variants:
+        for student in BASELINE:
+            for k in KS:
+                deltas, present = [], 0
+                for c in CASES:
+                    b = base[(student, c)]
+                    pp = _patched_path(c, student, variant, k)
+                    if b is None or not pp.exists():
+                        continue
+                    patched = _lged(teachers[c], _load(pp))
+                    d = patched - b
+                    deltas.append(d); present += 1
+                    per_case_rows.append({
+                        "store": variant, "student": student, "k": k, "case": c,
+                        "baseline": round(b, 1), "patched": round(patched, 1),
+                        "delta": round(d, 1),
+                        "pct_delta": round(100.0 * d / b, 1) if b else 0.0,
+                    })
+                if deltas:
+                    agg.append({"store": variant, "student": student, "k": k,
+                                "cases": present, "mean_delta": round(sum(deltas) / len(deltas), 2),
+                                "improved": sum(1 for d in deltas if d < 0)})
 
     # ── Table ──
     table = Table(title="k-ablation — mean L-GED drop (patched − baseline; negative = better)")
-    for col in ("Student", "k", "cases", "mean Δ L-GED", "# improved"):
-        table.add_column(col, justify="right" if col != "Student" else "left")
-    for student in BASELINE:
-        srows = [r for r in rows if r["student"] == student]
-        best = min(srows, key=lambda r: r["mean_delta"], default=None) if srows else None
-        for r in srows:
-            star = " ★" if best and r["k"] == best["k"] else ""
-            mark = "green" if r["mean_delta"] < 0 else ("red" if r["mean_delta"] > 0 else "white")
-            table.add_row(r["student"], str(r["k"]), str(r["cases"]),
-                          f"[{mark}]{r['mean_delta']:+.2f}{star}[/{mark}]", str(r["improved"]))
+    for col in ("store", "Student", "k", "cases", "mean Δ L-GED", "# improved"):
+        table.add_column(col, justify="right" if col not in ("store", "Student") else "left")
+    for variant in args.variants:
+        for student in BASELINE:
+            srows = [r for r in agg if r["store"] == variant and r["student"] == student]
+            best = min(srows, key=lambda r: r["mean_delta"], default=None) if srows else None
+            for r in srows:
+                star = " ★" if best and r["k"] == best["k"] else ""
+                mark = "green" if r["mean_delta"] < 0 else ("red" if r["mean_delta"] > 0 else "white")
+                table.add_row(variant, student, str(r["k"]), str(r["cases"]),
+                              f"[{mark}]{r['mean_delta']:+.2f}{star}[/{mark}]", str(r["improved"]))
     console.print(table)
 
-    for student in BASELINE:
-        srows = [r for r in rows if r["student"] == student]
-        if srows:
-            best = min(srows, key=lambda r: r["mean_delta"])
-            console.print(f"  best k for [bold]{student}[/bold]: "
-                          f"k={best['k']} (mean Δ {best['mean_delta']:+.2f})")
-
-    out = Path("results") / "k_ablation.csv"
+    out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     with out.open("w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=["student", "k", "case", "baseline", "patched", "delta"])
+        w = csv.DictWriter(fh, fieldnames=["store", "student", "k", "case",
+                                           "baseline", "patched", "delta", "pct_delta"])
         w.writeheader(); w.writerows(per_case_rows)
-    console.print(f"\n[bold]Per-case CSV:[/bold] {out}")
+    console.print(f"\n[bold]Per-case CSV:[/bold] {out} ({len(per_case_rows)} rows)")
 
 
 if __name__ == "__main__":

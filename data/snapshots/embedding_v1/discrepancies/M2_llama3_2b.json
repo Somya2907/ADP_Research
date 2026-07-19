@@ -3,15 +3,21 @@
   "student_id": "llama3_2b",
   "v_miss": [
     {
+      "teacher_id": "F2",
+      "node_type": "F",
+      "label": "GreenRidge has 45 full-time employees (fewer than 50)",
+      "weight": 1.0
+    },
+    {
       "teacher_id": "F4",
       "node_type": "F",
       "label": "TenantRank was developed entirely in-house by GreenRidge's data science team",
       "weight": 1.0
     },
     {
-      "teacher_id": "F5",
+      "teacher_id": "F6",
       "node_type": "F",
-      "label": "TenantRank was trained on five years of GreenRidge's own tenant data",
+      "label": "TenantRank is used to screen prospective tenants for rental housing",
       "weight": 1.0
     },
     {
@@ -33,21 +39,9 @@
       "weight": 1.0
     },
     {
-      "teacher_id": "F10",
-      "node_type": "F",
-      "label": "Initial impact assessment completed January 2026",
-      "weight": 1.0
-    },
-    {
       "teacher_id": "F11",
       "node_type": "F",
       "label": "Applicant disclosure says only 'data analytics tools' without mentioning AI",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F12",
-      "node_type": "F",
-      "label": "Outside counsel advised small-deployer exception applies based on employee count alone",
       "weight": 1.0
     },
     {
@@ -87,15 +81,33 @@
       "weight": 1.0
     },
     {
+      "teacher_id": "I2",
+      "node_type": "I",
+      "label": "Whether the small-deployer exception under Section 6-1-1703(6) applies to GreenRidge",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I3",
+      "node_type": "I",
+      "label": "Whether GreenRidge is both developer and deployer under CO AIA",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I4",
+      "node_type": "I",
+      "label": "Whether current compliance measures satisfy CO AIA obligations",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I5",
+      "node_type": "I",
+      "label": "What additional obligations apply to GreenRidge by June 30, 2026",
+      "weight": 1.5
+    },
+    {
       "teacher_id": "R1",
       "node_type": "R",
       "label": "Definition of artificial intelligence system",
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R2",
-      "node_type": "R",
-      "label": "Housing as a consequential decision domain",
       "weight": 4.0
     },
     {
@@ -111,6 +123,12 @@
       "weight": 4.0
     },
     {
+      "teacher_id": "R6",
+      "node_type": "R",
+      "label": "Definition of deployer",
+      "weight": 4.0
+    },
+    {
       "teacher_id": "R7",
       "node_type": "R",
       "label": "Developer obligations including reasonable care, documentation, and public statement",
@@ -120,6 +138,12 @@
       "teacher_id": "R8",
       "node_type": "R",
       "label": "Deployer obligations including risk management, impact assessment, notice, correction, and appeal",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Small-deployer exception requires BOTH fewer than 50 employees AND not using own data to train",
       "weight": 4.0
     },
     {
@@ -183,6 +207,24 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A5",
+      "node_type": "A",
+      "label": "Section 6-1-1703(6) requires BOTH (a) fewer than 50 employees AND (b) not using own data to train. GreenRidge satisfies (a) with 45 employees but fails (b) because it trained TenantRank on its own five years of tenant data. Both conditions must be met. The exception does not apply.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A7",
+      "node_type": "A",
+      "label": "GreenRidge does business in Colorado and deploys TenantRank, a high-risk AI system, in its property management operations. It meets the deployer definition under Section 6-1-1701(5).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "GreenRidge aligned its risk management program with NIST AI RMF 1.0, satisfying the framework requirement of Section 6-1-1703(2)(a)(III). However, the VP of Operations who directed heavy reliance on TenantRank scores also serves as AI risk officer, creating a governance conflict. The program has not identified or addressed the de facto determinative weight given to scores, undermining substantive adequacy under Section 6-1-1703(2)(a)(I).",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A9",
       "node_type": "A",
       "label": "An impact assessment was completed in January 2026 covering purpose, data inputs, discrimination risks, and mitigation. However, the facts do not confirm all six elements of Section 6-1-1701(8) are addressed, particularly known limitations analysis, output description, and oversight processes. Under Section 6-1-1703(2)(b)(I), pre-deployment systems have until September 28, 2026 to complete a compliant assessment.",
@@ -213,6 +255,18 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A14",
+      "node_type": "A",
+      "label": "If TenantRank produces disparate outcomes on protected characteristics, each non-compliant application decision could constitute a separate violation at up to $20,000 per violation under Section 6-1-1706. With 1,200 rental units, exposure is significant. Actual discrimination outcomes require further factual investigation.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C1",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
       "teacher_id": "C2",
       "node_type": "C",
       "label": "non-compliant",
@@ -226,12 +280,6 @@
     },
     {
       "teacher_id": "C4",
-      "node_type": "C",
-      "label": "non-compliant",
-      "weight": 1.5
-    },
-    {
-      "teacher_id": "C5",
       "node_type": "C",
       "label": "non-compliant",
       "weight": 1.5
@@ -267,6 +315,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Implement annual review process for TenantRank to assess algorithmic discrimination",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "O7",
       "node_type": "O",
       "label": "Publish deployer public website statement summarizing deployed high-risk AI systems and discrimination risk management",
@@ -285,9 +339,9 @@
       "weight": 2.5
     },
     {
-      "teacher_id": "O11",
+      "teacher_id": "O10",
       "node_type": "O",
-      "label": "If algorithmic discrimination discovered, notify AG and affected consumers within 90 days",
+      "label": "Implement meaningful appeal process for consequential housing decisions involving TenantRank",
       "weight": 2.5
     },
     {
@@ -304,122 +358,49 @@
       "teacher_src": "F3",
       "teacher_dst": "I1",
       "teacher_type": "triggers",
-      "student_src": "F2",
-      "student_dst": "I1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E2",
-      "teacher_src": "F6",
-      "teacher_dst": "I1",
-      "teacher_type": "triggers",
-      "student_src": "F4",
-      "student_dst": "I1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E13",
-      "teacher_src": "F2",
-      "teacher_dst": "I2",
-      "teacher_type": "triggers",
       "student_src": "F3",
-      "student_dst": "I2",
+      "student_dst": "I1",
       "student_type": null,
       "kind": "missing",
       "weight": 1.5
-    },
-    {
-      "teacher_eid": "E15",
-      "teacher_src": "R9",
-      "teacher_dst": "A5",
-      "teacher_type": "applies-to",
-      "student_src": "R3",
-      "student_dst": "A4",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
-    },
-    {
-      "teacher_eid": "E20",
-      "teacher_src": "R6",
-      "teacher_dst": "A7",
-      "teacher_type": "applies-to",
-      "student_src": "R2",
-      "student_dst": "A3",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
-    },
-    {
-      "teacher_eid": "E25",
-      "teacher_src": "R16",
-      "teacher_dst": "A8",
-      "teacher_type": "applies-to",
-      "student_src": "R4",
-      "student_dst": "A5",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
     }
   ],
   "v_misground": [
     {
-      "teacher_id": "R3",
+      "teacher_id": "R2",
       "student_id": "R1",
-      "teacher_citation": "CO AIA Section 6-1-1701(7)",
-      "student_citation": "Colorado AI Act (SB 24-205), Section 2(3)(a)(I)",
-      "proposition": "Definition of high-risk AI system",
+      "teacher_citation": "CO AIA Section 6-1-1701(3)(f)",
+      "student_citation": "NYC LL 144 §20-871",
+      "proposition": "Housing as a consequential decision domain",
       "student_section_exists": null,
       "weight": 4.0
     },
     {
-      "teacher_id": "R6",
+      "teacher_id": "R3",
       "student_id": "R2",
-      "teacher_citation": "CO AIA Section 6-1-1701(5)",
-      "student_citation": "Colorado AI Act (SB 24-205), Section 3(1)(a)",
-      "proposition": "Definition of deployer",
-      "student_section_exists": null,
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R9",
-      "student_id": "R3",
-      "teacher_citation": "CO AIA Section 6-1-1703(6)",
-      "student_citation": "Colorado AI Act (SB 24-205), Section 4(1)(a)",
-      "proposition": "Small-deployer exception requires BOTH fewer than 50 employees AND not using own data to train",
-      "student_section_exists": null,
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R16",
-      "student_id": "R4",
-      "teacher_citation": "CO AIA Section 6-1-1703(2)(a)(III)",
-      "student_citation": "NIST AI Risk Management Framework 1.0, Section 2.1",
-      "proposition": "Risk management program must be consistent with NIST AI RMF 1.0 or equivalent",
+      "teacher_citation": "CO AIA Section 6-1-1701(7)",
+      "student_citation": "CO SB 24-205 § 2-101",
+      "proposition": "Definition of high-risk AI system",
       "student_section_exists": null,
       "weight": 4.0
     }
   ],
-  "l_ged": 132.0,
+  "l_ged": 138.5,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 14,
+      "v_miss": 13,
       "v_halluc": 0
     },
     "I": {
-      "v_miss": 0,
+      "v_miss": 4,
       "v_halluc": 0
     },
     "R": {
-      "v_miss": 12,
+      "v_miss": 13,
       "v_halluc": 0
     },
     "A": {
-      "v_miss": 9,
+      "v_miss": 13,
       "v_halluc": 0
     },
     "C": {
@@ -427,7 +408,7 @@
       "v_halluc": 0
     },
     "O": {
-      "v_miss": 10,
+      "v_miss": 11,
       "v_halluc": 0
     }
   }

@@ -289,8 +289,14 @@ def generate_patches(
     case: Case,
     *,
     insight: Optional[InsightWriter] = None,
+    index=None,
 ) -> list[Patch]:
-    """Mine raw patch candidates from one training-case report (train-only)."""
+    """Mine raw patch candidates from one training-case report (train-only).
+
+    ``index`` is an optional ``StatuteIndex``; when supplied, each patch's
+    ``verification`` is set from ``index.classify_citation(controlling_authority)``.
+    When ``None`` (the default), verification stays ``"unverified"``.
+    """
     if case.role != "training":
         raise ValueError(
             f"patch mining is train-only; {case.case_id} has role={case.role!r}"
@@ -307,6 +313,9 @@ def generate_patches(
                 patches.append(p)
     for m in report.v_misground:
         patches.append(_mine_misground(m, teacher, case, t_index, insight))
+    if index is not None:
+        for p in patches:
+            p.verification = index.classify_citation(p.controlling_authority)
     return patches
 
 
@@ -336,15 +345,18 @@ def generate_all(
     cases: list[tuple[DiscrepancyReport, LegalReasoningGraph, LegalReasoningGraph, Case]],
     *,
     insight: Optional[InsightWriter] = None,
+    index=None,
 ) -> list[Patch]:
     """Mine + dedup across multiple training cases.
 
     ``cases`` is a list of (report, teacher_graph, student_graph, case) tuples,
     assembled by the caller from the snapshot + graphs dirs (training cases only).
+    ``index`` (optional ``StatuteIndex``) sets each patch's ``verification`` —
+    dedup preserves it (patches sharing an authority classify identically).
     """
     raw: list[Patch] = []
     for report, teacher, student, case in cases:
-        raw += generate_patches(report, teacher, student, case, insight=insight)
+        raw += generate_patches(report, teacher, student, case, insight=insight, index=index)
     return dedup_merge(raw)
 
 

@@ -3,15 +3,39 @@
   "student_id": "llama3_2b",
   "v_miss": [
     {
+      "teacher_id": "F3",
+      "node_type": "F",
+      "label": "PromoteAI ingests performance reviews, years of experience, patient satisfaction, and continuing education records",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F4",
+      "node_type": "F",
+      "label": "Bias audit completed March 2025 by Compliance Analytics Group, an independent firm with no financial ties to Metropolitan",
+      "weight": 1.0
+    },
+    {
       "teacher_id": "F7",
       "node_type": "F",
       "label": "Notice sent only three business days before promotion evaluation cycle begins",
       "weight": 1.0
     },
     {
+      "teacher_id": "F10",
+      "node_type": "F",
+      "label": "PromoteAI was custom-built by Metropolitan's IT department in 2022, making Metropolitan both developer and deployer",
+      "weight": 1.0
+    },
+    {
       "teacher_id": "F11",
       "node_type": "F",
       "label": "Metropolitan operates in NYC; no facts establish operations in Texas or Colorado",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F12",
+      "node_type": "F",
+      "label": "Promotion candidates are employees residing in NYC",
       "weight": 1.0
     },
     {
@@ -27,9 +51,21 @@
       "weight": 1.5
     },
     {
+      "teacher_id": "I4",
+      "node_type": "I",
+      "label": "Does the candidate notice satisfy the content requirements of Section 20-872(a)?",
+      "weight": 1.5
+    },
+    {
       "teacher_id": "I5",
       "node_type": "I",
       "label": "Does the candidate notice satisfy the 10-business-day timing requirement of DCWP Rules Section 5-304(c)?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I6",
+      "node_type": "I",
+      "label": "Does failure to offer an alternative selection process independently violate LL 144?",
       "weight": 1.5
     },
     {
@@ -51,12 +87,6 @@
       "weight": 1.5
     },
     {
-      "teacher_id": "R1",
-      "node_type": "R",
-      "label": "AEDT definition: computational process using ML/AI that issues simplified output to substantially assist or replace discretionary employment decision-making",
-      "weight": 4.0
-    },
-    {
       "teacher_id": "R2",
       "node_type": "R",
       "label": "Bias audit must be conducted no more than one year prior to use of AEDT",
@@ -66,6 +96,12 @@
       "teacher_id": "R3",
       "node_type": "R",
       "label": "Auditor must not be employed by, have financial interest in, or have been involved in developing the AEDT within past three years",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "node_type": "R",
+      "label": "Notice must identify AEDT use, job qualifications assessed, consideration of other info, and right to request alternative process",
       "weight": 4.0
     },
     {
@@ -87,9 +123,9 @@
       "weight": 4.0
     },
     {
-      "teacher_id": "R9",
+      "teacher_id": "R8",
       "node_type": "R",
-      "label": "Prohibits AI deployment with intent to unlawfully discriminate; requires intentional discrimination not mere disparate impact",
+      "label": "Notice must include instructions for requesting alternative process but employer not required to provide one",
       "weight": 4.0
     },
     {
@@ -108,12 +144,6 @@
       "teacher_id": "R13",
       "node_type": "R",
       "label": "Deployers must provide consumer notice before consequential decisions and offer appeal rights",
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R14",
-      "node_type": "R",
-      "label": "Scoring AEDT bias audit must calculate median score, scoring rates, and impact ratios across sex, race/ethnicity, and intersectional categories",
       "weight": 4.0
     },
     {
@@ -141,6 +171,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A6",
+      "node_type": "A",
+      "label": "DCWP Rules Section 5-304(a) explicitly states nothing requires an employer to provide an alternative selection process. Not offering one is not independently a violation. However, the failure to include instructions about requesting one in the notice is a notice content violation captured in A4.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A7",
       "node_type": "A",
       "label": "The bias audit summary is posted on the careers page in a clearly labeled section, satisfying the location and conspicuousness requirements. However, the facts do not confirm whether all required data elements are included: distribution date, data source explanation, unknown category counts, applicant numbers, scoring rates, and impact ratios. Compliance is partial pending verification of content completeness.",
@@ -162,6 +198,12 @@
       "teacher_id": "A10",
       "node_type": "A",
       "label": "Colorado AIA is not in force until June 30, 2026. No current binding obligation exists. Whether Metropolitan must comply depends on whether it does business in Colorado, which is not established in the facts. If applicable, it would need impact assessments within 90 days of the effective date for already-deployed systems.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "Each use of a non-compliant AEDT to screen a single candidate is a separate violation. With 22,000 employees and multiple nursing promotion candidates, Metropolitan faces per-candidate penalties of $500-$1,500 for each of the stale audit, deficient notice content, and deficient notice timing violations.",
       "weight": 2.5
     },
     {
@@ -201,6 +243,18 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "O3",
+      "node_type": "O",
+      "label": "Send revised notice at least 10 business days before the promotion evaluation cycle begins, not 3 business days",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O4",
+      "node_type": "O",
+      "label": "Update public disclosure on careers page with new bias audit summary including all required elements: audit date, distribution date, data source explanation, unknown category counts, applicant numbers, scoring rates, and impact ratios",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "O5",
       "node_type": "O",
       "label": "Publish AEDT data retention policy, type and source of data collected, and instructions for written requests on employment section of website per DCWP Rules Section 5-304(d)",
@@ -225,78 +279,15 @@
       "weight": 2.5
     }
   ],
-  "v_halluc": [
-    {
-      "student_id": "F2",
-      "node_type": "F",
-      "label": "MHS employs approximately 22,000 staff.",
-      "reason": "unaligned",
-      "weight": 1.0
-    }
-  ],
+  "v_halluc": [],
   "e_diff": [
     {
       "teacher_eid": "E1",
       "teacher_src": "F2",
       "teacher_dst": "I1",
       "teacher_type": "triggers",
-      "student_src": "F3",
+      "student_src": "F2",
       "student_dst": "I1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E2",
-      "teacher_src": "F3",
-      "teacher_dst": "I1",
-      "teacher_type": "triggers",
-      "student_src": "F5",
-      "student_dst": "I1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E12",
-      "teacher_src": "R8",
-      "teacher_dst": "A6",
-      "teacher_type": "applies-to",
-      "student_src": "R2",
-      "student_dst": "A2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
-    },
-    {
-      "teacher_eid": "E33",
-      "teacher_src": "A11",
-      "teacher_dst": "C1",
-      "teacher_type": "fails-element",
-      "student_src": "A3",
-      "student_dst": "C1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 2.5
-    },
-    {
-      "teacher_eid": "E34",
-      "teacher_src": "F12",
-      "teacher_dst": "I1",
-      "teacher_type": "triggers",
-      "student_src": "F7",
-      "student_dst": "I1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E36",
-      "teacher_src": "F8",
-      "teacher_dst": "I6",
-      "teacher_type": "triggers",
-      "student_src": "F10",
-      "student_dst": "I3",
       "student_type": null,
       "kind": "missing",
       "weight": 1.5
@@ -304,40 +295,49 @@
   ],
   "v_misground": [
     {
-      "teacher_id": "R4",
+      "teacher_id": "R1",
       "student_id": "R1",
-      "teacher_citation": "NYC LL 144 Section 20-872(a)(1)-(3); DCWP Rules Section 5-304(a)",
+      "teacher_citation": "NYC LL 144 Section 20-870; DCWP Rules Section 5-300",
       "student_citation": "NYC LL 144 §20-871",
-      "proposition": "Notice must identify AEDT use, job qualifications assessed, consideration of other info, and right to request alternative process",
+      "proposition": "AEDT definition: computational process using ML/AI that issues simplified output to substantially assist or replace discretionary employment decision-making",
       "student_section_exists": null,
       "weight": 4.0
     },
     {
-      "teacher_id": "R8",
-      "student_id": "R2",
-      "teacher_citation": "DCWP Rules Section 5-304(a)",
-      "student_citation": "NYC LL 144 §20-872",
-      "proposition": "Notice must include instructions for requesting alternative process but employer not required to provide one",
+      "teacher_id": "R9",
+      "student_id": "R4",
+      "teacher_citation": "Texas TRAIGA Section 551.051",
+      "student_citation": "Texas HB 149 § 2051.051",
+      "proposition": "Prohibits AI deployment with intent to unlawfully discriminate; requires intentional discrimination not mere disparate impact",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "student_id": "R3",
+      "teacher_citation": "NYC LL 144 Section 20-871(b); DCWP Rules Section 5-301(c)",
+      "student_citation": "Colorado SB 24-205 § 13-90.5-103",
+      "proposition": "Scoring AEDT bias audit must calculate median score, scoring rates, and impact ratios across sex, race/ethnicity, and intersectional categories",
       "student_section_exists": null,
       "weight": 4.0
     }
   ],
-  "l_ged": 109.5,
+  "l_ged": 110.5,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 2,
-      "v_halluc": 1
-    },
-    "I": {
       "v_miss": 6,
       "v_halluc": 0
     },
+    "I": {
+      "v_miss": 8,
+      "v_halluc": 0
+    },
     "R": {
-      "v_miss": 11,
+      "v_miss": 10,
       "v_halluc": 0
     },
     "A": {
-      "v_miss": 9,
+      "v_miss": 11,
       "v_halluc": 0
     },
     "C": {
@@ -345,7 +345,7 @@
       "v_halluc": 0
     },
     "O": {
-      "v_miss": 5,
+      "v_miss": 7,
       "v_halluc": 0
     }
   }

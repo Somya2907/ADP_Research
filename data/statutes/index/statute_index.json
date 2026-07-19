@@ -5,6 +5,11 @@
     "nyc_dcwp_rules": "MISSING",
     "tx_traiga": "summary"
   },
+  "family_prefixes": {
+    "co_aia": "6-1-17",
+    "nyc_ll144": "20-87"
+  },
+  "_family_prefixes_note": "Section-number prefix of each verbatim statute, used by classify_citation. A cited base section matching a prefix but absent from that statute's section list is 'fabricated' (e.g. 20-875); matching no prefix is 'unverified' (DCWP 5-3xx, TX 551.x).",
   "_provenance_notes": {
     "co_aia": "Verbatim from 2024a_205_signed-act.pdf (26pp enacted SB 24-205). Sections 6-1-1701..6-1-1707 confirmed present in the PDF (incl. 6-1-1705 and 6-1-1707). NOTE: the co_aia_sb24_205.txt study-aid OMITS 6-1-1705 and 6-1-1707 and adds interpretive annotations; it is NOT used to build this index.",
     "nyc_ll144": "Verbatim from 'Legislation Text.pdf' (4pp, Int. 1894-A). Real sections: 20-870 (Definitions), 20-871 (Requirements; subdivisions a, b), 20-872 (Penalties; a-d), 20-873 (Enforcement), 20-874 (Construction). There is NO 20-875. NOTE: the nyc_ll144_statute.txt study-aid fabricates a 20-875, mislabels 20-873/20-874, and invents a 20-871(d); it is NOT used. Marked 'statute-only' because NYC citations also reference the DCWP Final Rules (6 RCNY 5-3xx), a separate source that is MISSING.",

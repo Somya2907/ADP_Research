@@ -1,0 +1,1206 @@
+[
+  {
+    "case": "E2",
+    "student": "gpt5",
+    "k": 1,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "llama3_2b",
+    "k": 1,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "gpt5",
+    "k": 1,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "llama3_2b",
+    "k": 1,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "gpt5",
+    "k": 1,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "llama3_2b",
+    "k": 1,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "gpt5",
+    "k": 3,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 33.3,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_3dab45c198ba",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_07bf6674d30e",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(c)",
+        "off_jurisdiction": true
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "llama3_2b",
+    "k": 3,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 33.3,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_3dab45c198ba",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_07bf6674d30e",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(c)",
+        "off_jurisdiction": true
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "gpt5",
+    "k": 3,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "llama3_2b",
+    "k": 3,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "gpt5",
+    "k": 3,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "llama3_2b",
+    "k": 3,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "gpt5",
+    "k": 5,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 60.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_3dab45c198ba",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_07bf6674d30e",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(c)",
+        "off_jurisdiction": true
+      },
+      {
+        "patch_id": "p_f9358693cd4b",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA \u00a76-1-1704",
+        "off_jurisdiction": true
+      },
+      {
+        "patch_id": "p_ea1d06d0d3fa",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(c)",
+        "off_jurisdiction": true
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "llama3_2b",
+    "k": 5,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 60.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_3dab45c198ba",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_07bf6674d30e",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(c)",
+        "off_jurisdiction": true
+      },
+      {
+        "patch_id": "p_f9358693cd4b",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA \u00a76-1-1704",
+        "off_jurisdiction": true
+      },
+      {
+        "patch_id": "p_ea1d06d0d3fa",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(c)",
+        "off_jurisdiction": true
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "gpt5",
+    "k": 5,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b6ade26371ca",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_cb80acec9ac0",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "llama3_2b",
+    "k": 5,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b6ade26371ca",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_cb80acec9ac0",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "gpt5",
+    "k": 5,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_f8284ac6fca6",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b6ade26371ca",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "llama3_2b",
+    "k": 5,
+    "variant": "clean",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_f8284ac6fca6",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b6ade26371ca",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "gpt5",
+    "k": 1,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "llama3_2b",
+    "k": 1,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "gpt5",
+    "k": 1,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "llama3_2b",
+    "k": 1,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "gpt5",
+    "k": 1,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "llama3_2b",
+    "k": 1,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 1,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "gpt5",
+    "k": 3,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 2,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_3dab45c198ba",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "llama3_2b",
+    "k": 3,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 2,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_3dab45c198ba",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "gpt5",
+    "k": 3,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "llama3_2b",
+    "k": 3,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "gpt5",
+    "k": 3,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "llama3_2b",
+    "k": 3,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 3,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "gpt5",
+    "k": 5,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 2,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_3dab45c198ba",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "E2",
+    "student": "llama3_2b",
+    "k": 5,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "nyc"
+    ],
+    "n_retrieved": 2,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_7a56ecfeb82a",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_3dab45c198ba",
+        "jurisdiction": "nyc",
+        "verification": "verified",
+        "authority": "NYC LL 144 \u00a720-871(d)(2)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "gpt5",
+    "k": 5,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b6ade26371ca",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_cb80acec9ac0",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "M2",
+    "student": "llama3_2b",
+    "k": 5,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b6ade26371ca",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_cb80acec9ac0",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "gpt5",
+    "k": 5,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_f8284ac6fca6",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b6ade26371ca",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      }
+    ]
+  },
+  {
+    "case": "H2",
+    "student": "llama3_2b",
+    "k": 5,
+    "variant": "clean_jfilter",
+    "run_tag": "",
+    "case_jurisdictions": [
+      "colorado"
+    ],
+    "n_retrieved": 5,
+    "off_jurisdiction_pct": 0.0,
+    "retrieved": [
+      {
+        "patch_id": "p_4b3934a5ecdc",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_215af45aa260",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(a)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b9693e605915",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_f8284ac6fca6",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      },
+      {
+        "patch_id": "p_b6ade26371ca",
+        "jurisdiction": "colorado",
+        "verification": "verified",
+        "authority": "CO AIA Section 6-1-1703(2)(d)",
+        "off_jurisdiction": false
+      }
+    ]
+  }
+]

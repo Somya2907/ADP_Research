@@ -83,6 +83,11 @@ def build() -> str:
              "refresh. Every number below is read from "
              "`{tfidf,embedding}_v1/results/discrepancy_summary.csv`.")
     L.append("")
+    L.append(f"> **Ranking re-verification (Phase 3, post baseline re-pin):** embedding "
+             f"recovers the expected GPT-5 < Llama ranking on **{emb_ok}/{n}** cases — the "
+             f"methods claim **{'HOLDS' if emb_ok == n else 'DOES NOT HOLD'}**; TF-IDF "
+             f"manages **{tf_ok}/{n}**. See `docs/BASELINE_PROVENANCE.md`.")
+    L.append("")
     L.append("The discrepancy scorer (L-GED) compares each student's F-I-R-A-C-O graph "
              "against the teacher's. Node alignment — deciding which student node "
              "corresponds to which teacher node — is the one step with a pluggable "

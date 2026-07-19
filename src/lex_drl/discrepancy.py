@@ -220,6 +220,7 @@ def compute_discrepancies(
     *,
     section_exists_fn: Optional[Callable[[str], bool]] = None,
     include_misground_in_lged: bool = False,
+    exclude_teacher_rule_ids: "frozenset[str] | set[str]" = frozenset(),
 ) -> DiscrepancyReport:
     """Compute v_miss / v_halluc / e_diff / v_misground and the L-GED score.
 
@@ -250,6 +251,8 @@ def compute_discrepancies(
     v_miss: list[MissingNode] = []
     for tid, sid in teacher_to_student.items():
         if sid is None:
+            if tid in exclude_teacher_rule_ids:
+                continue  # S3: drop fabricated teacher rules from the metric
             node = t_index.get(tid)
             if node is None:
                 continue
@@ -283,6 +286,8 @@ def compute_discrepancies(
 
     e_diff: list[EdgeDiff] = []
     for edge in teacher.edges:
+        if edge.src in exclude_teacher_rule_ids or edge.dst in exclude_teacher_rule_ids:
+            continue  # S3: drop edges incident to fabricated teacher rules
         mapped_src = teacher_to_student.get(edge.src)
         mapped_dst = teacher_to_student.get(edge.dst)
         if mapped_src is None or mapped_dst is None:

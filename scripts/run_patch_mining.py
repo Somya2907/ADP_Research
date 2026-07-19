@@ -25,11 +25,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from rich.console import Console
 from rich.table import Table
 
+from collections import Counter
+
 from lex_drl.cases import load_all_cases
 from lex_drl.discrepancy import DiscrepancyReport
 from lex_drl.patch_generator import generate_all
 from lex_drl.patch_store import PatchStore
 from lex_drl.schema import LegalReasoningGraph
+from lex_drl.statute_index import load_statute_index
 
 console = Console()
 
@@ -92,10 +95,12 @@ def main() -> None:
                 _load_graph(student_path), case,
             ))
 
+    index = load_statute_index()  # classify_citation works even when untrustworthy
     console.print(f"[bold]Mining {len(tuples)} (case, student) reports "
-                  f"from snapshot '{args.snapshot}'[/bold] (insight=None, deterministic)")
+                  f"from snapshot '{args.snapshot}'[/bold] (insight=None, deterministic; "
+                  f"index={'loaded' if index else 'None'})")
 
-    patches = generate_all(tuples, insight=None)
+    patches = generate_all(tuples, insight=None, index=index)
 
     store = PatchStore()
     store.populate_from_candidates(patches)
@@ -119,6 +124,26 @@ def main() -> None:
     console.print(f"\n[green bold]{len(store)} patches[/green bold] "
                   f"({', '.join(f'{k}={v}' for k, v in sorted(by_family.items()))}) "
                   f"→ {out_path}")
+
+    # ── Verification census (overall + by jurisdiction) ──
+    census = Counter(p.verification for p in store.all())
+    console.print("\n[bold]Verification census:[/bold] "
+                  + ", ".join(f"{v}={census.get(v, 0)}"
+                              for v in ("verified", "unverified", "fabricated")))
+    by_juris: dict[str, Counter] = {}
+    for p in store.all():
+        by_juris.setdefault(p.jurisdiction or "?", Counter())[p.verification] += 1
+    jtable = Table(title="Verification by jurisdiction")
+    for col in ("jurisdiction", "verified", "unverified", "fabricated", "total"):
+        jtable.add_column(col, justify="right" if col != "jurisdiction" else "left")
+    for juris in sorted(by_juris):
+        c = by_juris[juris]
+        jtable.add_row(juris, str(c.get("verified", 0)), str(c.get("unverified", 0)),
+                       str(c.get("fabricated", 0)), str(sum(c.values())))
+    console.print(jtable)
+    fab_ids = sorted(p.patch_id for p in store.all() if p.verification == "fabricated")
+    console.print(f"[bold]fabricated ids:[/bold] {fab_ids or 'none'}")
+
     if skipped:
         console.print("\n[yellow]Skipped:[/yellow]")
         for s in skipped:

@@ -16,8 +16,65 @@ from lex_drl.statute_index import (
 )
 
 
-def _write_index(path: Path, provenance: dict, sections: dict) -> None:
-    path.write_text(json.dumps({"provenance": provenance, "sections": sections}))
+def _write_index(path: Path, provenance: dict, sections: dict,
+                 family_prefixes: dict | None = None) -> None:
+    payload = {"provenance": provenance, "sections": sections}
+    if family_prefixes is not None:
+        payload["family_prefixes"] = family_prefixes
+    path.write_text(json.dumps(payload))
+
+
+def _corpus_index(tmp_path: Path):
+    """An index mirroring the real corpus for classify_citation tests."""
+    p = tmp_path / "idx.json"
+    _write_index(
+        p,
+        {"co_aia": "verbatim", "nyc_ll144": "statute-only"},
+        {
+            "co_aia": ["6-1-1701", "6-1-1702", "6-1-1703", "6-1-1703(2)(a)",
+                       "6-1-1704", "6-1-1705", "6-1-1706", "6-1-1707"],
+            "nyc_ll144": ["20-870", "20-871", "20-871(a)", "20-871(b)",
+                          "20-872", "20-872(a)", "20-873", "20-874"],
+        },
+        family_prefixes={"co_aia": "6-1-17", "nyc_ll144": "20-87"},
+    )
+    return load_statute_index(p)
+
+
+def test_classify_ancestor_rule_subsubdivision_is_verified(tmp_path):
+    """The ancestor rule: a real sub-subdivision resolves via its parent section."""
+    idx = _corpus_index(tmp_path)
+    assert idx.classify_citation("§20-871(a)(1)") == "verified"   # ancestor 20-871(a)
+    assert idx.classify_citation("§6-1-1703(2)(a)") == "verified"
+
+
+def test_classify_fabricated_real_and_unverified(tmp_path):
+    idx = _corpus_index(tmp_path)
+    assert idx.classify_citation("NYC LL 144 §20-875") == "fabricated"  # in 20-87, not in list
+    assert idx.classify_citation("§20-872(a)") == "verified"
+    assert idx.classify_citation("§5-301") == "unverified"              # DCWP, no family
+    assert idx.classify_citation("Texas TRAIGA §551.201") == "unverified"
+
+
+def test_classify_multi_citation_is_worst_of(tmp_path):
+    idx = _corpus_index(tmp_path)
+    assert idx.classify_citation("§20-871(a)(1); DCWP §5-301(a)") == "unverified"
+    assert idx.classify_citation("§20-875; §5-301") == "fabricated"
+
+
+def test_classify_handles_truncated_authority_and_empty(tmp_path):
+    idx = _corpus_index(tmp_path)
+    assert idx.classify_citation("CO AIA §6-1-1703(2)(a)-(") == "verified"
+    assert idx.classify_citation("") == "unverified"
+
+
+def test_classify_range_citations_resolve_to_base_section(tmp_path):
+    """Range/compound citations must resolve to their real base section, not
+    be mis-flagged fabricated (regression: 6-1-1703(2)(a)-(g))."""
+    idx = _corpus_index(tmp_path)
+    assert idx.classify_citation("CO AIA §6-1-1703(2)(a)-(g)") == "verified"
+    assert idx.classify_citation("Colorado AIA Section 6-1-1702(2)-(3)") == "verified"
+    assert idx.classify_citation("§6-1-1703(2)(f)-(g)") == "verified"
 
 
 def test_load_missing_file_returns_none(tmp_path):

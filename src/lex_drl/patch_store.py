@@ -15,6 +15,7 @@ from typing import Iterable, Literal, Optional
 from pydantic import BaseModel, Field
 
 PatchFamily = Literal["missing_rule", "missing_obligation", "misgrounding"]
+Verification = Literal["verified", "unverified", "fabricated"]
 
 _TOKEN = re.compile(r"[A-Za-z0-9][\w\-§().]*")
 
@@ -36,6 +37,9 @@ class Patch(BaseModel):
     node_types_addressed: list[str] = Field(default_factory=list)
     source_cases: list[str] = Field(default_factory=list)
     jurisdiction: str = ""
+    # Set at mining time from StatuteIndex.classify_citation(controlling_authority).
+    # "unverified" when no index was supplied at mining time (back-compat default).
+    verification: Verification = "unverified"
 
     def index_text(self) -> str:
         """The text BM25 indexes for this patch."""
@@ -83,7 +87,13 @@ class PatchStore:
         # BM25Okapi requires a non-empty corpus; guard the empty case.
         self._bm25 = BM25Okapi(tokenized) if tokenized else None
 
-    def retrieve(self, query: str, k: int = 3) -> list[Patch]:
+    def retrieve(
+        self,
+        query: str,
+        k: int = 3,
+        allowed: "set[str] | frozenset[str]" = frozenset({"verified"}),
+        jurisdictions: "set[str] | None" = None,
+    ) -> list[Patch]:
         """Return the top-k patches most relevant to ``query`` (raw case text).
 
         Ranks by BM25 but gates on actual token overlap. The overlap gate matters
@@ -91,6 +101,12 @@ class PatchStore:
         for terms appearing in ~half the patches, so a pure ``score > 0`` filter
         would discard valid matches. Patches with no keyword overlap are dropped,
         so an off-topic query returns fewer than k (or zero) rather than noise.
+
+        ``allowed`` restricts retrieval to patches with those ``verification``
+        statuses (default: verified-only). ``jurisdictions`` (canonical, e.g.
+        {"nyc"}), when given, restricts to those patch jurisdictions. Both filters
+        apply *before* ranking, so a quarantined/off-jurisdiction patch is never
+        returned even when it is the top BM25 hit.
         """
         self._ensure_index()
         if not self._corpus_ids:
@@ -101,7 +117,12 @@ class PatchStore:
                   else [0.0] * len(self._corpus_ids))
         scored: list[tuple[str, float, int]] = []
         for pid, bm in zip(self._corpus_ids, scores):
-            kw_tokens = set(_tokenize(self._patches[pid].index_text()))
+            patch = self._patches[pid]
+            if patch.verification not in allowed:
+                continue  # quarantine filter (before ranking)
+            if jurisdictions is not None and patch.jurisdiction not in jurisdictions:
+                continue  # jurisdiction pre-filter
+            kw_tokens = set(_tokenize(patch.index_text()))
             overlap = len(q_set & kw_tokens)
             if overlap == 0:
                 continue

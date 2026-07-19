@@ -3,33 +3,9 @@
   "student_id": "llama3_2b",
   "v_miss": [
     {
-      "teacher_id": "F2",
-      "node_type": "F",
-      "label": "Helix deployed AutoApprove, an AI-powered underwriting system developed by FinLogic AI",
-      "weight": 1.0
-    },
-    {
       "teacher_id": "F4",
       "node_type": "F",
       "label": "Stage 2: 38% of applications routed to human underwriter who receives AI score, AI risk narrative, and raw data",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F5",
-      "node_type": "F",
-      "label": "Human underwriters agree with AutoApprove direction in 71% of Stage 2 cases",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F6",
-      "node_type": "F",
-      "label": "GC memo argues AutoApprove is not a substantial factor due to independent human analysis",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F7",
-      "node_type": "F",
-      "label": "Morrison & Partners memo concludes AutoApprove is a substantial factor requiring full deployer obligations",
       "weight": 1.0
     },
     {
@@ -69,6 +45,12 @@
       "weight": 1.0
     },
     {
+      "teacher_id": "F14",
+      "node_type": "F",
+      "label": "AutoApprove is used for lending decisions - financial or lending services",
+      "weight": 1.0
+    },
+    {
       "teacher_id": "F15",
       "node_type": "F",
       "label": "Helix has 310 employees, far exceeding the 50-employee small deployer threshold",
@@ -87,15 +69,15 @@
       "weight": 1.0
     },
     {
-      "teacher_id": "F18",
-      "node_type": "F",
-      "label": "Stage 1 auto-approves above 70th percentile and auto-denies below 40th percentile with no human review",
-      "weight": 1.0
-    },
-    {
       "teacher_id": "I2",
       "node_type": "I",
       "label": "Whether AutoApprove Stage 2 (human-reviewed) constitutes a high-risk AI system and whether AI is a substantial factor under 6-1-1701(9)",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I3",
+      "node_type": "I",
+      "label": "How to resolve the conflict between GC memo and Morrison memo - authority hierarchy relative to statutory text",
       "weight": 1.5
     },
     {
@@ -135,12 +117,6 @@
       "weight": 4.0
     },
     {
-      "teacher_id": "R4",
-      "node_type": "R",
-      "label": "Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output",
-      "weight": 4.0
-    },
-    {
       "teacher_id": "R5",
       "node_type": "R",
       "label": "Deployer: person doing business in the state that deploys a high-risk AI system",
@@ -150,12 +126,6 @@
       "teacher_id": "R6",
       "node_type": "R",
       "label": "Developer: person doing business in the state that develops or substantially modifies an AI system intended or known to be used as high-risk",
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R7",
-      "node_type": "R",
-      "label": "Deployer must implement risk management policy consistent with NIST AI 100-1 or substantially equivalent framework",
       "weight": 4.0
     },
     {
@@ -249,9 +219,9 @@
       "weight": 2.5
     },
     {
-      "teacher_id": "A4",
+      "teacher_id": "A3",
       "node_type": "A",
-      "label": "In Stage 2, AutoApprove is a substantial factor: the underwriter receives the AI risk score and AI-generated risk narrative as 2 of 3 inputs. The 71% agreement rate indicates material contribution. Under 6-1-1701(9), human review does not negate substantial factor status when review is based primarily on AI output. The AI narrative frames the analysis by identifying key factors, creating anchoring effects. The anti-rubber-stamping provision directly applies.",
+      "label": "In Stage 1, AutoApprove directly makes the consequential decision - auto-approving or auto-denying with no human review. The AI system makes the decision, not merely contributes to it. No exceptions under 6-1-1701(7)(a)-(d) apply: it is not a narrow procedural task, does not improve prior human activity, does not merely detect patterns, and is not preparatory.",
       "weight": 2.5
     },
     {
@@ -321,6 +291,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A16",
+      "node_type": "A",
+      "label": "The statutory text of 6-1-1701(9) controls over both memos. The GC memo fails to engage with the anti-rubber-stamping provision and ignores that 62% of decisions are fully automated. The Morrison memo correctly applies the statute. Neither memo is binding authority - the statute is the supreme authority. The GC memo is legally deficient; the Morrison memo is persuasive because it correctly interprets binding statutory text.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "C1",
       "node_type": "C",
       "label": "non-compliant",
@@ -328,6 +304,12 @@
     },
     {
       "teacher_id": "C2",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C3",
       "node_type": "C",
       "label": "non-compliant",
       "weight": 1.5
@@ -345,10 +327,10 @@
       "weight": 1.5
     },
     {
-      "teacher_id": "C6",
-      "node_type": "C",
-      "label": "non-compliant",
-      "weight": 1.5
+      "teacher_id": "O1",
+      "node_type": "O",
+      "label": "Implement pre-decision consumer notice system informing all loan applicants of AI use, purpose, contact info, plain-language description, and website statement access per 6-1-1703(2)(e)(I)-(V)",
+      "weight": 2.5
     },
     {
       "teacher_id": "O3",
@@ -402,15 +384,37 @@
   "v_halluc": [],
   "e_diff": [
     {
-      "teacher_eid": "E2",
-      "teacher_src": "F3",
+      "teacher_eid": "E1",
+      "teacher_src": "F2",
       "teacher_dst": "I1",
       "teacher_type": "triggers",
-      "student_src": "F3",
+      "student_src": "F2",
       "student_dst": "I1",
       "student_type": null,
       "kind": "missing",
       "weight": 1.5
+    },
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F3",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F4",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E10",
+      "teacher_src": "R4",
+      "teacher_dst": "A4",
+      "teacher_type": "applies-to",
+      "student_src": "R2",
+      "student_dst": "A1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
     }
   ],
   "v_misground": [
@@ -418,8 +422,17 @@
       "teacher_id": "R3",
       "student_id": "R1",
       "teacher_citation": "CO AIA 6-1-1701(7)",
-      "student_citation": "Colorado AI Act §6-1-1703",
+      "student_citation": "NYC LL 144 §20-871",
       "proposition": "High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "student_id": "R2",
+      "teacher_citation": "CO AIA 6-1-1701(9)",
+      "student_citation": "CO SB 24-205 §6-1-1703",
+      "proposition": "Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output",
       "student_section_exists": null,
       "weight": 4.0
     }
@@ -427,19 +440,19 @@
   "l_ged": 162.5,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 15,
+      "v_miss": 11,
       "v_halluc": 0
     },
     "I": {
-      "v_miss": 5,
+      "v_miss": 6,
       "v_halluc": 0
     },
     "R": {
-      "v_miss": 19,
+      "v_miss": 17,
       "v_halluc": 0
     },
     "A": {
-      "v_miss": 14,
+      "v_miss": 15,
       "v_halluc": 0
     },
     "C": {
@@ -447,7 +460,7 @@
       "v_halluc": 0
     },
     "O": {
-      "v_miss": 8,
+      "v_miss": 9,
       "v_halluc": 0
     }
   }

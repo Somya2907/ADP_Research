@@ -103,6 +103,7 @@ class AgentClient:
         user: str,
         max_tokens: int = 16384,
         temperature: float = 0.0,
+        run_tag: str = "",  # salts the cache key (variance repeats); ignored by the API
     ) -> LLMResponse:
         resp = self.client.chat.completions.create(
             model=self.model,
@@ -149,6 +150,7 @@ class SmallModelClient:
         max_tokens: int = 8192,
         temperature: float = 0.0,
         max_retries: int = 5,
+        run_tag: str = "",  # salts the cache key (variance repeats); ignored by the API
     ) -> LLMResponse:
         # The working free provider (Venice) is heavily 429-throttled; retry with
         # backoff to push through. (The paid route for this model is Cloudflare-only,
@@ -230,6 +232,7 @@ class LocalSmallModelClient:
         user: str,
         max_tokens: int = 4096,
         temperature: float = 0.0,
+        run_tag: str = "",  # salts the cache key (variance repeats); ignored by generation
     ) -> LLMResponse:
         import torch
 

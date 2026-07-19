@@ -3,45 +3,21 @@
   "student_id": "llama3_2b",
   "v_miss": [
     {
+      "teacher_id": "F1",
+      "node_type": "F",
+      "label": "FinSpark is Colorado-chartered, headquartered in Denver, with 240 FTEs",
+      "weight": 1.0
+    },
+    {
       "teacher_id": "F2",
       "node_type": "F",
       "label": "LoanScore is an AI credit underwriting model producing binary approval/denial and interest rate tier",
       "weight": 1.0
     },
     {
-      "teacher_id": "F4",
+      "teacher_id": "F3",
       "node_type": "F",
-      "label": "Sub-$15K loans (73% of applications) are fully automated with no human review",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F5",
-      "node_type": "F",
-      "label": "For $15K+ loans, human officer agrees with AI recommendation 94% of the time",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F7",
-      "node_type": "F",
-      "label": "DataCredit has provided no model card, dataset documentation, training data summaries, or impact assessment documentation",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F9",
-      "node_type": "F",
-      "label": "FinSpark has no written risk management policy or program for AI deployment",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F10",
-      "node_type": "F",
-      "label": "FinSpark does not notify loan applicants that AI is used in underwriting",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F11",
-      "node_type": "F",
-      "label": "No mechanism exists for applicants to correct personal data processed by AI",
+      "label": "LoanScore is used for financial/lending service decisions",
       "weight": 1.0
     },
     {
@@ -63,10 +39,28 @@
       "weight": 1.0
     },
     {
-      "teacher_id": "F15",
-      "node_type": "F",
-      "label": "Current date is April 16, 2026; CO AIA effective June 30, 2026 (75 days away)",
-      "weight": 1.0
+      "teacher_id": "I2",
+      "node_type": "I",
+      "label": "Is FinSpark a developer, deployer, or both under CO AIA?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I3",
+      "node_type": "I",
+      "label": "What specific deployer obligations apply to FinSpark under Section 6-1-1703?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I4",
+      "node_type": "I",
+      "label": "Does the 94% human agreement rate affect the substantial factor analysis under Section 6-1-1701(9)?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I5",
+      "node_type": "I",
+      "label": "Does DataCredits failure to provide documentation relieve FinSpark of deployer obligations?",
+      "weight": 1.5
     },
     {
       "teacher_id": "I6",
@@ -87,21 +81,9 @@
       "weight": 4.0
     },
     {
-      "teacher_id": "R3",
-      "node_type": "R",
-      "label": "High-risk AI system definition: makes or is substantial factor in consequential decision",
-      "weight": 4.0
-    },
-    {
       "teacher_id": "R4",
       "node_type": "R",
       "label": "Substantial factor definition: human review based primarily on AI output does not negate",
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R5",
-      "node_type": "R",
-      "label": "Deployer definition: person doing business in state that deploys high-risk AI system",
       "weight": 4.0
     },
     {
@@ -165,6 +147,12 @@
       "weight": 4.0
     },
     {
+      "teacher_id": "R16",
+      "node_type": "R",
+      "label": "Developer must provide documentation on limitations, training data, uses, and monitoring guidance",
+      "weight": 4.0
+    },
+    {
       "teacher_id": "R17",
       "node_type": "R",
       "label": "Notification to AG and consumers within 90 days if algorithmic discrimination discovered",
@@ -207,9 +195,27 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A5",
+      "node_type": "A",
+      "label": "FinSpark does business in Colorado (Colorado-chartered, Denver HQ) and deploys LoanScore, a high-risk AI system. FinSpark is a deployer.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A6",
+      "node_type": "A",
+      "label": "FinSpark licensed LoanScore from DataCredit and did not develop or substantially modify it. FinSpark is NOT a developer. DataCredit is the developer.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A7",
       "node_type": "A",
       "label": "FinSpark has no written risk management policy or program, let alone one consistent with NIST AI RMF 1.0 or ISO/IEC 42001. Complete non-compliance with Section 6-1-1703(2)(a).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "FinSpark has never conducted an impact assessment. For pre-existing deployments, the 90-day grace period runs from June 30, 2026 to September 28, 2026. While not yet technically in violation, no preparatory work has begun.",
       "weight": 2.5
     },
     {
@@ -249,6 +255,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A15",
+      "node_type": "A",
+      "label": "DataCredit has failed to provide any of the five categories of documentation required by Section 6-1-1702(2). However, this is DataCredits violation, not FinSparks. FinSparks deployer obligations remain independently binding.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A16",
       "node_type": "A",
       "label": "FinSpark has conducted no annual review of LoanScore for algorithmic discrimination. While the first annual review deadline is June 30, 2027, no review infrastructure exists.",
@@ -282,12 +294,6 @@
       "teacher_id": "O1",
       "node_type": "O",
       "label": "Implement risk management policy and program consistent with NIST AI RMF 1.0 or ISO/IEC 42001",
-      "weight": 2.5
-    },
-    {
-      "teacher_id": "O2",
-      "node_type": "O",
-      "label": "Complete impact assessment of LoanScore with all six elements of Section 6-1-1701(8)",
       "weight": 2.5
     },
     {
@@ -347,96 +353,42 @@
   ],
   "v_halluc": [
     {
-      "student_id": "F3",
+      "student_id": "F1",
       "node_type": "F",
-      "label": "FinSpark is both a deployer and a developer of LoanScore",
+      "label": "LoanScore operates in two modes depending on loan size",
       "reason": "unaligned",
       "weight": 1.0
     },
     {
-      "student_id": "R2",
-      "node_type": "R",
-      "label": "Definition of deployer",
-      "reason": "unaligned",
-      "weight": 4.0
-    },
-    {
       "student_id": "R3",
       "node_type": "R",
-      "label": "Definition of developer",
+      "label": "Developer and deployer obligations",
       "reason": "unaligned",
       "weight": 4.0
     },
     {
-      "student_id": "R4",
+      "student_id": "R5",
       "node_type": "R",
-      "label": "Deployer risk assessment and mitigation",
+      "label": "Model documentation requirements",
       "reason": "unaligned",
       "weight": 4.0
     },
     {
-      "student_id": "A3",
+      "student_id": "A1",
       "node_type": "A",
-      "label": "FinSpark is both a deployer and a developer of LoanScore.",
-      "reason": "unaligned",
-      "weight": 2.5
-    },
-    {
-      "student_id": "O1",
-      "node_type": "O",
-      "label": "Conduct risk assessment and implement mitigation measures",
-      "reason": "unaligned",
-      "weight": 2.5
-    },
-    {
-      "student_id": "O2",
-      "node_type": "O",
-      "label": "Provide necessary documentation and information",
+      "label": "LoanScore operates in two modes depending on loan size, which may impact its risk level",
       "reason": "unaligned",
       "weight": 2.5
     }
   ],
   "e_diff": [
     {
-      "teacher_eid": "E2",
-      "teacher_src": "F3",
+      "teacher_eid": "E3",
+      "teacher_src": "F4",
       "teacher_dst": "I1",
       "teacher_type": "triggers",
       "student_src": "F2",
       "student_dst": "I1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E5",
-      "teacher_src": "F6",
-      "teacher_dst": "I2",
-      "teacher_type": "triggers",
-      "student_src": "F4",
-      "student_dst": "I2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E22",
-      "teacher_src": "R16",
-      "teacher_dst": "A15",
-      "teacher_type": "applies-to",
-      "student_src": "R5",
-      "student_dst": "A5",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
-    },
-    {
-      "teacher_eid": "E48",
-      "teacher_src": "F8",
-      "teacher_dst": "I3",
-      "teacher_type": "triggers",
-      "student_src": "F5",
-      "student_dst": "I3",
       "student_type": null,
       "kind": "missing",
       "weight": 1.5
@@ -445,39 +397,48 @@
   "v_misground": [
     {
       "teacher_id": "R1",
-      "student_id": "R1",
+      "student_id": "R2",
       "teacher_citation": "CO AIA Section 6-1-1701(2)",
-      "student_citation": "Colorado AI Act (SB 24-205), Section 1-1-101(1)(a)(I)",
+      "student_citation": "CO SB 24-205 § 2-101(2)",
       "proposition": "Definition of artificial intelligence system",
       "student_section_exists": null,
       "weight": 4.0
     },
     {
-      "teacher_id": "R16",
-      "student_id": "R5",
-      "teacher_citation": "CO AIA Section 6-1-1702(2)",
-      "student_citation": "Colorado AI Act (SB 24-205), Section 1-1-103",
-      "proposition": "Developer must provide documentation on limitations, training data, uses, and monitoring guidance",
+      "teacher_id": "R3",
+      "student_id": "R4",
+      "teacher_citation": "CO AIA Section 6-1-1701(7)",
+      "student_citation": "CO SB 24-205 § 2-103",
+      "proposition": "High-risk AI system definition: makes or is substantial factor in consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R5",
+      "student_id": "R1",
+      "teacher_citation": "CO AIA Section 6-1-1701(5)",
+      "student_citation": "CO SB 24-205 § 2-101(1)",
+      "proposition": "Deployer definition: person doing business in state that deploys high-risk AI system",
       "student_section_exists": null,
       "weight": 4.0
     }
   ],
-  "l_ged": 175.5,
+  "l_ged": 164.0,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 11,
+      "v_miss": 6,
       "v_halluc": 1
     },
     "I": {
-      "v_miss": 2,
+      "v_miss": 6,
       "v_halluc": 0
     },
     "R": {
-      "v_miss": 17,
-      "v_halluc": 3
+      "v_miss": 16,
+      "v_halluc": 2
     },
     "A": {
-      "v_miss": 13,
+      "v_miss": 17,
       "v_halluc": 1
     },
     "C": {
@@ -485,8 +446,8 @@
       "v_halluc": 0
     },
     "O": {
-      "v_miss": 11,
-      "v_halluc": 2
+      "v_miss": 10,
+      "v_halluc": 0
     }
   }
 }

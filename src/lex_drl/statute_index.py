@@ -41,6 +41,7 @@ the citations being checked tokenize identically.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Optional
 
@@ -48,13 +49,81 @@ from .alignment import extract_citation_tokens
 
 DEFAULT_INDEX_PATH = Path("data/statutes/index/statute_index.json")
 
+# Verdict severity for the "worst-of" rule across a multi-citation authority.
+_VERDICT_RANK = {"verified": 0, "unverified": 1, "fabricated": 2}
+
+
+def _clean_token(token: str) -> str:
+    """Strip trailing junk from a citation token.
+
+    ``extract_citation_tokens`` can emit truncated tokens like
+    ``6-1-1703(2)(a)-(`` (from malformed controlling-authority strings). Trailing
+    chars that aren't a digit, letter, or closing paren are noise.
+    """
+    return re.sub(r"[^0-9a-z)]+$", "", token)
+
+
+def _strip_one_paren(token: str) -> Optional[str]:
+    """Remove the last balanced ``(...)`` group, or return None if there is none."""
+    if not token.endswith(")"):
+        return None
+    depth = 0
+    for i in range(len(token) - 1, -1, -1):
+        if token[i] == ")":
+            depth += 1
+        elif token[i] == "(":
+            depth -= 1
+            if depth == 0:
+                return token[:i]
+    return None
+
+
+def _ancestors(token: str) -> list[str]:
+    """``token`` plus every ancestor obtained by stripping trailing ``(...)`` groups.
+
+    ``20-871(a)(1)`` -> ``["20-871(a)(1)", "20-871(a)", "20-871"]``. Also adds the
+    bare section number (everything before the first ``(``) so range/compound
+    citations like ``6-1-1703(2)(a)-(g)`` still resolve to their real base
+    section (``6-1-1703``) rather than being mis-flagged fabricated.
+    """
+    out = [token]
+    cur = token
+    while True:
+        parent = _strip_one_paren(cur)
+        if parent is None or parent == cur:
+            break
+        out.append(parent)
+        cur = parent
+    base = cur.split("(")[0].rstrip("-.")  # robust base for ranges/compounds
+    if base and base not in out:
+        out.append(base)
+    return out
+
+
+def _base_section(token: str) -> str:
+    """Strip ALL trailing ``(...)`` subdivisions -> the base section number."""
+    return _ancestors(token)[-1]
+
 
 class StatuteIndex:
-    """A set of known-good section tokens, with provenance metadata."""
+    """Known-good section tokens + provenance, with citation classification."""
 
-    def __init__(self, sections: set[str], provenance: dict[str, str] | None = None):
+    def __init__(
+        self,
+        sections: set[str],
+        provenance: dict[str, str] | None = None,
+        *,
+        section_lists: dict[str, list[str]] | None = None,
+        family_prefixes: dict[str, str] | None = None,
+    ):
         self._sections = sections
         self.provenance = provenance or {}
+        self._section_lists = section_lists or {}
+        # statute_key -> section-number prefix of that verbatim family
+        # (e.g. {"co_aia": "6-1-17", "nyc_ll144": "20-87"}). A citation whose base
+        # section matches one of these prefixes can be verified or fabricated;
+        # a citation matching none is unverifiable (DCWP 5-3xx, TX 551.x).
+        self._family_prefixes = family_prefixes or {}
 
     @property
     def trustworthy(self) -> bool:
@@ -69,6 +138,34 @@ class StatuteIndex:
     def section_exists(self, citation: str) -> bool:
         """True iff any canonical token in ``citation`` is a known section."""
         return bool(extract_citation_tokens(citation) & self._sections)
+
+    # ── citation verification (NOT gated on trustworthy) ──────────────
+    def _classify_token(self, token: str) -> str:
+        token = _clean_token(token)
+        if not token:
+            return "unverified"
+        base = _base_section(token)
+        in_family = any(base.startswith(pref) for pref in self._family_prefixes.values())
+        if not in_family:
+            return "unverified"  # outside every verbatim family (DCWP, TX)
+        # Ancestor rule: verified if the token or any ancestor is a known section.
+        if any(a in self._sections for a in _ancestors(token)):
+            return "verified"
+        return "fabricated"  # base is in a verbatim family's range but not in its list
+
+    def classify_citation(self, citation: str) -> str:
+        """Classify an authority string as verified / fabricated / unverified.
+
+        A multi-citation authority ("§20-871(a); DCWP §5-301") takes the WORST of
+        its tokens (fabricated > unverified > verified). Unlike ``section_exists``,
+        this is *not* gated on ``trustworthy`` — it reports what the verbatim
+        section lists can and cannot confirm. Empty/uncited -> "unverified".
+        """
+        tokens = extract_citation_tokens(citation)
+        if not tokens:
+            return "unverified"
+        return max((self._classify_token(t) for t in tokens),
+                   key=lambda v: _VERDICT_RANK[v])
 
     def __len__(self) -> int:
         return len(self._sections)
@@ -86,11 +183,17 @@ def load_statute_index(path: str | Path = DEFAULT_INDEX_PATH) -> Optional[Statut
     if not path.exists():
         return None
     data = json.loads(path.read_text(encoding="utf-8"))
+    section_lists = data.get("sections", {})
     tokens: set[str] = set()
-    for section_list in data.get("sections", {}).values():
+    for section_list in section_lists.values():
         tokens |= {t for s in section_list for t in extract_citation_tokens(f"§{s}")}
         tokens |= set(section_list)  # also accept raw tokens as listed
-    return StatuteIndex(tokens, provenance=data.get("provenance", {}))
+    return StatuteIndex(
+        tokens,
+        provenance=data.get("provenance", {}),
+        section_lists=section_lists,
+        family_prefixes=data.get("family_prefixes", {}),
+    )
 
 
 def make_section_exists_fn(index: Optional[StatuteIndex], *, require_trustworthy: bool = True):

@@ -76,6 +76,29 @@ AI-introduced errors** (fabricated §20-875, mislabeled §20-873/874, invented
 sections like §20-875. This is a data-quality caveat for any analysis that treats
 the teacher graph as ground truth.
 
+## Blast radius (where the contamination spread)
+
+The root cause is the `.txt` study aids, but the errors did **not** stay there —
+the teacher consumed the `.txt` files (not the PDFs) at extraction time, so the
+**frozen teacher reference graphs carry the fabrications**:
+
+- **Fabricated NYC §20-875** appears in the teacher graphs for **E1, E2, and H1**
+  (`grep 20-875 data/outputs/graphs/{E1,E2,H1}_reference.json`).
+- The teacher also uses the study-aid's **mislabeled §20-873** (the real §20-873 is
+  Enforcement; the `.txt` labels it "Public Disclosure").
+
+Consequences: (a) two mined patches instructed students to cite §20-875 — now
+classified `fabricated` and quarantined from verified retrieval; (b) on NYC rules
+L-GED can *reward* reproducing the fabrication; (c) some `v_misground` flags mark a
+student that was right against a teacher that was wrong.
+
+**Teacher re-extraction is deferred pending Prof. Rao's decision** (it would reset
+every baseline). The `v_misground` semantics are intentionally left unchanged for
+the same reason — we flag counts, not silently "fix" them. Until then, the
+citation-verification classifier + verified-only retrieval keep the fabrication out
+of the patch pipeline, and `docs/BASELINE_PROVENANCE.md` + the Task-4 delta audit
+record which recovered rules rest on unverifiable authorities.
+
 ## To make the index trustworthy
 
 1. Source the **NYC DCWP Final Rules** (6 RCNY §5-300 et seq.) and the **HB 149

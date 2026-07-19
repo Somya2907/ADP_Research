@@ -21,21 +21,27 @@
       "weight": 1.0
     },
     {
-      "teacher_id": "F4",
+      "teacher_id": "F5",
       "node_type": "F",
-      "label": "Greenleaf uses ResumeRank to screen applicants for six retail locations in Brooklyn and Manhattan, NYC",
+      "label": "Greenleaf relies on ResumeRank as the sole initial screen for all hourly retail positions at NYC locations",
       "weight": 1.0
     },
     {
-      "teacher_id": "F7",
+      "teacher_id": "F6",
       "node_type": "F",
-      "label": "TalentMetrics LLC is HireFlow's contracted vendor partner for ongoing model monitoring",
+      "label": "Last bias audit was conducted in November 2023 by TalentMetrics LLC",
       "weight": 1.0
     },
     {
       "teacher_id": "F9",
       "node_type": "F",
       "label": "Greenleaf has not posted any bias audit summary on its website",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F10",
+      "node_type": "F",
+      "label": "No mention of AEDT use in NYC job postings; no notice provided to candidates before or during application",
       "weight": 1.0
     },
     {
@@ -54,6 +60,12 @@
       "teacher_id": "I1",
       "node_type": "I",
       "label": "Does ResumeRank qualify as an AEDT under NYC LL 144?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I2",
+      "node_type": "I",
+      "label": "Is the November 2023 bias audit valid as of January 2026 given the June 2024 retrain and passage of time?",
       "weight": 1.5
     },
     {
@@ -93,12 +105,6 @@
       "weight": 1.5
     },
     {
-      "teacher_id": "R1",
-      "node_type": "R",
-      "label": "AEDT definition: computational process from ML/AI issuing simplified output used to substantially assist or replace discretionary employment decision-making",
-      "weight": 4.0
-    },
-    {
       "teacher_id": "R2",
       "node_type": "R",
       "label": "Bias audit required no more than one year prior to AEDT use; cannot use AEDT if more than one year since most recent audit",
@@ -120,6 +126,12 @@
       "teacher_id": "R5",
       "node_type": "R",
       "label": "Published results: bias audit date, summary of results with data source, unknown categories, applicant counts, rates, impact ratios, and distribution date must be on employer website before AEDT use",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R6",
+      "node_type": "R",
+      "label": "Candidate notice at least 10 business days before AEDT use: inform of AEDT use, qualifications assessed, alternative selection process instructions",
       "weight": 4.0
     },
     {
@@ -165,12 +177,6 @@
       "weight": 4.0
     },
     {
-      "teacher_id": "R15",
-      "node_type": "R",
-      "label": "Deployer obligations: NIST AI RMF-aligned risk management program, impact assessments, annual reviews, website statement, consumer notice, data correction, appeal rights",
-      "weight": 4.0
-    },
-    {
       "teacher_id": "R16",
       "node_type": "R",
       "label": "High-risk AI system: AI that makes or is substantial factor in consequential decisions including employment",
@@ -201,6 +207,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "A3",
+      "node_type": "A",
+      "label": "HireFlow substantially retrained ResumeRank in June 2024 on updated training data. Section 20-871(d)(2) requires a new bias audit after substantial modification including retraining. No new audit was commissioned. The pre-retrain audit does not satisfy the requirement for the retrained model.",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "A4",
       "node_type": "A",
       "label": "TalentMetrics LLC is HireFlow's contracted vendor partner for ongoing model monitoring, constituting a direct financial relationship with the AEDT developer. Under 20-870 and DCWP Rules 5-300, an auditor with a financial interest in the vendor that developed the AEDT is not independent. The November 2023 audit was defective from inception.",
@@ -210,12 +222,6 @@
       "teacher_id": "A5",
       "node_type": "A",
       "label": "Section 20-871(a)(2) and DCWP Rules 5-303 require publication of bias audit date, summary of results, and distribution date on employer website before AEDT use. Greenleaf has posted nothing. Complete violation.",
-      "weight": 2.5
-    },
-    {
-      "teacher_id": "A6",
-      "node_type": "A",
-      "label": "Section 20-872 and DCWP Rules 5-304 require notice to NYC-resident candidates at least 10 business days before AEDT use. Greenleaf provides no notice of any kind in job postings, on its website, or via email/mail. The January 2026 Brooklyn applicant received no notice. Complete violation.",
       "weight": 2.5
     },
     {
@@ -285,9 +291,21 @@
       "weight": 1.5
     },
     {
+      "teacher_id": "O1",
+      "node_type": "O",
+      "label": "Commission new valid bias audit by truly independent auditor for post-June 2024 retrained model before any further AEDT use in NYC",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "O2",
       "node_type": "O",
       "label": "Publish bias audit date, summary of results (data source, unknown categories, applicant counts, selection/scoring rates, impact ratios), and distribution date on employment section of website",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O3",
+      "node_type": "O",
+      "label": "Provide candidate notice at least 10 business days before AEDT use: inform of AEDT use, qualifications assessed, alternative selection process instructions",
       "weight": 2.5
     },
     {
@@ -359,129 +377,73 @@
   ],
   "v_halluc": [
     {
-      "student_id": "F1",
+      "student_id": "F5",
       "node_type": "F",
-      "label": "Greenleaf licensed ResumeRank in March 2025",
+      "label": "The candidate recently filed a complaint with the NYC Department of Consumer and Worker Protection (DCWP), alleging that an automated tool was used without required disclosure.",
       "reason": "unaligned",
       "weight": 1.0
     },
     {
       "student_id": "I1",
       "node_type": "I",
-      "label": "Is Greenleaf's use of ResumeRank without required disclosure in compliance with NYC Local Law 144?",
+      "label": "Did Greenleaf Foods comply with NYC Local Law 144 by disclosing the use of ResumeRank in its job postings?",
       "reason": "unaligned",
       "weight": 1.5
     },
     {
-      "student_id": "A1",
-      "node_type": "A",
-      "label": "Greenleaf failed to disclose AEDT use and conduct regular bias audits",
+      "student_id": "O1",
+      "node_type": "O",
+      "label": "Post a clear disclosure statement in job postings regarding the use of ResumeRank.",
       "reason": "unaligned",
       "weight": 2.5
     }
   ],
-  "e_diff": [
-    {
-      "teacher_eid": "E4",
-      "teacher_src": "F6",
-      "teacher_dst": "I2",
-      "teacher_type": "triggers",
-      "student_src": "F3",
-      "student_dst": "I2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E5",
-      "teacher_src": "F8",
-      "teacher_dst": "I2",
-      "teacher_type": "triggers",
-      "student_src": "F4",
-      "student_dst": "I2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E40",
-      "teacher_src": "R6",
-      "teacher_dst": "O3",
-      "teacher_type": "triggers",
-      "student_src": "R1",
-      "student_dst": "O1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
-    },
-    {
-      "teacher_eid": "E51",
-      "teacher_src": "C1",
-      "teacher_dst": "O1",
-      "teacher_type": "triggers",
-      "student_src": "C1",
-      "student_dst": "O2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 2.5
-    },
-    {
-      "teacher_eid": "E53",
-      "teacher_src": "C1",
-      "teacher_dst": "O3",
-      "teacher_type": "triggers",
-      "student_src": "C1",
-      "student_dst": "O1",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 2.5
-    }
-  ],
+  "e_diff": [],
   "v_misground": [
     {
-      "teacher_id": "R6",
+      "teacher_id": "R1",
       "student_id": "R1",
-      "teacher_citation": "NYC LL 144 §20-872; DCWP Rules §5-304(a)-(c)",
+      "teacher_citation": "NYC LL 144 §20-870; DCWP Rules §5-300",
       "student_citation": "NYC LL 144 §20-871",
-      "proposition": "Candidate notice at least 10 business days before AEDT use: inform of AEDT use, qualifications assessed, alternative selection process instructions",
+      "proposition": "AEDT definition: computational process from ML/AI issuing simplified output used to substantially assist or replace discretionary employment decision-making",
       "student_section_exists": null,
       "weight": 4.0
     },
     {
       "teacher_id": "R12",
-      "student_id": "R2",
+      "student_id": "R3",
       "teacher_citation": "TX TRAIGA §551.301(d)",
-      "student_citation": "Texas Responsible AI Governance Act (HB 149) §3",
+      "student_citation": "Texas Responsible AI Governance Act § 2.051",
       "proposition": "Safe harbor for substantial compliance with NIST AI RMF or recognized AI governance standards",
       "student_section_exists": null,
       "weight": 4.0
     }
   ],
-  "l_ged": 167.5,
+  "l_ged": 159.0,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 8,
+      "v_miss": 9,
       "v_halluc": 1
     },
     "I": {
-      "v_miss": 7,
+      "v_miss": 8,
       "v_halluc": 1
     },
     "R": {
-      "v_miss": 16,
+      "v_miss": 15,
       "v_halluc": 0
     },
     "A": {
       "v_miss": 14,
-      "v_halluc": 1
+      "v_halluc": 0
     },
     "C": {
       "v_miss": 2,
       "v_halluc": 0
     },
     "O": {
-      "v_miss": 12,
-      "v_halluc": 0
+      "v_miss": 14,
+      "v_halluc": 1
     }
   }
 }

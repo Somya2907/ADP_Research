@@ -4,11 +4,12 @@ from __future__ import annotations
 from lex_drl.patch_store import Patch, PatchStore
 
 
-def _patch(pid, kws, authority, family="missing_rule"):
+def _patch(pid, kws, authority, family="missing_rule", verification="verified"):
     return Patch(
         patch_id=pid, patch_family=family, trigger_keywords=kws,
         controlling_authority=authority, prevention_step="do the thing",
         node_types_addressed=["R"], source_cases=["E1"], jurisdiction="nyc",
+        verification=verification,
     )
 
 
@@ -46,3 +47,21 @@ def test_populate_is_idempotent():
 
 def test_empty_store_retrieve_is_safe():
     assert PatchStore().retrieve("anything", k=3) == []
+
+
+def test_retrieve_filters_non_verified_before_ranking():
+    """A non-verified patch is never returned under the default allowed set,
+    even when it is the top BM25 hit."""
+    store = PatchStore()
+    # p_fab is the strongest lexical match but is fabricated → must be excluded.
+    store.add(_patch("p_fab", ["bias", "audit", "retraining", "nyc", "aedt"],
+                     "§20-875", verification="fabricated"))
+    store.add(_patch("p_ok", ["bias", "audit", "nyc"], "§20-871",
+                     verification="verified"))
+    hits = store.retrieve("retrained AEDT with no new bias audit in NYC", k=3)
+    ids = {h.patch_id for h in hits}
+    assert "p_fab" not in ids and "p_ok" in ids
+    # Opening the gate lets it back in.
+    hits_all = store.retrieve("retrained AEDT with no new bias audit in NYC", k=3,
+                              allowed={"verified", "unverified", "fabricated"})
+    assert {h.patch_id for h in hits_all} == {"p_fab", "p_ok"}

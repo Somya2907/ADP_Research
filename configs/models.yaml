@@ -7,14 +7,19 @@ teacher:
   provider: anthropic
   role: "Reference graph construction (G_ref)"
 
-# ── Tier 1: 8B Open-Source (via OpenRouter) ──
-agent_8b:
-  - name: qwen/qwen3-8b
-    provider: openrouter
-  - name: meta-llama/llama-3.1-8b-instruct
-    provider: openrouter
-  - name: mistralai/mistral-7b-instruct
-    provider: openrouter
+# ── Tier 1: Small open-source student (Student 2) ──
+# ACTUAL model used in the study: Llama-3.2-3B-Instruct, run LOCALLY via HF
+# transformers (unsloth/Llama-3.2-3B-Instruct mirror, bit-identical to Meta's
+# gated release) on Apple MPS. OpenRouter routes for this model were unusable
+# (sole paid provider Cloudflare returns empty; free Venice route 429-throttled),
+# hence the local backend (SMALL_MODEL_BACKEND=local). See docs/BASELINE_PROVENANCE.md.
+agent_small:
+  - name: unsloth/Llama-3.2-3B-Instruct
+    provider: local-transformers        # SMALL_MODEL_BACKEND=local
+    role: "Student 2 (weak, <7B) — patch-injection target"
+# Unused aspirational alternates (NOT run — kept for reference only):
+#   qwen/qwen3-8b (openrouter), meta-llama/llama-3.1-8b-instruct (openrouter),
+#   mistralai/mistral-7b-instruct (openrouter)
 
 # ── Tier 2: Legal-Specialized (via OpenRouter) ──
 agent_legal:

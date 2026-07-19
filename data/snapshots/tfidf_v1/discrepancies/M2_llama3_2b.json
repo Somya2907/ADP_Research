@@ -3,6 +3,12 @@
   "student_id": "llama3_2b",
   "v_miss": [
     {
+      "teacher_id": "F2",
+      "node_type": "F",
+      "label": "GreenRidge has 45 full-time employees (fewer than 50)",
+      "weight": 1.0
+    },
+    {
       "teacher_id": "F4",
       "node_type": "F",
       "label": "TenantRank was developed entirely in-house by GreenRidge's data science team",
@@ -39,21 +45,9 @@
       "weight": 1.0
     },
     {
-      "teacher_id": "F10",
-      "node_type": "F",
-      "label": "Initial impact assessment completed January 2026",
-      "weight": 1.0
-    },
-    {
       "teacher_id": "F11",
       "node_type": "F",
       "label": "Applicant disclosure says only 'data analytics tools' without mentioning AI",
-      "weight": 1.0
-    },
-    {
-      "teacher_id": "F12",
-      "node_type": "F",
-      "label": "Outside counsel advised small-deployer exception applies based on employee count alone",
       "weight": 1.0
     },
     {
@@ -93,15 +87,39 @@
       "weight": 1.0
     },
     {
-      "teacher_id": "R2",
+      "teacher_id": "I2",
+      "node_type": "I",
+      "label": "Whether the small-deployer exception under Section 6-1-1703(6) applies to GreenRidge",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I3",
+      "node_type": "I",
+      "label": "Whether GreenRidge is both developer and deployer under CO AIA",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I4",
+      "node_type": "I",
+      "label": "Whether current compliance measures satisfy CO AIA obligations",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I5",
+      "node_type": "I",
+      "label": "What additional obligations apply to GreenRidge by June 30, 2026",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R1",
       "node_type": "R",
-      "label": "Housing as a consequential decision domain",
+      "label": "Definition of artificial intelligence system",
       "weight": 4.0
     },
     {
-      "teacher_id": "R3",
+      "teacher_id": "R2",
       "node_type": "R",
-      "label": "Definition of high-risk AI system",
+      "label": "Housing as a consequential decision domain",
       "weight": 4.0
     },
     {
@@ -117,6 +135,12 @@
       "weight": 4.0
     },
     {
+      "teacher_id": "R6",
+      "node_type": "R",
+      "label": "Definition of deployer",
+      "weight": 4.0
+    },
+    {
       "teacher_id": "R7",
       "node_type": "R",
       "label": "Developer obligations including reasonable care, documentation, and public statement",
@@ -126,6 +150,12 @@
       "teacher_id": "R8",
       "node_type": "R",
       "label": "Deployer obligations including risk management, impact assessment, notice, correction, and appeal",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Small-deployer exception requires BOTH fewer than 50 employees AND not using own data to train",
       "weight": 4.0
     },
     {
@@ -186,6 +216,12 @@
       "teacher_id": "A4",
       "node_type": "A",
       "label": "TenantRank is an AI system that is a substantial factor in making consequential housing decisions. No exceptions in Section 6-1-1701(7)(a)-(d) apply - it does not perform narrow procedural tasks, improve prior human activity, merely detect patterns, or perform preparatory tasks. TenantRank is a high-risk AI system.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A5",
+      "node_type": "A",
+      "label": "Section 6-1-1703(6) requires BOTH (a) fewer than 50 employees AND (b) not using own data to train. GreenRidge satisfies (a) with 45 employees but fails (b) because it trained TenantRank on its own five years of tenant data. Both conditions must be met. The exception does not apply.",
       "weight": 2.5
     },
     {
@@ -291,6 +327,12 @@
       "weight": 2.5
     },
     {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Implement annual review process for TenantRank to assess algorithmic discrimination",
+      "weight": 2.5
+    },
+    {
       "teacher_id": "O7",
       "node_type": "O",
       "label": "Publish deployer public website statement summarizing deployed high-risk AI systems and discrimination risk management",
@@ -329,37 +371,23 @@
   ],
   "v_halluc": [
     {
-      "student_id": "F4",
+      "student_id": "F3",
       "node_type": "F",
-      "label": "TenantRank's decisions significantly affect the rights or interests of individuals",
+      "label": "TenantRank generates a risk score from 0 to 100 for each applicant.",
       "reason": "unaligned",
       "weight": 1.0
     },
     {
-      "student_id": "A3",
-      "node_type": "A",
-      "label": "GreenRidge is acting as both developer and deployer of TenantRank.",
+      "student_id": "R1",
+      "node_type": "R",
+      "label": "NYC Local Law 144 definition of high-risk AI",
       "reason": "unaligned",
-      "weight": 2.5
-    },
-    {
-      "student_id": "A4",
-      "node_type": "A",
-      "label": "GreenRidge's current compliance measures are not sufficient because it has not provided clear and transparent information about TenantRank's decision-making process to applicants.",
-      "reason": "unaligned",
-      "weight": 2.5
-    },
-    {
-      "student_id": "A5",
-      "node_type": "A",
-      "label": "GreenRidge must provide clear and transparent information about TenantRank's decision-making process to applicants and implement additional mitigation steps to address potential risks of algorithmic discrimination.",
-      "reason": "unaligned",
-      "weight": 2.5
+      "weight": 4.0
     },
     {
       "student_id": "O1",
       "node_type": "O",
-      "label": "Provide clear and transparent information about TenantRank's decision-making process to applicants",
+      "label": "Comply with NYC Local Law 144 and the Colorado AI Act",
       "reason": "unaligned",
       "weight": 2.5
     }
@@ -375,92 +403,43 @@
       "student_type": null,
       "kind": "missing",
       "weight": 1.5
-    },
-    {
-      "teacher_eid": "E13",
-      "teacher_src": "F2",
-      "teacher_dst": "I2",
-      "teacher_type": "triggers",
-      "student_src": "F3",
-      "student_dst": "I2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 1.5
-    },
-    {
-      "teacher_eid": "E15",
-      "teacher_src": "R9",
-      "teacher_dst": "A5",
-      "teacher_type": "applies-to",
-      "student_src": "R3",
-      "student_dst": "A2",
-      "student_type": null,
-      "kind": "missing",
-      "weight": 4.0
     }
   ],
   "v_misground": [
     {
-      "teacher_id": "R1",
-      "student_id": "R1",
-      "teacher_citation": "CO AIA Section 6-1-1701(2)",
-      "student_citation": "Colorado AI Act (SB 24-205), Section 2(3)(a)(I)",
-      "proposition": "Definition of artificial intelligence system",
-      "student_section_exists": null,
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R6",
+      "teacher_id": "R3",
       "student_id": "R2",
-      "teacher_citation": "CO AIA Section 6-1-1701(5)",
-      "student_citation": "Colorado AI Act (SB 24-205), Section 3(1)(a)",
-      "proposition": "Definition of deployer",
-      "student_section_exists": null,
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R9",
-      "student_id": "R3",
-      "teacher_citation": "CO AIA Section 6-1-1703(6)",
-      "student_citation": "Colorado AI Act (SB 24-205), Section 4(1)(a)",
-      "proposition": "Small-deployer exception requires BOTH fewer than 50 employees AND not using own data to train",
-      "student_section_exists": null,
-      "weight": 4.0
-    },
-    {
-      "teacher_id": "R16",
-      "student_id": "R4",
-      "teacher_citation": "CO AIA Section 6-1-1703(2)(a)(III)",
-      "student_citation": "NIST AI Risk Management Framework 1.0, Section 2.1",
-      "proposition": "Risk management program must be consistent with NIST AI RMF 1.0 or equivalent",
+      "teacher_citation": "CO AIA Section 6-1-1701(7)",
+      "student_citation": "CO SB 24-205 § 2-101",
+      "proposition": "Definition of high-risk AI system",
       "student_section_exists": null,
       "weight": 4.0
     }
   ],
-  "l_ged": 144.5,
+  "l_ged": 153.5,
   "node_type_breakdown": {
     "F": {
-      "v_miss": 15,
+      "v_miss": 14,
       "v_halluc": 1
     },
     "I": {
-      "v_miss": 0,
+      "v_miss": 4,
       "v_halluc": 0
     },
     "R": {
-      "v_miss": 12,
-      "v_halluc": 0
+      "v_miss": 14,
+      "v_halluc": 1
     },
     "A": {
-      "v_miss": 12,
-      "v_halluc": 3
+      "v_miss": 13,
+      "v_halluc": 0
     },
     "C": {
       "v_miss": 4,
       "v_halluc": 0
     },
     "O": {
-      "v_miss": 11,
+      "v_miss": 12,
       "v_halluc": 1
     }
   }
