@@ -4,7 +4,7 @@
 
 Companion to the summary stats: a few **actual FIRACO reasoning traces** so you can see *what is happening* behind each L-GED score. The teacher (Claude) writes the reference analysis; each student attempts the **same** case; L-GED counts what the student missed, invented, or mis-connected relative to the teacher.
 
-**How to read a trace:** each analysis is a graph — **F**acts → **I**ssues → **R**ules → **A**pplication → **C**onclusion → **O**bligations. Below we show the *spine* (issues, rules, application, conclusion, obligations); facts and edges are summarized in the counts.
+**How to read a trace:** each analysis is a graph — **F**acts → **I**ssues → **R**ules → **A**pplication → **C**onclusion → **O**bligations. Below we show the **full** trace — every node with its complete text (facts, issues, rules, application steps, conclusions, obligations); the edges that connect them are summarized as a count.
 
 ---
 
@@ -20,95 +20,235 @@ Companion to the summary stats: a few **actual FIRACO reasoning traces** so you 
 
 ### 🧑‍🏫 Teacher (Claude) — the reference reasoning
 
+- **Facts (12):**
+  - F1: Metropolitan operates 14 hospitals/clinics across all five NYC boroughs with 22,000 employees
+  - F2: PromoteAI is an internal algorithmic tool that ranks candidates for nursing supervisor promotions using a 0-100 composite score
+  - F3: PromoteAI ingests performance reviews, years of experience, patient satisfaction, and continuing education records
+  - F4: Bias audit completed March 2025 by Compliance Analytics Group, an independent firm with no financial ties to Metropolitan
+  - F5: Bias audit summary posted on public careers page under clearly labeled Bias Audit Results section in April 2025
+  - F6: Candidate notice says only that 'promotion decisions may be informed by data analytics tools' without naming PromoteAI or specifying evaluated characteristics
+  - F7: Notice sent only three business days before promotion evaluation cycle begins
+  - F8: No alternative evaluation process is offered to candidates
+  - F9: Bias audit not updated since March 2025; next promotion cycle scheduled May 2026 (over 1 year gap)
+  - F10: PromoteAI was custom-built by Metropolitan's IT department in 2022, making Metropolitan both developer and deployer
+  - F11: Metropolitan operates in NYC; no facts establish operations in Texas or Colorado
+  - F12: Promotion candidates are employees residing in NYC
 - **Issues framed (9):**
-  - I1: Does PromoteAI qualify as an AEDT under NYC LL 144 Section 20-870?
-  - I2: Is the March 2025 bias audit timely for the May 2026 promotion cycle under Section 20-871(a)(1)?
-  - I3: Does the bias auditor satisfy the independence requirement under Section 20-870?
-  - I4: Does the candidate notice satisfy the content requirements of Section 20-872(a)?
-  - I5: Does the candidate notice satisfy the 10-business-day timing requirement of DCWP Rules Section 5-304(c)?
-  - I6: Does failure to offer an alternative selection process independently violate LL 144?
-  - …+3 more
+  - I1: Does PromoteAI qualify as an AEDT under NYC LL 144 Section 20-870? *(dispositive)*
+  - I2: Is the March 2025 bias audit timely for the May 2026 promotion cycle under Section 20-871(a)(1)? *(dispositive)*
+  - I3: Does the bias auditor satisfy the independence requirement under Section 20-870? *(collateral)*
+  - I4: Does the candidate notice satisfy the content requirements of Section 20-872(a)? *(dispositive)*
+  - I5: Does the candidate notice satisfy the 10-business-day timing requirement of DCWP Rules Section 5-304(c)? *(dispositive)*
+  - I6: Does failure to offer an alternative selection process independently violate LL 144? *(collateral)*
+  - I7: Does the public disclosure satisfy Section 20-873 and DCWP Rules Section 5-303? *(collateral)*
+  - I8: Does Texas TRAIGA apply to Metropolitan and is there any violation? *(collateral)*
+  - I9: What is Metropolitan's compliance readiness under Colorado AIA for June 30, 2026? *(collateral)*
 - **Rules cited (14):**
-  - R1 `NYC LL 144 Section 20-870; DCWP Rules Section 5-300` — AEDT definition: computational process using ML/AI that issues simpli… *(binding)*
-  - R2 `NYC LL 144 Section 20-871(a)(1); DCWP Rules Section 5-…` — Bias audit must be conducted no more than one year prior to use of AE… *(binding)*
-  - R3 `NYC LL 144 Section 20-870 (Independent Auditor definit…` — Auditor must not be employed by, have financial interest in, or have … *(binding)*
-  - R4 `NYC LL 144 Section 20-872(a)(1)-(3); DCWP Rules Sectio…` — Notice must identify AEDT use, job qualifications assessed, considera… *(binding)*
-  - R5 `DCWP Rules Section 5-304(c)` — Notice to promotion candidates must be provided at least 10 business … *(binding)*
-  - R6 `NYC LL 144 Section 20-873; DCWP Rules Section 5-303` — Public disclosure of bias audit summary with all required data elemen… *(binding)*
-  - R7 `NYC LL 144 Section 20-875` — Civil penalties of $500-$1,500 per violation; each candidate screenin… *(binding)*
-  - R8 `DCWP Rules Section 5-304(a)` — Notice must include instructions for requesting alternative process b… *(binding)*
-  - …+6 more
+  - R1 `NYC LL 144 Section 20-870; DCWP Rules Section 5-300` — AEDT definition: computational process using ML/AI that issues simplified output to substantially assist or replace discretionary employment decision-making *(binding, NYC)*
+  - R2 `NYC LL 144 Section 20-871(a)(1); DCWP Rules Section 5-301(a)` — Bias audit must be conducted no more than one year prior to use of AEDT *(binding, NYC)*
+  - R3 `NYC LL 144 Section 20-870 (Independent Auditor definition)` — Auditor must not be employed by, have financial interest in, or have been involved in developing the AEDT within past three years *(binding, NYC)*
+  - R4 `NYC LL 144 Section 20-872(a)(1)-(3); DCWP Rules Section 5-304(a)` — Notice must identify AEDT use, job qualifications assessed, consideration of other info, and right to request alternative process *(binding, NYC)*
+  - R5 `DCWP Rules Section 5-304(c)` — Notice to promotion candidates must be provided at least 10 business days before AEDT use *(binding, NYC)*
+  - R6 `NYC LL 144 Section 20-873; DCWP Rules Section 5-303` — Public disclosure of bias audit summary with all required data elements on employment section of website *(binding, NYC)*
+  - R7 `NYC LL 144 Section 20-875` — Civil penalties of $500-$1,500 per violation; each candidate screening may be a separate violation *(binding, NYC)*
+  - R8 `DCWP Rules Section 5-304(a)` — Notice must include instructions for requesting alternative process but employer not required to provide one *(binding, NYC)*
+  - R9 `Texas TRAIGA Section 551.051` — Prohibits AI deployment with intent to unlawfully discriminate; requires intentional discrimination not mere disparate impact *(binding, TX)*
+  - R10 `Texas TRAIGA Section 551.101` — AI disclosure obligations apply only to government agencies, not private employers *(binding, TX)*
+  - R11 `Colorado AIA Section 6-1-1703(2)(b)` — Deployers must complete impact assessments before deployment and annually thereafter *(binding, CO)*
+  - R12 `Colorado AIA Section 6-1-1703(2)(a)(III)` — Risk management program must be consistent with NIST AI RMF or substantially equivalent framework *(binding, CO)*
+  - R13 `Colorado AIA Section 6-1-1703(2)(e)-(g)` — Deployers must provide consumer notice before consequential decisions and offer appeal rights *(binding, CO)*
+  - R14 `NYC LL 144 Section 20-871(b); DCWP Rules Section 5-301(c)` — Scoring AEDT bias audit must calculate median score, scoring rates, and impact ratios across sex, race/ethnicity, and intersectional categories *(binding, NYC)*
 - **Application (12 steps):**
-  - A1 [satisfied] PromoteAI is a computational process that generates a simplified output (0-100 composite score) use…
-  - A2 [violated] The most recent bias audit was completed March 2025. The May 2026 promotion cycle is more than 14 m…
-  - A3 [satisfied] Compliance Analytics Group has no employment relationship with Metropolitan, no financial interest …
-  - …+9 more
-- **Conclusions (5):** C1=non-compliant/high; C2=compliant/high; C3=conditional/medium; C4=compliant/high; C5=conditional/medium
+  - A1 [satisfied] — applies R1 to facts F2, F3, F12 for I1: PromoteAI is a computational process that generates a simplified output (0-100 composite score) used to rank promotion candidates. It uses machine-based techniques to generate predictions about candidate fitness. The score is used to substantially assist discretionary decision-making for promotions (an employment decision) within NYC. All elements of the AEDT definition are met.
+  - A2 [violated] — applies R2 to facts F4, F9 for I2: The most recent bias audit was completed March 2025. The May 2026 promotion cycle is more than 14 months later, exceeding the one-year maximum under Section 20-871(a)(1) and DCWP Rules Section 5-301(a). Metropolitan may not use PromoteAI for the May 2026 cycle without a new audit.
+  - A3 [satisfied] — applies R3 to facts F4, F10 for I3: Compliance Analytics Group has no employment relationship with Metropolitan, no financial interest in Metropolitan, and was not involved in developing PromoteAI (which was built internally by Metropolitan IT). All three independence prongs are satisfied.
+  - A4 [violated] — applies R4 to facts F6, F3 for I4: The notice fails all four content requirements: (1) does not inform candidates an AEDT will be used - vague reference to 'data analytics tools' is insufficient; (2) does not identify job qualifications/characteristics evaluated (performance scores, experience, patient satisfaction, education); (3) does not state whether other information will be considered; (4) does not inform of right to request alternative process or accommodation.
+  - A5 [violated] — applies R5 to facts F7 for I5: Notice is sent 3 business days before the promotion cycle. DCWP Rules Section 5-304(c) requires at least 10 business days. The notice is 7 business days short of the minimum requirement.
+  - A6 [satisfied] — applies R8 to facts F8, F6 for I6: DCWP Rules Section 5-304(a) explicitly states nothing requires an employer to provide an alternative selection process. Not offering one is not independently a violation. However, the failure to include instructions about requesting one in the notice is a notice content violation captured in A4.
+  - A7 [partial] — applies R6 to facts F5 for I7: The bias audit summary is posted on the careers page in a clearly labeled section, satisfying the location and conspicuousness requirements. However, the facts do not confirm whether all required data elements are included: distribution date, data source explanation, unknown category counts, applicant numbers, scoring rates, and impact ratios. Compliance is partial pending verification of content completeness.
+  - A8 [satisfied] — applies R9 to facts F11 for I8: No facts establish Metropolitan operates in Texas. Even if TRAIGA applied, it only prohibits intentional discrimination and imposes no audit, notice, or assessment requirements on private employers. No facts suggest intentional discriminatory intent. No violation.
+  - A9 [satisfied] — applies R10 to facts F11 for I8: TRAIGA Section 551.101 disclosure obligations apply only to government agencies. Metropolitan is a private health system. No disclosure obligation exists under TRAIGA.
+  - A10 [requires-fact] — applies R11 to facts F11, F9 for I9: Colorado AIA is not in force until June 30, 2026. No current binding obligation exists. Whether Metropolitan must comply depends on whether it does business in Colorado, which is not established in the facts. If applicable, it would need impact assessments within 90 days of the effective date for already-deployed systems.
+  - A11 [violated] — applies R7 to facts F1, F9, F6, F7 for I4: Each use of a non-compliant AEDT to screen a single candidate is a separate violation. With 22,000 employees and multiple nursing promotion candidates, Metropolitan faces per-candidate penalties of $500-$1,500 for each of the stale audit, deficient notice content, and deficient notice timing violations.
+  - A12 [requires-fact] — applies R14 to facts F2, F4 for I2: PromoteAI is a scoring AEDT, so the bias audit must follow DCWP Rules Section 5-301(c) requirements for scoring AEDTs: median score calculation, scoring rates, and impact ratios across sex, race/ethnicity, and intersectional categories. The facts state the audit evaluated impact on these categories but do not confirm all scoring-specific calculations were performed.
+- **Conclusions (5):**
+  - C1: non-compliant / high *(supported by A2, A4, A5, A11)*
+  - C2: compliant / high *(supported by A3)*
+  - C3: conditional / medium *(supported by A7, A12)*
+  - C4: compliant / high *(supported by A8, A9)*
+  - C5: conditional / medium *(supported by A10)*
 - **Obligations (8):**
-  - O1: Commission and complete a new bias audit of PromoteAI before the May 2026 promotion cycle… *(mandatory)*
-  - O2: Revise candidate notice to explicitly state AEDT use, name PromoteAI, identify evaluated … *(mandatory)*
-  - O3: Send revised notice at least 10 business days before the promotion evaluation cycle begin… *(mandatory)*
-  - O4: Update public disclosure on careers page with new bias audit summary including all requir… *(mandatory)*
-  - …+4 more
+  - O1: Commission and complete a new bias audit of PromoteAI before the May 2026 promotion cycle, conducted by an independent auditor per DCWP Rules Section 5-301(c) for scoring AEDTs *(mandatory, NYC, by Before May 2026 promotion cycle)* *(required by R2)*
+  - O2: Revise candidate notice to explicitly state AEDT use, name PromoteAI, identify evaluated characteristics (performance scores, experience, patient satisfaction, continuing education), state whether other info is considered, and include instructions for requesting alternative process *(mandatory, NYC, by Before next use of PromoteAI)* *(required by R4)*
+  - O3: Send revised notice at least 10 business days before the promotion evaluation cycle begins, not 3 business days *(mandatory, NYC, by At least 10 business days before May 2026 cycle)* *(required by R5)*
+  - O4: Update public disclosure on careers page with new bias audit summary including all required elements: audit date, distribution date, data source explanation, unknown category counts, applicant numbers, scoring rates, and impact ratios *(mandatory, NYC, by Before use of PromoteAI in May 2026 cycle)* *(required by R6)*
+  - O5: Publish AEDT data retention policy, type and source of data collected, and instructions for written requests on employment section of website per DCWP Rules Section 5-304(d) *(mandatory, NYC, by Before next use of PromoteAI)* *(required by R4)*
+  - O6: If Metropolitan operates in Colorado, prepare impact assessment for PromoteAI per Colorado AIA Section 6-1-1703(2)(b) before June 30, 2026 or within 90 days thereafter *(recommended, CO, by 2026-09-28)* *(required by R11)*
+  - O7: If Metropolitan operates in Colorado, implement NIST AI RMF-aligned risk management program per Colorado AIA Section 6-1-1703(2)(a)(III) *(recommended, CO, by 2026-06-30)* *(required by R12)*
+  - O8: If Metropolitan operates in Colorado, develop consumer notice and appeal mechanisms per Colorado AIA Section 6-1-1703(2)(e)-(g) *(recommended, CO, by 2026-06-30)* *(required by R13)*
 
 ### 🟢 GPT-5 (frontier student)
 
+- **Facts (12):**
+  - F1: Metropolitan operates 14 NYC facilities across all boroughs.
+  - F2: PromoteAI ranks nursing supervisor promotion candidates.
+  - F3: PromoteAI uses reviews, experience, satisfaction, education; outputs 0-100 score.
+  - F4: Independent bias audit completed March 2025 by external firm.
+  - F5: Audit evaluated sex, race/ethnicity, and intersectional categories.
+  - F6: Audit summary posted April 2025 on public careers page.
+  - F7: Notice says decisions may use data analytics; no tool name or criteria listed.
+  - F8: Notice sent 3 business days before evaluation cycle.
+  - F9: No alternative non-automated process is offered.
+  - F10: No new bias audit since March 2025; next use planned May 2026.
+  - F11: Record is silent on posting AEDT distribution date. *(unknown)*
+  - F12: No facts indicate CO or TX operations or residents affected.
 - **Issues framed (8):**
-  - I1: Does PromoteAI qualify as an AEDT under NYC LL 144?
-  - I2: Is the one-year prior bias audit requirement met for May 2026 use?
-  - I3: Were NYC LL 144 notice timing and content requirements met?
-  - I4: Were posting requirements satisfied, incl. distribution date and data disclosures?
-  - I5: Must an alternative non-automated evaluation be offered?
-  - I6: Does Colorado AI Act SB 24-205 apply on these facts?
-  - …+2 more
+  - I1: Does PromoteAI qualify as an AEDT under NYC LL 144? *(dispositive)*
+  - I2: Is the one-year prior bias audit requirement met for May 2026 use? *(dispositive)*
+  - I3: Were NYC LL 144 notice timing and content requirements met? *(dispositive)*
+  - I4: Were posting requirements satisfied, incl. distribution date and data disclosures? *(collateral)*
+  - I5: Must an alternative non-automated evaluation be offered? *(collateral)*
+  - I6: Does Colorado AI Act SB 24-205 apply on these facts? *(collateral)*
+  - I7: Does Texas HB 149 apply on these facts? *(collateral)*
+  - I8: What NIST AI RMF practices are advisable? *(collateral)*
 - **Rules cited (10):**
-  - R1 `NYC Admin. Code § 20-870` — AEDT definition *(binding)*
-  - R2 `NYC Admin. Code § 20-871(a)` — Bias audit within one year; post summary and distribution date *(binding)*
-  - R3 `NYC Admin. Code § 20-871(b)` — 10-day notice; content incl. AEDT use, qualifications, request process *(binding)*
-  - R4 `6 RCNY § 5-301` — Bias audit content: selection rates, impact ratios incl. intersection… *(binding)*
-  - R5 `6 RCNY § 5-302` — Independent auditor criteria *(binding)*
-  - R6 `6 RCNY § 5-303` — Posting: audit summary, distribution date; website data/source/retent… *(binding)*
-  - R7 `NYC Admin. Code § 20-872` — Enforcement and penalties *(binding)*
-  - R8 `C.R.S. § 6-1-1704` — CO AI Act deployer duties for consequential decisions *(binding)*
-  - …+2 more
+  - R1 `NYC Admin. Code § 20-870` — AEDT definition *(binding, NYC)*
+  - R2 `NYC Admin. Code § 20-871(a)` — Bias audit within one year; post summary and distribution date *(binding, NYC)*
+  - R3 `NYC Admin. Code § 20-871(b)` — 10-day notice; content incl. AEDT use, qualifications, request process *(binding, NYC)*
+  - R4 `6 RCNY § 5-301` — Bias audit content: selection rates, impact ratios incl. intersectional *(binding, NYC)*
+  - R5 `6 RCNY § 5-302` — Independent auditor criteria *(binding, NYC)*
+  - R6 `6 RCNY § 5-303` — Posting: audit summary, distribution date; website data/source/retention *(binding, NYC)*
+  - R7 `NYC Admin. Code § 20-872` — Enforcement and penalties *(binding, NYC)*
+  - R8 `C.R.S. § 6-1-1704` — CO AI Act deployer duties for consequential decisions *(binding, CO)*
+  - R9 `Tex. HB 149 (Responsible AI Governance Act)` — TX AI governance applicability *(binding, TX)*
+  - R10 `NIST AI RMF 1.0 (2023)` — Advisory AI risk management framework *(advisory, US)*
 - **Application (12 steps):**
-  - A1 [satisfied] Scoring/ranking for promotions fits AEDT definition.
-  - A2 [violated] March 2025 audit is >12 months before May 2026 use.
-  - A3 [violated] Notice sent 3 business days before use; needs 10.
-  - …+9 more
-- **Conclusions (4):** C1=non-compliant/high; C2=conditional/medium; C3=conditional/medium; C4=conditional/high
+  - A1 [satisfied] — applies R1 to facts F2, F3 for I1: Scoring/ranking for promotions fits AEDT definition.
+  - A2 [violated] — applies R2 to facts F4, F10 for I2: March 2025 audit is >12 months before May 2026 use.
+  - A3 [violated] — applies R3 to facts F8 for I3: Notice sent 3 business days before use; needs 10.
+  - A4 [violated] — applies R3 to facts F7 for I3: Notice lacks qualifications/characteristics; says may, not will.
+  - A5 [violated] — applies R3 to facts F7 for I3: No instructions to request alternative process/accommodation.
+  - A6 [partial] — applies R6 to facts F6, F11 for I4: Summary posted; unclear if distribution date and data details posted.
+  - A7 [satisfied] — applies R4 to facts F5 for I4: Audit covered sex, race/ethnicity, and intersectional groups.
+  - A8 [satisfied] — applies R5 to facts F4 for I4: Auditor independent; no other relationship.
+  - A9 [satisfied] — applies R3 to facts F9 for I5: Law needs instructions to request; no duty to offer alternative.
+  - A10 [requires-fact] — applies R8 to facts F12 for I6: No CO residents indicated; confirm residency to rule out scope.
+  - A11 [requires-fact] — applies R9 to facts F12 for I7: No TX operations/residents indicated; confirm to rule out scope.
+  - A12 [satisfied] — applies R10 to facts F2, F3 for I8: NIST RMF applicable as guidance; adopt for governance.
+- **Conclusions (4):**
+  - C1: non-compliant / high *(supported by A2, A3, A4, A5, A6)*
+  - C2: conditional / medium *(supported by A10)*
+  - C3: conditional / medium *(supported by A11)*
+  - C4: conditional / high *(supported by A12)*
 - **Obligations (9):**
-  - O1: Complete new independent bias audit within 1 year before May 2026 use. *(mandatory)*
-  - O2: Post audit summary and AEDT distribution date prior to use. *(mandatory)*
-  - O3: Provide notice to NYC-resident employees 10 business days before use. *(mandatory)*
-  - O4: Include in notice: AEDT will be used; list evaluated qualifications/characteristics. *(mandatory)*
-  - …+5 more
+  - O1: Complete new independent bias audit within 1 year before May 2026 use. *(mandatory, NYC, by 2026-05-01)* *(required by R2)*
+  - O2: Post audit summary and AEDT distribution date prior to use. *(mandatory, NYC, by 2026-05-01)* *(required by R2)*
+  - O3: Provide notice to NYC-resident employees 10 business days before use. *(mandatory, NYC, by 2026-04-15)* *(required by R3)*
+  - O4: Include in notice: AEDT will be used; list evaluated qualifications/characteristics. *(mandatory, NYC, by 2026-04-15)* *(required by R3)*
+  - O5: Include instructions to request alternative process or accommodation. *(mandatory, NYC, by 2026-04-15)* *(required by R3)*
+  - O6: Website: disclose data types, sources, and retention policy for PromoteAI. *(mandatory, NYC, by 2026-05-01)* *(required by R6)*
+  - O7: Maintain an internal workflow to receive and act on such requests. *(mandatory, NYC, by 2026-04-15)* *(required by R3)*
+  - O8: If later used for CO residents, implement CO AI Act deployer program. *(recommended, CO)* *(required by R8)*
+  - O9: Adopt NIST AI RMF practices for risk mgmt, oversight, and monitoring. *(recommended, US)* *(required by R10)*
 
 **What L-GED saw — GPT-5 (frontier student):**  missed 8 · hallucinated 3 · dropped/mismatched edges 22 · misgrounded rules 5 · **L-GED = 88.5** *(lower = closer to teacher)*
 
-- *Highest-cost teacher nodes it missed:* R5(w4) Notice to promotion candidates must be provided at lea…; R8(w4) Notice must include instructions for requesting altern…; R10(w4) AI disclosure obligations apply only to government age…; R11(w4) Deployers must complete impact assessments before depl…; A9(w2.5) TRAIGA Section 551.101 disclosure obligations apply on…; I8(w1.5) Does Texas TRAIGA apply to Metropolitan and is there a…
-- *Nodes it invented (not in teacher):* F11 Record is silent on posting AEDT distributio… [unaligned]; A9 Law needs instructions to request; no duty t… [unaligned]; O7 Maintain an internal workflow to receive and… [unaligned]
-- *Right idea, wrong/authority citation:* R2: cited `NYC Admin. Code § 20-871(a)` vs teacher `NYC LL 144 Section 20-871(a…`; R5: cited `6 RCNY § 5-302` vs teacher `NYC LL 144 Section 20-870 (…`; R4: cited `6 RCNY § 5-301` vs teacher `NYC LL 144 Section 20-872(a…`; R7: cited `NYC Admin. Code § 20-872` vs teacher `NYC LL 144 Section 20-875`
+- *Teacher nodes it missed (8, by cost):*
+  - R5 (w4): Notice to promotion candidates must be provided at least 10 business days before AEDT use
+  - R8 (w4): Notice must include instructions for requesting alternative process but employer not required to provide one
+  - R10 (w4): AI disclosure obligations apply only to government agencies, not private employers
+  - R11 (w4): Deployers must complete impact assessments before deployment and annually thereafter
+  - A9 (w2.5): TRAIGA Section 551.101 disclosure obligations apply only to government agencies. Metropolitan is a private health system. No disclosure obligation exists under TRAIGA.
+  - I8 (w1.5): Does Texas TRAIGA apply to Metropolitan and is there any violation?
+  - C4 (w1.5): compliant
+  - F10 (w1): PromoteAI was custom-built by Metropolitan's IT department in 2022, making Metropolitan both developer and deployer
+- *Nodes it invented, not in teacher (3):*
+  - F11 [unaligned]: Record is silent on posting AEDT distribution date.
+  - A9 [unaligned]: Law needs instructions to request; no duty to offer alternative.
+  - O7 [unaligned]: Maintain an internal workflow to receive and act on such requests.
+- *Right idea, conflicting citation (5):*
+  - R2: cited `NYC Admin. Code § 20-871(a)` vs teacher `NYC LL 144 Section 20-871(a)(1); DCWP Rules Section 5-301(a)` — Bias audit must be conducted no more than one year prior to use of AEDT
+  - R5: cited `6 RCNY § 5-302` vs teacher `NYC LL 144 Section 20-870 (Independent Auditor definition)` — Auditor must not be employed by, have financial interest in, or have been involved in developing the AEDT within past three years
+  - R4: cited `6 RCNY § 5-301` vs teacher `NYC LL 144 Section 20-872(a)(1)-(3); DCWP Rules Section 5-304(a)` — Notice must identify AEDT use, job qualifications assessed, consideration of other info, and right to request alternative process
+  - R7: cited `NYC Admin. Code § 20-872` vs teacher `NYC LL 144 Section 20-875` — Civil penalties of $500-$1,500 per violation; each candidate screening may be a separate violation
+  - R8: cited `C.R.S. § 6-1-1704` vs teacher `Colorado AIA Section 6-1-1703(2)(e)-(g)` — Deployers must provide consumer notice before consequential decisions and offer appeal rights
 
 ### 🔴 Llama-3.2-3B (weak student)
 
+- **Facts (6):**
+  - F1: Metropolitan Health System operates 14 hospitals and clinics across all five boroughs of New York City.
+  - F2: Metropolitan uses PromoteAI, an internal algorithmic tool, to rank candidates for nursing supervisor promotions.
+  - F3: The audit summary was posted on Metropolitan's public careers page under a clearly labeled "Bias Audit Results" section in April 2025.
+  - F4: The notice sent to internal candidates eligible for promotion references only that "promotion decisions may be informed by data analytics tools," without naming PromoteAI or specifying the job qualifications and characteristics that the tool evaluates. *(disputed)*
+  - F5: No alternative evaluation process is offered to candidates who wish to opt out of automated assessment.
+  - F6: Metropolitan has not updated the bias audit since March 2025, and the next promotion cycle using PromoteAI is scheduled for May 2026.
 - **Issues framed (1):**
-  - I1: Does Metropolitan Health System comply with NYC Local Law 144 regarding transparency in AI decision-making?
+  - I1: Does Metropolitan Health System comply with NYC Local Law 144 regarding transparency in AI decision-making? *(dispositive)*
 - **Rules cited (4):**
-  - R1 `NYC LL 144 §20-871` — Transparency in AI Decision-Making *(binding)*
-  - R2 `NIST SP 800-219` — AI Risk Management Framework *(binding)*
-  - R3 `Colorado SB 24-205 § 13-90.5-103` — Bias in AI Decision-Making *(binding)*
-  - R4 `Texas HB 149 § 2051.051` — AI Governance *(binding)*
+  - R1 `NYC LL 144 §20-871` — Transparency in AI Decision-Making *(binding, NYC)*
+  - R2 `NIST SP 800-219` — AI Risk Management Framework *(binding, US)*
+  - R3 `Colorado SB 24-205 § 13-90.5-103` — Bias in AI Decision-Making *(binding, CO)*
+  - R4 `Texas HB 149 § 2051.051` — AI Governance *(binding, TX)*
 - **Application (1 steps):**
-  - A1 [violated] The notice sent to internal candidates eligible for promotion references only that "promotion decis…
-- **Conclusions (1):** C1=non-compliant/high
+  - A1 [violated] — applies R1 to facts F4 for I1: The notice sent to internal candidates eligible for promotion references only that "promotion decisions may be informed by data analytics tools," without naming PromoteAI or specifying the job qualifications and characteristics that the tool evaluates, which is inconsistent with the transparency requirement of NYC Local Law 144 §20-871.
+- **Conclusions (1):**
+  - C1: non-compliant / high *(supported by A1)*
 - **Obligations (1):**
-  - O1: Provide clear and conspicuous notice to internal candidates eligible for promotion regard… *(mandatory)*
+  - O1: Provide clear and conspicuous notice to internal candidates eligible for promotion regarding the use of PromoteAI in the promotion decision-making process. *(mandatory, NYC)* *(required by R1)*
 
 **What L-GED saw — Llama-3.2-3B (weak student):**  missed 46 · hallucinated 0 · dropped/mismatched edges 1 · misgrounded rules 3 · **L-GED = 110.5** *(lower = closer to teacher)*
 
-- *Highest-cost teacher nodes it missed:* R2(w4) Bias audit must be conducted no more than one year pri…; R3(w4) Auditor must not be employed by, have financial intere…; R4(w4) Notice must identify AEDT use, job qualifications asse…; R5(w4) Notice to promotion candidates must be provided at lea…; R6(w4) Public disclosure of bias audit summary with all requi…; R7(w4) Civil penalties of $500-$1,500 per violation; each can…
-- *Right idea, wrong/authority citation:* R1: cited `NYC LL 144 §20-871` vs teacher `NYC LL 144 Section 20-870; …`; R4: cited `Texas HB 149 § 2051.051` vs teacher `Texas TRAIGA Section 551.051`; R3: cited `Colorado SB 24-205 § 13-90.…` vs teacher `NYC LL 144 Section 20-871(b…`
+- *Teacher nodes it missed (46, by cost):*
+  - R2 (w4): Bias audit must be conducted no more than one year prior to use of AEDT
+  - R3 (w4): Auditor must not be employed by, have financial interest in, or have been involved in developing the AEDT within past three years
+  - R4 (w4): Notice must identify AEDT use, job qualifications assessed, consideration of other info, and right to request alternative process
+  - R5 (w4): Notice to promotion candidates must be provided at least 10 business days before AEDT use
+  - R6 (w4): Public disclosure of bias audit summary with all required data elements on employment section of website
+  - R7 (w4): Civil penalties of $500-$1,500 per violation; each candidate screening may be a separate violation
+  - R8 (w4): Notice must include instructions for requesting alternative process but employer not required to provide one
+  - R10 (w4): AI disclosure obligations apply only to government agencies, not private employers
+  - R11 (w4): Deployers must complete impact assessments before deployment and annually thereafter
+  - R13 (w4): Deployers must provide consumer notice before consequential decisions and offer appeal rights
+  - A1 (w2.5): PromoteAI is a computational process that generates a simplified output (0-100 composite score) used to rank promotion candidates. It uses machine-based techniques to generate predictions about candidate fitness. The score is used to substantially assist discretionary decision-making for promotions (an employment decision) within NYC. All elements of the AEDT definition are met.
+  - A2 (w2.5): The most recent bias audit was completed March 2025. The May 2026 promotion cycle is more than 14 months later, exceeding the one-year maximum under Section 20-871(a)(1) and DCWP Rules Section 5-301(a). Metropolitan may not use PromoteAI for the May 2026 cycle without a new audit.
+  - A3 (w2.5): Compliance Analytics Group has no employment relationship with Metropolitan, no financial interest in Metropolitan, and was not involved in developing PromoteAI (which was built internally by Metropolitan IT). All three independence prongs are satisfied.
+  - A5 (w2.5): Notice is sent 3 business days before the promotion cycle. DCWP Rules Section 5-304(c) requires at least 10 business days. The notice is 7 business days short of the minimum requirement.
+  - A6 (w2.5): DCWP Rules Section 5-304(a) explicitly states nothing requires an employer to provide an alternative selection process. Not offering one is not independently a violation. However, the failure to include instructions about requesting one in the notice is a notice content violation captured in A4.
+  - A7 (w2.5): The bias audit summary is posted on the careers page in a clearly labeled section, satisfying the location and conspicuousness requirements. However, the facts do not confirm whether all required data elements are included: distribution date, data source explanation, unknown category counts, applicant numbers, scoring rates, and impact ratios. Compliance is partial pending verification of content completeness.
+  - A8 (w2.5): No facts establish Metropolitan operates in Texas. Even if TRAIGA applied, it only prohibits intentional discrimination and imposes no audit, notice, or assessment requirements on private employers. No facts suggest intentional discriminatory intent. No violation.
+  - A9 (w2.5): TRAIGA Section 551.101 disclosure obligations apply only to government agencies. Metropolitan is a private health system. No disclosure obligation exists under TRAIGA.
+  - A10 (w2.5): Colorado AIA is not in force until June 30, 2026. No current binding obligation exists. Whether Metropolitan must comply depends on whether it does business in Colorado, which is not established in the facts. If applicable, it would need impact assessments within 90 days of the effective date for already-deployed systems.
+  - A11 (w2.5): Each use of a non-compliant AEDT to screen a single candidate is a separate violation. With 22,000 employees and multiple nursing promotion candidates, Metropolitan faces per-candidate penalties of $500-$1,500 for each of the stale audit, deficient notice content, and deficient notice timing violations.
+  - A12 (w2.5): PromoteAI is a scoring AEDT, so the bias audit must follow DCWP Rules Section 5-301(c) requirements for scoring AEDTs: median score calculation, scoring rates, and impact ratios across sex, race/ethnicity, and intersectional categories. The facts state the audit evaluated impact on these categories but do not confirm all scoring-specific calculations were performed.
+  - O1 (w2.5): Commission and complete a new bias audit of PromoteAI before the May 2026 promotion cycle, conducted by an independent auditor per DCWP Rules Section 5-301(c) for scoring AEDTs
+  - O3 (w2.5): Send revised notice at least 10 business days before the promotion evaluation cycle begins, not 3 business days
+  - O4 (w2.5): Update public disclosure on careers page with new bias audit summary including all required elements: audit date, distribution date, data source explanation, unknown category counts, applicant numbers, scoring rates, and impact ratios
+  - O5 (w2.5): Publish AEDT data retention policy, type and source of data collected, and instructions for written requests on employment section of website per DCWP Rules Section 5-304(d)
+  - O6 (w2.5): If Metropolitan operates in Colorado, prepare impact assessment for PromoteAI per Colorado AIA Section 6-1-1703(2)(b) before June 30, 2026 or within 90 days thereafter
+  - O7 (w2.5): If Metropolitan operates in Colorado, implement NIST AI RMF-aligned risk management program per Colorado AIA Section 6-1-1703(2)(a)(III)
+  - O8 (w2.5): If Metropolitan operates in Colorado, develop consumer notice and appeal mechanisms per Colorado AIA Section 6-1-1703(2)(e)-(g)
+  - I2 (w1.5): Is the March 2025 bias audit timely for the May 2026 promotion cycle under Section 20-871(a)(1)?
+  - I3 (w1.5): Does the bias auditor satisfy the independence requirement under Section 20-870?
+  - I4 (w1.5): Does the candidate notice satisfy the content requirements of Section 20-872(a)?
+  - I5 (w1.5): Does the candidate notice satisfy the 10-business-day timing requirement of DCWP Rules Section 5-304(c)?
+  - I6 (w1.5): Does failure to offer an alternative selection process independently violate LL 144?
+  - I7 (w1.5): Does the public disclosure satisfy Section 20-873 and DCWP Rules Section 5-303?
+  - I8 (w1.5): Does Texas TRAIGA apply to Metropolitan and is there any violation?
+  - I9 (w1.5): What is Metropolitan's compliance readiness under Colorado AIA for June 30, 2026?
+  - C2 (w1.5): compliant
+  - C3 (w1.5): conditional
+  - C4 (w1.5): compliant
+  - C5 (w1.5): conditional
+  - F3 (w1): PromoteAI ingests performance reviews, years of experience, patient satisfaction, and continuing education records
+  - F4 (w1): Bias audit completed March 2025 by Compliance Analytics Group, an independent firm with no financial ties to Metropolitan
+  - F7 (w1): Notice sent only three business days before promotion evaluation cycle begins
+  - F10 (w1): PromoteAI was custom-built by Metropolitan's IT department in 2022, making Metropolitan both developer and deployer
+  - F11 (w1): Metropolitan operates in NYC; no facts establish operations in Texas or Colorado
+  - F12 (w1): Promotion candidates are employees residing in NYC
+- *Right idea, conflicting citation (3):*
+  - R1: cited `NYC LL 144 §20-871` vs teacher `NYC LL 144 Section 20-870; DCWP Rules Section 5-300` — AEDT definition: computational process using ML/AI that issues simplified output to substantially assist or replace discretionary employment decision-making
+  - R4: cited `Texas HB 149 § 2051.051` vs teacher `Texas TRAIGA Section 551.051` — Prohibits AI deployment with intent to unlawfully discriminate; requires intentional discrimination not mere disparate impact
+  - R3: cited `Colorado SB 24-205 § 13-90.5-103` vs teacher `NYC LL 144 Section 20-871(b); DCWP Rules Section 5-301(c)` — Scoring AEDT bias audit must calculate median score, scoring rates, and impact ratios across sex, race/ethnicity, and intersectional categories
 
 ---
 
@@ -124,92 +264,297 @@ Companion to the summary stats: a few **actual FIRACO reasoning traces** so you 
 
 ### 🧑‍🏫 Teacher (Claude) — the reference reasoning
 
+- **Facts (18):**
+  - F1: Helix Credit is a Colorado-based fintech lender headquartered in Denver with 310 employees, operating exclusively in Colorado
+  - F2: Helix deployed AutoApprove, an AI-powered underwriting system developed by FinLogic AI
+  - F3: Stage 1: 62% of applications are auto-approved or auto-denied with no human review
+  - F4: Stage 2: 38% of applications routed to human underwriter who receives AI score, AI risk narrative, and raw data
+  - F5: Human underwriters agree with AutoApprove direction in 71% of Stage 2 cases
+  - F6: GC memo argues AutoApprove is not a substantial factor due to independent human analysis *(disputed)*
+  - F7: Morrison & Partners memo concludes AutoApprove is a substantial factor requiring full deployer obligations
+  - F8: Helix has NIST AI 100-1 aligned risk management program documented January 2026
+  - F9: Helix completed impact assessment of AutoApprove in February 2026
+  - F10: FinLogic AI provided model card and training data summary
+  - F11: Helix has NOT issued consumer notices to loan applicants regarding AI involvement
+  - F12: Helix has NOT established a data correction process for applicants
+  - F13: Helix has NOT established an appeal process for AI-involved adverse decisions
+  - F14: AutoApprove is used for lending decisions - financial or lending services
+  - F15: Helix has 310 employees, far exceeding the 50-employee small deployer threshold
+  - F16: FinLogic AI is San Francisco-based but sells AutoApprove for use in Colorado
+  - F17: Colorado AI Act effective date is June 30, 2026; analysis date is April 16, 2026
+  - F18: Stage 1 auto-approves above 70th percentile and auto-denies below 40th percentile with no human review
 - **Issues framed (7):**
-  - I1: Whether AutoApprove Stage 1 (fully automated) constitutes a high-risk AI system under CO AIA 6-1-1701(7)
-  - I2: Whether AutoApprove Stage 2 (human-reviewed) constitutes a high-risk AI system and whether AI is a substantia…
-  - I3: How to resolve the conflict between GC memo and Morrison memo - authority hierarchy relative to statutory text
-  - I4: Whether Helix is a deployer, developer, or both under CO AIA
-  - I5: Complete inventory of compliance gaps and required remedial actions by June 30, 2026
-  - I6: Whether FinLogic AI has separate developer obligations and whether current documentation is sufficient
-  - …+1 more
+  - I1: Whether AutoApprove Stage 1 (fully automated) constitutes a high-risk AI system under CO AIA 6-1-1701(7) *(dispositive)*
+  - I2: Whether AutoApprove Stage 2 (human-reviewed) constitutes a high-risk AI system and whether AI is a substantial factor under 6-1-1701(9) *(dispositive)*
+  - I3: How to resolve the conflict between GC memo and Morrison memo - authority hierarchy relative to statutory text *(dispositive)*
+  - I4: Whether Helix is a deployer, developer, or both under CO AIA *(dispositive)*
+  - I5: Complete inventory of compliance gaps and required remedial actions by June 30, 2026 *(dispositive)*
+  - I6: Whether FinLogic AI has separate developer obligations and whether current documentation is sufficient *(dispositive)*
+  - I7: Whether Helix qualifies for the small deployer exception under 6-1-1703(6) *(collateral)*
 - **Rules cited (20):**
-  - R1 `CO AIA 6-1-1701(2)` — Definition of AI system: machine-based system processing inputs to pr… *(binding)*
-  - R2 `CO AIA 6-1-1701(3)(c)` — Consequential decision includes material legal or significant effect … *(binding)*
-  - R3 `CO AIA 6-1-1701(7)` — High-risk AI system: AI system that when deployed makes or is a subst… *(binding)*
-  - R4 `CO AIA 6-1-1701(9)` — Substantial factor: materially contributed to consequential decision;… *(binding)*
-  - R5 `CO AIA 6-1-1701(5)` — Deployer: person doing business in the state that deploys a high-risk… *(binding)*
-  - R6 `CO AIA 6-1-1701(6)` — Developer: person doing business in the state that develops or substa… *(binding)*
-  - R7 `CO AIA 6-1-1703(2)(a)` — Deployer must implement risk management policy consistent with NIST A… *(binding)*
-  - R8 `CO AIA 6-1-1703(2)(b)` — Deployer must complete impact assessment prior to deployment or withi… *(binding)*
-  - …+12 more
+  - R1 `CO AIA 6-1-1701(2)` — Definition of AI system: machine-based system processing inputs to produce outputs such as predictions, recommendations, decisions *(binding, Colorado)*
+  - R2 `CO AIA 6-1-1701(3)(c)` — Consequential decision includes material legal or significant effect on provision or denial of financial or lending services *(binding, Colorado)*
+  - R3 `CO AIA 6-1-1701(7)` — High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision *(binding, Colorado)*
+  - R4 `CO AIA 6-1-1701(9)` — Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output *(binding, Colorado)*
+  - R5 `CO AIA 6-1-1701(5)` — Deployer: person doing business in the state that deploys a high-risk AI system *(binding, Colorado)*
+  - R6 `CO AIA 6-1-1701(6)` — Developer: person doing business in the state that develops or substantially modifies an AI system intended or known to be used as high-risk *(binding, Colorado)*
+  - R7 `CO AIA 6-1-1703(2)(a)` — Deployer must implement risk management policy consistent with NIST AI 100-1 or substantially equivalent framework *(binding, Colorado)*
+  - R8 `CO AIA 6-1-1703(2)(b)` — Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems, annually thereafter *(binding, Colorado)*
+  - R9 `CO AIA 6-1-1703(2)(c)` — Deployer must review deployment at least annually to ensure no algorithmic discrimination *(binding, Colorado)*
+  - R10 `CO AIA 6-1-1703(2)(d)` — Deployer must publish website statement summarizing high-risk AI systems and discrimination risk management *(binding, Colorado)*
+  - R11 `CO AIA 6-1-1703(2)(e)` — Deployer must provide pre-decision consumer notice of AI use, purpose, contact info, description, and website statement access *(binding, Colorado)*
+  - R12 `CO AIA 6-1-1703(2)(f)` — Deployer must provide consumer opportunity to correct incorrect personal data processed by AI system *(binding, Colorado)*
+  - R13 `CO AIA 6-1-1703(2)(g)` — Deployer must provide consumer meaningful opportunity to appeal consequential decision where AI was substantial factor *(binding, Colorado)*
+  - R14 `CO AIA 6-1-1703(6)` — Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required *(binding, Colorado)*
+  - R15 `CO AIA 6-1-1702(2)` — Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, and impact assessment support *(binding, Colorado)*
+  - R16 `CO AIA 6-1-1702(3)` — Developer must publish public statement summarizing high-risk AI systems developed or substantially modified *(binding, Colorado)*
+  - R17 `CO AIA 6-1-1704` — Deployer or developer must notify AG and affected consumers within 90 days of discovering algorithmic discrimination *(binding, Colorado)*
+  - R18 `CO AIA 6-1-1706` — Violations are deceptive trade practices; AG exclusive enforcement; up to $20,000 per violation; rebuttable presumption for self-discovery and cure within 60 days *(binding, Colorado)*
+  - R19 `CO AIA 6-1-1703(3)` — Deployer rebuttable presumption of reasonable care if complied with 6-1-1703 and AG requirements *(binding, Colorado)*
+  - R20 `CO AIA 6-1-1701(8)` — Impact assessment must include purpose, discrimination risk analysis, training data categories, output description, known limitations, and oversight processes *(binding, Colorado)*
 - **Application (16 steps):**
-  - A1 [satisfied] AutoApprove is a machine-based system that processes loan application inputs and produces credit-ri…
-  - A2 [satisfied] Loan approval/denial decisions have material legal or similarly significant effect on provision or …
-  - A3 [satisfied] In Stage 1, AutoApprove directly makes the consequential decision - auto-approving or auto-denying …
-  - …+13 more
-- **Conclusions (6):** C1=non-compliant/high; C2=non-compliant/high; C3=non-compliant/high; C4=compliant/high; C5=conditional/medium; C6=non-compliant/high
+  - A1 [satisfied] — applies R1 to facts F2 for I1: AutoApprove is a machine-based system that processes loan application inputs and produces credit-risk scores, risk narratives, and approval/denial decisions - outputs that influence real environments. Squarely meets the AI system definition.
+  - A2 [satisfied] — applies R2 to facts F14, F18 for I1: Loan approval/denial decisions have material legal or similarly significant effect on provision or denial of financial or lending services under 6-1-1701(3)(c). AutoApprove decisions directly determine whether consumers receive loans.
+  - A3 [satisfied] — applies R3 to facts F3, F18 for I1: In Stage 1, AutoApprove directly makes the consequential decision - auto-approving or auto-denying with no human review. The AI system makes the decision, not merely contributes to it. No exceptions under 6-1-1701(7)(a)-(d) apply: it is not a narrow procedural task, does not improve prior human activity, does not merely detect patterns, and is not preparatory.
+  - A4 [satisfied] — applies R4 to facts F4, F5 for I2: In Stage 2, AutoApprove is a substantial factor: the underwriter receives the AI risk score and AI-generated risk narrative as 2 of 3 inputs. The 71% agreement rate indicates material contribution. Under 6-1-1701(9), human review does not negate substantial factor status when review is based primarily on AI output. The AI narrative frames the analysis by identifying key factors, creating anchoring effects. The anti-rubber-stamping provision directly applies.
+  - A5 [satisfied] — applies R5 to facts F1, F2 for I4: Helix is doing business in Colorado (headquartered in Denver, operates exclusively in Colorado) and deploys AutoApprove, a high-risk AI system. Helix is unambiguously a deployer under 6-1-1701(5).
+  - A6 [satisfied] — applies R6 to facts F1, F2 for I4: Helix did not develop or substantially modify AutoApprove - FinLogic AI developed it. No facts indicate Helix retrained or substantially modified the model. Helix is not a developer under 6-1-1701(6).
+  - A7 [violated] — applies R14 to facts F15 for I7: The small deployer exception requires BOTH fewer than 50 employees AND not using own data to train. Helix has 310 employees, failing condition (a). The exception does not apply regardless of condition (b). All deployer obligations apply in full.
+  - A8 [satisfied] — applies R7 to facts F8 for I5: Helix has implemented a risk management program aligned with NIST AI 100-1, documented in January 2026. This satisfies 6-1-1703(2)(a)(III) which requires consistency with NIST AI RMF or substantially equivalent framework.
+  - A9 [satisfied] — applies R8 to facts F9 for I5: Helix completed an impact assessment in February 2026. For systems deployed before June 30, 2026, the assessment must be completed within 90 days after the effective date (by September 28, 2026). The February 2026 assessment satisfies this timeline, though content should be verified against 6-1-1701(8) requirements.
+  - A10 [violated] — applies R11 to facts F11 for I5: Helix has NOT issued consumer notices to loan applicants regarding AI involvement. Section 6-1-1703(2)(e) requires pre-decision notice of AI use, purpose, contact info, plain-language description, and website statement access instructions. This is a critical compliance gap.
+  - A11 [violated] — applies R12 to facts F12 for I5: Helix has NOT established a data correction process. Section 6-1-1703(2)(f) requires providing consumers opportunity to correct incorrect personal data processed by the AI system. This is a compliance gap.
+  - A12 [violated] — applies R13 to facts F13 for I5: Helix has NOT established an appeal process. Section 6-1-1703(2)(g) requires providing consumers a meaningful opportunity to appeal consequential decisions where AI was a substantial factor. Particularly critical for Stage 1 auto-denials. This is a compliance gap.
+  - A13 [violated] — applies R10 to facts F11 for I5: No facts indicate Helix has published a website statement summarizing its high-risk AI systems and algorithmic discrimination risk management as required by 6-1-1703(2)(d). This is a compliance gap.
+  - A14 [partial] — applies R15 to facts F10, F16 for I6: FinLogic provided a model card and training data summary, likely covering 6-1-1702(2)(b) training data description and possibly (c) intended uses. However, no indication FinLogic provided: (a) algorithmic discrimination limitation documentation, (d) human monitoring guidance for consequential decisions, or (e) additional impact assessment support materials. Documentation is necessary but insufficient.
+  - A15 [requires-fact] — applies R16 to facts F16 for I6: No facts indicate whether FinLogic has published a public use case inventory as required by 6-1-1702(3). FinLogic must do so if it is doing business in Colorado. The doing-business-in-state question for a San Francisco company selling to Colorado deployers requires further factual analysis.
+  - A16 [satisfied] — applies R4 to facts F6, F7 for I3: The statutory text of 6-1-1701(9) controls over both memos. The GC memo fails to engage with the anti-rubber-stamping provision and ignores that 62% of decisions are fully automated. The Morrison memo correctly applies the statute. Neither memo is binding authority - the statute is the supreme authority. The GC memo is legally deficient; the Morrison memo is persuasive because it correctly interprets binding statutory text.
+- **Conclusions (6):**
+  - C1: non-compliant / high *(supported by A3)*
+  - C2: non-compliant / high *(supported by A4)*
+  - C3: non-compliant / high *(supported by A10, A11, A12, A13)*
+  - C4: compliant / high *(supported by A8, A9)*
+  - C5: conditional / medium *(supported by A14, A15)*
+  - C6: non-compliant / high *(supported by A16)*
 - **Obligations (10):**
-  - O1: Implement pre-decision consumer notice system informing all loan applicants of AI use, pu… *(mandatory)*
-  - O2: Establish documented process for consumers to correct incorrect personal data processed b… *(mandatory)*
-  - O3: Establish meaningful appeal process for adverse consequential decisions where AutoApprove… *(mandatory)*
-  - O4: Publish clear and readily accessible website statement summarizing deployed high-risk AI … *(mandatory)*
-  - …+6 more
+  - O1: Implement pre-decision consumer notice system informing all loan applicants of AI use, purpose, contact info, plain-language description, and website statement access per 6-1-1703(2)(e)(I)-(V) *(mandatory, Colorado, by 2026-06-30)* *(required by R11)*
+  - O2: Establish documented process for consumers to correct incorrect personal data processed by AutoApprove per 6-1-1703(2)(f) *(mandatory, Colorado, by 2026-06-30)* *(required by R12)*
+  - O3: Establish meaningful appeal process for adverse consequential decisions where AutoApprove was a substantial factor per 6-1-1703(2)(g), including independent human review for Stage 1 auto-denials *(mandatory, Colorado, by 2026-06-30)* *(required by R13)*
+  - O4: Publish clear and readily accessible website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management per 6-1-1703(2)(d) *(mandatory, Colorado, by 2026-06-30)* *(required by R10)*
+  - O5: Verify February 2026 impact assessment meets all six content requirements of 6-1-1701(8)(a)-(f); supplement if gaps exist *(mandatory, Colorado, by 2026-09-28)* *(required by R8)*
+  - O6: Establish annual review process for AutoApprove deployment to ensure no algorithmic discrimination per 6-1-1703(2)(c) *(mandatory, Colorado, by 2027-06-30)* *(required by R9)*
+  - O7: Request from FinLogic AI additional developer documentation: algorithmic discrimination limitations (6-1-1702(2)(a)), human monitoring guidance (6-1-1702(2)(d)), and impact assessment support materials (6-1-1702(2)(e)) *(mandatory, Colorado, by 2026-06-30)* *(required by R15)*
+  - O8: Establish ongoing algorithmic discrimination monitoring with 90-day AG and consumer notification protocol per 6-1-1704 *(mandatory, Colorado, by 2026-06-30)* *(required by R17)*
+  - O9: Formally adopt Morrison & Partners analysis and reject GC memo conclusion; document decision in board or compliance committee minutes *(recommended, Colorado)* *(required by R4)*
+  - O10: FinLogic AI must publish public use case inventory summarizing high-risk AI systems developed per 6-1-1702(3) *(mandatory, Colorado, by 2026-06-30)* *(required by R16)*
 
 ### 🟢 GPT-5 (frontier student)
 
+- **Facts (21):**
+  - F1: Helix operates only in Colorado
+  - F2: Helix HQ in Denver, 310 employees
+  - F3: AutoApprove developed by FinLogic AI in SF
+  - F4: Stage 1: AI auto-approves >=70th percentile
+  - F5: Stage 1: AI auto-denies <40th percentile
+  - F6: Stage 1 decisions have no human review
+  - F7: Stage 2: 40th-70th sent to human underwriter
+  - F8: Underwriter sees AI score and risk narrative
+  - F9: Stage 2 underwriters agree with AI in 71%
+  - F10: 62% of all apps decided at Stage 1
+  - F11: 38% of apps go to Stage 2
+  - F12: Overall 38% final decisions by a human
+  - F13: GC memo says AI not a substantial factor
+  - F14: Morrison memo says AI is a substantial factor
+  - F15: Helix has NIST AI RMF program (Jan 2026)
+  - F16: Impact assessment done Feb 2026
+  - F17: FinLogic provided model card and data summary
+  - F18: No consumer AI notices issued
+  - F19: No data correction process for AI inputs
+  - F20: No AI-aware appeal process
+  - F21: Effective date June 30, 2026
 - **Issues framed (5):**
-  - I1: Is AutoApprove high-risk in Stage 1 and Stage 2?
-  - I2: Resolve memo conflict and authority hierarchy
-  - I3: Is Helix a deployer or developer?
-  - I4: What changes are needed for CO compliance by 6/30/26?
-  - I5: FinLogic developer duties and doc sufficiency
+  - I1: Is AutoApprove high-risk in Stage 1 and Stage 2? *(dispositive)*
+  - I2: Resolve memo conflict and authority hierarchy *(dispositive)*
+  - I3: Is Helix a deployer or developer? *(dispositive)*
+  - I4: What changes are needed for CO compliance by 6/30/26? *(dispositive)*
+  - I5: FinLogic developer duties and doc sufficiency *(dispositive)*
 - **Rules cited (10):**
-  - R1 `C.R.S. § 6-1-1702` — High-risk AI: makes or is a substantial factor *(binding)*
-  - R2 `C.R.S. § 6-1-1702` — Consequential decision includes lending *(binding)*
-  - R3 `C.R.S. § 6-1-1702` — Substantial factor: assists or materially influences *(binding)*
-  - R4 `C.R.S. § 6-1-1704` — Deployer duties: notices, rights, RM, records *(binding)*
-  - R5 `C.R.S. § 6-1-1703` — Developer duties: docs, public stmt, incident notice *(binding)*
-  - R6 `C.R.S. § 6-1-1707` — Safe harbor: NIST AI RMF rebuttable presumption *(binding)*
-  - R7 `C.R.S. § 24-4-103` — APA: binding rules via rulemaking; memos nonbinding *(binding)*
-  - R8 `C.R.S. § 6-1-1708` — AG enforcement; incident reporting timelines *(binding)*
-  - …+2 more
+  - R1 `C.R.S. § 6-1-1702` — High-risk AI: makes or is a substantial factor *(binding, CO)*
+  - R2 `C.R.S. § 6-1-1702` — Consequential decision includes lending *(binding, CO)*
+  - R3 `C.R.S. § 6-1-1702` — Substantial factor: assists or materially influences *(binding, CO)*
+  - R4 `C.R.S. § 6-1-1704` — Deployer duties: notices, rights, RM, records *(binding, CO)*
+  - R5 `C.R.S. § 6-1-1703` — Developer duties: docs, public stmt, incident notice *(binding, CO)*
+  - R6 `C.R.S. § 6-1-1707` — Safe harbor: NIST AI RMF rebuttable presumption *(binding, CO)*
+  - R7 `C.R.S. § 24-4-103` — APA: binding rules via rulemaking; memos nonbinding *(binding, CO)*
+  - R8 `C.R.S. § 6-1-1708` — AG enforcement; incident reporting timelines *(binding, CO)*
+  - R9 `SB 24-205 effective date` — Effective June 30, 2026 *(binding, CO)*
+  - R10 `C.R.S. § 6-1-1702` — Developer and deployer definitions *(binding, CO)*
 - **Application (14 steps):**
-  - A1 [satisfied] AI alone makes lending decisions in 62% of cases
-  - A2 [satisfied] AI outputs frame human review and influence outcomes
-  - A3 [satisfied] Underwriting is a consequential decision in CO
-  - …+11 more
-- **Conclusions (4):** C1=compliant/high; C2=compliant/high; C3=non-compliant/high; C4=non-compliant/high
+  - A1 [satisfied] — applies R1 to facts F4, F5, F6, F10 for I1: AI alone makes lending decisions in 62% of cases
+  - A2 [satisfied] — applies R3 to facts F7, F8, F9, F11 for I1: AI outputs frame human review and influence outcomes
+  - A3 [satisfied] — applies R2 to facts F1 for I1: Underwriting is a consequential decision in CO
+  - A4 [satisfied] — applies R7 to facts F13, F14 for I2: Statute binds; memos are nonbinding opinions
+  - A5 [satisfied] — applies R10 to facts F1, F3 for I3: Helix deploys in CO; FinLogic develops the system
+  - A6 [partial] — applies R4 to facts F15 for I4: RM program exists but other duties remain
+  - A7 [partial] — applies R4 to facts F16 for I4: Impact assessment done; must update and retain
+  - A8 [violated] — applies R4 to facts F18 for I4: No consumer AI notices in place
+  - A9 [violated] — applies R4 to facts F19 for I4: No data correction workflow
+  - A10 [violated] — applies R4 to facts F20 for I4: No AI-aware appeal process
+  - A11 [violated] — applies R4 to facts — for I4: No public statement on high-risk AI use
+  - A12 [violated] — applies R8 to facts — for I4: No incident response and AG notice process
+  - A13 [violated] — applies R5 to facts F17 for I5: Model card alone lacks full §1703 disclosures
+  - A14 [partial] — applies R6 to facts F15 for I4: NIST RMF aids safe harbor but not other duties
+- **Conclusions (4):**
+  - C1: compliant / high *(supported by A1, A2, A3)*
+  - C2: compliant / high *(supported by A5)*
+  - C3: non-compliant / high *(supported by A6, A7, A8, A9, A10, A11, A12)*
+  - C4: non-compliant / high *(supported by A13)*
 - **Obligations (14):**
-  - O1: Implement pre-use AI notices for both stages *(mandatory)*
-  - O2: Provide adverse decision reasons and AI disclosure *(mandatory)*
-  - O3: Launch data correction process for AI inputs *(mandatory)*
-  - O4: Create AI-aware appeal with human review *(mandatory)*
-  - …+10 more
+  - O1: Implement pre-use AI notices for both stages *(mandatory, CO, by 2026-06-30)* *(required by R4)*
+  - O2: Provide adverse decision reasons and AI disclosure *(mandatory, CO, by decision-time)* *(required by R4)*
+  - O3: Launch data correction process for AI inputs *(mandatory, CO, by 2026-06-30)* *(required by R4)*
+  - O4: Create AI-aware appeal with human review *(mandatory, CO, by 2026-06-30)* *(required by R4)*
+  - O5: Publish plain-language statement on HR-AI use *(mandatory, CO, by 2026-06-30)* *(required by R4)*
+  - O6: Maintain impact assessments and RM records *(mandatory, CO, by ongoing)* *(required by R4)*
+  - O7: Set incident response and AG notice (90 days) *(mandatory, CO, by 90-days-from-discovery)* *(required by R8)*
+  - O8: Strengthen vendor contract for §1703 docs *(mandatory, CO, by 2026-06-30)* *(required by R5)*
+  - O9: Ongoing testing for algorithmic discrimination *(mandatory, CO, by ongoing)* *(required by R4)*
+  - O10: Staff training on notices, correction, appeals *(recommended, CO, by 2026-06-30)* *(required by R4)*
+  - O11: FinLogic: provide full developer disclosures *(mandatory, CO, by 2026-06-30)* *(required by R5)*
+  - O12: FinLogic: public statement on HR-AI risk mgmt *(mandatory, CO, by 2026-06-30)* *(required by R5)*
+  - O13: FinLogic: AG and deployer notice of incidents *(mandatory, CO, by 90-days-from-discovery)* *(required by R5)*
+  - O14: Map NIST RMF controls to §1704 duties *(safe-harbor, CO, by 2026-06-30)* *(required by R6)*
 
 **What L-GED saw — GPT-5 (frontier student):**  missed 16 · hallucinated 7 · dropped/mismatched edges 21 · misgrounded rules 9 · **L-GED = 125.5** *(lower = closer to teacher)*
 
-- *Highest-cost teacher nodes it missed:* R1(w4) Definition of AI system: machine-based system processi…; R5(w4) Deployer: person doing business in the state that depl…; R6(w4) Developer: person doing business in the state that dev…; R9(w4) Deployer must review deployment at least annually to e…; R11(w4) Deployer must provide pre-decision consumer notice of …; R12(w4) Deployer must provide consumer opportunity to correct …
-- *Nodes it invented (not in teacher):* F6 Stage 1 decisions have no human review [unaligned]; F7 Stage 2: 40th-70th sent to human underwriter [unaligned]; F11 38% of apps go to Stage 2 [unaligned]; O4 Create AI-aware appeal with human review [unaligned]; O8 Strengthen vendor contract for §1703 docs [unaligned]; O11 FinLogic: provide full developer disclosures [unaligned]
-- *Right idea, wrong/authority citation:* R2: cited `C.R.S. § 6-1-1702` vs teacher `CO AIA 6-1-1701(3)(c)`; R1: cited `C.R.S. § 6-1-1702` vs teacher `CO AIA 6-1-1701(7)`; R3: cited `C.R.S. § 6-1-1702` vs teacher `CO AIA 6-1-1701(9)`; R6: cited `C.R.S. § 6-1-1707` vs teacher `CO AIA 6-1-1703(2)(a)`
+- *Teacher nodes it missed (16, by cost):*
+  - R1 (w4): Definition of AI system: machine-based system processing inputs to produce outputs such as predictions, recommendations, decisions
+  - R5 (w4): Deployer: person doing business in the state that deploys a high-risk AI system
+  - R6 (w4): Developer: person doing business in the state that develops or substantially modifies an AI system intended or known to be used as high-risk
+  - R9 (w4): Deployer must review deployment at least annually to ensure no algorithmic discrimination
+  - R11 (w4): Deployer must provide pre-decision consumer notice of AI use, purpose, contact info, description, and website statement access
+  - R12 (w4): Deployer must provide consumer opportunity to correct incorrect personal data processed by AI system
+  - R13 (w4): Deployer must provide consumer meaningful opportunity to appeal consequential decision where AI was substantial factor
+  - R14 (w4): Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required
+  - R17 (w4): Deployer or developer must notify AG and affected consumers within 90 days of discovering algorithmic discrimination
+  - R20 (w4): Impact assessment must include purpose, discrimination risk analysis, training data categories, output description, known limitations, and oversight processes
+  - A3 (w2.5): In Stage 1, AutoApprove directly makes the consequential decision - auto-approving or auto-denying with no human review. The AI system makes the decision, not merely contributes to it. No exceptions under 6-1-1701(7)(a)-(d) apply: it is not a narrow procedural task, does not improve prior human activity, does not merely detect patterns, and is not preparatory.
+  - A6 (w2.5): Helix did not develop or substantially modify AutoApprove - FinLogic AI developed it. No facts indicate Helix retrained or substantially modified the model. Helix is not a developer under 6-1-1701(6).
+  - I2 (w1.5): Whether AutoApprove Stage 2 (human-reviewed) constitutes a high-risk AI system and whether AI is a substantial factor under 6-1-1701(9)
+  - I7 (w1.5): Whether Helix qualifies for the small deployer exception under 6-1-1703(6)
+  - C5 (w1.5): conditional
+  - C6 (w1.5): non-compliant
+- *Nodes it invented, not in teacher (7):*
+  - F6 [unaligned]: Stage 1 decisions have no human review
+  - F7 [unaligned]: Stage 2: 40th-70th sent to human underwriter
+  - F11 [unaligned]: 38% of apps go to Stage 2
+  - O4 [unaligned]: Create AI-aware appeal with human review
+  - O8 [unaligned]: Strengthen vendor contract for §1703 docs
+  - O11 [unaligned]: FinLogic: provide full developer disclosures
+  - O14 [unaligned]: Map NIST RMF controls to §1704 duties
+- *Right idea, conflicting citation (9):*
+  - R2: cited `C.R.S. § 6-1-1702` vs teacher `CO AIA 6-1-1701(3)(c)` — Consequential decision includes material legal or significant effect on provision or denial of financial or lending services
+  - R1: cited `C.R.S. § 6-1-1702` vs teacher `CO AIA 6-1-1701(7)` — High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision
+  - R3: cited `C.R.S. § 6-1-1702` vs teacher `CO AIA 6-1-1701(9)` — Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output
+  - R6: cited `C.R.S. § 6-1-1707` vs teacher `CO AIA 6-1-1703(2)(a)` — Deployer must implement risk management policy consistent with NIST AI 100-1 or substantially equivalent framework
+  - R5: cited `C.R.S. § 6-1-1703` vs teacher `CO AIA 6-1-1703(2)(d)` — Deployer must publish website statement summarizing high-risk AI systems and discrimination risk management
+  - R10: cited `C.R.S. § 6-1-1702` vs teacher `CO AIA 6-1-1702(2)` — Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, and impact assessment support
+  - R7: cited `C.R.S. § 24-4-103` vs teacher `CO AIA 6-1-1702(3)` — Developer must publish public statement summarizing high-risk AI systems developed or substantially modified
+  - R8: cited `C.R.S. § 6-1-1708` vs teacher `CO AIA 6-1-1706` — Violations are deceptive trade practices; AG exclusive enforcement; up to $20,000 per violation; rebuttable presumption for self-discovery and cure within 60 days
+  - R4: cited `C.R.S. § 6-1-1704` vs teacher `CO AIA 6-1-1703(3)` — Deployer rebuttable presumption of reasonable care if complied with 6-1-1703 and AG requirements
 
 ### 🔴 Llama-3.2-3B (weak student)
 
+- **Facts (7):**
+  - F1: Helix Credit is a Colorado-based fintech lender headquartered in Denver with 310 employees and approximately $2.1 billion in annual loan originations.
+  - F2: Helix has deployed AutoApprove, an AI-powered underwriting system developed by FinLogic AI, a San Francisco-based AI developer.
+  - F3: AutoApprove operates in a two-stage workflow: Stage 1 (Automated) and Stage 2 (Human Review).
+  - F4: Internal data from Q4 2025 through Q1 2026 shows that 62% of all applications are decided at Stage 1 (automated, no human involvement), and 38% of applications reach Stage 2 (human review).
+  - F5: Internal data from Q4 2025 through Q1 2026 shows that within Stage 2, human underwriters agree with the direction implied by AutoApprove's score in 71% of cases.
+  - F6: Helix's General Counsel has circulated an internal memo arguing that AutoApprove is not a 'substantial factor' in consequential decisions. *(disputed)*
+  - F7: Morrison & Partners LLP has concluded that AutoApprove should be considered a 'substantial factor' in making consequential decisions under §6-1-1703 of the Colorado AI Act.
 - **Issues framed (1):**
-  - I1: Whether AutoApprove constitutes a 'high-risk artificial intelligence system' under the Colorado AI Act.
+  - I1: Whether AutoApprove constitutes a 'high-risk artificial intelligence system' under the Colorado AI Act. *(dispositive)*
 - **Rules cited (3):**
-  - R1 `NYC LL 144 §20-871` — NYC Local Law 144 definition of 'high-risk artificial intelligence sy… *(binding)*
-  - R2 `CO SB 24-205 §6-1-1703` — Colorado AI Act definition of 'substantial factor' *(binding)*
-  - R3 `NIST AI 100-1` — NIST AI Risk Management Framework *(advisory)*
+  - R1 `NYC LL 144 §20-871` — NYC Local Law 144 definition of 'high-risk artificial intelligence system' *(binding, NYC)*
+  - R2 `CO SB 24-205 §6-1-1703` — Colorado AI Act definition of 'substantial factor' *(binding, CO)*
+  - R3 `NIST AI 100-1` — NIST AI Risk Management Framework *(advisory, NIST)*
 - **Application (1 steps):**
-  - A1 [violated] AutoApprove's automated decisions may be considered 'substantial factors' in consequential decision…
-- **Conclusions (1):** C1=non-compliant/high
+  - A1 [violated] — applies R1 to facts F1, F2, F3 for I1: AutoApprove's automated decisions may be considered 'substantial factors' in consequential decisions under NYC LL 144 and CO SB 24-205
+- **Conclusions (1):**
+  - C1: non-compliant / high *(supported by A1)*
 - **Obligations (1):**
-  - O1: Implement a process for applicants to correct personal data processed by AutoApprove. *(mandatory)*
+  - O1: Implement a process for applicants to correct personal data processed by AutoApprove. *(mandatory, CO, by 2026-06-30)* *(required by R2)*
 
 **What L-GED saw — Llama-3.2-3B (weak student):**  missed 63 · hallucinated 0 · dropped/mismatched edges 3 · misgrounded rules 2 · **L-GED = 162.5** *(lower = closer to teacher)*
 
-- *Highest-cost teacher nodes it missed:* R1(w4) Definition of AI system: machine-based system processi…; R2(w4) Consequential decision includes material legal or sign…; R5(w4) Deployer: person doing business in the state that depl…; R6(w4) Developer: person doing business in the state that dev…; R8(w4) Deployer must complete impact assessment prior to depl…; R9(w4) Deployer must review deployment at least annually to e…
-- *Right idea, wrong/authority citation:* R1: cited `NYC LL 144 §20-871` vs teacher `CO AIA 6-1-1701(7)`; R2: cited `CO SB 24-205 §6-1-1703` vs teacher `CO AIA 6-1-1701(9)`
+- *Teacher nodes it missed (63, by cost):*
+  - R1 (w4): Definition of AI system: machine-based system processing inputs to produce outputs such as predictions, recommendations, decisions
+  - R2 (w4): Consequential decision includes material legal or significant effect on provision or denial of financial or lending services
+  - R5 (w4): Deployer: person doing business in the state that deploys a high-risk AI system
+  - R6 (w4): Developer: person doing business in the state that develops or substantially modifies an AI system intended or known to be used as high-risk
+  - R8 (w4): Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems, annually thereafter
+  - R9 (w4): Deployer must review deployment at least annually to ensure no algorithmic discrimination
+  - R10 (w4): Deployer must publish website statement summarizing high-risk AI systems and discrimination risk management
+  - R11 (w4): Deployer must provide pre-decision consumer notice of AI use, purpose, contact info, description, and website statement access
+  - R12 (w4): Deployer must provide consumer opportunity to correct incorrect personal data processed by AI system
+  - R13 (w4): Deployer must provide consumer meaningful opportunity to appeal consequential decision where AI was substantial factor
+  - R14 (w4): Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required
+  - R15 (w4): Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, and impact assessment support
+  - R16 (w4): Developer must publish public statement summarizing high-risk AI systems developed or substantially modified
+  - R17 (w4): Deployer or developer must notify AG and affected consumers within 90 days of discovering algorithmic discrimination
+  - R18 (w4): Violations are deceptive trade practices; AG exclusive enforcement; up to $20,000 per violation; rebuttable presumption for self-discovery and cure within 60 days
+  - R19 (w4): Deployer rebuttable presumption of reasonable care if complied with 6-1-1703 and AG requirements
+  - R20 (w4): Impact assessment must include purpose, discrimination risk analysis, training data categories, output description, known limitations, and oversight processes
+  - A1 (w2.5): AutoApprove is a machine-based system that processes loan application inputs and produces credit-risk scores, risk narratives, and approval/denial decisions - outputs that influence real environments. Squarely meets the AI system definition.
+  - A2 (w2.5): Loan approval/denial decisions have material legal or similarly significant effect on provision or denial of financial or lending services under 6-1-1701(3)(c). AutoApprove decisions directly determine whether consumers receive loans.
+  - A3 (w2.5): In Stage 1, AutoApprove directly makes the consequential decision - auto-approving or auto-denying with no human review. The AI system makes the decision, not merely contributes to it. No exceptions under 6-1-1701(7)(a)-(d) apply: it is not a narrow procedural task, does not improve prior human activity, does not merely detect patterns, and is not preparatory.
+  - A5 (w2.5): Helix is doing business in Colorado (headquartered in Denver, operates exclusively in Colorado) and deploys AutoApprove, a high-risk AI system. Helix is unambiguously a deployer under 6-1-1701(5).
+  - A6 (w2.5): Helix did not develop or substantially modify AutoApprove - FinLogic AI developed it. No facts indicate Helix retrained or substantially modified the model. Helix is not a developer under 6-1-1701(6).
+  - A7 (w2.5): The small deployer exception requires BOTH fewer than 50 employees AND not using own data to train. Helix has 310 employees, failing condition (a). The exception does not apply regardless of condition (b). All deployer obligations apply in full.
+  - A8 (w2.5): Helix has implemented a risk management program aligned with NIST AI 100-1, documented in January 2026. This satisfies 6-1-1703(2)(a)(III) which requires consistency with NIST AI RMF or substantially equivalent framework.
+  - A9 (w2.5): Helix completed an impact assessment in February 2026. For systems deployed before June 30, 2026, the assessment must be completed within 90 days after the effective date (by September 28, 2026). The February 2026 assessment satisfies this timeline, though content should be verified against 6-1-1701(8) requirements.
+  - A10 (w2.5): Helix has NOT issued consumer notices to loan applicants regarding AI involvement. Section 6-1-1703(2)(e) requires pre-decision notice of AI use, purpose, contact info, plain-language description, and website statement access instructions. This is a critical compliance gap.
+  - A11 (w2.5): Helix has NOT established a data correction process. Section 6-1-1703(2)(f) requires providing consumers opportunity to correct incorrect personal data processed by the AI system. This is a compliance gap.
+  - A12 (w2.5): Helix has NOT established an appeal process. Section 6-1-1703(2)(g) requires providing consumers a meaningful opportunity to appeal consequential decisions where AI was a substantial factor. Particularly critical for Stage 1 auto-denials. This is a compliance gap.
+  - A13 (w2.5): No facts indicate Helix has published a website statement summarizing its high-risk AI systems and algorithmic discrimination risk management as required by 6-1-1703(2)(d). This is a compliance gap.
+  - A14 (w2.5): FinLogic provided a model card and training data summary, likely covering 6-1-1702(2)(b) training data description and possibly (c) intended uses. However, no indication FinLogic provided: (a) algorithmic discrimination limitation documentation, (d) human monitoring guidance for consequential decisions, or (e) additional impact assessment support materials. Documentation is necessary but insufficient.
+  - A15 (w2.5): No facts indicate whether FinLogic has published a public use case inventory as required by 6-1-1702(3). FinLogic must do so if it is doing business in Colorado. The doing-business-in-state question for a San Francisco company selling to Colorado deployers requires further factual analysis.
+  - A16 (w2.5): The statutory text of 6-1-1701(9) controls over both memos. The GC memo fails to engage with the anti-rubber-stamping provision and ignores that 62% of decisions are fully automated. The Morrison memo correctly applies the statute. Neither memo is binding authority - the statute is the supreme authority. The GC memo is legally deficient; the Morrison memo is persuasive because it correctly interprets binding statutory text.
+  - O1 (w2.5): Implement pre-decision consumer notice system informing all loan applicants of AI use, purpose, contact info, plain-language description, and website statement access per 6-1-1703(2)(e)(I)-(V)
+  - O3 (w2.5): Establish meaningful appeal process for adverse consequential decisions where AutoApprove was a substantial factor per 6-1-1703(2)(g), including independent human review for Stage 1 auto-denials
+  - O4 (w2.5): Publish clear and readily accessible website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management per 6-1-1703(2)(d)
+  - O5 (w2.5): Verify February 2026 impact assessment meets all six content requirements of 6-1-1701(8)(a)-(f); supplement if gaps exist
+  - O6 (w2.5): Establish annual review process for AutoApprove deployment to ensure no algorithmic discrimination per 6-1-1703(2)(c)
+  - O7 (w2.5): Request from FinLogic AI additional developer documentation: algorithmic discrimination limitations (6-1-1702(2)(a)), human monitoring guidance (6-1-1702(2)(d)), and impact assessment support materials (6-1-1702(2)(e))
+  - O8 (w2.5): Establish ongoing algorithmic discrimination monitoring with 90-day AG and consumer notification protocol per 6-1-1704
+  - O9 (w2.5): Formally adopt Morrison & Partners analysis and reject GC memo conclusion; document decision in board or compliance committee minutes
+  - O10 (w2.5): FinLogic AI must publish public use case inventory summarizing high-risk AI systems developed per 6-1-1702(3)
+  - I2 (w1.5): Whether AutoApprove Stage 2 (human-reviewed) constitutes a high-risk AI system and whether AI is a substantial factor under 6-1-1701(9)
+  - I3 (w1.5): How to resolve the conflict between GC memo and Morrison memo - authority hierarchy relative to statutory text
+  - I4 (w1.5): Whether Helix is a deployer, developer, or both under CO AIA
+  - I5 (w1.5): Complete inventory of compliance gaps and required remedial actions by June 30, 2026
+  - I6 (w1.5): Whether FinLogic AI has separate developer obligations and whether current documentation is sufficient
+  - I7 (w1.5): Whether Helix qualifies for the small deployer exception under 6-1-1703(6)
+  - C1 (w1.5): non-compliant
+  - C2 (w1.5): non-compliant
+  - C3 (w1.5): non-compliant
+  - C4 (w1.5): compliant
+  - C5 (w1.5): conditional
+  - F4 (w1): Stage 2: 38% of applications routed to human underwriter who receives AI score, AI risk narrative, and raw data
+  - F8 (w1): Helix has NIST AI 100-1 aligned risk management program documented January 2026
+  - F9 (w1): Helix completed impact assessment of AutoApprove in February 2026
+  - F10 (w1): FinLogic AI provided model card and training data summary
+  - F11 (w1): Helix has NOT issued consumer notices to loan applicants regarding AI involvement
+  - F12 (w1): Helix has NOT established a data correction process for applicants
+  - F13 (w1): Helix has NOT established an appeal process for AI-involved adverse decisions
+  - F14 (w1): AutoApprove is used for lending decisions - financial or lending services
+  - F15 (w1): Helix has 310 employees, far exceeding the 50-employee small deployer threshold
+  - F16 (w1): FinLogic AI is San Francisco-based but sells AutoApprove for use in Colorado
+  - F17 (w1): Colorado AI Act effective date is June 30, 2026; analysis date is April 16, 2026
+- *Right idea, conflicting citation (2):*
+  - R1: cited `NYC LL 144 §20-871` vs teacher `CO AIA 6-1-1701(7)` — High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision
+  - R2: cited `CO SB 24-205 §6-1-1703` vs teacher `CO AIA 6-1-1701(9)` — Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output
 
 ---
 
@@ -227,17 +572,25 @@ Net L-GED change: **-4.5** (patches helped). Read the two spines above/below to 
 
 **Patched student spine:**
 
+- **Facts (6):**
+  - F1: Jurisdictional anchors: Helix Credit operates exclusively in Colorado.
+  - F2: Helix has deployed AutoApprove, an AI-powered underwriting system.
+  - F3: AutoApprove operates in a two-stage workflow: Stage 1 (automated) and Stage 2 (human-reviewed).
+  - F4: Internal data shows 62% of applications are decided at Stage 1, 38% reach Stage 2, and 71% of human underwriters agree with AutoApprove's score.
+  - F5: Helix has implemented an AI risk management program aligned with the NIST AI Risk Management Framework.
+  - F6: Morrison & Partners LLP has concluded that AutoApprove should be considered a 'substantial factor' in making consequential decisions under §6-1-1703 of the Colorado AI Act. *(disputed)*
 - **Issues framed (1):**
-  - I1: Whether AutoApprove constitutes a 'high-risk artificial intelligence system' under the Colorado AI Act.
+  - I1: Whether AutoApprove constitutes a 'high-risk artificial intelligence system' under the Colorado AI Act. *(dispositive)*
 - **Rules cited (3):**
-  - R1 `CO AIA §6-1-1703(2)(a)` — Colorado AI Act definition of 'substantial factor' *(binding)*
-  - R2 `NYC LL 144 §20-871` — NYC Local Law 144 definition of 'high-risk AI system' *(binding)*
-  - R3 `NIST AI RMF 1.0` — NIST AI Risk Management Framework *(persuasive)*
+  - R1 `CO AIA §6-1-1703(2)(a)` — Colorado AI Act definition of 'substantial factor' *(binding, Colorado)*
+  - R2 `NYC LL 144 §20-871` — NYC Local Law 144 definition of 'high-risk AI system' *(binding, NYC)*
+  - R3 `NIST AI RMF 1.0` — NIST AI Risk Management Framework *(persuasive, NIST)*
 - **Application (1 steps):**
-  - A1 [violated] AutoApprove's automated decisions and human-reviewed decisions both involve substantial factors, ma…
-- **Conclusions (1):** C1=non-compliant/high
+  - A1 [violated] — applies R1 to facts F1, F2, F3, F4 for I1: AutoApprove's automated decisions and human-reviewed decisions both involve substantial factors, making it a high-risk AI system under the Colorado AI Act.
+- **Conclusions (1):**
+  - C1: non-compliant / high *(supported by A1)*
 - **Obligations (1):**
-  - O1: Implement risk management policy and program consistent with NIST AI RMF 1.0 or ISO/IEC 4… *(mandatory)*
+  - O1: Implement risk management policy and program consistent with NIST AI RMF 1.0 or ISO/IEC 42001 by June 30, 2026. *(mandatory, Colorado, by 2026-06-30)* *(required by R1)*
 
 ---
 

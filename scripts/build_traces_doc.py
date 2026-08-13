@@ -38,36 +38,49 @@ def _load(p: Path) -> LegalReasoningGraph:
     return LegalReasoningGraph.model_validate_json(p.read_text())
 
 
-def _clip(s: str, n: int = 100) -> str:
-    s = " ".join(str(s).split())
-    return s if len(s) <= n else s[: n - 1] + "…"
+def _norm(s: str) -> str:
+    """Collapse whitespace; NO truncation — full trace text."""
+    return " ".join(str(s).split())
 
 
-def _spine(g: LegalReasoningGraph, *, issues=6, rules=8, apps=3, obl=4) -> list[str]:
-    """Readable FIRACO 'spine' of a graph — the reasoning, not the JSON."""
+def _spine(g: LegalReasoningGraph) -> list[str]:
+    """Full FIRACO trace of a graph — every node, complete text, no clipping."""
     L: list[str] = []
+
+    L.append(f"- **Facts ({len(g.facts)}):**")
+    for f in g.facts:
+        pol = "" if f.polarity.value == "present" else f" *({f.polarity.value})*"
+        L.append(f"  - {f.fid}: {_norm(f.label)}{pol}")
+
     L.append(f"- **Issues framed ({len(g.issues)}):**")
-    for i in g.issues[:issues]:
-        L.append(f"  - {i.iid}: {_clip(i.label, 110)}")
-    if len(g.issues) > issues:
-        L.append(f"  - …+{len(g.issues) - issues} more")
+    for i in g.issues:
+        L.append(f"  - {i.iid}: {_norm(i.label)} *({i.status.value})*")
+
     L.append(f"- **Rules cited ({len(g.rules)}):**")
-    for r in g.rules[:rules]:
-        L.append(f"  - {r.rid} `{_clip(r.citation, 55)}` — {_clip(r.label, 70)} *({r.authority.value})*")
-    if len(g.rules) > rules:
-        L.append(f"  - …+{len(g.rules) - rules} more")
+    for r in g.rules:
+        L.append(f"  - {r.rid} `{_norm(r.citation)}` — {_norm(r.label)} "
+                 f"*({r.authority.value}, {r.jurisdiction})*")
+
     L.append(f"- **Application ({len(g.applications)} steps):**")
-    for a in g.applications[:apps]:
-        L.append(f"  - {a.aid} [{a.result.value}] {_clip(a.reasoning, 100)}")
-    if len(g.applications) > apps:
-        L.append(f"  - …+{len(g.applications) - apps} more")
-    concl = "; ".join(f"{c.cid}={c.determination.value}/{c.confidence.value}" for c in g.conclusions) or "—"
-    L.append(f"- **Conclusions ({len(g.conclusions)}):** {concl}")
+    for a in g.applications:
+        facts = ", ".join(a.fact_refs) if a.fact_refs else "—"
+        L.append(f"  - {a.aid} [{a.result.value}] — applies {a.rule_ref} to facts {facts} "
+                 f"for {a.issue_ref}: {_norm(a.reasoning)}")
+
+    L.append(f"- **Conclusions ({len(g.conclusions)}):**")
+    for c in g.conclusions:
+        support = ", ".join(c.support_refs) if c.support_refs else "—"
+        L.append(f"  - {c.cid}: {c.determination.value} / {c.confidence.value} "
+                 f"*(supported by {support})*")
+
     L.append(f"- **Obligations ({len(g.obligations)}):**")
-    for o in g.obligations[:obl]:
-        L.append(f"  - {o.oid}: {_clip(o.label, 90)} *({o.status.value})*")
-    if len(g.obligations) > obl:
-        L.append(f"  - …+{len(g.obligations) - obl} more")
+    for o in g.obligations:
+        meta = f"{o.status.value}, {o.jurisdiction}"
+        if o.deadline:
+            meta += f", by {o.deadline}"
+        req = f" *(required by {o.required_by})*" if o.required_by else ""
+        L.append(f"  - {o.oid}: {_norm(o.label)} *({meta})*{req}")
+
     return L
 
 
@@ -84,18 +97,20 @@ def _annotate(teacher, student, label) -> list[str]:
              f"dropped/mismatched edges {rep.e_diff_count} · misgrounded rules {rep.v_misground_count} · "
              f"**L-GED = {rep.l_ged:.1f}** *(lower = closer to teacher)*")
     L.append("")
-    top_miss = sorted(rep.v_miss, key=lambda m: m.weight, reverse=True)[:6]
+    top_miss = sorted(rep.v_miss, key=lambda m: m.weight, reverse=True)
     if top_miss:
-        L.append("- *Highest-cost teacher nodes it missed:* "
-                 + "; ".join(f"{m.teacher_id}(w{m.weight:g}) {_clip(m.label, 55)}" for m in top_miss))
-    halluc = rep.v_halluc[:6]
-    if halluc:
-        L.append("- *Nodes it invented (not in teacher):* "
-                 + "; ".join(f"{h.student_id} {_clip(h.label, 45)} [{h.reason}]" for h in halluc))
+        L.append(f"- *Teacher nodes it missed ({len(top_miss)}, by cost):*")
+        for m in top_miss:
+            L.append(f"  - {m.teacher_id} (w{m.weight:g}): {_norm(m.label)}")
+    if rep.v_halluc:
+        L.append(f"- *Nodes it invented, not in teacher ({len(rep.v_halluc)}):*")
+        for h in rep.v_halluc:
+            L.append(f"  - {h.student_id} [{h.reason}]: {_norm(h.label)}")
     if rep.v_misground:
-        L.append("- *Right idea, wrong/authority citation:* "
-                 + "; ".join(f"{mg.student_id}: cited `{_clip(mg.student_citation,28)}` vs teacher "
-                             f"`{_clip(mg.teacher_citation,28)}`" for mg in rep.v_misground[:4]))
+        L.append(f"- *Right idea, conflicting citation ({len(rep.v_misground)}):*")
+        for mg in rep.v_misground:
+            L.append(f"  - {mg.student_id}: cited `{_norm(mg.student_citation)}` vs teacher "
+                     f"`{_norm(mg.teacher_citation)}` — {_norm(mg.proposition)}")
     return L
 
 
@@ -115,8 +130,9 @@ def main() -> None:
              "student missed, invented, or mis-connected relative to the teacher.")
     L.append("")
     L.append("**How to read a trace:** each analysis is a graph — **F**acts → **I**ssues → **R**ules "
-             "→ **A**pplication → **C**onclusion → **O**bligations. Below we show the *spine* (issues, "
-             "rules, application, conclusion, obligations); facts and edges are summarized in the counts.")
+             "→ **A**pplication → **C**onclusion → **O**bligations. Below we show the **full** trace — "
+             "every node with its complete text (facts, issues, rules, application steps, conclusions, "
+             "obligations); the edges that connect them are summarized as a count.")
     L.append("")
 
     for case, framing in CASES.items():
