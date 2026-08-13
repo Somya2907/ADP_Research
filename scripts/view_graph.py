@@ -810,6 +810,206 @@ def render_method_comparison():
         )
 
 
+# ── Reasoning-traces page (teacher vs students) ──
+
+TRACE_STUDENTS = [("gpt5", "GPT-5 · frontier"), ("llama3_2b", "Llama-3B · weak")]
+TRACE_ROLE_COLOR = {"reference": "#34495E", "gpt5": "#1E8449", "llama3_2b": "#B9770E"}
+TIER_NAME = {"E": "Easy", "M": "Medium", "H": "Hard"}
+
+
+def _clip(s: str, n: int = 90) -> str:
+    s = " ".join(str(s).split())
+    return s if len(s) <= n else s[: n - 1] + "…"
+
+
+def _force_embedding_alignment():
+    """Flip the alignment backend to embeddings at runtime (the trustworthy one)."""
+    import lex_drl.alignment as al
+    al.SIMILARITY_METHOD = "embedding"
+    return al
+
+
+def _discrepancy_for(teacher_model, student_model):
+    """Compute a DiscrepancyReport under embedding alignment (threshold 0.55)."""
+    al = _force_embedding_alignment()
+    from lex_drl.discrepancy import compute_discrepancies
+    alignment = al.align_all(teacher_model, student_model, threshold=0.55)
+    return compute_discrepancies(teacher_model, student_model, alignment)
+
+
+def _load_model(path: Path):
+    from lex_drl.schema import LegalReasoningGraph
+    return LegalReasoningGraph.model_validate_json(Path(path).read_text())
+
+
+def _available_cases(graphs_dir: Path) -> list[str]:
+    cases = sorted(p.name.split("_reference.json")[0]
+                   for p in graphs_dir.glob("*_reference.json"))
+    order = {"E": 0, "M": 1, "H": 2}
+    return sorted(cases, key=lambda c: (order.get(c[0], 9), c))
+
+
+def _render_spine(model):
+    """Compact FIRACO 'spine' of a pydantic graph, as Streamlit markdown."""
+    lines = []
+    lines.append(f"**Issues ({len(model.issues)})**")
+    for i in model.issues[:6]:
+        lines.append(f"- `{i.iid}` {_clip(i.label, 95)}")
+    if len(model.issues) > 6:
+        lines.append(f"- *…+{len(model.issues) - 6} more*")
+    lines.append(f"\n**Rules ({len(model.rules)})**")
+    for r in model.rules[:7]:
+        lines.append(f"- `{r.rid}` *{_clip(r.citation, 40)}* — {_clip(r.label, 55)}")
+    if len(model.rules) > 7:
+        lines.append(f"- *…+{len(model.rules) - 7} more*")
+    lines.append(f"\n**Application ({len(model.applications)} steps)**")
+    for a in model.applications[:3]:
+        lines.append(f"- `{a.aid}` [{a.result.value}] {_clip(a.reasoning, 80)}")
+    if len(model.applications) > 3:
+        lines.append(f"- *…+{len(model.applications) - 3} more*")
+    concl = " · ".join(f"{c.cid}={c.determination.value}/{c.confidence.value}"
+                       for c in model.conclusions) or "—"
+    lines.append(f"\n**Conclusions ({len(model.conclusions)}):** {concl}")
+    lines.append(f"\n**Obligations ({len(model.obligations)})**")
+    for o in model.obligations[:4]:
+        lines.append(f"- `{o.oid}` {_clip(o.label, 80)}")
+    if len(model.obligations) > 4:
+        lines.append(f"- *…+{len(model.obligations) - 4} more*")
+    st.markdown("\n".join(lines))
+
+
+def _render_lged_annotation(teacher_model, student_model):
+    rep = _discrepancy_for(teacher_model, student_model)
+    m1, m2, m3, m4, m5 = st.columns(5)
+    m1.metric("L-GED", f"{rep.l_ged:.1f}", help="lower = closer to teacher")
+    m2.metric("Missed", rep.v_miss_count, help="teacher nodes with no student match")
+    m3.metric("Hallucinated", rep.v_halluc_count, help="student nodes not in teacher")
+    m4.metric("Edge diffs", rep.e_diff_count, help="dropped / mistyped connections")
+    m5.metric("Misgrounded", rep.v_misground_count, help="right idea, wrong citation")
+
+    top_miss = sorted(rep.v_miss, key=lambda x: x.weight, reverse=True)[:6]
+    if top_miss:
+        st.markdown("**Highest-cost teacher nodes it missed**")
+        st.markdown("\n".join(
+            f"- `{m.teacher_id}` (w{m.weight:g}) {_clip(m.label, 70)}" for m in top_miss))
+    if rep.v_halluc:
+        st.markdown("**Nodes it invented (not in teacher)**")
+        st.markdown("\n".join(
+            f"- `{h.student_id}` {_clip(h.label, 55)} *[{h.reason}]*" for h in rep.v_halluc[:5]))
+    if rep.v_misground:
+        st.markdown("**Right idea, wrong / conflicting citation**")
+        st.markdown("\n".join(
+            f"- `{mg.student_id}`: cited `{_clip(mg.student_citation, 30)}` vs teacher "
+            f"`{_clip(mg.teacher_citation, 30)}`" for mg in rep.v_misground[:4]))
+    return rep
+
+
+def render_traces_page(graphs_dir: Path):
+    st.header("Reasoning traces — teacher vs. students")
+    st.caption(
+        "The actual FIRACO reasoning behind each L-GED score. The teacher (Claude) writes "
+        "the reference; each student attempts the **same** case; L-GED counts what the "
+        "student missed, invented, or mis-connected. Alignment: **sentence-embedding** "
+        "(the trustworthy backend), threshold 0.55."
+    )
+
+    cases = _available_cases(graphs_dir)
+    if not cases:
+        st.error(f"No `*_reference.json` files found in `{graphs_dir}`.")
+        return
+    default_idx = cases.index("E2") if "E2" in cases else 0
+    case = st.selectbox(
+        "Case", cases, index=default_idx,
+        format_func=lambda c: f"{c} · {TIER_NAME.get(c[0], '?')}")
+
+    ref_path = graphs_dir / f"{case}_reference.json"
+    teacher = _load_model(ref_path)
+    students = {}
+    for key, _ in TRACE_STUDENTS:
+        p = graphs_dir / f"{case}_agent_{key}.json"
+        if p.is_file():
+            students[key] = _load_model(p)
+
+    # ── size comparison ──
+    st.subheader("At a glance — graph size")
+    with st.spinner("Loading embedding model + scoring…"):
+        rows = {"Teacher": node_counts(json.loads(ref_path.read_text()))}
+        for key, lbl in TRACE_STUDENTS:
+            if key in students:
+                rows[lbl] = node_counts(json.loads((graphs_dir / f"{case}_agent_{key}.json").read_text()))
+    size_df = pd.DataFrame(
+        {model: [cnts[k] for k in "FIRACO"] for model, cnts in rows.items()},
+        index=[f"{k} ({NODE_NAMES[k]})" for k in "FIRACO"],
+    )
+    cc1, cc2 = st.columns([2, 1])
+    with cc1:
+        st.bar_chart(size_df)
+    with cc2:
+        totals = {model: sum(cnts.values()) for model, cnts in rows.items()}
+        for model, tot in totals.items():
+            st.metric(f"{model} — total nodes", tot)
+    if "llama3_2b" in students:
+        s = students["llama3_2b"]
+        st.info(
+            f"The weak student collapses the analysis to **{len(s.issues)} issue, "
+            f"{len(s.applications)} application step, {len(s.conclusions)} conclusion, "
+            f"{len(s.obligations)} obligation** — vs the teacher's {len(teacher.issues)} "
+            f"issues / {len(teacher.applications)} steps / {len(teacher.obligations)} "
+            f"obligations. **That gap is the L-GED.**"
+        )
+
+    # ── side-by-side spines ──
+    st.subheader("The three analyses, side by side")
+    cols = st.columns(1 + len(students))
+    with cols[0]:
+        st.markdown(f"<span style='color:{TRACE_ROLE_COLOR['reference']};font-weight:700;"
+                    f"font-size:1.05rem'>🧑‍🏫 Teacher · Claude</span>", unsafe_allow_html=True)
+        st.caption(teacher.model_name)
+        _render_spine(teacher)
+    for col, (key, lbl) in zip(cols[1:], TRACE_STUDENTS):
+        if key not in students:
+            continue
+        with col:
+            icon = "🟢" if key == "gpt5" else "🔴"
+            st.markdown(f"<span style='color:{TRACE_ROLE_COLOR[key]};font-weight:700;"
+                        f"font-size:1.05rem'>{icon} {lbl}</span>", unsafe_allow_html=True)
+            st.caption(students[key].model_name)
+            _render_spine(students[key])
+
+    # ── L-GED annotations ──
+    st.divider()
+    st.subheader("What L-GED saw")
+    for key, lbl in TRACE_STUDENTS:
+        if key not in students:
+            continue
+        icon = "🟢" if key == "gpt5" else "🔴"
+        with st.expander(f"{icon} {lbl}", expanded=(key == "llama3_2b")):
+            _render_lged_annotation(teacher, students[key])
+
+    # ── patch before/after ──
+    patched_path = graphs_dir / f"{case}_agent_llama3_2b_patched_clean_k3.json"
+    if patched_path.is_file() and "llama3_2b" in students:
+        st.divider()
+        st.subheader("What a *patch* does (Llama · k=3 · clean store)")
+        base = students["llama3_2b"]
+        patched = _load_model(patched_path)
+        rb = _discrepancy_for(teacher, base)
+        rp = _discrepancy_for(teacher, patched)
+        b1, b2, b3 = st.columns(3)
+        b1.metric("Baseline L-GED", f"{rb.l_ged:.1f}")
+        b2.metric("+ top-3 patches", f"{rp.l_ged:.1f}", delta=round(rp.l_ged - rb.l_ged, 1),
+                  delta_color="inverse")
+        b3.metric("Issues framed", f"{len(patched.issues)}",
+                  help="still tiny — patches fix grounding, not coverage")
+        st.caption(
+            "The change is mostly corrected grounding + trimmed edges, not recovered "
+            "coverage — the student still frames a single issue. That ceiling is the case "
+            "for reward-driven learning (see docs/IMPROVEMENT_DIRECTIONS.md)."
+        )
+        with st.expander("Patched student spine"):
+            _render_spine(patched)
+
+
 # ── Comparison helpers ──
 
 def compute_diff_highlights(g1: dict, g2: dict) -> tuple[set[str], set[str]]:
@@ -874,7 +1074,8 @@ def main():
         st.header("Mode")
         mode = st.radio(
             "View",
-            ["Single graph", "Side-by-side comparison", "Alignment method comparison"],
+            ["Reasoning traces", "Single graph", "Side-by-side comparison",
+             "Alignment method comparison"],
             index=0,
         )
         st.caption(f"Graphs dir: `{graphs_dir}` ({len(graph_files)} files)")
@@ -886,6 +1087,10 @@ def main():
                 f"{k} — {NODE_NAMES[k]}",
                 unsafe_allow_html=True,
             )
+
+    if mode == "Reasoning traces":
+        render_traces_page(graphs_dir)
+        return
 
     if mode == "Alignment method comparison":
         render_method_comparison()
