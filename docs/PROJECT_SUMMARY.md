@@ -133,11 +133,11 @@ It matched the hypothesis — so we pressure-tested it in Phase 3.
 
 ## Appendix B — engineering choices we made (if asked)
 
-| Question | What we did / found |
-|---|---|
-| Which small model? | "Qwen" label was wrong — it was **Llama-3.2-3B** all along; renamed. |
-| How is Llama served? | Cloud failed (free route rate-limited, paid route broken) → **run it locally on the Mac GPU** — free, deterministic, reproducible. |
-| Statute source? | The `.txt` files are **AI summaries with errors** → index built from **official PDFs**; a **trust gate** blocks the incomplete index from making false calls. |
-| Patch quality control | Citation **classifier** (verified/fabricated/unverified) + verified-only retrieval quarantines bad patches. |
+| Question              | What we did / found                                                                                                                                           |
+| -----------------------| ---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Which small model?    | "Qwen" label was wrong — it was **Llama-3.2-3B** all along; renamed.                                                                                          |
+| How is Llama served?  | Cloud failed (free route rate-limited, paid route broken) → **run it locally on the Mac GPU** — free, deterministic, reproducible.                            |
+| Statute source?       | The `.txt` files are **AI summaries with errors** → index built from **official PDFs**; a **trust gate** blocks the incomplete index from making false calls. |
+| Patch quality control | Citation **classifier** (verified/fabricated/unverified) + verified-only retrieval quarantines bad patches.                                                   |
 
 **Deferred (on purpose):** teacher re-extraction, full statute corpus, InsightWriter, patch-family ablation — all pending the meeting's direction.
