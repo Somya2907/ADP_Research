@@ -1,0 +1,561 @@
+{
+  "case_id": "M2",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "F5",
+      "node_type": "F",
+      "label": "TenantRank was trained on five years of GreenRidge's own tenant data",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F6",
+      "node_type": "F",
+      "label": "TenantRank is used to screen prospective tenants for rental housing",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F14",
+      "node_type": "F",
+      "label": "VP of Operations serves as AI risk officer",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F15",
+      "node_type": "F",
+      "label": "No consumer data correction or appeal process mentioned",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F16",
+      "node_type": "F",
+      "label": "No public website statement about high-risk AI systems mentioned",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F17",
+      "node_type": "F",
+      "label": "No developer documentation on limitations, training data biases, or inappropriate uses mentioned",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F18",
+      "node_type": "F",
+      "label": "No bias testing or algorithmic discrimination analysis of TenantRank mentioned",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "R1",
+      "node_type": "R",
+      "label": "Definition of artificial intelligence system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R2",
+      "node_type": "R",
+      "label": "Housing as a consequential decision domain",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "node_type": "R",
+      "label": "Definition of high-risk AI system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "node_type": "R",
+      "label": "Substantial factor definition - human review does not negate if based primarily on AI output",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R6",
+      "node_type": "R",
+      "label": "Definition of deployer",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Deployer obligations including risk management, impact assessment, notice, correction, and appeal",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Small-deployer exception requires BOTH fewer than 50 employees AND not using own data to train",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "Impact assessment must include six enumerated elements",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Consumer rights to data correction and meaningful appeal",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "node_type": "R",
+      "label": "Risk management program must be consistent with NIST AI RMF 1.0 or equivalent",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A1",
+      "node_type": "A",
+      "label": "TenantRank is a machine-based system that processes inputs and produces outputs (risk scores 0-100) that are predictions influencing real environments. It satisfies the AI system definition.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A2",
+      "node_type": "A",
+      "label": "TenantRank screens prospective tenants for rental housing. Housing is explicitly enumerated in Section 6-1-1701(3)(f) as a consequential decision domain.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A3",
+      "node_type": "A",
+      "label": "96% denial rate for sub-40 scores and 88% approval for above-60 scores, combined with VP directive to almost never approve low scorers, demonstrates TenantRank materially contributes to decisions. Human review is based primarily on AI output per Section 6-1-1701(9).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A5",
+      "node_type": "A",
+      "label": "Section 6-1-1703(6) requires BOTH (a) fewer than 50 employees AND (b) not using own data to train. GreenRidge satisfies (a) with 45 employees but fails (b) because it trained TenantRank on its own five years of tenant data. Both conditions must be met. The exception does not apply.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A7",
+      "node_type": "A",
+      "label": "GreenRidge does business in Colorado and deploys TenantRank, a high-risk AI system, in its property management operations. It meets the deployer definition under Section 6-1-1701(5).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "GreenRidge aligned its risk management program with NIST AI RMF 1.0, satisfying the framework requirement of Section 6-1-1703(2)(a)(III). However, the VP of Operations who directed heavy reliance on TenantRank scores also serves as AI risk officer, creating a governance conflict. The program has not identified or addressed the de facto determinative weight given to scores, undermining substantive adequacy under Section 6-1-1703(2)(a)(I).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A9",
+      "node_type": "A",
+      "label": "An impact assessment was completed in January 2026 covering purpose, data inputs, discrimination risks, and mitigation. However, the facts do not confirm all six elements of Section 6-1-1701(8) are addressed, particularly known limitations analysis, output description, and oversight processes. Under Section 6-1-1703(2)(b)(I), pre-deployment systems have until September 28, 2026 to complete a compliant assessment.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "The disclosure says only 'data analytics tools' without identifying it as a high-risk AI system, stating the purpose and nature of the consequential decision, providing contact information, giving a plain-language description, or directing consumers to a public statement. It fails all five required elements of Section 6-1-1703(2)(e).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "No data correction process or meaningful appeal mechanism has been implemented for housing applicants. Section 6-1-1703(2)(f) and (g) require both. These are absent.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A12",
+      "node_type": "A",
+      "label": "As developer, GreenRidge has not created documentation on limitations, training data biases, intended/inappropriate uses, or monitoring guidance per Section 6-1-1702(2). No public statement summarizing high-risk AI systems developed has been published per Section 6-1-1702(3). No bias testing has been conducted per Section 6-1-1702(1) reasonable care obligation.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A13",
+      "node_type": "A",
+      "label": "GreenRidge has not published a website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management as required by Section 6-1-1703(2)(d).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A14",
+      "node_type": "A",
+      "label": "If TenantRank produces disparate outcomes on protected characteristics, each non-compliant application decision could constitute a separate violation at up to $20,000 per violation under Section 6-1-1706. With 1,200 rental units, exposure is significant. Actual discrimination outcomes require further factual investigation.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C1",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C3",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C4",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C5",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O1",
+      "node_type": "O",
+      "label": "Conduct bias testing of TenantRank across protected classes and implement reasonable care measures as developer",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O2",
+      "node_type": "O",
+      "label": "Create developer documentation on limitations, training data biases, intended/inappropriate uses, and monitoring guidance",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O4",
+      "node_type": "O",
+      "label": "Enhance risk management program to address de facto determinative reliance on TenantRank scores and resolve governance conflict with VP of Operations dual role",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O5",
+      "node_type": "O",
+      "label": "Complete or update impact assessment to include all six elements of Section 6-1-1701(8)",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Implement annual review process for TenantRank to assess algorithmic discrimination",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O7",
+      "node_type": "O",
+      "label": "Publish deployer public website statement summarizing deployed high-risk AI systems and discrimination risk management",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O9",
+      "node_type": "O",
+      "label": "Implement process for applicants to correct incorrect personal data processed by TenantRank",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O10",
+      "node_type": "O",
+      "label": "Implement meaningful appeal process for consequential housing decisions involving TenantRank",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O12",
+      "node_type": "O",
+      "label": "Obtain corrected legal advice regarding inapplicability of small-deployer exception and full dual developer/deployer obligations",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F3",
+      "node_type": "F",
+      "label": "Manages 1,200 rental units across 18 complexes",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F4",
+      "node_type": "F",
+      "label": "TenantRank deployed Feb 2026 for tenant screening",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "R1",
+      "node_type": "R",
+      "label": "Definitions incl. AI, high-risk, consequential decision",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R7",
+      "node_type": "R",
+      "label": "Notify AG within set time on discrimination discovery",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R8",
+      "node_type": "R",
+      "label": "Affirmative defense for NIST-like RMP and fixes",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "A2",
+      "node_type": "A",
+      "label": "Under 50 FTE met but ineligible due to being developer",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A4",
+      "node_type": "A",
+      "label": "Use in live screenings makes it a deployer",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A5",
+      "node_type": "A",
+      "label": "Generic notice lacks required AI use, purpose, and explanation",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A6",
+      "node_type": "A",
+      "label": "RMP and initial assessment done; updates/records unclear",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A7",
+      "node_type": "A",
+      "label": "Threshold use raises risk; discrimination not proven",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A8",
+      "node_type": "A",
+      "label": "AG notice duty triggers only upon discovery",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A9",
+      "node_type": "A",
+      "label": "Public developer statement not shown in record",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A10",
+      "node_type": "A",
+      "label": "NIST RMP helps but notice gaps weaken defense",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A11",
+      "node_type": "A",
+      "label": "Obligations attach at effective date in mid-2026",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O2",
+      "node_type": "O",
+      "label": "Issue adverse-action notices with reasons and data sources",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O4",
+      "node_type": "O",
+      "label": "Maintain NIST-like RMP; annual and change-triggered assessments",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O5",
+      "node_type": "O",
+      "label": "Monitor for bias; document tests; mitigate issues",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O7",
+      "node_type": "O",
+      "label": "Update SOPs; remove near-automatic denial policy; ensure human review",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O8",
+      "node_type": "O",
+      "label": "Maintain logs and records; furnish to AG upon request",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E1",
+      "teacher_src": "F3",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F6",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E3",
+      "teacher_src": "F7",
+      "teacher_dst": "I1",
+      "teacher_type": "supports",
+      "student_src": "F7",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E4",
+      "teacher_src": "F8",
+      "teacher_dst": "I1",
+      "teacher_type": "supports",
+      "student_src": "F8",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E13",
+      "teacher_src": "F2",
+      "teacher_dst": "I2",
+      "teacher_type": "triggers",
+      "student_src": "F2",
+      "student_dst": "I2",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E17",
+      "teacher_src": "F12",
+      "teacher_dst": "I2",
+      "teacher_type": "contradicts",
+      "student_src": "F12",
+      "student_dst": "I2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E18",
+      "teacher_src": "F4",
+      "teacher_dst": "I3",
+      "teacher_type": "triggers",
+      "student_src": "F5",
+      "student_dst": "I3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E23",
+      "teacher_src": "F9",
+      "teacher_dst": "I4",
+      "teacher_type": "triggers",
+      "student_src": "F9",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E24",
+      "teacher_src": "F11",
+      "teacher_dst": "I4",
+      "teacher_type": "triggers",
+      "student_src": "F11",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E40",
+      "teacher_src": "R7",
+      "teacher_dst": "O3",
+      "teacher_type": "triggers",
+      "student_src": "R2",
+      "student_dst": "O3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E48",
+      "teacher_src": "R13",
+      "teacher_dst": "O11",
+      "teacher_type": "triggers",
+      "student_src": "R4",
+      "student_dst": "O6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R5",
+      "student_id": "R3",
+      "teacher_citation": "CO AIA Section 6-1-1701(6)",
+      "student_citation": "C.R.S. § 6-1-1703",
+      "proposition": "Definition of developer",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "student_id": "R5",
+      "teacher_citation": "CO AIA Section 6-1-1703(2)(e)",
+      "student_citation": "C.R.S. § 6-1-1705",
+      "proposition": "Consumer notice must include five specific items before consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "student_id": "R9",
+      "teacher_citation": "CO AIA Section 6-1-1703(2)(b)(I)",
+      "student_citation": "C.R.S. § 6-1-1708",
+      "proposition": "Pre-deployment systems have 90 days after effective date for impact assessment",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 174.5,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 7,
+      "v_halluc": 2
+    },
+    "I": {
+      "v_miss": 0,
+      "v_halluc": 0
+    },
+    "R": {
+      "v_miss": 10,
+      "v_halluc": 3
+    },
+    "A": {
+      "v_miss": 12,
+      "v_halluc": 9
+    },
+    "C": {
+      "v_miss": 4,
+      "v_halluc": 0
+    },
+    "O": {
+      "v_miss": 9,
+      "v_halluc": 5
+    }
+  }
+}

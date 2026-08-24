@@ -41,6 +41,17 @@ EMBEDDING_MODEL_NAME = os.environ.get(
 )
 DEFAULT_THRESHOLD = 0.55 if SIMILARITY_METHOD == "embedding" else 0.10
 
+# Rule-alignment mode:
+#   "hybrid"   — citation-token match first, text-similarity fallback (default;
+#                the mode behind the tfidf_v1 / embedding_v1 snapshots).
+#   "combined" — a single blended score: exact citation agreement forces a match
+#                (1.0); sibling subsections (same base section, different
+#                subsection, e.g. §6-1-1703(2)(a) vs (2)(b)) are discounted below
+#                threshold so text embeddings can't merge legally distinct rules;
+#                otherwise text similarity. Addresses the "embeddings can't tell
+#                citations apart" concern. Read at import from LEX_DRL_RULE_ALIGN.
+RULE_ALIGN_MODE = os.environ.get("LEX_DRL_RULE_ALIGN", "hybrid").lower()
+
 _EMBED_MODEL = None  # lazy-loaded SentenceTransformer instance
 
 
@@ -297,6 +308,61 @@ def align_issues(
     return mapping
 
 
+def _text_sim_matrix(t_text: list[str], s_text: list[str]) -> list[list[float]]:
+    """Text-similarity matrix under the active backend (embedding or TF-IDF)."""
+    if SIMILARITY_METHOD == "embedding":
+        return _embedding_cosine_matrix(t_text, s_text)
+    return _cosine_matrix(t_text, s_text)
+
+
+def _align_rules_combined(
+    teacher: LegalReasoningGraph,
+    student: LegalReasoningGraph,
+    threshold: float,
+) -> dict[str, Optional[str]]:
+    """Blended citation+text rule alignment (LEX_DRL_RULE_ALIGN=combined).
+
+    Per teacher/student rule pair the score is:
+      * 1.0                 if their citation tokens intersect (same rule);
+      * min(text, 0.9·thr)  if they are sibling subsections (same base section,
+                            different subsection) — discounted below the match
+                            threshold so embeddings cannot merge e.g.
+                            §6-1-1703(2)(a) with (2)(b);
+      * text similarity     otherwise.
+    Then a greedy bipartite assignment under ``threshold`` (same as text align).
+    """
+    t_rules, s_rules = teacher.rules, student.rules
+    if not t_rules:
+        return {}
+    if not s_rules:
+        return {r.rid: None for r in t_rules}
+
+    text = _text_sim_matrix([r.label for r in t_rules], [r.label for r in s_rules])
+    sibling_cap = 0.9 * threshold
+    sim: list[list[float]] = []
+    for i, t in enumerate(t_rules):
+        t_tok = extract_citation_tokens(t.citation)
+        t_base = {tok.split("(")[0] for tok in t_tok}
+        row: list[float] = []
+        for j, s in enumerate(s_rules):
+            s_tok = extract_citation_tokens(s.citation)
+            s_base = {tok.split("(")[0] for tok in s_tok}
+            e = text[i][j]
+            if t_tok and s_tok and (t_tok & s_tok):
+                v = 1.0                       # same citation → same rule
+            elif t_tok and s_tok and (t_base & s_base):
+                v = min(e, sibling_cap)       # sibling subsection → discount
+            else:
+                v = e                         # no usable citation signal → text
+            row.append(v)
+        sim.append(row)
+
+    assignments = _greedy_assign(
+        [r.rid for r in t_rules], [r.rid for r in s_rules], sim, threshold
+    )
+    return {tid: sid for tid, sid, _ in assignments}
+
+
 def align_rules(
     teacher: LegalReasoningGraph,
     student: LegalReasoningGraph,
@@ -304,10 +370,14 @@ def align_rules(
 ) -> dict[str, Optional[str]]:
     """Map each teacher rule id to the best student rule id (or None).
 
-    Citation tokens are normalised and matched first (e.g. "§20-871(d)(2)" ≡
-    "Section 20-871(d)(2)"). Rules with no citation match fall back to label
-    TF-IDF.
+    Two modes (LEX_DRL_RULE_ALIGN): ``"combined"`` blends citation+text into one
+    score (see :func:`_align_rules_combined`); the default ``"hybrid"`` matches
+    citation tokens first (e.g. "§20-871(d)(2)" ≡ "Section 20-871(d)(2)") and
+    falls back to label text similarity for rules with no citation match.
     """
+    if RULE_ALIGN_MODE == "combined":
+        return _align_rules_combined(teacher, student, threshold)
+
     mapping: dict[str, Optional[str]] = {}
     used_student: set[str] = set()
 

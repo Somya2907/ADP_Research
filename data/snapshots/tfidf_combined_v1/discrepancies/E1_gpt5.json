@@ -1,0 +1,581 @@
+{
+  "case_id": "E1",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "F4",
+      "node_type": "F",
+      "label": "Greenleaf uses ResumeRank to screen applicants for six retail locations in Brooklyn and Manhattan, NYC",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F12",
+      "node_type": "F",
+      "label": "Analysis date is April 16, 2026; LL 144 in force since July 5, 2023; TRAIGA since Jan 1, 2026; CO AIA effective June 30, 2026",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F13",
+      "node_type": "F",
+      "label": "Greenleaf is a national grocery chain; Colorado operations plausible but not confirmed in facts",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "I3",
+      "node_type": "I",
+      "label": "Did TalentMetrics LLC qualify as an independent auditor given its financial relationship with HireFlow?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I4",
+      "node_type": "I",
+      "label": "Has Greenleaf violated LL 144 published results requirements?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I5",
+      "node_type": "I",
+      "label": "Has Greenleaf violated LL 144 candidate notice requirements?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I7",
+      "node_type": "I",
+      "label": "Does HireFlow or Greenleaf have obligations or exposure under Texas TRAIGA?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I8",
+      "node_type": "I",
+      "label": "What obligations will Greenleaf and HireFlow face under Colorado AIA effective June 30, 2026?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R2",
+      "node_type": "R",
+      "label": "Bias audit required no more than one year prior to AEDT use; cannot use AEDT if more than one year since most recent audit",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "node_type": "R",
+      "label": "New bias audit required after substantial modification including retraining on new or updated data",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R7",
+      "node_type": "R",
+      "label": "Data retention/disclosure: employer must post AEDT data retention policy, data types, sources, and request instructions on website",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Penalties: $500-$1,500 per violation; each use of non-compliant AEDT to screen a single candidate may be a separate violation",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Geographic scope: applies based on candidate/employee location, not employer HQ; covers NYC positions and NYC-resident candidates",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "Prohibited conduct: no person may develop or deploy AI with intent to unlawfully discriminate; requires intentional discrimination, not disparate impact",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "node_type": "R",
+      "label": "No private employer disclosure/audit/impact assessment requirements; consumer definition excludes employment context; disclosure only for government agencies",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Safe harbor for substantial compliance with NIST AI RMF or recognized AI governance standards",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "node_type": "R",
+      "label": "TRAIGA preempts local TX ordinances on AI but does not preempt other states laws",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "node_type": "R",
+      "label": "Developer obligations: reasonable care, documentation to deployers on limitations/training data/uses/monitoring, public use case inventory",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "node_type": "R",
+      "label": "High-risk AI system: AI that makes or is substantial factor in consequential decisions including employment",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R17",
+      "node_type": "R",
+      "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "node_type": "R",
+      "label": "Algorithmic discrimination notice: deployer/developer must notify AG and affected consumers within 90 days of discovery",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A1",
+      "node_type": "A",
+      "label": "ResumeRank is a computational process derived from ML (gradient-boosted model, NLP) issuing simplified output (score 1-100). Greenleaf relies solely on the score with no other factors considered (auto-reject below 70), satisfying DCWP Rules 5-300(i). Used for employment decisions at NYC locations. ResumeRank is an AEDT.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A2",
+      "node_type": "A",
+      "label": "The November 2023 audit is over two years old as of January 2026. Section 20-871(a)(1) requires audit no more than one year prior to use. The audit expired by November 2024 at the latest. Greenleaf has used ResumeRank without a temporally valid audit since at least November 2024.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A4",
+      "node_type": "A",
+      "label": "TalentMetrics LLC is HireFlow's contracted vendor partner for ongoing model monitoring, constituting a direct financial relationship with the AEDT developer. Under 20-870 and DCWP Rules 5-300, an auditor with a financial interest in the vendor that developed the AEDT is not independent. The November 2023 audit was defective from inception.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A7",
+      "node_type": "A",
+      "label": "DCWP Rules 5-304(d) requires posting of AEDT data retention policy, data types, sources, and request instructions on employer website. Greenleaf has posted no such information. Violated.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "Each use of non-compliant AEDT to screen a single candidate is a separate violation at $500-$1,500. Greenleaf has screened candidates for six NYC locations since March 2025 (13+ months). Multiple independent violation types (no valid audit, no published results, no notice, no data disclosure) compound exposure. Aggregate penalties could be very substantial.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A9",
+      "node_type": "A",
+      "label": "LL 144 applies based on candidate location. Candidates apply for positions at Brooklyn and Manhattan locations in NYC. Greenleaf's Chicago HQ and HireFlow's Austin location are irrelevant. LL 144 applies.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "TRAIGA prohibits only intentional discrimination. No facts suggest HireFlow or Greenleaf developed or deployed ResumeRank with intent to unlawfully discriminate. No TRAIGA violation identified.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "TRAIGA imposes no affirmative audit, notice, impact assessment, or disclosure obligations on private employers or developers for employment AI tools. Consumer definition excludes employment context. No obligations triggered.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A12",
+      "node_type": "A",
+      "label": "TRAIGA preempts only local TX ordinances. It does not preempt NYC LL 144 or CO AIA. No preemptive effect on other jurisdictions.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A13",
+      "node_type": "A",
+      "label": "ResumeRank makes consequential employment decisions (auto-reject below 70), qualifying as high-risk AI under CO AIA 6-1-1701(7). However, applicability depends on whether Greenleaf operates in Colorado, which is plausible for a national chain but unconfirmed. If confirmed, both developer and deployer obligations apply.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A15",
+      "node_type": "A",
+      "label": "If Greenleaf operates in CO, it currently lacks: NIST AI RMF-aligned risk management program, impact assessments, website statement, consumer notice mechanisms, data correction processes, and appeal mechanisms. All would be required by June 30, 2026 (or within 90 days for impact assessments of pre-existing deployments). Significant readiness gap exists.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C2",
+      "node_type": "C",
+      "label": "compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C3",
+      "node_type": "C",
+      "label": "conditional",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O5",
+      "node_type": "O",
+      "label": "Respond to pending DCWP complaint; engage LL 144 counsel; preserve all records of ResumeRank use",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Ensure future bias auditors have no financial interest in HireFlow, Greenleaf, or ResumeRank vendor; TalentMetrics LLC is disqualified",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O7",
+      "node_type": "O",
+      "label": "Maintain prohibition on intentional discrimination in AI development and deployment under TRAIGA",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O9",
+      "node_type": "O",
+      "label": "HireFlow: prepare developer documentation (limitations, training data, intended/inappropriate uses, monitoring guidance) for deployers under CO AIA",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O10",
+      "node_type": "O",
+      "label": "HireFlow: publish public use case inventory of high-risk AI systems available in Colorado",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O11",
+      "node_type": "O",
+      "label": "Greenleaf: implement risk management program consistent with NIST AI 100-1 or ISO/IEC 42001 (not NIST 800-53 or ISO 27001)",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O12",
+      "node_type": "O",
+      "label": "Greenleaf: complete impact assessment for ResumeRank within 90 days of CO AIA effective date for pre-existing deployments",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O13",
+      "node_type": "O",
+      "label": "Greenleaf: implement consumer notice before consequential decisions, data correction opportunities, and meaningful appeal mechanisms under CO AIA",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O14",
+      "node_type": "O",
+      "label": "Greenleaf: publish website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management under CO AIA",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F1",
+      "node_type": "F",
+      "label": "Greenleaf used ResumeRank in NYC since Mar 2025",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F2",
+      "node_type": "F",
+      "label": "ResumeRank scores 1-100 and rejects <70",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F5",
+      "node_type": "F",
+      "label": "NYC job posts lacked AEDT disclosure",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F13",
+      "node_type": "F",
+      "label": "License of ResumeRank began Mar 2025",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "I2",
+      "node_type": "I",
+      "label": "Was a valid bias audit done within 1 year before use?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "I3",
+      "node_type": "I",
+      "label": "Was the audit summary and distribution date posted?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "I4",
+      "node_type": "I",
+      "label": "Were 10-business-day notices with required content given?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "I7",
+      "node_type": "I",
+      "label": "Does Colorado SB 24-205 apply to Greenleaf here?",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "R2",
+      "node_type": "R",
+      "label": "Bias audit within 1 year and summary posting",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R3",
+      "node_type": "R",
+      "label": "10-business-day notice and content to candidates",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R5",
+      "node_type": "R",
+      "label": "Bias audit scope, metrics, and independence",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R8",
+      "node_type": "R",
+      "label": "CO AI Act applies to CO residents decisions",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "A1",
+      "node_type": "A",
+      "label": "ML tool outputs scores used to auto-reject; replaces discretion",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A2",
+      "node_type": "A",
+      "label": "Audit Nov 2023; use began Mar 2025; >1 year; no fresh audit",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A5",
+      "node_type": "A",
+      "label": "Retrain in 2024; prior audit not of deployed model; auditor not independent",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A6",
+      "node_type": "A",
+      "label": "Audit metrics must cover deployed AEDT; they do not",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A7",
+      "node_type": "A",
+      "label": "Each day of use and each missed notice are penalized",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "C2",
+      "node_type": "C",
+      "label": "compliant",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "O2",
+      "node_type": "O",
+      "label": "Obtain independent bias audit of current model",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O3",
+      "node_type": "O",
+      "label": "Ensure auditor independence per DCWP rules",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O6",
+      "node_type": "O",
+      "label": "Offer alternative process or accommodation info",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O7",
+      "node_type": "O",
+      "label": "Re-audit at least annually before continued use",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E1",
+      "teacher_src": "F2",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F14",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F5",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F3",
+      "student_dst": "I1",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E4",
+      "teacher_src": "F6",
+      "teacher_dst": "I2",
+      "teacher_type": "triggers",
+      "student_src": "F7",
+      "student_dst": "I5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E5",
+      "teacher_src": "F8",
+      "teacher_dst": "I2",
+      "teacher_type": "triggers",
+      "student_src": "F8",
+      "student_dst": "I5",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E9",
+      "teacher_src": "F11",
+      "teacher_dst": "I6",
+      "teacher_type": "triggers",
+      "student_src": "F10",
+      "student_dst": "I6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E15",
+      "teacher_src": "R6",
+      "teacher_dst": "A6",
+      "teacher_type": "applies-to",
+      "student_src": "R7",
+      "student_dst": "A4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E24",
+      "teacher_src": "A3",
+      "teacher_dst": "C1",
+      "teacher_type": "fails-element",
+      "student_src": "A9",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E40",
+      "teacher_src": "R6",
+      "teacher_dst": "O3",
+      "teacher_type": "triggers",
+      "student_src": "R7",
+      "student_dst": "O5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E51",
+      "teacher_src": "C1",
+      "teacher_dst": "O1",
+      "teacher_type": "triggers",
+      "student_src": "C1",
+      "student_dst": "O1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E52",
+      "teacher_src": "C1",
+      "teacher_dst": "O2",
+      "teacher_type": "triggers",
+      "student_src": "C1",
+      "student_dst": "O4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E53",
+      "teacher_src": "C1",
+      "teacher_dst": "O3",
+      "teacher_type": "triggers",
+      "student_src": "C1",
+      "student_dst": "O5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R5",
+      "student_id": "R6",
+      "teacher_citation": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
+      "student_citation": "6 RCNY §5-302",
+      "proposition": "Published results: bias audit date, summary of results with data source, unknown categories, applicant counts, rates, impact ratios, and distribution date must be on employer website before AEDT use",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 191.0,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 3,
+      "v_halluc": 4
+    },
+    "I": {
+      "v_miss": 5,
+      "v_halluc": 4
+    },
+    "R": {
+      "v_miss": 13,
+      "v_halluc": 4
+    },
+    "A": {
+      "v_miss": 11,
+      "v_halluc": 5
+    },
+    "C": {
+      "v_miss": 2,
+      "v_halluc": 1
+    },
+    "O": {
+      "v_miss": 9,
+      "v_halluc": 4
+    }
+  }
+}

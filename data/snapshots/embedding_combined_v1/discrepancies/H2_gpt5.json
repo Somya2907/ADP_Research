@@ -1,0 +1,474 @@
+{
+  "case_id": "H2",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "I2",
+      "node_type": "I",
+      "label": "Whether AutoApprove Stage 2 (human-reviewed) constitutes a high-risk AI system and whether AI is a substantial factor under 6-1-1701(9)",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I7",
+      "node_type": "I",
+      "label": "Whether Helix qualifies for the small deployer exception under 6-1-1703(6)",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R1",
+      "node_type": "R",
+      "label": "Definition of AI system: machine-based system processing inputs to produce outputs such as predictions, recommendations, decisions",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R5",
+      "node_type": "R",
+      "label": "Deployer: person doing business in the state that deploys a high-risk AI system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R6",
+      "node_type": "R",
+      "label": "Developer: person doing business in the state that develops or substantially modifies an AI system intended or known to be used as high-risk",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems, annually thereafter",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Deployer must review deployment at least annually to ensure no algorithmic discrimination",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Deployer must provide consumer opportunity to correct incorrect personal data processed by AI system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "node_type": "R",
+      "label": "Deployer must provide consumer meaningful opportunity to appeal consequential decision where AI was substantial factor",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "node_type": "R",
+      "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "node_type": "R",
+      "label": "Violations are deceptive trade practices; AG exclusive enforcement; up to $20,000 per violation; rebuttable presumption for self-discovery and cure within 60 days",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R20",
+      "node_type": "R",
+      "label": "Impact assessment must include purpose, discrimination risk analysis, training data categories, output description, known limitations, and oversight processes",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A3",
+      "node_type": "A",
+      "label": "In Stage 1, AutoApprove directly makes the consequential decision - auto-approving or auto-denying with no human review. The AI system makes the decision, not merely contributes to it. No exceptions under 6-1-1701(7)(a)-(d) apply: it is not a narrow procedural task, does not improve prior human activity, does not merely detect patterns, and is not preparatory.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A6",
+      "node_type": "A",
+      "label": "Helix did not develop or substantially modify AutoApprove - FinLogic AI developed it. No facts indicate Helix retrained or substantially modified the model. Helix is not a developer under 6-1-1701(6).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C5",
+      "node_type": "C",
+      "label": "conditional",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C6",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F6",
+      "node_type": "F",
+      "label": "Stage 1 decisions have no human review",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F7",
+      "node_type": "F",
+      "label": "Stage 2: 40th-70th sent to human underwriter",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F11",
+      "node_type": "F",
+      "label": "38% of apps go to Stage 2",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "O4",
+      "node_type": "O",
+      "label": "Create AI-aware appeal with human review",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O8",
+      "node_type": "O",
+      "label": "Strengthen vendor contract for §1703 docs",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O11",
+      "node_type": "O",
+      "label": "FinLogic: provide full developer disclosures",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O14",
+      "node_type": "O",
+      "label": "Map NIST RMF controls to §1704 duties",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F3",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F10",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E12",
+      "teacher_src": "A4",
+      "teacher_dst": "C2",
+      "teacher_type": "fails-element",
+      "student_src": "A2",
+      "student_dst": "C2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E18",
+      "teacher_src": "A8",
+      "teacher_dst": "C4",
+      "teacher_type": "satisfies-element",
+      "student_src": "A14",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E20",
+      "teacher_src": "A9",
+      "teacher_dst": "C4",
+      "teacher_type": "satisfies-element",
+      "student_src": "A7",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E27",
+      "teacher_src": "R10",
+      "teacher_dst": "A13",
+      "teacher_type": "applies-to",
+      "student_src": "R7",
+      "student_dst": "A11",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E29",
+      "teacher_src": "R15",
+      "teacher_dst": "A14",
+      "teacher_type": "applies-to",
+      "student_src": "R10",
+      "student_dst": "A13",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E31",
+      "teacher_src": "R16",
+      "teacher_dst": "A15",
+      "teacher_type": "applies-to",
+      "student_src": "R5",
+      "student_dst": "A6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E33",
+      "teacher_src": "R4",
+      "teacher_dst": "A16",
+      "teacher_type": "applies-to",
+      "student_src": "R3",
+      "student_dst": "A4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E35",
+      "teacher_src": "F6",
+      "teacher_dst": "A16",
+      "teacher_type": "contradicts",
+      "student_src": "F13",
+      "student_dst": "A4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E36",
+      "teacher_src": "F7",
+      "teacher_dst": "A16",
+      "teacher_type": "supports",
+      "student_src": "F14",
+      "student_dst": "A4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E40",
+      "teacher_src": "R10",
+      "teacher_dst": "O4",
+      "teacher_type": "triggers",
+      "student_src": "R7",
+      "student_dst": "O5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E43",
+      "teacher_src": "R15",
+      "teacher_dst": "O7",
+      "teacher_type": "triggers",
+      "student_src": "R10",
+      "student_dst": "O13",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E44",
+      "teacher_src": "R17",
+      "teacher_dst": "O8",
+      "teacher_type": "triggers",
+      "student_src": "R8",
+      "student_dst": "O9",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E45",
+      "teacher_src": "R4",
+      "teacher_dst": "O9",
+      "teacher_type": "triggers",
+      "student_src": "R3",
+      "student_dst": "O10",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E47",
+      "teacher_src": "F1",
+      "teacher_dst": "I4",
+      "teacher_type": "triggers",
+      "student_src": "F2",
+      "student_dst": "I3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E49",
+      "teacher_src": "F11",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F18",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E50",
+      "teacher_src": "F12",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F19",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E51",
+      "teacher_src": "F13",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F20",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E52",
+      "teacher_src": "F16",
+      "teacher_dst": "I6",
+      "teacher_type": "triggers",
+      "student_src": "F3",
+      "student_dst": "I5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R2",
+      "student_id": "R2",
+      "teacher_citation": "CO AIA 6-1-1701(3)(c)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Consequential decision includes material legal or significant effect on provision or denial of financial or lending services",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "student_id": "R1",
+      "teacher_citation": "CO AIA 6-1-1701(7)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "student_id": "R3",
+      "teacher_citation": "CO AIA 6-1-1701(9)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R7",
+      "student_id": "R6",
+      "teacher_citation": "CO AIA 6-1-1703(2)(a)",
+      "student_citation": "C.R.S. § 6-1-1707",
+      "proposition": "Deployer must implement risk management policy consistent with NIST AI 100-1 or substantially equivalent framework",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "student_id": "R7",
+      "teacher_citation": "CO AIA 6-1-1703(2)(d)",
+      "student_citation": "C.R.S. § 24-4-103",
+      "proposition": "Deployer must publish website statement summarizing high-risk AI systems and discrimination risk management",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "student_id": "R4",
+      "teacher_citation": "CO AIA 6-1-1703(2)(e)",
+      "student_citation": "C.R.S. § 6-1-1704",
+      "proposition": "Deployer must provide pre-decision consumer notice of AI use, purpose, contact info, description, and website statement access",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "student_id": "R10",
+      "teacher_citation": "CO AIA 6-1-1702(2)",
+      "student_citation": "C.R.S. § 6-1-1702",
+      "proposition": "Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, and impact assessment support",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "student_id": "R5",
+      "teacher_citation": "CO AIA 6-1-1702(3)",
+      "student_citation": "C.R.S. § 6-1-1703",
+      "proposition": "Developer must publish public statement summarizing high-risk AI systems developed or substantially modified",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R17",
+      "student_id": "R8",
+      "teacher_citation": "CO AIA 6-1-1704",
+      "student_citation": "C.R.S. § 6-1-1708",
+      "proposition": "Deployer or developer must notify AG and affected consumers within 90 days of discovering algorithmic discrimination",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 117.5,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 0,
+      "v_halluc": 3
+    },
+    "I": {
+      "v_miss": 2,
+      "v_halluc": 0
+    },
+    "R": {
+      "v_miss": 10,
+      "v_halluc": 0
+    },
+    "A": {
+      "v_miss": 2,
+      "v_halluc": 0
+    },
+    "C": {
+      "v_miss": 2,
+      "v_halluc": 0
+    },
+    "O": {
+      "v_miss": 0,
+      "v_halluc": 4
+    }
+  }
+}

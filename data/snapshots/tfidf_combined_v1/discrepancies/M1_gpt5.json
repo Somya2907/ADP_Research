@@ -1,0 +1,515 @@
+{
+  "case_id": "M1",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "F10",
+      "node_type": "F",
+      "label": "FinSpark does not notify loan applicants that AI is used in underwriting",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "I5",
+      "node_type": "I",
+      "label": "Does DataCredits failure to provide documentation relieve FinSpark of deployer obligations?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I6",
+      "node_type": "I",
+      "label": "Does the small deployer exception under Section 6-1-1703(6) apply to FinSpark?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R1",
+      "node_type": "R",
+      "label": "Definition of artificial intelligence system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "Deployer must conduct annual review for algorithmic discrimination",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Deployer must notify consumers before AI-assisted consequential decision",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "node_type": "R",
+      "label": "Deployer must provide data correction opportunity to consumers",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "node_type": "R",
+      "label": "Deployer must provide meaningful appeal opportunity for AI-involved consequential decisions",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "node_type": "R",
+      "label": "Enforcement: deceptive trade practice, AG exclusive authority, up to $20K per violation",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A1",
+      "node_type": "A",
+      "label": "LoanScore is a machine-based system that processes financial inputs and produces outputs (approval/denial, interest rate tier) influencing real environments. Satisfies AI system definition.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A7",
+      "node_type": "A",
+      "label": "FinSpark has no written risk management policy or program, let alone one consistent with NIST AI RMF 1.0 or ISO/IEC 42001. Complete non-compliance with Section 6-1-1703(2)(a).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "FinSpark has never conducted an impact assessment. For pre-existing deployments, the 90-day grace period runs from June 30, 2026 to September 28, 2026. While not yet technically in violation, no preparatory work has begun.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "FinSpark provides no notice to loan applicants that AI is used in underwriting decisions. Fails all five sub-requirements of Section 6-1-1703(2)(e).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "No mechanism exists for applicants to correct incorrect personal data processed by LoanScore. Complete non-compliance with Section 6-1-1703(2)(f).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A12",
+      "node_type": "A",
+      "label": "No mechanism exists for applicants to appeal adverse AI-involved lending decisions. Complete non-compliance with Section 6-1-1703(2)(g).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A16",
+      "node_type": "A",
+      "label": "FinSpark has conducted no annual review of LoanScore for algorithmic discrimination. While the first annual review deadline is June 30, 2027, no review infrastructure exists.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C2",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C3",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C4",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O3",
+      "node_type": "O",
+      "label": "Conduct annual deployment review for algorithmic discrimination",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O5",
+      "node_type": "O",
+      "label": "Implement consumer notice system with all five sub-elements before each AI-assisted lending decision",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O7",
+      "node_type": "O",
+      "label": "Implement meaningful appeal process for adverse AI-involved lending decisions",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O9",
+      "node_type": "O",
+      "label": "Establish reasonable care posture through totality of compliance measures to support rebuttable presumption",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F8",
+      "node_type": "F",
+      "label": "Contract claims model documentation is proprietary",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F11",
+      "node_type": "F",
+      "label": "FinSpark gives no AI-use notice to applicants",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F17",
+      "node_type": "F",
+      "label": "Use is for credit underwriting, a consequential decision",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F18",
+      "node_type": "F",
+      "label": "FinSpark deploys LoanScore in Colorado operations",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "I5",
+      "node_type": "I",
+      "label": "Does missing developer docs affect FinSpark duties",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "R7",
+      "node_type": "R",
+      "label": "Pre-use consumer notice of high-risk AI",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R8",
+      "node_type": "R",
+      "label": "Adverse decision explanation, data fix, human appeal",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R11",
+      "node_type": "R",
+      "label": "NIST RMF alignment gives safe harbor presumption",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R12",
+      "node_type": "R",
+      "label": "Enforced by AG; no private right",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R13",
+      "node_type": "R",
+      "label": "Effective date June 30, 2026",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "R14",
+      "node_type": "R",
+      "label": "Recordkeeping, logs, inventory for high-risk AI",
+      "reason": "unaligned",
+      "weight": 4.0
+    },
+    {
+      "student_id": "A3",
+      "node_type": "A",
+      "label": "Full automation and 94% rubber-stamp show no meaningful review.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A7",
+      "node_type": "A",
+      "label": "No consumer AI-use notice is given.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A8",
+      "node_type": "A",
+      "label": "No data correction or human appeal is offered.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A9",
+      "node_type": "A",
+      "label": "Record lacks whether a public AI statement exists.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A11",
+      "node_type": "A",
+      "label": "No NIST-aligned controls; no safe harbor available.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A12",
+      "node_type": "A",
+      "label": "AG enforces after effective date.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "A13",
+      "node_type": "A",
+      "label": "Duties attach by 2026-06-30.",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O3",
+      "node_type": "O",
+      "label": "Provide clear pre-use AI notice to applicants",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O4",
+      "node_type": "O",
+      "label": "Give adverse decision explanations incl. AI role",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O5",
+      "node_type": "O",
+      "label": "Offer appeals with meaningful human review",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O7",
+      "node_type": "O",
+      "label": "Maintain AI inventory, logs, and records",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O11",
+      "node_type": "O",
+      "label": "Train staff on AI use, notices, and appeals",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O13",
+      "node_type": "O",
+      "label": "Update IA annually and revise public statement",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E3",
+      "teacher_src": "F4",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F4",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E9",
+      "teacher_src": "R2",
+      "teacher_dst": "A2",
+      "teacher_type": "applies-to",
+      "student_src": "R1",
+      "student_dst": "A14",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E10",
+      "teacher_src": "R3",
+      "teacher_dst": "A3",
+      "teacher_type": "applies-to",
+      "student_src": "R2",
+      "student_dst": "A1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E11",
+      "teacher_src": "R4",
+      "teacher_dst": "A4",
+      "teacher_type": "applies-to",
+      "student_src": "R3",
+      "student_dst": "A2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E16",
+      "teacher_src": "R11",
+      "teacher_dst": "A9",
+      "teacher_type": "applies-to",
+      "student_src": "R9",
+      "student_dst": "A5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E20",
+      "teacher_src": "R7",
+      "teacher_dst": "A13",
+      "teacher_type": "applies-to",
+      "student_src": "R4",
+      "student_dst": "A4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E21",
+      "teacher_src": "R15",
+      "teacher_dst": "A14",
+      "teacher_type": "applies-to",
+      "student_src": "R15",
+      "student_dst": "A15",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E22",
+      "teacher_src": "R16",
+      "teacher_dst": "A15",
+      "teacher_type": "applies-to",
+      "student_src": "R10",
+      "student_dst": "A10",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E24",
+      "teacher_src": "A2",
+      "teacher_dst": "C1",
+      "teacher_type": "satisfies-element",
+      "student_src": "A14",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E25",
+      "teacher_src": "A3",
+      "teacher_dst": "C1",
+      "teacher_type": "satisfies-element",
+      "student_src": "A1",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E26",
+      "teacher_src": "A4",
+      "teacher_dst": "C1",
+      "teacher_type": "satisfies-element",
+      "student_src": "A2",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E43",
+      "teacher_src": "R16",
+      "teacher_dst": "O8",
+      "teacher_type": "triggers",
+      "student_src": "R10",
+      "student_dst": "O9",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E46",
+      "teacher_src": "R4",
+      "teacher_dst": "O11",
+      "teacher_type": "triggers",
+      "student_src": "R3",
+      "student_dst": "O12",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E50",
+      "teacher_src": "F13",
+      "teacher_dst": "I7",
+      "teacher_type": "triggers",
+      "student_src": "F14",
+      "student_dst": "I6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E53",
+      "teacher_src": "R19",
+      "teacher_dst": "A17",
+      "teacher_type": "applies-to",
+      "student_src": "R6",
+      "student_dst": "A6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    }
+  ],
+  "v_misground": [],
+  "l_ged": 176.5,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 1,
+      "v_halluc": 4
+    },
+    "I": {
+      "v_miss": 2,
+      "v_halluc": 1
+    },
+    "R": {
+      "v_miss": 7,
+      "v_halluc": 6
+    },
+    "A": {
+      "v_miss": 7,
+      "v_halluc": 7
+    },
+    "C": {
+      "v_miss": 3,
+      "v_halluc": 0
+    },
+    "O": {
+      "v_miss": 4,
+      "v_halluc": 6
+    }
+  }
+}

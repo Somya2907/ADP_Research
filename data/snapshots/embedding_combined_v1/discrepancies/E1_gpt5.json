@@ -1,0 +1,500 @@
+{
+  "case_id": "E1",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "F13",
+      "node_type": "F",
+      "label": "Greenleaf is a national grocery chain; Colorado operations plausible but not confirmed in facts",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "I7",
+      "node_type": "I",
+      "label": "Does HireFlow or Greenleaf have obligations or exposure under Texas TRAIGA?",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R2",
+      "node_type": "R",
+      "label": "Bias audit required no more than one year prior to AEDT use; cannot use AEDT if more than one year since most recent audit",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Penalties: $500-$1,500 per violation; each use of non-compliant AEDT to screen a single candidate may be a separate violation",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Geographic scope: applies based on candidate/employee location, not employer HQ; covers NYC positions and NYC-resident candidates",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "Prohibited conduct: no person may develop or deploy AI with intent to unlawfully discriminate; requires intentional discrimination, not disparate impact",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "node_type": "R",
+      "label": "No private employer disclosure/audit/impact assessment requirements; consumer definition excludes employment context; disclosure only for government agencies",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "node_type": "R",
+      "label": "TRAIGA preempts local TX ordinances on AI but does not preempt other states laws",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "node_type": "R",
+      "label": "Developer obligations: reasonable care, documentation to deployers on limitations/training data/uses/monitoring, public use case inventory",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "node_type": "R",
+      "label": "High-risk AI system: AI that makes or is substantial factor in consequential decisions including employment",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R17",
+      "node_type": "R",
+      "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A9",
+      "node_type": "A",
+      "label": "LL 144 applies based on candidate location. Candidates apply for positions at Brooklyn and Manhattan locations in NYC. Greenleaf's Chicago HQ and HireFlow's Austin location are irrelevant. LL 144 applies.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "TRAIGA prohibits only intentional discrimination. No facts suggest HireFlow or Greenleaf developed or deployed ResumeRank with intent to unlawfully discriminate. No TRAIGA violation identified.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "TRAIGA imposes no affirmative audit, notice, impact assessment, or disclosure obligations on private employers or developers for employment AI tools. Consumer definition excludes employment context. No obligations triggered.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A13",
+      "node_type": "A",
+      "label": "ResumeRank makes consequential employment decisions (auto-reject below 70), qualifying as high-risk AI under CO AIA 6-1-1701(7). However, applicability depends on whether Greenleaf operates in Colorado, which is plausible for a national chain but unconfirmed. If confirmed, both developer and deployer obligations apply.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A14",
+      "node_type": "A",
+      "label": "Greenleaf has 12,000 employees, far exceeding the 50-employee threshold in 6-1-1703(6)(a). The small deployer exception does not apply. All deployer obligations under 6-1-1703(2) would be required if CO AIA applies.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A15",
+      "node_type": "A",
+      "label": "If Greenleaf operates in CO, it currently lacks: NIST AI RMF-aligned risk management program, impact assessments, website statement, consumer notice mechanisms, data correction processes, and appeal mechanisms. All would be required by June 30, 2026 (or within 90 days for impact assessments of pre-existing deployments). Significant readiness gap exists.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C3",
+      "node_type": "C",
+      "label": "conditional",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Ensure future bias auditors have no financial interest in HireFlow, Greenleaf, or ResumeRank vendor; TalentMetrics LLC is disqualified",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O7",
+      "node_type": "O",
+      "label": "Maintain prohibition on intentional discrimination in AI development and deployment under TRAIGA",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O10",
+      "node_type": "O",
+      "label": "HireFlow: publish public use case inventory of high-risk AI systems available in Colorado",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O12",
+      "node_type": "O",
+      "label": "Greenleaf: complete impact assessment for ResumeRank within 90 days of CO AIA effective date for pre-existing deployments",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O14",
+      "node_type": "O",
+      "label": "Greenleaf: publish website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management under CO AIA",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F5",
+      "node_type": "F",
+      "label": "NYC job posts lacked AEDT disclosure",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F14",
+      "node_type": "F",
+      "label": "Tool uses NLP and gradient-boosted model",
+      "reason": "unaligned",
+      "weight": 1.0
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F5",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F3",
+      "student_dst": "I1",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E3",
+      "teacher_src": "F4",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F1",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E4",
+      "teacher_src": "F6",
+      "teacher_dst": "I2",
+      "teacher_type": "triggers",
+      "student_src": "F7",
+      "student_dst": "I2",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E5",
+      "teacher_src": "F8",
+      "teacher_dst": "I2",
+      "teacher_type": "triggers",
+      "student_src": "F13",
+      "student_dst": "I2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E6",
+      "teacher_src": "F7",
+      "teacher_dst": "I3",
+      "teacher_type": "triggers",
+      "student_src": "F9",
+      "student_dst": "I5",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E7",
+      "teacher_src": "F9",
+      "teacher_dst": "I4",
+      "teacher_type": "triggers",
+      "student_src": "F6",
+      "student_dst": "I3",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E8",
+      "teacher_src": "F10",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F4",
+      "student_dst": "I4",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E9",
+      "teacher_src": "F11",
+      "teacher_dst": "I6",
+      "teacher_type": "triggers",
+      "student_src": "F10",
+      "student_dst": "I6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E12",
+      "teacher_src": "R3",
+      "teacher_dst": "A3",
+      "teacher_type": "applies-to",
+      "student_src": "R5",
+      "student_dst": "A5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E13",
+      "teacher_src": "R4",
+      "teacher_dst": "A4",
+      "teacher_type": "applies-to",
+      "student_src": "R4",
+      "student_dst": "A6",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E15",
+      "teacher_src": "R6",
+      "teacher_dst": "A6",
+      "teacher_type": "applies-to",
+      "student_src": "R7",
+      "student_dst": "A4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E16",
+      "teacher_src": "R7",
+      "teacher_dst": "A7",
+      "teacher_type": "applies-to",
+      "student_src": "R2",
+      "student_dst": "A9",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E22",
+      "teacher_src": "A1",
+      "teacher_dst": "C1",
+      "teacher_type": "supports",
+      "student_src": "A1",
+      "student_dst": "C1",
+      "student_type": "satisfies-element",
+      "kind": "type_mismatch",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E28",
+      "teacher_src": "A7",
+      "teacher_dst": "C1",
+      "teacher_type": "fails-element",
+      "student_src": "A9",
+      "student_dst": "C1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E29",
+      "teacher_src": "A8",
+      "teacher_dst": "C1",
+      "teacher_type": "fails-element",
+      "student_src": "A7",
+      "student_dst": "C1",
+      "student_type": "supports",
+      "kind": "type_mismatch",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E33",
+      "teacher_src": "A12",
+      "teacher_dst": "C2",
+      "teacher_type": "supports",
+      "student_src": "A8",
+      "student_dst": "C2",
+      "student_type": "satisfies-element",
+      "kind": "type_mismatch",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E40",
+      "teacher_src": "R6",
+      "teacher_dst": "O3",
+      "teacher_type": "triggers",
+      "student_src": "R7",
+      "student_dst": "O5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E41",
+      "teacher_src": "R7",
+      "teacher_dst": "O4",
+      "teacher_type": "triggers",
+      "student_src": "R2",
+      "student_dst": "O8",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E44",
+      "teacher_src": "R12",
+      "teacher_dst": "O8",
+      "teacher_type": "triggers",
+      "student_src": "R8",
+      "student_dst": "O9",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E47",
+      "teacher_src": "R15",
+      "teacher_dst": "O11",
+      "teacher_type": "triggers",
+      "student_src": "R9",
+      "student_dst": "O1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E49",
+      "teacher_src": "R15",
+      "teacher_dst": "O13",
+      "teacher_type": "triggers",
+      "student_src": "R9",
+      "student_dst": "O7",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E51",
+      "teacher_src": "C1",
+      "teacher_dst": "O1",
+      "teacher_type": "triggers",
+      "student_src": "C1",
+      "student_dst": "O2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E52",
+      "teacher_src": "C1",
+      "teacher_dst": "O2",
+      "teacher_type": "triggers",
+      "student_src": "C1",
+      "student_dst": "O4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E53",
+      "teacher_src": "C1",
+      "teacher_dst": "O3",
+      "teacher_type": "triggers",
+      "student_src": "C1",
+      "student_dst": "O5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R3",
+      "student_id": "R5",
+      "teacher_citation": "NYC LL 144 §20-871(d)(2)",
+      "student_citation": "6 RCNY §5-301",
+      "proposition": "New bias audit required after substantial modification including retraining on new or updated data",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R5",
+      "student_id": "R6",
+      "teacher_citation": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
+      "student_citation": "6 RCNY §5-302",
+      "proposition": "Published results: bias audit date, summary of results with data source, unknown categories, applicant counts, rates, impact ratios, and distribution date must be on employer website before AEDT use",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R7",
+      "student_id": "R2",
+      "teacher_citation": "DCWP Rules §5-304(d)",
+      "student_citation": "NYC Admin. Code §20-871(a)",
+      "proposition": "Data retention/disclosure: employer must post AEDT data retention policy, data types, sources, and request instructions on website",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "student_id": "R8",
+      "teacher_citation": "TX TRAIGA §551.301(d)",
+      "student_citation": "Colo. Rev. Stat. §6-1-1701 et seq.",
+      "proposition": "Safe harbor for substantial compliance with NIST AI RMF or recognized AI governance standards",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "student_id": "R3",
+      "teacher_citation": "CO AIA §6-1-1704",
+      "student_citation": "NYC Admin. Code §20-871(b)",
+      "proposition": "Algorithmic discrimination notice: deployer/developer must notify AG and affected consumers within 90 days of discovery",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 135.0,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 1,
+      "v_halluc": 2
+    },
+    "I": {
+      "v_miss": 1,
+      "v_halluc": 0
+    },
+    "R": {
+      "v_miss": 9,
+      "v_halluc": 0
+    },
+    "A": {
+      "v_miss": 6,
+      "v_halluc": 0
+    },
+    "C": {
+      "v_miss": 1,
+      "v_halluc": 0
+    },
+    "O": {
+      "v_miss": 5,
+      "v_halluc": 0
+    }
+  }
+}

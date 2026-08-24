@@ -11,3 +11,6 @@ data/statutes/*.txt
 .DS_Store
 poetry.lock
 dist/
+
+# Microsoft Office lock files
+~$*

@@ -88,13 +88,37 @@ default**, so they don't corrupt the headline — but for *per-rule* precision t
 - **Report all three modes as a robustness check** in the paper (this table *is* "results through
   the hybrid"): the GPT-5 < Llama ranking holds 6/6 under embedding-only, hybrid, and
   hybrid_combined — so the finding is not an artifact of the similarity backend.
-- **Adopt `hybrid_combined` as the default rule aligner** (citation agreement forces a match;
-  sibling subsections are discounted so embeddings can't merge `(2)(a)` with `(2)(b)`; text
-  embedding otherwise). It keeps 6/6, barely moves L-GED (+8 over 12 datapoints), and closes the
-  theoretical hole. *(Deferred as a default change because it shifts every pinned snapshot; safe
-  to flip once we re-pin.)*
+- **`combined` is now implemented** as a selectable rule aligner (see §6), left **off by
+  default** so the pinned `tfidf_v1` / `embedding_v1` snapshots stay bit-reproducible.
 - **Longer term:** a base-section citation tier (match on `20-871` even when subsections differ,
   then use the subsection as a tie-breaker/misgrounding signal) would raise the 5% citation-fire
   rate without merging siblings — the best of both.
 
-*Reproduce all numbers: `LEX_DRL_SIMILARITY=embedding poetry run python scripts/run_alignment_hybrid_ablation.py`.*
+## 6. Implemented — the combined aligner + new snapshots
+
+The combined hybrid is wired into `src/lex_drl/alignment.py` behind
+`LEX_DRL_RULE_ALIGN` (default `hybrid`; set `combined` to enable). Per rule pair the score is:
+`1.0` if citation tokens agree · `min(text, 0.9·threshold)` for sibling subsections (blocks the
+`(2)(a)`↔`(2)(b)` merge) · text similarity otherwise. Backend-independent (works with TF-IDF or
+embeddings). Locked by `tests/test_alignment_combined.py` (5 tests, incl. the sibling-merge the
+default hybrid *fails* to block).
+
+**New snapshots generated (the pinned `tfidf_v1` / `embedding_v1` are untouched):**
+
+| Snapshot | text backend | rule aligner | GPT-5 < Llama | Σ L-GED |
+|---|---|---|:--:|--:|
+| `tfidf_v1` *(existing)* | TF-IDF | hybrid | 0/6 | 2075.0 |
+| `tfidf_combined_v1` *(new)* | TF-IDF | combined | 0/6 | 2143.0 |
+| `embedding_v1` *(existing)* | embedding | hybrid | **6/6** | 1614.5 |
+| `embedding_combined_v1` *(new)* | embedding | combined | **6/6** | 1622.5 |
+
+**Reading the 2×2:** the ranking is decided by the **text backend** (embedding → 6/6, TF-IDF →
+0/6) and is **robust to the rule aligner**. The combined hybrid closes the citation hole
+(sibling subsections can no longer be merged) **without changing the headline** — and it does
+*not* rescue TF-IDF, confirming the citation concern is orthogonal to the Phase-1 embedding win.
+
+To make `combined` the default, flip `RULE_ALIGN_MODE`'s default and re-pin the baselines
+(the `embedding_combined_v1` snapshot is the pre-computed target).
+
+*Reproduce the ablation: `LEX_DRL_SIMILARITY=embedding poetry run python scripts/run_alignment_hybrid_ablation.py`.
+Reproduce the snapshots: see each `data/snapshots/*_combined_v1/PROVENANCE.md`.*

@@ -1,0 +1,595 @@
+{
+  "case_id": "H1",
+  "student_id": "gpt5",
+  "v_miss": [
+    {
+      "teacher_id": "I3",
+      "node_type": "I",
+      "label": "Is RetailCo public disclosure of bias audit results compliant with LL 144 and DCWP rules",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I4",
+      "node_type": "I",
+      "label": "Is RetailCo candidate notice compliant with LL 144 and DCWP rules",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I7",
+      "node_type": "I",
+      "label": "Is RetailCo December 2025 impact assessment compliant with Colorado AIA",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R2",
+      "node_type": "R",
+      "label": "Bias audit required no more than one year prior to use of AEDT",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R7",
+      "node_type": "R",
+      "label": "Penalties $500-$1500 per violation; each screening of single candidate may be separate violation",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "High-risk AI system: AI system that makes or is substantial factor in consequential decision; employment is consequential decision",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "Risk management program must be consistent with NIST AI 100-1 or substantially equivalent framework like ISO/IEC 42001; NIST 800-53 and EU AI Act are NOT sufficient",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "node_type": "R",
+      "label": "Impact assessment required before deployment or within 90 days of effective date for pre-existing systems; must include six enumerated elements",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Pre-decision consumer notice required: AI system use, purpose, decision nature, contact info, plain-language description, link to public statement",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "node_type": "R",
+      "label": "Consumer right to correct data and meaningful opportunity to appeal consequential decisions",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R17",
+      "node_type": "R",
+      "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "node_type": "R",
+      "label": "90-day notification to AG and consumers if algorithmic discrimination discovered",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R21",
+      "node_type": "R",
+      "label": "Prohibits deploying AI with intent to unlawfully discriminate; requires intentional discrimination, not disparate impact",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R22",
+      "node_type": "R",
+      "label": "Consumer excludes individuals acting in employment context; TRAIGA consumer protections do not apply to job applicants",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R23",
+      "node_type": "R",
+      "label": "AI disclosure obligation applies only to government agencies, not private employers",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R24",
+      "node_type": "R",
+      "label": "No private employer obligations for bias audits, impact assessments, risk management, candidate notices, or appeals",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R25",
+      "node_type": "R",
+      "label": "TRAIGA preempts local Texas AI ordinances; does not preempt other states laws",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R27",
+      "node_type": "R",
+      "label": "AG-only enforcement; $10,000-$200,000 per violation; 60-day cure period",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A4",
+      "node_type": "A",
+      "label": "PeopleScore generates a composite score (0-100), making it a scoring AEDT under DCWP Section 5-301(c). The audit used selection rate methodology rather than scoring rate methodology (median score, scoring rates, impact ratios). Even if the auditor were independent, the methodology would be deficient for a scoring AEDT.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A5",
+      "node_type": "A",
+      "label": "The bias audit summary is posted on a sub-page labeled NYC Applicants that is not visible from the main careers page or job listings. DCWP Section 5-303(a) requires posting on the employment section of the website in a clear and conspicuous manner. Requiring candidates to navigate to a hidden sub-page fails the clear and conspicuous standard. Additionally, the published results are based on an invalid audit.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A7",
+      "node_type": "A",
+      "label": "Each use of non-compliant AEDT to screen a single candidate is a separate violation at $500-$1500. RetailCo has screened candidates across 30 NYC stores since 2023 with an invalid audit, deficient notice, and deficient disclosure. Aggregate penalty exposure is substantial.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "PeopleScore is an AI system that makes or is a substantial factor in making employment decisions (consequential decisions under Section 6-1-1701(3)(b)). The composite score and hiring recommendation materially contribute to hiring outcomes. PeopleScore is a high-risk AI system under Section 6-1-1701(7).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A9",
+      "node_type": "A",
+      "label": "Section 6-1-1703(2)(a)(III) requires consistency with NIST AI 100-1 or substantially equivalent AI risk management framework such as ISO/IEC 42001. NIST 800-53 is a cybersecurity controls framework, not an AI risk management framework. The EU AI Act is foreign law. Neither satisfies the Colorado AIA requirement. RetailCo has no written AI risk management policy and no NIST AI 100-1 alignment.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "RetailCo December 2025 impact assessment references wrong frameworks (NIST 800-53, EU AI Act) and does not address Colorado AIA Section 6-1-1701(8) required elements. PeopleScore was deployed in CO in March 2026 (before June 30, 2026 effective date), so RetailCo has until September 28, 2026 (90 days post-effective date) to complete a compliant assessment. Current assessment is non-compliant and must be substantially revised.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "No consumer notification has been issued to Colorado applicants. Section 6-1-1703(2)(e) requires pre-decision notice with six specified elements. This obligation attaches June 30, 2026. RetailCo has no readiness measures in place.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A18",
+      "node_type": "A",
+      "label": "TRAIGA imposes no private employer obligations for bias audits, impact assessments, risk management, candidate notices, or appeals. RetailCo has no affirmative compliance obligations under TRAIGA for its hiring process beyond the prohibition on intentional discrimination.",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [
+    {
+      "student_id": "F2",
+      "node_type": "F",
+      "label": "RetailCo uses PeopleScore in CO since Mar 2026",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F14",
+      "node_type": "F",
+      "label": "RetailCo HQ Dallas, TX",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F16",
+      "node_type": "F",
+      "label": "NYC LL 144 effective since Jul 5, 2023",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "F17",
+      "node_type": "F",
+      "label": "CO AI Act effective Feb 1, 2026",
+      "reason": "unaligned",
+      "weight": 1.0
+    },
+    {
+      "student_id": "C1",
+      "node_type": "C",
+      "label": "non-compliant",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "C5",
+      "node_type": "C",
+      "label": "non-compliant",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "C6",
+      "node_type": "C",
+      "label": "non-compliant",
+      "reason": "unaligned",
+      "weight": 1.5
+    },
+    {
+      "student_id": "O1",
+      "node_type": "O",
+      "label": "Suspend NYC AEDT use until independent audit",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O3",
+      "node_type": "O",
+      "label": "Fix NYC postings; add summary and dates",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O13",
+      "node_type": "O",
+      "label": "TalentMatrix public statement on uses",
+      "reason": "unaligned",
+      "weight": 2.5
+    },
+    {
+      "student_id": "O14",
+      "node_type": "O",
+      "label": "TX applicant notices and disclosures",
+      "reason": "unaligned",
+      "weight": 2.5
+    }
+  ],
+  "e_diff": [
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F5",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F3",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E3",
+      "teacher_src": "F7",
+      "teacher_dst": "I2",
+      "teacher_type": "triggers",
+      "student_src": "F12",
+      "student_dst": "I2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E6",
+      "teacher_src": "F5",
+      "teacher_dst": "I5",
+      "teacher_type": "triggers",
+      "student_src": "F3",
+      "student_dst": "I3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E7",
+      "teacher_src": "F11",
+      "teacher_dst": "I6",
+      "teacher_type": "triggers",
+      "student_src": "F8",
+      "student_dst": "I7",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E9",
+      "teacher_src": "F1",
+      "teacher_dst": "I8",
+      "teacher_type": "triggers",
+      "student_src": "F15",
+      "student_dst": "I4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E10",
+      "teacher_src": "F16",
+      "teacher_dst": "I9",
+      "teacher_type": "triggers",
+      "student_src": "F18",
+      "student_dst": "I5",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E13",
+      "teacher_src": "R3",
+      "teacher_dst": "A3",
+      "teacher_type": "applies-to",
+      "student_src": "R4",
+      "student_dst": "A2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E23",
+      "teacher_src": "R15",
+      "teacher_dst": "A13",
+      "teacher_type": "applies-to",
+      "student_src": "R5",
+      "student_dst": "A10",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E24",
+      "teacher_src": "R16",
+      "teacher_dst": "A14",
+      "teacher_type": "applies-to",
+      "student_src": "R11",
+      "student_dst": "A7",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E29",
+      "teacher_src": "R26",
+      "teacher_dst": "A19",
+      "teacher_type": "applies-to",
+      "student_src": "R7",
+      "student_dst": "A8",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E30",
+      "teacher_src": "A3",
+      "teacher_dst": "C1",
+      "teacher_type": "fails-element",
+      "student_src": "A2",
+      "student_dst": "C2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E33",
+      "teacher_src": "A6",
+      "teacher_dst": "C1",
+      "teacher_type": "fails-element",
+      "student_src": "A3",
+      "student_dst": "C2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E38",
+      "teacher_src": "A12",
+      "teacher_dst": "C2",
+      "teacher_type": "fails-element",
+      "student_src": "A6",
+      "student_dst": "C4",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E40",
+      "teacher_src": "A16",
+      "teacher_dst": "C3",
+      "teacher_type": "satisfies-element",
+      "student_src": "A11",
+      "student_dst": "C3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E41",
+      "teacher_src": "A17",
+      "teacher_dst": "C3",
+      "teacher_type": "satisfies-element",
+      "student_src": "A5",
+      "student_dst": "C3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E43",
+      "teacher_src": "A19",
+      "teacher_dst": "C3",
+      "teacher_type": "fails-element",
+      "student_src": "A8",
+      "student_dst": "C3",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 2.5
+    },
+    {
+      "teacher_eid": "E45",
+      "teacher_src": "R5",
+      "teacher_dst": "O2",
+      "teacher_type": "triggers",
+      "student_src": "R12",
+      "student_dst": "O10",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E51",
+      "teacher_src": "R15",
+      "teacher_dst": "O8",
+      "teacher_type": "triggers",
+      "student_src": "R5",
+      "student_dst": "O16",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E52",
+      "teacher_src": "R16",
+      "teacher_dst": "O9",
+      "teacher_type": "triggers",
+      "student_src": "R11",
+      "student_dst": "O12",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E53",
+      "teacher_src": "R26",
+      "teacher_dst": "O10",
+      "teacher_type": "triggers",
+      "student_src": "R7",
+      "student_dst": "O11",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E55",
+      "teacher_src": "R14",
+      "teacher_dst": "O13",
+      "teacher_type": "triggers",
+      "student_src": "R10",
+      "student_dst": "O17",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    },
+    {
+      "teacher_eid": "E56",
+      "teacher_src": "R3",
+      "teacher_dst": "A3",
+      "teacher_type": "applies-to",
+      "student_src": "R4",
+      "student_dst": "A2",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R3",
+      "student_id": "R4",
+      "teacher_citation": "NYC LL 144 Section 20-870; DCWP Section 5-300 Independent Auditor definition",
+      "student_citation": "6 RCNY §5-301",
+      "proposition": "Independent auditor must not have financial interest in employer or AEDT developer; subsidiary of developer does not qualify",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R4",
+      "student_id": "R2",
+      "teacher_citation": "DCWP Section 5-301(c)",
+      "student_citation": "NYC Admin Code §20-871",
+      "proposition": "Scoring AEDT bias audit must calculate median score, scoring rate per category, and impact ratio per category for sex, race/ethnicity, and intersectional categories",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R5",
+      "student_id": "R12",
+      "teacher_citation": "NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a)",
+      "student_citation": "Tex. Bus. & Com. Code §§509.151-152",
+      "proposition": "Published results must be on employment section of website in clear and conspicuous manner with audit date, data source, unknowns, applicant counts, rates, impact ratios, and distribution date",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "student_id": "R6",
+      "teacher_citation": "Colorado AIA SB 24-205 as amended by SB 25B-004",
+      "student_citation": "C.R.S. §6-1-1703",
+      "proposition": "Colorado AIA effective date June 30, 2026; not yet in force as of April 16, 2026",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "student_id": "R10",
+      "teacher_citation": "Colorado AIA Section 6-1-1703(2)(c)",
+      "student_citation": "Tex. Bus. & Com. Code §509.051",
+      "proposition": "Annual review of deployment to ensure no algorithmic discrimination",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "student_id": "R5",
+      "teacher_citation": "Colorado AIA Section 6-1-1703(2)(d)",
+      "student_citation": "C.R.S. §6-1-1701",
+      "proposition": "Public website statement summarizing deployed high-risk AI systems and discrimination risk management",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "student_id": "R11",
+      "teacher_citation": "Colorado AIA Section 6-1-1702(2)-(3)",
+      "student_citation": "Tex. Bus. & Com. Code §§509.101-104",
+      "proposition": "Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, impact assessment support; must publish public use case inventory",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R20",
+      "student_id": "R9",
+      "teacher_citation": "Texas TRAIGA HB 149 Section 551.001 et seq.",
+      "student_citation": "Tex. Bus. & Com. Code §509.001",
+      "proposition": "TRAIGA effective January 1, 2026; in force as of April 16, 2026",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R26",
+      "student_id": "R7",
+      "teacher_citation": "Texas TRAIGA Section 551.301(d)",
+      "student_citation": "C.R.S. §6-1-1702",
+      "proposition": "Safe harbor for substantial compliance with NIST AI 100-1 or recognized AI governance standards",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 167.0,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 0,
+      "v_halluc": 4
+    },
+    "I": {
+      "v_miss": 3,
+      "v_halluc": 0
+    },
+    "R": {
+      "v_miss": 15,
+      "v_halluc": 0
+    },
+    "A": {
+      "v_miss": 8,
+      "v_halluc": 0
+    },
+    "C": {
+      "v_miss": 0,
+      "v_halluc": 3
+    },
+    "O": {
+      "v_miss": 0,
+      "v_halluc": 4
+    }
+  }
+}

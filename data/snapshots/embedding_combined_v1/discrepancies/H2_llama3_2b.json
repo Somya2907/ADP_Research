@@ -1,0 +1,467 @@
+{
+  "case_id": "H2",
+  "student_id": "llama3_2b",
+  "v_miss": [
+    {
+      "teacher_id": "F4",
+      "node_type": "F",
+      "label": "Stage 2: 38% of applications routed to human underwriter who receives AI score, AI risk narrative, and raw data",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F8",
+      "node_type": "F",
+      "label": "Helix has NIST AI 100-1 aligned risk management program documented January 2026",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F9",
+      "node_type": "F",
+      "label": "Helix completed impact assessment of AutoApprove in February 2026",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F10",
+      "node_type": "F",
+      "label": "FinLogic AI provided model card and training data summary",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F11",
+      "node_type": "F",
+      "label": "Helix has NOT issued consumer notices to loan applicants regarding AI involvement",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F12",
+      "node_type": "F",
+      "label": "Helix has NOT established a data correction process for applicants",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F13",
+      "node_type": "F",
+      "label": "Helix has NOT established an appeal process for AI-involved adverse decisions",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F14",
+      "node_type": "F",
+      "label": "AutoApprove is used for lending decisions - financial or lending services",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F15",
+      "node_type": "F",
+      "label": "Helix has 310 employees, far exceeding the 50-employee small deployer threshold",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F16",
+      "node_type": "F",
+      "label": "FinLogic AI is San Francisco-based but sells AutoApprove for use in Colorado",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "F17",
+      "node_type": "F",
+      "label": "Colorado AI Act effective date is June 30, 2026; analysis date is April 16, 2026",
+      "weight": 1.0
+    },
+    {
+      "teacher_id": "I2",
+      "node_type": "I",
+      "label": "Whether AutoApprove Stage 2 (human-reviewed) constitutes a high-risk AI system and whether AI is a substantial factor under 6-1-1701(9)",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I3",
+      "node_type": "I",
+      "label": "How to resolve the conflict between GC memo and Morrison memo - authority hierarchy relative to statutory text",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I4",
+      "node_type": "I",
+      "label": "Whether Helix is a deployer, developer, or both under CO AIA",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I5",
+      "node_type": "I",
+      "label": "Complete inventory of compliance gaps and required remedial actions by June 30, 2026",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I6",
+      "node_type": "I",
+      "label": "Whether FinLogic AI has separate developer obligations and whether current documentation is sufficient",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "I7",
+      "node_type": "I",
+      "label": "Whether Helix qualifies for the small deployer exception under 6-1-1703(6)",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "R1",
+      "node_type": "R",
+      "label": "Definition of AI system: machine-based system processing inputs to produce outputs such as predictions, recommendations, decisions",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R2",
+      "node_type": "R",
+      "label": "Consequential decision includes material legal or significant effect on provision or denial of financial or lending services",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R3",
+      "node_type": "R",
+      "label": "High-risk AI system: AI system that when deployed makes or is a substantial factor in making a consequential decision",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R5",
+      "node_type": "R",
+      "label": "Deployer: person doing business in the state that deploys a high-risk AI system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R8",
+      "node_type": "R",
+      "label": "Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems, annually thereafter",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R9",
+      "node_type": "R",
+      "label": "Deployer must review deployment at least annually to ensure no algorithmic discrimination",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R10",
+      "node_type": "R",
+      "label": "Deployer must publish website statement summarizing high-risk AI systems and discrimination risk management",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R11",
+      "node_type": "R",
+      "label": "Deployer must provide pre-decision consumer notice of AI use, purpose, contact info, description, and website statement access",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R12",
+      "node_type": "R",
+      "label": "Deployer must provide consumer opportunity to correct incorrect personal data processed by AI system",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R13",
+      "node_type": "R",
+      "label": "Deployer must provide consumer meaningful opportunity to appeal consequential decision where AI was substantial factor",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R14",
+      "node_type": "R",
+      "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R15",
+      "node_type": "R",
+      "label": "Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, and impact assessment support",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R16",
+      "node_type": "R",
+      "label": "Developer must publish public statement summarizing high-risk AI systems developed or substantially modified",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R17",
+      "node_type": "R",
+      "label": "Deployer or developer must notify AG and affected consumers within 90 days of discovering algorithmic discrimination",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R18",
+      "node_type": "R",
+      "label": "Violations are deceptive trade practices; AG exclusive enforcement; up to $20,000 per violation; rebuttable presumption for self-discovery and cure within 60 days",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R19",
+      "node_type": "R",
+      "label": "Deployer rebuttable presumption of reasonable care if complied with 6-1-1703 and AG requirements",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R20",
+      "node_type": "R",
+      "label": "Impact assessment must include purpose, discrimination risk analysis, training data categories, output description, known limitations, and oversight processes",
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "A1",
+      "node_type": "A",
+      "label": "AutoApprove is a machine-based system that processes loan application inputs and produces credit-risk scores, risk narratives, and approval/denial decisions - outputs that influence real environments. Squarely meets the AI system definition.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A2",
+      "node_type": "A",
+      "label": "Loan approval/denial decisions have material legal or similarly significant effect on provision or denial of financial or lending services under 6-1-1701(3)(c). AutoApprove decisions directly determine whether consumers receive loans.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A3",
+      "node_type": "A",
+      "label": "In Stage 1, AutoApprove directly makes the consequential decision - auto-approving or auto-denying with no human review. The AI system makes the decision, not merely contributes to it. No exceptions under 6-1-1701(7)(a)-(d) apply: it is not a narrow procedural task, does not improve prior human activity, does not merely detect patterns, and is not preparatory.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A5",
+      "node_type": "A",
+      "label": "Helix is doing business in Colorado (headquartered in Denver, operates exclusively in Colorado) and deploys AutoApprove, a high-risk AI system. Helix is unambiguously a deployer under 6-1-1701(5).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A6",
+      "node_type": "A",
+      "label": "Helix did not develop or substantially modify AutoApprove - FinLogic AI developed it. No facts indicate Helix retrained or substantially modified the model. Helix is not a developer under 6-1-1701(6).",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A7",
+      "node_type": "A",
+      "label": "The small deployer exception requires BOTH fewer than 50 employees AND not using own data to train. Helix has 310 employees, failing condition (a). The exception does not apply regardless of condition (b). All deployer obligations apply in full.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A8",
+      "node_type": "A",
+      "label": "Helix has implemented a risk management program aligned with NIST AI 100-1, documented in January 2026. This satisfies 6-1-1703(2)(a)(III) which requires consistency with NIST AI RMF or substantially equivalent framework.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A9",
+      "node_type": "A",
+      "label": "Helix completed an impact assessment in February 2026. For systems deployed before June 30, 2026, the assessment must be completed within 90 days after the effective date (by September 28, 2026). The February 2026 assessment satisfies this timeline, though content should be verified against 6-1-1701(8) requirements.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A10",
+      "node_type": "A",
+      "label": "Helix has NOT issued consumer notices to loan applicants regarding AI involvement. Section 6-1-1703(2)(e) requires pre-decision notice of AI use, purpose, contact info, plain-language description, and website statement access instructions. This is a critical compliance gap.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A11",
+      "node_type": "A",
+      "label": "Helix has NOT established a data correction process. Section 6-1-1703(2)(f) requires providing consumers opportunity to correct incorrect personal data processed by the AI system. This is a compliance gap.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A12",
+      "node_type": "A",
+      "label": "Helix has NOT established an appeal process. Section 6-1-1703(2)(g) requires providing consumers a meaningful opportunity to appeal consequential decisions where AI was a substantial factor. Particularly critical for Stage 1 auto-denials. This is a compliance gap.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A13",
+      "node_type": "A",
+      "label": "No facts indicate Helix has published a website statement summarizing its high-risk AI systems and algorithmic discrimination risk management as required by 6-1-1703(2)(d). This is a compliance gap.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A14",
+      "node_type": "A",
+      "label": "FinLogic provided a model card and training data summary, likely covering 6-1-1702(2)(b) training data description and possibly (c) intended uses. However, no indication FinLogic provided: (a) algorithmic discrimination limitation documentation, (d) human monitoring guidance for consequential decisions, or (e) additional impact assessment support materials. Documentation is necessary but insufficient.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A15",
+      "node_type": "A",
+      "label": "No facts indicate whether FinLogic has published a public use case inventory as required by 6-1-1702(3). FinLogic must do so if it is doing business in Colorado. The doing-business-in-state question for a San Francisco company selling to Colorado deployers requires further factual analysis.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "A16",
+      "node_type": "A",
+      "label": "The statutory text of 6-1-1701(9) controls over both memos. The GC memo fails to engage with the anti-rubber-stamping provision and ignores that 62% of decisions are fully automated. The Morrison memo correctly applies the statute. Neither memo is binding authority - the statute is the supreme authority. The GC memo is legally deficient; the Morrison memo is persuasive because it correctly interprets binding statutory text.",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "C1",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C2",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C3",
+      "node_type": "C",
+      "label": "non-compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C4",
+      "node_type": "C",
+      "label": "compliant",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "C5",
+      "node_type": "C",
+      "label": "conditional",
+      "weight": 1.5
+    },
+    {
+      "teacher_id": "O1",
+      "node_type": "O",
+      "label": "Implement pre-decision consumer notice system informing all loan applicants of AI use, purpose, contact info, plain-language description, and website statement access per 6-1-1703(2)(e)(I)-(V)",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O3",
+      "node_type": "O",
+      "label": "Establish meaningful appeal process for adverse consequential decisions where AutoApprove was a substantial factor per 6-1-1703(2)(g), including independent human review for Stage 1 auto-denials",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O4",
+      "node_type": "O",
+      "label": "Publish clear and readily accessible website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management per 6-1-1703(2)(d)",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O5",
+      "node_type": "O",
+      "label": "Verify February 2026 impact assessment meets all six content requirements of 6-1-1701(8)(a)-(f); supplement if gaps exist",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O6",
+      "node_type": "O",
+      "label": "Establish annual review process for AutoApprove deployment to ensure no algorithmic discrimination per 6-1-1703(2)(c)",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O7",
+      "node_type": "O",
+      "label": "Request from FinLogic AI additional developer documentation: algorithmic discrimination limitations (6-1-1702(2)(a)), human monitoring guidance (6-1-1702(2)(d)), and impact assessment support materials (6-1-1702(2)(e))",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O8",
+      "node_type": "O",
+      "label": "Establish ongoing algorithmic discrimination monitoring with 90-day AG and consumer notification protocol per 6-1-1704",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O9",
+      "node_type": "O",
+      "label": "Formally adopt Morrison & Partners analysis and reject GC memo conclusion; document decision in board or compliance committee minutes",
+      "weight": 2.5
+    },
+    {
+      "teacher_id": "O10",
+      "node_type": "O",
+      "label": "FinLogic AI must publish public use case inventory summarizing high-risk AI systems developed per 6-1-1702(3)",
+      "weight": 2.5
+    }
+  ],
+  "v_halluc": [],
+  "e_diff": [
+    {
+      "teacher_eid": "E1",
+      "teacher_src": "F2",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F2",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E2",
+      "teacher_src": "F3",
+      "teacher_dst": "I1",
+      "teacher_type": "triggers",
+      "student_src": "F4",
+      "student_dst": "I1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 1.5
+    },
+    {
+      "teacher_eid": "E10",
+      "teacher_src": "R4",
+      "teacher_dst": "A4",
+      "teacher_type": "applies-to",
+      "student_src": "R2",
+      "student_dst": "A1",
+      "student_type": null,
+      "kind": "missing",
+      "weight": 4.0
+    }
+  ],
+  "v_misground": [
+    {
+      "teacher_id": "R4",
+      "student_id": "R2",
+      "teacher_citation": "CO AIA 6-1-1701(9)",
+      "student_citation": "CO SB 24-205 §6-1-1703",
+      "proposition": "Substantial factor: materially contributed to consequential decision; human review does not negate if based primarily on AI output",
+      "student_section_exists": null,
+      "weight": 4.0
+    },
+    {
+      "teacher_id": "R6",
+      "student_id": "R1",
+      "teacher_citation": "CO AIA 6-1-1701(6)",
+      "student_citation": "NYC LL 144 §20-871",
+      "proposition": "Developer: person doing business in the state that develops or substantially modifies an AI system intended or known to be used as high-risk",
+      "student_section_exists": null,
+      "weight": 4.0
+    }
+  ],
+  "l_ged": 162.5,
+  "node_type_breakdown": {
+    "F": {
+      "v_miss": 11,
+      "v_halluc": 0
+    },
+    "I": {
+      "v_miss": 6,
+      "v_halluc": 0
+    },
+    "R": {
+      "v_miss": 17,
+      "v_halluc": 0
+    },
+    "A": {
+      "v_miss": 15,
+      "v_halluc": 0
+    },
+    "C": {
+      "v_miss": 5,
+      "v_halluc": 0
+    },
+    "O": {
+      "v_miss": 9,
+      "v_halluc": 0
+    }
+  }
+}
