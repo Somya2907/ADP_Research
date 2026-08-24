@@ -11,10 +11,10 @@ baseline matched exactly.
 The two Llama baselines came from **different extraction stacks**, both at
 temperature 0 (documented non-determinism is real):
 
-| Artifact | Extraction stack | `model_name` recorded |
-|---|---|---|
-| Snapshot Llama graphs (Phase 2) | **cloud** — OpenRouter free route (Venice) | `meta-llama/llama-3.2-3b-instruct:free` |
-| Ablation Llama baselines (`data/outputs/graphs_local/`) | **local** — HF transformers, unsloth mirror, MPS, fp16, greedy | `unsloth/Llama-3.2-3B-Instruct` |
+| Artifact                                                | Extraction stack                                               | `model_name` recorded                   |
+| ---------------------------------------------------------| ----------------------------------------------------------------| -----------------------------------------|
+| Snapshot Llama graphs (Phase 2)                         | **cloud** — OpenRouter free route (Venice)                     | `meta-llama/llama-3.2-3b-instruct:free` |
+| Ablation Llama baselines (`data/outputs/graphs_local/`) | **local** — HF transformers, unsloth mirror, MPS, fp16, greedy | `unsloth/Llama-3.2-3B-Instruct`         |
 
 GPT-5 matched because it was never re-extracted (cloud only, one generation). The
 cache-namespace rename (`agent_qwen3_4b` → `agent_llama3_2b`) is a *contributing*
@@ -57,3 +57,47 @@ embedding recovers the GPT-5 < Llama capability ranking. After regeneration:
 
 Flagged to Prof. Rao: the embedding 6/6 result survives the re-pin; the TF-IDF
 comparison shifted from 2/6 to 0/6.
+
+---
+
+## Phase-4 re-pin — combined rule aligner (this branch)
+
+The rule aligner was upgraded to **combined** (citation agreement forces a match;
+sibling subsections discounted so embeddings can't merge distinct rules — see
+`docs/ALIGNMENT_HYBRID_RESULTS.md`). `LEX_DRL_RULE_ALIGN` now defaults to
+`combined`; the pre-Phase-4 default was `hybrid`.
+
+**The previous baselines are NOT discarded** — both snapshot sets coexist so every
+L-GED score is traceable to the aligner that produced it:
+
+| Baseline set | snapshot dir | aligner | reproduce with |
+|---|---|---|---|
+| **Pre-Phase-4 (old)** | `embedding_v1`, `tfidf_v1` | hybrid (citation-first + fallback) | `LEX_DRL_RULE_ALIGN=hybrid` |
+| **Phase-4 (canonical now)** | `embedding_combined_v1`, `tfidf_combined_v1` | combined | default (or `=combined`) |
+
+`run_k_ablation.py` is re-pinned to `embedding_combined_v1` (GPT-5 snapshot; Llama
+recomputed from `data/outputs/graphs_local/` — verified bit-equal to the snapshot,
+so the drift guard passes). The old baselines remain guardable via
+`--snapshot embedding_v1 LEX_DRL_RULE_ALIGN=hybrid`.
+
+### Baseline L-GED: old → new (embedding backend)
+
+| Case | Student | old (`embedding_v1`, hybrid) | new (`embedding_combined_v1`) | Δ |
+|---|---|--:|--:|--:|
+| E1 | GPT-5 | 131.0 | 135.0 | +4.0 |
+| E1 | Llama | 149.0 | 149.0 | 0.0 |
+| E2 | GPT-5 | 88.5 | 88.5 | 0.0 |
+| E2 | Llama | 110.5 | 110.5 | 0.0 |
+| M1 | GPT-5 | 116.0 | 120.0 | +4.0 |
+| M1 | Llama | 145.0 | 141.0 | −4.0 |
+| M2 | GPT-5 | 96.5 | 108.5 | +12.0 |
+| M2 | Llama | 138.5 | 138.5 | 0.0 |
+| H1 | GPT-5 | 171.0 | 167.0 | −4.0 |
+| H1 | Llama | 180.5 | 184.5 | +4.0 |
+| H2 | GPT-5 | 125.5 | 117.5 | −8.0 |
+| H2 | Llama | 162.5 | 162.5 | 0.0 |
+
+Changes are modest and land mostly on GPT-5 (more rules → more affected by the rule
+aligner). **The GPT-5 < Llama ranking still holds 6/6.** Combined k-ablation (clean
+store) written to `results/k_ablation_combined_clean.csv`; the pre-Phase-4
+`results/k_ablation_clean.csv` / `_dirty.csv` are left untouched for comparison.

@@ -8,10 +8,18 @@ graphs are the k-tagged outputs from run_patch_injection, per store variant.
 Guard: each cell's baseline L-GED must equal the frozen snapshot value (Task 1
 pins one generation). Drift fails loudly.
 
+Phase-4 re-pin: baselines are now the COMBINED rule aligner
+(embedding_combined_v1). Run with LEX_DRL_RULE_ALIGN unset (combined is the
+default) or explicitly =combined. The pre-Phase-4 baselines (embedding_v1,
+LEX_DRL_RULE_ALIGN=hybrid) are preserved and still guardable via --snapshot.
+
 Run under the alignment backend the baselines were scored with (embedding):
-    LEX_DRL_SIMILARITY=embedding poetry run python scripts/run_k_ablation.py
     LEX_DRL_SIMILARITY=embedding poetry run python scripts/run_k_ablation.py \\
-        --variants clean clean_jfilter --out results/k_ablation_clean.csv
+        --variants clean --out results/k_ablation_combined_clean.csv
+    # reproduce the pre-Phase-4 (hybrid) baselines instead:
+    LEX_DRL_SIMILARITY=embedding LEX_DRL_RULE_ALIGN=hybrid \\
+        poetry run python scripts/run_k_ablation.py --snapshot embedding_v1 \\
+        --variants clean --out results/k_ablation_clean.csv
 """
 from __future__ import annotations
 
@@ -37,7 +45,7 @@ KS = [1, 3, 5]
 GRAPHS = Path("data/outputs/graphs")
 # Per-student baseline source (kept on the same stack as that student's patched runs).
 BASELINE = {
-    "gpt5": ("snapshot", "embedding_v1"),
+    "gpt5": ("snapshot", "embedding_combined_v1"),
     "llama3_2b": ("local", "data/outputs/graphs_local"),
 }
 
@@ -74,7 +82,9 @@ def main() -> None:
     ap.add_argument("--variants", nargs="+", default=["dirty"],
                     help="store variants: dirty | clean | clean_jfilter")
     ap.add_argument("--out", default="results/k_ablation.csv")
-    ap.add_argument("--snapshot", default="embedding_v1", help="baseline snapshot for the guard")
+    ap.add_argument("--snapshot", default="embedding_combined_v1",
+                    help="baseline snapshot for the guard (Phase-4 re-pin; "
+                         "use embedding_v1 with LEX_DRL_RULE_ALIGN=hybrid for the old baselines)")
     ap.add_argument("--no-guard", action="store_true",
                     help="skip the baseline==snapshot assertion (e.g. before Task-1 pinning)")
     args = ap.parse_args()

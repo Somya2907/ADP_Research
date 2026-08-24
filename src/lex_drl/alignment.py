@@ -50,7 +50,10 @@ DEFAULT_THRESHOLD = 0.55 if SIMILARITY_METHOD == "embedding" else 0.10
 #                threshold so text embeddings can't merge legally distinct rules;
 #                otherwise text similarity. Addresses the "embeddings can't tell
 #                citations apart" concern. Read at import from LEX_DRL_RULE_ALIGN.
-RULE_ALIGN_MODE = os.environ.get("LEX_DRL_RULE_ALIGN", "hybrid").lower()
+# Default is "combined" as of Phase 4 (re-pinned baselines: embedding_combined_v1).
+# Set LEX_DRL_RULE_ALIGN=hybrid to reproduce the earlier tfidf_v1 / embedding_v1
+# snapshots (the pre-Phase-4 baselines, preserved for provenance).
+RULE_ALIGN_MODE = os.environ.get("LEX_DRL_RULE_ALIGN", "combined").lower()
 
 _EMBED_MODEL = None  # lazy-loaded SentenceTransformer instance
 
