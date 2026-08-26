@@ -32,6 +32,40 @@ The cause was **data hygiene**, three things bundled:
 The −16.5 was an **artifact of the old, messy pipeline**; −4.5 is the honest
 number. Full mechanism (node-by-node) in `docs/H2_dirty_vs_clean_explained.md`.
 
+### The exact patch that made the difference
+
+Drilling all the way down: the dirty and clean runs retrieved the **same** patches
+in slots #1 and #2 — the entire −16.5 vs −4.5 rides on the **3rd patch**.
+
+| Slot | Dirty (old store) | Clean (rebuilt store) |
+|---|---|---|
+| #1 | `p_31804710d2d2` §6-1-1703(2)(a)-(g) | `p_31804710d2d2` — **same** |
+| #2 | `p_4b3934a5ecdc` §6-1-1703(2)(a) | `p_4b3934a5ecdc` — **same** |
+| **#3** | **`p_3b9999491818`** (broad) | **`p_215af45aa260`** (narrow) ← the swap |
+
+**The −11 in node recovery came from `p_3b9999491818`.** Its instruction text spells
+out all four deployer duties:
+
+> *"Deployer obligations: NIST AI RMF-aligned risk management program, impact
+> assessments, annual reviews, **website statement, consumer notice, data
+> correction, appeal rights**."*
+
+Those four bolded items **are** teacher rules R10 (website), R11 (notice), R12
+(correction), R13 (appeal) — four binding rules at 4 points each. This one broad
+patch prompted the 3B to enumerate the whole cluster.
+
+**The +1 (clean) is because that patch was replaced by `p_215af45aa260`**, whose text
+is narrow — *"Implement risk management policy and program consistent with NIST AI
+RMF…"* — risk-management only, no mention of notice/correction/appeal. So the student
+stopped emitting those rules and node recovery collapsed from ~28 → ~8 points.
+
+**Why the swap:** `p_3b9999491818` is **absent from the rebuilt store** (the Phase-3
+re-mine did not reproduce it); `p_215af45aa260` is a **new, narrower** patch. One broad
+`(a)-(g)` patch did survive (`p_31804710d2d2`, retrieved #1 in both), but the **second,
+reinforcing** broad patch was lost — and that reinforcement was what tipped the 3B into
+emitting all four duties. **The whole −16.5 rode on one patch's wording surviving the
+rebuild** — the sharpest possible statement of "it was never robust."
+
 **Key fact for the professor:** the **combined aligner did NOT change this** — under
 the combined method H2 Llama k=3 is **still −4.5** (verified: the combined method
 re-maps two H2-Llama rules but the change is L-GED-neutral). So do **not** attribute
