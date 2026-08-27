@@ -250,7 +250,7 @@ precise citations), which is a stronger result to show than the original.
 
 ---
 
-## The three sentences to say to the professor
+## Conclusion
 
 1. *"The −16.5 → −4.5 was **data cleanup** — quarantining a fabricated citation,
    pinning the baseline, and removing noise; the metric change had nothing to do
