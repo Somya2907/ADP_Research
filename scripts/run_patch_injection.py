@@ -92,15 +92,17 @@ def build_patched_system(case, notes_block: str) -> str:
 
 
 def run_patched(case, model_key: str, store: PatchStore, k: int, *,
-                allowed: set[str], variant: str, jfilter: bool, run_tag: str = ""):
+                allowed: set[str], variant: str, jfilter: bool, run_tag: str = "",
+                diversify: bool = False):
     query = f"{case.facts}\n{case.question}"
     juris = {_canon_jurisdiction(t) for t in (getattr(case, "jurisdiction_tags", []) or [])}
     if jfilter and juris:
-        patches = store.retrieve(query, k=k, allowed=allowed, jurisdictions=juris)
+        patches = store.retrieve(query, k=k, allowed=allowed, jurisdictions=juris,
+                                 diversify=diversify)
         if not patches:  # fall back to unfiltered top-k (on the allowed set)
-            patches = store.retrieve(query, k=k, allowed=allowed)
+            patches = store.retrieve(query, k=k, allowed=allowed, diversify=diversify)
     else:
-        patches = store.retrieve(query, k=k, allowed=allowed)
+        patches = store.retrieve(query, k=k, allowed=allowed, diversify=diversify)
 
     system = build_patched_system(case, render_notes_block(patches))
     client = get_agent_client(model_key)
@@ -152,8 +154,9 @@ def main():
     ap.add_argument("--allowed", default="verified",
                     help="comma-sep verification statuses to retrieve (default: verified)")
     ap.add_argument("--variant", default="dirty",
-                    choices=["dirty", "clean", "clean_jfilter"],
-                    help="store variant → output suffix; clean_jfilter adds a jurisdiction pre-filter")
+                    choices=["dirty", "clean", "clean_jfilter", "clean_diverse"],
+                    help="store variant → output suffix; clean_jfilter adds a jurisdiction "
+                         "pre-filter; clean_diverse diversifies retrieval across legal duties")
     ap.add_argument("--run-tag", default="", help="salt the cache key (variance repeats)")
     ap.add_argument("--allow-party-leaks", action="store_true",
                     help="do NOT drop patches that name a training-case party (default: drop)")
@@ -161,6 +164,7 @@ def main():
 
     allowed = {s.strip() for s in args.allowed.split(",") if s.strip()}
     jfilter = args.variant == "clean_jfilter"
+    diversify = args.variant == "clean_diverse"
 
     store = PatchStore.from_file(args.patch_store)
     if not args.allow_party_leaks:
@@ -179,7 +183,8 @@ def main():
             try:
                 _, log = run_patched(case, model_key, store, args.k,
                                      allowed=allowed, variant=args.variant,
-                                     jfilter=jfilter, run_tag=args.run_tag)
+                                     jfilter=jfilter, run_tag=args.run_tag,
+                                     diversify=diversify)
                 logs.append(log)
                 ok.append(f"{cid}/{model_key}")
             except Exception as e:  # one 429 / parse error must not abort the rest

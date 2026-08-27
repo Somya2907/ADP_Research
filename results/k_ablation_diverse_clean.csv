@@ -1,0 +1,7 @@
+store,student,k,case,baseline,patched,delta
+clean,llama3_2b,3,E2,110.5,121.0,10.5
+clean_diverse,llama3_2b,3,E2,110.5,109.0,-1.5
+clean,llama3_2b,3,M2,138.5,136.5,-2.0
+clean_diverse,llama3_2b,3,M2,138.5,138.0,-0.5
+clean,llama3_2b,3,H2,162.5,158.0,-4.5
+clean_diverse,llama3_2b,3,H2,162.5,137.0,-25.5
