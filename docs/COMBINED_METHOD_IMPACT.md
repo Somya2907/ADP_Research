@@ -97,7 +97,7 @@ even **displace** the website rule (R10) that k=1 recovered. A mining error coul
 produce that shape; the content is clearly in the store, and **k=3 just retrieves the
 wrong three patches.** Fix = better retrieval (diversify across duties), tested in §E.
 
-**Key fact for the professor:** the **combined aligner did NOT change this** — under
+**Key fact:** the **combined aligner did NOT change this** — under
 the combined method H2 Llama k=3 is **still −4.5** (verified: the combined method
 re-maps two H2-Llama rules but the change is L-GED-neutral). So do **not** attribute
 the −16.5 → −4.5 to the citation method.
@@ -214,12 +214,12 @@ Re-running injection on the **clean, verified store** (Llama, k=3, combined alig
 The two improvements are independent and **stack**. Llama, k=3, clean verified store —
 patch effect `patched − baseline` (negative = patches help):
 
-| Case | baseline | std + hybrid *(original)* | std + combined | diverse + hybrid | **diverse + combined** *(both)* |
-|---|--:|--:|--:|--:|--:|
-| **E2** (NYC) | 110.5 | +10.5 | +10.5 | +6.5 | **−1.5** |
-| **M2** (CO) | 138.5 | +6.0 | −2.0 | +3.5 | **−0.5** |
-| **H2** (CO) | 162.5 | −4.5 | −4.5 | −25.5 | **−25.5** |
-| **mean** | | **+4.0** | **+1.3** | **−5.2** | **−9.2** |
+| Case         | baseline | std + hybrid *(original)* | std + combined | diverse + hybrid | **diverse + combined** *(both)* |
+| --------------| ---------:| --------------------------:| ---------------:| -----------------:| --------------------------------:|
+| **E2** (NYC) | 110.5    | +10.5                     | +10.5          | +6.5             | **−1.5**                        |
+| **M2** (CO)  | 138.5    | +6.0                      | −2.0           | +3.5             | **−0.5**                        |
+| **H2** (CO)  | 162.5    | −4.5                      | −4.5           | −25.5            | **−25.5**                       |
+| **mean**     |          | **+4.0**                  | **+1.3**       | **−5.2**         | **−9.2**                        |
 
 Reading the columns: the **combined aligner** alone moves the mean +4.0 → +1.3 (accuracy
 on the citation-dense cases M2/E2); **diversified retrieval** alone moves it +4.0 → −5.2

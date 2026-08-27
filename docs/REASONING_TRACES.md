@@ -12,8 +12,8 @@ Companion to the summary stats: a few **actual FIRACO reasoning traces** so you 
 
 **At a glance (graph size):**
 
-| | Teacher (Claude) | GPT-5 | Llama-3B |
-|---|---|---|---|
+|             | Teacher (Claude)                          | GPT-5                                     | Llama-3B                              |
+| -------------| -------------------------------------------| -------------------------------------------| ---------------------------------------|
 | node counts | F12 I9 R14 A12 C5 O8 · E39 · **60 nodes** | F12 I8 R10 A12 C4 O9 · E22 · **55 nodes** | F6 I1 R4 A1 C1 O1 · E4 · **14 nodes** |
 
 > The weak student collapses a rich analysis into a stub: **1 issue, 1 application step, 1 conclusion, 1 obligation** — vs the teacher's 9 issues / 12 application steps / 8 obligations. That gap *is* the L-GED.

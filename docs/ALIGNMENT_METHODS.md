@@ -10,10 +10,10 @@ The discrepancy scorer (L-GED) compares each student's F-I-R-A-C-O graph against
 
 Rules are aligned by citation token first (e.g. `§20-871(d)(2)` ≡ `Section 20-871(d)(2)`). Everything else falls back to text similarity, selected at runtime by the `LEX_DRL_SIMILARITY` environment variable:
 
-| Backend | `LEX_DRL_SIMILARITY` | Similarity | Threshold |
-|---|---|---|---|
-| TF-IDF (default) | `tfidf` | n-gram (1,2) TF-IDF cosine | 0.10 |
-| Embedding | `embedding` | `BAAI/bge-small-en-v1.5` cosine | 0.55 |
+| Backend          | `LEX_DRL_SIMILARITY` | Similarity                      | Threshold |
+| ------------------| ----------------------| ---------------------------------| -----------|
+| TF-IDF (default) | `tfidf`              | n-gram (1,2) TF-IDF cosine      | 0.10      |
+| Embedding        | `embedding`          | `BAAI/bge-small-en-v1.5` cosine | 0.55      |
 
 A teacher node and a student node align when their similarity clears the threshold under a greedy bipartite assignment. Below the threshold, the teacher node is a *miss* (`v_miss`) and the unmatched student node a *hallucination* (`v_halluc`).
 
