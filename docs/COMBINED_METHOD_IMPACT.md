@@ -167,6 +167,32 @@ the −16.5→−4.5 story is about; it changes the **citation-dense** cases (M2
 
 ## E. Fixing the retrieval — and getting a *better, honest* result
 
+### What "diverse + combined" means
+
+The two improvements act at **different stages of the pipeline**, which is why they are
+independent and stack:
+
+- **Diversified retrieval** (the *input* side — choosing which patches to inject).
+  From the BM25-ranked candidate patches, keep **at most one patch per distinct legal
+  duty** (citation-subsection key). So the top-k spans *different* obligations —
+  risk-management + website + notice + correction + appeal — instead of returning three
+  near-duplicate patches for the same `§6-1-1703(2)(a)` duty. Implemented as
+  `patch_store.retrieve(diversify=True)` / `_duty_key`; run via `--variant clean_diverse`.
+  *This changes what the student sees and therefore what it writes.*
+
+- **Combined aligner** (the *scoring* side — how we match the student's graph to the
+  teacher's to compute L-GED). A blended citation+text score: **exact citation agreement
+  forces a match (1.0); sibling subsections** (same base section, different subsection,
+  e.g. `§6-1-1703(2)(a)` vs `(2)(b)`) **are discounted below threshold** so embeddings
+  cannot merge legally distinct rules; text similarity otherwise. Implemented in
+  `alignment.py::_align_rules_combined`; the default since Phase 4
+  (`LEX_DRL_RULE_ALIGN=combined`). *This changes only how the result is measured, not
+  what the student writes.*
+
+So **"diverse + combined"** = inject patches with **duty-diversified retrieval**, then
+score the resulting graph with the **combined aligner**. One is retrieval-time, the other
+is measurement-time — orthogonal, hence the stacking in the 2×2 below.
+
 Section A showed the −16.5→−4.5 drop was a **retrieval artifact**: at k=3 the store
 returned **three near-duplicate `§6-1-1703(2)(a)` risk-management patches** instead of
 spanning the distinct deployer duties. So we fixed the retrieval directly:
