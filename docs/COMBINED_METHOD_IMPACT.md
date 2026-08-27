@@ -183,6 +183,24 @@ Re-running injection on the **clean, verified store** (Llama, k=3, combined alig
 | **H2** (CO) | 162.5 | −4.5 | **−25.5** | R10, R12, R13, R19 |
 | **mean** | | **+1.3** (net *hurt*) | **−9.2** (net *help*) | |
 
+### Every case × every method (2×2: retrieval × aligner)
+
+The two improvements are independent and **stack**. Llama, k=3, clean verified store —
+patch effect `patched − baseline` (negative = patches help):
+
+| Case | baseline | std + hybrid *(original)* | std + combined | diverse + hybrid | **diverse + combined** *(both)* |
+|---|--:|--:|--:|--:|--:|
+| **E2** (NYC) | 110.5 | +10.5 | +10.5 | +6.5 | **−1.5** |
+| **M2** (CO) | 138.5 | +6.0 | −2.0 | +3.5 | **−0.5** |
+| **H2** (CO) | 162.5 | −4.5 | −4.5 | −25.5 | **−25.5** |
+| **mean** | | **+4.0** | **+1.3** | **−5.2** | **−9.2** |
+
+Reading the columns: the **combined aligner** alone moves the mean +4.0 → +1.3 (accuracy
+on the citation-dense cases M2/E2); **diversified retrieval** alone moves it +4.0 → −5.2
+(the dominant lever); **both together → −9.2**. H2 is identical under either aligner
+(−25.5) because it has no sibling subsections, so its entire gain is the retrieval fix;
+E2/M2 need the combined aligner too (it flips E2 from +6.5 to −1.5).
+
 **What this shows:**
 - **All three cases now improve** (mean −9.2) where standard retrieval *hurt* on average
   (mean +1.3, dragged down by E2's +10.5 displacement).
