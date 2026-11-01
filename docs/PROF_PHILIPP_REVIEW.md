@@ -1,7 +1,5 @@
 # Legal review request for Prof. Philipp
 
-L-DRL research with Prof. Rao · 1 November 2026
-
 Please review whether the cases are realistic and whether the teacher-generated FIRACO answers are legally sound. FIRACO means Facts, Issues, Rules, Applications, Conclusions, and Obligations.
 
 ## What to check
