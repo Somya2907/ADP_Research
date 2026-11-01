@@ -1,0 +1,4 @@
+round,store_size,dropped_for_party_names,new_patches,rewritten,rewrites_rejected,mean_lged_train,mean_lged_test,ro_recovery_train,ro_recovery_test,unparsed,test/easy,test/hard,test/medium,training/easy,training/hard,training/medium
+0,0,0,219,0,0,139.27,133.47,0.1954,0.1809,0,112.4,166.5,121.5,121.1,171.4,125.3
+1,219,24,22,0,0,142.97,132.97,0.1655,0.1683,0,114.6,161.6,122.7,126.7,176.1,126.1
+2,241,25,6,0,0,141.93,134.17,0.1563,0.1533,0,118.1,163.2,121.2,122.1,171.5,132.2

@@ -1,0 +1,6 @@
+arm,case,tier,parsed,notes,notes_words,looped,repairs,still_looped,base_l_ged,l_ged,delta,ro_total,base_ro_recovered,ro_recovered,targets,targets_closed,taken_up,base_rules,rules,base_nodes,nodes,base_halluc,halluc,base_misground,misground,seconds
+directive_k10,E2,easy,True,10,333,False,0,False,110.5,97.0,-13.5,22,5,10,10,8,10,4,9,14,19,0,0,3,6,0.0
+directive_k10,E8,easy,True,10,379,False,0,False,99.5,91.0,-8.5,22,5,8,10,7,10,4,7,15,18,0,1,2,0,0.0
+directive_k10,M2,medium,True,10,219,False,0,False,138.5,109.0,-29.5,28,4,11,10,10,10,3,10,12,19,0,0,2,0,0.0
+directive_k10,M9,medium,True,10,304,False,0,False,126.5,101.5,-25.0,23,4,11,10,9,10,3,10,14,39,0,3,2,1,0.0
+directive_k10,H2,hard,True,10,285,False,0,False,162.5,143.0,-19.5,30,4,14,10,9,0,3,9,14,41,0,0,2,9,0.0

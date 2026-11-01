@@ -30,6 +30,11 @@ from lex_drl.schema import GraphSource
 # Reused from extraction.py (module-level, importable):
 from lex_drl.extraction import PROMPT_DIR, _parse_response, _save_raw_response
 from lex_drl.clients import get_agent_client
+# Prompt assembly and the leakage guard live in the package so the iterative
+# loop (lex_drl.loop) uses the same code.
+from lex_drl.injection import (  # noqa: F401  (re-exported for callers of this script)
+    TRAIN_PARTY_NAMES, build_patched_system, filter_leaks, render_notes_block,
+)
 
 load_dotenv()  # load OPENAI_API_KEY / OPENROUTER_API_KEY from .env (handoff draft omitted this)
 
@@ -37,59 +42,6 @@ TEST_CASES = ["E2", "M2", "H2"]
 PATCH_STORE_PATH = Path("data/patches/patches.json")
 PATCHED_DIR = Path("data/outputs/graphs")
 RETRIEVAL_LOG = Path("results/retrieval_log.json")
-
-# Train→test leakage guard (deterministic-phase). The design's firewall relies on
-# the InsightWriter prose-rewrite to keep patches party-free, but that step is
-# deferred this phase (insight=None), so a few missing_obligation patches embed
-# training-case (E1/M1/H1) party/product names in their prevention_step. Injecting
-# those into the test prompts would be train→test contamination, so we drop any
-# patch whose text names a training-case party. Disable with --allow-party-leaks.
-TRAIN_PARTY_NAMES = [
-    "HireFlow", "Greenleaf", "ResumeRank", "TalentMetrics",   # E1
-    "LoanScore", "Denver",                                    # M1
-    "PeopleScore",                                            # H1
-]
-
-
-def _has_party_leak(patch: Patch) -> bool:
-    text = f"{patch.prevention_step} {patch.contraindication}".lower()
-    return any(name.lower() in text for name in TRAIN_PARTY_NAMES)
-
-
-def filter_leaks(store: PatchStore) -> tuple[PatchStore, list[Patch]]:
-    """Return (clean_store, dropped) — patches naming a training-case party removed."""
-    clean, dropped = PatchStore(), []
-    for p in store.all():
-        (dropped.append(p) if _has_party_leak(p) else clean.add(p))
-    return clean, dropped
-
-
-def render_notes_block(patches: list[Patch]) -> str:
-    """Render retrieved patches as a compact POLICY REASONING NOTES block."""
-    if not patches:
-        return ""
-    lines = ["POLICY REASONING NOTES (apply only where the facts trigger them):"]
-    for i, p in enumerate(patches, 1):
-        note = f"{i}. {p.prevention_step}"
-        if p.contraindication:
-            note += f" [Caveat: {p.contraindication}]"
-        lines.append(note)
-    lines.append("")  # trailing blank line before CASE
-    return "\n".join(lines)
-
-
-def build_patched_system(case, notes_block: str) -> str:
-    template = (PROMPT_DIR / "agent_firaco.txt").read_text(encoding="utf-8")
-    system = (
-        template
-        .replace("<<CASE_FACTS>>", case.facts)
-        .replace("<<CASE_QUESTION>>", case.question)
-    )
-    if notes_block:
-        # Insert before the CASE section so the persona/intro stays first.
-        system = system.replace("CASE:", notes_block + "\nCASE:", 1)
-    return system
-
 
 def run_patched(case, model_key: str, store: PatchStore, k: int, *,
                 allowed: set[str], variant: str, jfilter: bool, run_tag: str = "",

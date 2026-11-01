@@ -1,0 +1,91 @@
+case,split,tier,rank,patch,family,authority,in_jurisdiction,teacher_cites_section,teacher_uses_it,was_missing,taken_up,closed,targets
+E1,training,easy,1,p_984f89fb5cba,missing_obligation,NYC LL 144 §20-871(a)(1); DCWP Rules §5-301(a),True,True,True,True,True,1,1
+E1,training,easy,2,p_bb0a0bb93e02,missing_rule,DCWP Rules Section 5-301(a),True,True,True,True,False,0,1
+E1,training,easy,3,p_3c8ce12f7c16,missing_rule,DCWP Rules Section 5-302(a),True,False,False,False,False,0,0
+E3,training,easy,1,p_6231317e210c,missing_rule,DCWP Rules Section 5-303,True,True,True,True,False,0,1
+E3,training,easy,2,p_6788e775439d,missing_rule,DCWP Rules Section 5-302,True,True,True,True,False,0,1
+E3,training,easy,3,p_216db2769297,missing_obligation,DCWP Rules Section 5-301(a),True,True,True,True,False,0,1
+E4,training,easy,1,p_6231317e210c,missing_rule,DCWP Rules Section 5-303,True,False,False,False,False,0,0
+E4,training,easy,2,p_38bf47a3c56f,missing_obligation,"DCWP Rules Section 5-303(a),(b)",True,False,False,False,False,0,0
+E4,training,easy,3,p_3cd69cdf3d4f,missing_rule,NYC LL 144 Section 20-871(a)(2) and Section 20-873,True,True,True,True,True,0,1
+E5,training,easy,1,p_cdac1357b254,missing_obligation,CO AIA 6-1-1703(2)(a)-(g),True,False,False,False,False,0,0
+E5,training,easy,2,p_4b419b6d1aa2,missing_rule,Colorado AIA Section 6-1-1703(2)(f)-(g),True,True,False,False,True,0,0
+E5,training,easy,3,p_f419c697f325,missing_rule,CO AIA 6-1-1703(2)(b),True,False,False,False,False,0,0
+E6,training,easy,1,p_ac3a7642d7ae,missing_rule,TRAIGA §551.301(b),True,True,True,True,False,0,1
+E6,training,easy,2,p_1df5c8f76c2f,missing_rule,TX TRAIGA 551.101,True,False,False,False,False,0,0
+E6,training,easy,3,p_0fe66707ae37,missing_rule,TX TRAIGA 551.102,True,False,False,False,False,0,0
+H1,training,hard,1,p_586ed4b580c4,missing_rule,Texas TRAIGA HB 149 (enacted text),True,False,True,True,False,0,1
+H1,training,hard,2,p_eccd9715a105,missing_rule,Texas TRAIGA Key Compliance Notes,True,False,False,False,False,0,0
+H1,training,hard,3,p_23d0801621ad,missing_obligation,Colorado AIA SB 24-205 Section 6-1-1703,True,True,False,False,True,0,0
+H3,training,hard,1,p_d6f8ef949a99,missing_obligation,Colorado AIA Section 6-1-1703(2)(f)-(g),True,True,True,True,True,2,2
+H3,training,hard,2,p_cdac1357b254,missing_obligation,CO AIA 6-1-1703(2)(a)-(g),True,False,False,False,False,0,0
+H3,training,hard,3,p_10a17aaa09a7,missing_rule,NYC LL 144 Section 20-870 (employment decision definition),True,True,True,True,True,1,2
+H4,training,hard,1,p_b6ade26371ca,missing_obligation,Colorado AIA Section 6-1-1703(2)(d),True,False,False,False,True,0,0
+H4,training,hard,2,p_19c3e432e021,missing_obligation,CO AIA 6-1-1703(2)(b),True,False,False,False,False,0,0
+H4,training,hard,3,p_8c60d11d1b4b,misgrounding,CO AIA Section 6-1-1703(2)(c),True,False,False,False,True,0,0
+H5,training,hard,1,p_4179933a3bea,missing_rule,CO AIA 6-1-1703(2)(a)-(g),True,False,False,False,False,0,0
+H5,training,hard,2,p_0f8735b89786,missing_obligation,CO AIA 6-1-1703(3),True,False,True,True,False,1,1
+H5,training,hard,3,p_f419c697f325,missing_rule,CO AIA 6-1-1703(2)(b),True,False,True,True,False,0,1
+H6,training,hard,1,p_eccd9715a105,missing_rule,Texas TRAIGA Key Compliance Notes,True,False,False,False,False,0,0
+H6,training,hard,2,p_586ed4b580c4,missing_rule,Texas TRAIGA HB 149 (enacted text),True,False,False,False,False,0,0
+H6,training,hard,3,p_1df5c8f76c2f,missing_rule,TX TRAIGA 551.101,True,False,False,False,False,0,0
+M1,training,medium,1,p_3e101ad5cd79,missing_rule,CO AIA 6-1-1702(2)(a)-(e),True,False,False,False,False,0,0
+M1,training,medium,2,p_80dae319fa97,missing_rule,Colorado AIA Section 6-1-1702(2)-(3),True,True,False,False,True,0,0
+M1,training,medium,3,p_89ee43d272a5,missing_rule,CO AIA 6-1-1702,True,False,False,False,False,0,0
+M3,training,medium,1,p_4179933a3bea,missing_rule,CO AIA 6-1-1703(2)(a)-(g),True,False,False,False,False,0,0
+M3,training,medium,2,p_d6f8ef949a99,missing_obligation,Colorado AIA Section 6-1-1703(2)(f)-(g),True,False,False,False,True,0,0
+M3,training,medium,3,p_e28cc0d9ef45,misgrounding,Colorado AIA SB 24-205 as amended by SB 25B-004,True,False,False,False,False,0,0
+M4,training,medium,1,p_0f8735b89786,missing_obligation,CO AIA 6-1-1703(3),True,False,False,False,False,0,0
+M4,training,medium,2,p_477b55870ded,misgrounding,CO AIA 6-1-1702(4),True,False,False,False,False,0,0
+M4,training,medium,3,p_fdbb651bda4e,missing_obligation,CO AIA Section 6-1-1703(1),True,False,False,False,True,0,0
+M5,training,medium,1,p_4179933a3bea,missing_rule,CO AIA 6-1-1703(2)(a)-(g),True,False,False,False,False,0,0
+M5,training,medium,2,p_206c68eb2b63,missing_rule,Colorado AIA SB 24-205 Section 6-1-1703,True,True,False,False,True,0,0
+M5,training,medium,3,p_d6f8ef949a99,missing_obligation,Colorado AIA Section 6-1-1703(2)(f)-(g),True,True,False,False,True,0,0
+M6,training,medium,1,p_3cd69cdf3d4f,missing_rule,NYC LL 144 Section 20-871(a)(2) and Section 20-873,True,True,False,False,True,0,0
+M6,training,medium,2,p_38bf47a3c56f,missing_obligation,"DCWP Rules Section 5-303(a),(b)",True,True,False,False,True,0,0
+M6,training,medium,3,p_6788e775439d,missing_rule,DCWP Rules Section 5-302,True,True,False,False,True,0,0
+E2,test,easy,1,p_6d8fb3e33440,missing_rule,NYC LL 144 Section 20-871(b)(1); DCWP Rules Section 5-304(c),True,True,True,True,True,1,1
+E2,test,easy,2,p_6788e775439d,missing_rule,DCWP Rules Section 5-302,True,False,False,False,True,0,0
+E2,test,easy,3,p_216db2769297,missing_obligation,DCWP Rules Section 5-301(a),True,True,True,True,True,0,1
+E7,test,easy,1,p_6231317e210c,missing_rule,DCWP Rules Section 5-303,True,False,False,False,False,0,0
+E7,test,easy,2,p_4074e33c7e58,missing_obligation,DCWP Rules Section 5-304(a)-(c),True,False,False,False,False,0,0
+E7,test,easy,3,p_38bf47a3c56f,missing_obligation,"DCWP Rules Section 5-303(a),(b)",True,False,False,False,False,0,0
+E8,test,easy,1,p_6231317e210c,missing_rule,DCWP Rules Section 5-303,True,True,True,True,False,0,1
+E8,test,easy,2,p_38bf47a3c56f,missing_obligation,"DCWP Rules Section 5-303(a),(b)",True,True,False,False,False,0,0
+E8,test,easy,3,p_3cd69cdf3d4f,missing_rule,NYC LL 144 Section 20-871(a)(2) and Section 20-873,True,True,True,True,True,0,1
+E9,test,easy,1,p_d6f8ef949a99,missing_obligation,Colorado AIA Section 6-1-1703(2)(f)-(g),True,True,False,False,True,0,0
+E9,test,easy,2,p_f2d8863490bd,missing_obligation,CO AIA 6-1-1704,True,False,False,False,False,0,0
+E9,test,easy,3,p_3b9999491818,missing_rule,CO AIA §6-1-1703(2)(a)-(g),True,True,False,False,True,0,0
+E10,test,easy,1,p_02fcce3c7b2f,missing_rule,Texas TRAIGA Section 551.301,True,True,False,False,True,0,0
+E10,test,easy,2,p_7f2af6b17706,missing_rule,TX TRAIGA 551.301(c),True,False,False,False,False,0,0
+E10,test,easy,3,p_c304442aeefa,misgrounding,TRAIGA §551.301(d),True,True,True,False,True,1,1
+H2,test,hard,1,p_2a3e512c9575,missing_rule,CO AIA 6-1-1703(2)(a),True,False,True,False,False,1,1
+H2,test,hard,2,p_60c79af7afeb,missing_rule,CO AIA 6-1-1703(2)(d),True,False,True,True,False,0,1
+H2,test,hard,3,p_206c68eb2b63,missing_rule,Colorado AIA SB 24-205 Section 6-1-1703,True,False,False,False,True,0,0
+H7,test,hard,1,p_eccd9715a105,missing_rule,Texas TRAIGA Key Compliance Notes,True,False,False,False,False,0,0
+H7,test,hard,2,p_3e101ad5cd79,missing_rule,CO AIA 6-1-1702(2)(a)-(e),True,False,False,False,False,0,0
+H7,test,hard,3,p_586ed4b580c4,missing_rule,Texas TRAIGA HB 149 (enacted text),True,False,False,False,False,0,0
+H8,test,hard,1,p_f419c697f325,missing_rule,CO AIA 6-1-1703(2)(b),True,False,False,False,False,0,0
+H8,test,hard,2,p_f2d8863490bd,missing_obligation,CO AIA 6-1-1704,True,False,False,False,False,0,0
+H8,test,hard,3,p_2ef19b936ad8,missing_rule,CO AIA 6-1-1703(3),True,False,False,False,False,0,0
+H9,test,hard,1,p_8adcd8c86a87,missing_rule,CO AIA Section 6-1-1703(2)(f),True,False,False,False,True,0,0
+H9,test,hard,2,p_4179933a3bea,missing_rule,CO AIA 6-1-1703(2)(a)-(g),True,False,True,True,False,1,1
+H9,test,hard,3,p_f419c697f325,missing_rule,CO AIA 6-1-1703(2)(b),True,False,False,False,False,0,0
+H10,test,hard,1,p_7f2af6b17706,missing_rule,TX TRAIGA 551.301(c),True,False,False,False,False,0,0
+H10,test,hard,2,p_02fcce3c7b2f,missing_rule,Texas TRAIGA Section 551.301,True,True,False,False,True,0,0
+H10,test,hard,3,p_c304442aeefa,misgrounding,TRAIGA §551.301(d),True,True,True,False,True,0,1
+M2,test,medium,1,p_c7b481d4c357,missing_obligation,CO AIA 6-1-1703(2)(a),True,False,False,False,False,0,0
+M2,test,medium,2,p_60c79af7afeb,missing_rule,CO AIA 6-1-1703(2)(d),True,False,False,False,False,0,0
+M2,test,medium,3,p_23d0801621ad,missing_obligation,Colorado AIA SB 24-205 Section 6-1-1703,True,True,False,False,False,0,0
+M7,test,medium,1,p_f419c697f325,missing_rule,CO AIA 6-1-1703(2)(b),True,False,False,False,False,0,0
+M7,test,medium,2,p_3b9999491818,missing_rule,CO AIA §6-1-1703(2)(a)-(g),True,True,False,False,True,0,0
+M7,test,medium,3,p_e28cc0d9ef45,misgrounding,Colorado AIA SB 24-205 as amended by SB 25B-004,True,False,False,False,False,0,0
+M8,test,medium,1,p_2ef19b936ad8,missing_rule,CO AIA 6-1-1703(3),True,False,False,False,False,0,0
+M8,test,medium,2,p_477b55870ded,misgrounding,CO AIA 6-1-1702(4),True,False,False,False,False,0,0
+M8,test,medium,3,p_fdbb651bda4e,missing_obligation,CO AIA Section 6-1-1703(1),True,True,True,True,False,0,1
+M9,test,medium,1,p_6231317e210c,missing_rule,DCWP Rules Section 5-303,True,True,False,False,True,0,0
+M9,test,medium,2,p_984f89fb5cba,missing_obligation,NYC LL 144 §20-871(a)(1); DCWP Rules §5-301(a),True,True,True,True,True,0,2
+M9,test,medium,3,p_6788e775439d,missing_rule,DCWP Rules Section 5-302,True,False,False,False,True,0,0
+M10,test,medium,1,p_586ed4b580c4,missing_rule,Texas TRAIGA HB 149 (enacted text),True,False,False,False,False,0,0
+M10,test,medium,2,p_02fcce3c7b2f,missing_rule,Texas TRAIGA Section 551.301,True,True,False,False,True,0,0
+M10,test,medium,3,p_eccd9715a105,missing_rule,Texas TRAIGA Key Compliance Notes,True,False,False,False,False,0,0

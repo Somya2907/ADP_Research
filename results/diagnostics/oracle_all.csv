@@ -1,0 +1,5 @@
+arm,case,tier,parsed,notes,notes_words,looped,base_l_ged,l_ged,delta,ro_total,base_ro_recovered,ro_recovered,targets,targets_closed,taken_up,base_rules,rules,base_nodes,nodes,base_halluc,halluc,base_misground,misground,seconds
+oracle_all,E2,easy,True,16,803,True,110.5,139.5,29.0,22,5,14,16,9,7,4,30,14,37,0,16,3,11,0.0
+oracle_all,E8,easy,True,12,618,False,99.5,115.5,16.0,22,5,2,12,1,2,4,1,15,13,0,1,2,0,0.0
+oracle_all,M2,medium,True,20,917,False,138.5,122.0,-16.5,28,4,9,20,8,16,3,5,12,21,0,0,2,0,0.0
+oracle_all,M9,medium,True,17,760,False,126.5,134.5,8.0,23,4,2,17,1,4,3,1,14,17,0,1,2,1,0.0

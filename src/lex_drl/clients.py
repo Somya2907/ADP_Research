@@ -194,6 +194,23 @@ class SmallModelClient:
 _LOCAL_MODEL = None  # (tokenizer, model, device) singleton — loaded once
 
 
+def _add_time_cap(gen_kwargs: dict) -> None:
+    """Stop one generation after LEX_DRL_MAX_GEN_SECONDS (unset = no cap).
+
+    On this 16 GB Mac a few long prompts make the model's memory balloon into
+    swap and a single answer can take hours. A cap keeps a long run moving; an
+    answer stopped by it is written up to that point (and is cached as such).
+    """
+    secs = os.environ.get("LEX_DRL_MAX_GEN_SECONDS")
+    if not secs:
+        return
+    from transformers import MaxTimeCriteria, StoppingCriteriaList
+
+    crit = gen_kwargs.get("stopping_criteria") or StoppingCriteriaList()
+    crit.append(MaxTimeCriteria(max_time=float(secs)))
+    gen_kwargs["stopping_criteria"] = crit
+
+
 class LocalSmallModelClient:
     """Llama-3.2-3B-Instruct run locally via HF transformers.
 
@@ -247,6 +264,15 @@ class LocalSmallModelClient:
         enc = {k: v.to(device) for k, v in enc.items()}
         in_len = enc["input_ids"].shape[-1]
         gen_kwargs = {"max_new_tokens": max_tokens, "pad_token_id": tok.eos_token_id}
+        if os.environ.get("LEX_DRL_LOOP_GUARD", "") == "1":
+            # Stops a runaway answer early. Greedy decoding makes the result the
+            # same as cutting the full answer with truncate_loop, so this only
+            # saves time and is deliberately not part of the cache key.
+            from transformers import StoppingCriteriaList
+
+            from .loopguard import LoopGuard
+            gen_kwargs["stopping_criteria"] = StoppingCriteriaList([LoopGuard(tok, in_len)])
+        _add_time_cap(gen_kwargs)
         if temperature and temperature > 0:
             gen_kwargs.update(do_sample=True, temperature=temperature)
         else:
@@ -264,6 +290,175 @@ class LocalSmallModelClient:
         )
 
 
+    @cached_call(namespace="agent_llama3_2b_continue")
+    def continue_from(
+        self,
+        system: str,
+        user: str,
+        prefix: str = "",
+        max_tokens: int = 4096,
+    ) -> LLMResponse:
+        """Greedy continuation of an answer that already starts with ``prefix``.
+
+        Used to repair an answer that fell into a loop (see lex_drl.repair): the
+        prefix is the answer cut before the loop plus JSON scaffolding that
+        closes the looping list. The loop guard is always on here.
+        """
+        import torch
+        from transformers import StoppingCriteriaList
+
+        from .loopguard import LoopGuard
+
+        tok, mdl, device = self._ensure_loaded()
+        messages = [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ]
+        enc = tok.apply_chat_template(
+            messages, add_generation_prompt=True, return_tensors="pt", return_dict=True,
+        )
+        pre = tok(prefix, add_special_tokens=False, return_tensors="pt")
+        ids = torch.cat([enc["input_ids"], pre["input_ids"]], dim=-1).to(device)
+        mask = torch.ones_like(ids)
+        in_len = ids.shape[-1]
+        budget = max(768, max_tokens - pre["input_ids"].shape[-1])
+        kw = {"stopping_criteria": StoppingCriteriaList([LoopGuard(tok, in_len, preamble=prefix)])}
+        _add_time_cap(kw)
+        with torch.no_grad():
+            out = mdl.generate(
+                input_ids=ids, attention_mask=mask, max_new_tokens=budget, do_sample=False,
+                pad_token_id=tok.eos_token_id, **kw,
+            )
+        gen_tokens = out[0][in_len:]
+        text = tok.decode(gen_tokens, skip_special_tokens=True,
+                          clean_up_tokenization_spaces=False)
+        return LLMResponse(
+            text=text, model=self.model,
+            input_tokens=int(in_len), output_tokens=int(gen_tokens.shape[-1]),
+        )
+
+
+# ──────────────────────────────────────────────
+# Student 2 (remote GPU): the same model served from a Colab T4
+# ──────────────────────────────────────────────
+
+class RemoteSmallModelClient:
+    """Llama-3.2-3B-Instruct served by notebooks/colab_t4_server.ipynb.
+
+    The notebook runs the same weights with the same greedy decoding, loop
+    guard and time cap as ``LocalSmallModelClient``, on a GPU instead of this
+    Mac. Requests go through a public tunnel that cuts off slow responses, so
+    a call submits a job and then polls for its result.
+
+    Answers from a different GPU are not bit-identical to local ones, so the
+    model name carries the backend (``…@colab-t4``): its cache entries never
+    mix with the local ones, and its results are compared only with each other.
+
+    Needs SMALL_MODEL_REMOTE_URL (the tunnel URL the notebook prints) and
+    SMALL_MODEL_REMOTE_KEY (the key it prints).
+    """
+
+    POLL_SECONDS = 4.0
+    MAX_WAIT_SECONDS = 12 * 3600     # includes time waiting for a restarted notebook
+
+    def __init__(self, repo: str | None = None):
+        self.url = os.environ.get("SMALL_MODEL_REMOTE_URL", "").rstrip("/")
+        self.key = os.environ.get("SMALL_MODEL_REMOTE_KEY", "")
+        if not self.url or not self.key:
+            raise ValueError("set SMALL_MODEL_REMOTE_URL and SMALL_MODEL_REMOTE_KEY "
+                             "(printed by notebooks/colab_t4_server.ipynb)")
+        repo = repo or os.environ.get("SMALL_MODEL_LOCAL_REPO", "unsloth/Llama-3.2-3B-Instruct")
+        self.model = f"{repo}@{os.environ.get('SMALL_MODEL_REMOTE_TAG', 'colab-t4')}"
+
+    def _reload_endpoint(self) -> bool:
+        """Re-read .env; True if the URL or key changed (a restarted notebook)."""
+        from dotenv import dotenv_values
+
+        env = dotenv_values(".env")
+        url = (env.get("SMALL_MODEL_REMOTE_URL") or "").strip().rstrip("/")
+        key = (env.get("SMALL_MODEL_REMOTE_KEY") or "").strip()
+        if url and key and (url, key) != (self.url, self.key):
+            self.url, self.key = url, key
+            print(f"    [remote] new endpoint from .env: {url}", flush=True)
+            return True
+        return False
+
+    def _call(self, payload: dict) -> LLMResponse:
+        """Submit a job and poll for it, surviving a notebook restart.
+
+        If the server stops answering (Colab disconnected), keep waiting and
+        re-read .env: once the notebook is restarted and its new URL and key are
+        in .env, the job is resubmitted there. A job the server no longer knows
+        (404 after a restart) is resubmitted too.
+        """
+        import httpx
+
+        payload = payload | {
+            "loop_guard": os.environ.get("LEX_DRL_LOOP_GUARD", "") == "1" or payload.get("kind") == "continue",
+            "max_seconds": float(os.environ.get("LEX_DRL_MAX_GEN_SECONDS", "0") or 0),
+        }
+        job: str | None = None
+        down_since: float | None = None
+        warned = False
+        deadline = time.time() + self.MAX_WAIT_SECONDS
+        while time.time() < deadline:
+            headers = {"X-API-Key": self.key}
+            try:
+                if job is None:
+                    r = httpx.post(f"{self.url}/submit", json=payload, headers=headers, timeout=60)
+                    r.raise_for_status()
+                    job = r.json()["id"]
+                else:
+                    time.sleep(self.POLL_SECONDS)
+                    r = httpx.get(f"{self.url}/result/{job}", headers=headers, timeout=60)
+                    if r.status_code == 404:
+                        job = None                # server restarted: the job is gone
+                        continue
+                    r.raise_for_status()
+                    res = r.json()
+                    if res["status"] == "done":
+                        return LLMResponse(text=res["text"], model=self.model,
+                                           input_tokens=res["input_tokens"],
+                                           output_tokens=res["output_tokens"])
+                    if res["status"] == "error":
+                        raise RuntimeError(f"remote generation failed: {res.get('error')}")
+                down_since, warned = None, False
+            except (httpx.HTTPError, KeyError, ValueError):
+                down_since = down_since or time.time()
+                if self._reload_endpoint():
+                    job, down_since, warned = None, None, False
+                    continue
+                if time.time() - down_since > 120 and not warned:
+                    print("    [remote] server unreachable — restart notebooks/colab_t4_server.ipynb "
+                          "and put its new URL/KEY in .env; the run will resume", flush=True)
+                    warned = True
+                time.sleep(15)
+        raise TimeoutError(f"remote job not finished within {self.MAX_WAIT_SECONDS}s")
+
+    @cached_call(namespace="agent_llama3_2b")
+    def generate(
+        self,
+        system: str,
+        user: str,
+        max_tokens: int = 4096,
+        temperature: float = 0.0,
+        run_tag: str = "",
+    ) -> LLMResponse:
+        return self._call({"kind": "generate", "system": system, "user": user,
+                           "max_tokens": max_tokens})
+
+    @cached_call(namespace="agent_llama3_2b_continue")
+    def continue_from(
+        self,
+        system: str,
+        user: str,
+        prefix: str = "",
+        max_tokens: int = 4096,
+    ) -> LLMResponse:
+        return self._call({"kind": "continue", "system": system, "user": user,
+                           "prefix": prefix, "max_tokens": max_tokens})
+
+
 # ──────────────────────────────────────────────
 # Factory
 # ──────────────────────────────────────────────
@@ -273,9 +468,13 @@ def get_agent_client(model_key: str):
         return AgentClient()
     elif model_key == "llama3_2b":
         # SMALL_MODEL_BACKEND=local → run Llama-3.2-3B locally via transformers;
-        # otherwise use the OpenRouter-hosted route.
-        if os.environ.get("SMALL_MODEL_BACKEND", "").lower() == "local":
+        # =remote → the same model on a Colab GPU (RemoteSmallModelClient);
+        # otherwise the OpenRouter-hosted route.
+        backend = os.environ.get("SMALL_MODEL_BACKEND", "").lower()
+        if backend == "local":
             return LocalSmallModelClient()
+        if backend == "remote":
+            return RemoteSmallModelClient()
         return SmallModelClient()
     else:
         raise ValueError(

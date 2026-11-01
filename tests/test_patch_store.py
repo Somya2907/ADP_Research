@@ -95,3 +95,16 @@ def test_diversify_backfills_when_few_duties():
     store.add(_patch("a2", ["risk", "management", "colorado"], "CO AIA §6-1-1703(2)(a)"))
     hits = store.retrieve("colorado risk management", k=2, diversify=True)
     assert len(hits) == 2  # only one duty, but backfilled to k
+
+
+def test_priority_boost_is_neutral_when_no_priorities_are_set():
+    """Stores from earlier phases carry priority 0 everywhere; ranking must not move."""
+    store = PatchStore()
+    for i, kws in enumerate((["nyc", "bias", "audit"], ["nyc", "notice"], ["colorado", "notice"])):
+        store.add(Patch(patch_id=f"p{i}", patch_family="missing_rule",
+                        controlling_authority=f"§{i}-1", prevention_step="x",
+                        trigger_keywords=kws, verification="verified"))
+    query = "nyc bias audit notice"
+    plain = [p.patch_id for p in store.retrieve(query, k=3, priority_alpha=0.0)]
+    boosted = [p.patch_id for p in store.retrieve(query, k=3, priority_alpha=0.5)]
+    assert plain == boosted

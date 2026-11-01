@@ -86,11 +86,11 @@ patches. In fact the logged H2 k=3 top-3 are **three variants of the same
 
 **Proof it is retrieval, not mining — the k-curve is non-monotonic:**
 
-| k | H2 Llama delta | binding rules recovered |
-|--:|--:|---|
-| **1** | **−7.0** | R10, R2, R5 |
-| **3** | **−4.5** | R3 only |
-| **5** | **−11.5** | R10, R16, R19 |
+| k     | H2 Llama delta | binding rules recovered |
+| ------:| ---------------:| -------------------------|
+| **1** | **−7.0**       | R10, R2, R5             |
+| **3** | **−4.5**       | R3 only                 |
+| **5** | **−11.5**      | R10, R16, R19           |
 
 k=1 (−7.0) beats k=3 (−4.5), and k=5 (−11.5) beats both — the two extra patches at k=3
 even **displace** the website rule (R10) that k=1 recovered. A mining error could not
@@ -151,14 +151,14 @@ noise floor (see `docs/CASE_COMPARISON.md`, Table 2).
 `patched − baseline`, negative = learned. Cells that move most are the
 citation-dense ones (M2 for both students, some GPT-5 cells).
 
-| Student · k · case | hybrid (old metric) | combined (new metric) |
-|---|--:|--:|
-| GPT-5 · k1 · M2 | +16.5 | **−7.5** |
-| GPT-5 · k3 · M2 | +6.5 | **−13.5** |
-| GPT-5 · k3 · E2 | +7.0 | **−1.0** |
-| Llama · k3 · M2 | +6.0 | **−2.0** |
-| **Llama · k3 · H2** | **−4.5** | **−4.5** (unchanged) |
-| Llama · k1 · H2 | −11.0 | −7.0 |
+| Student · k · case  | hybrid (old metric) | combined (new metric) |
+| ---------------------| --------------------:| ----------------------:|
+| GPT-5 · k1 · M2     | +16.5               | **−7.5**              |
+| GPT-5 · k3 · M2     | +6.5                | **−13.5**             |
+| GPT-5 · k3 · E2     | +7.0                | **−1.0**              |
+| Llama · k3 · M2     | +6.0                | **−2.0**              |
+| **Llama · k3 · H2** | **−4.5**            | **−4.5** (unchanged)  |
+| Llama · k1 · H2     | −11.0               | −7.0                  |
 
 The bottom rows make the point: the combined method **does not touch the H2 result**
 the −16.5→−4.5 story is about; it changes the **citation-dense** cases (M2, E2).

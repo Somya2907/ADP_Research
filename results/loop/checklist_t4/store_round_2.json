@@ -1,0 +1,4367 @@
+[
+  {
+    "key": "R|nyc:20-870+nyc:5-300",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 4,
+    "given": 6,
+    "useful": 6,
+    "resolved": 5,
+    "priority": 0.667,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-870 and DCWP Rule Section 5-300 (independent auditor)",
+      "label": "Independent auditor must not be employed by or have financial interest in employer, agency, or developer",
+      "from": "M6"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 §20-870; DCWP Rules §5-300",
+        "jurisdiction": "nyc",
+        "label": "AEDT definition: computational process from ML/AI issuing simplified output used to substantially assist or replace discretionary employment decision-making",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870",
+          "nyc:5-300"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 §20-870; DCWP Rules §5-300 (Independent Auditor definition)",
+        "jurisdiction": "nyc",
+        "label": "Independent auditor must not have financial interest in employer, employment agency, or AEDT vendor/developer",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870",
+          "nyc:5-300"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870; DCWP Section 5-300",
+        "jurisdiction": "nyc",
+        "label": "AEDT definition: computational process from ML/AI issuing simplified output used to substantially assist or replace discretionary employment decisions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870",
+          "nyc:5-300"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870; DCWP Section 5-300 Independent Auditor definition",
+        "jurisdiction": "nyc",
+        "label": "Independent auditor must not have financial interest in employer or AEDT developer; subsidiary of developer does not qualify",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870",
+          "nyc:5-300"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870; DCWP Rules Section 5-300",
+        "jurisdiction": "nyc",
+        "label": "AEDT definition: ML process issuing simplified output used to substantially assist or replace discretionary employment decisions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870",
+          "nyc:5-300"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870 (independent auditor definition); DCWP Rules Section 5-300",
+        "jurisdiction": "nyc",
+        "label": "Independent auditor must have no financial interest in employer, employment agency, or AEDT developer/vendor",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870",
+          "nyc:5-300"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870 and DCWP Rule Section 5-300 (independent auditor)",
+        "jurisdiction": "nyc",
+        "label": "Independent auditor must not be employed by or have financial interest in employer, agency, or developer",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870",
+          "nyc:5-300"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-871+nyc:5-301",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 4,
+    "given": 6,
+    "useful": 6,
+    "resolved": 4,
+    "priority": 0.333,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(a)(1); DCWP Section 5-301(a)",
+      "label": "Bias audit required no more than one year prior to use of AEDT",
+      "from": "H1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 §20-871(a)(1); DCWP Rules §5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "Bias audit required no more than one year prior to AEDT use; cannot use AEDT if more than one year since most recent audit",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-301"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(a)(1); DCWP Section 5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "Bias audit required no more than one year prior to use of AEDT",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-301"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(a),(d); DCWP Rules Section 5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "Bias audit required within one year of use; new audit required after substantial modification including retraining",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-301"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(a)(1) and DCWP Rule Section 5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "Employer may not use AEDT if more than one year has passed since most recent bias audit",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-301"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-871",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 3,
+    "given": 5,
+    "useful": 3,
+    "resolved": 2,
+    "priority": -0.2,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(a)(1)",
+      "label": "Bias audit required no more than one year prior to use by independent auditor",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 §20-871(d)(2)",
+        "jurisdiction": "nyc",
+        "label": "New bias audit required after substantial modification including retraining on new or updated data",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(a)(1)",
+        "jurisdiction": "nyc",
+        "label": "Bias audit required no more than one year prior to use by independent auditor",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(a)(1)",
+        "jurisdiction": "nyc",
+        "label": "Bias audit must be conducted by independent auditor no more than one year prior to AEDT use",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871"
+        ],
+        "source_case": "E4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-871+nyc:20-873+nyc:5-303",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
+      "label": "Published results: bias audit date, summary of results with data source, unknown categories, applicant counts, rates, impact ratios, and distribution date must be on employer website before AEDT use",
+      "from": "E1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
+        "jurisdiction": "nyc",
+        "label": "Published results: bias audit date, summary of results with data source, unknown categories, applicant counts, rates, impact ratios, and distribution date must be on employer website before AEDT use",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:20-873",
+          "nyc:5-303"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-872+nyc:5-304",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 3,
+    "given": 5,
+    "useful": 5,
+    "resolved": 5,
+    "priority": 1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-872; DCWP Section 5-304",
+      "label": "Candidate notice at least 10 business days before AEDT use identifying AEDT use, qualifications assessed, and right to request alternative process",
+      "from": "H1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 §20-872; DCWP Rules §5-304(a)-(c)",
+        "jurisdiction": "nyc",
+        "label": "Candidate notice at least 10 business days before AEDT use: inform of AEDT use, qualifications assessed, alternative selection process instructions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-872",
+          "nyc:5-304"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-872; DCWP Section 5-304",
+        "jurisdiction": "nyc",
+        "label": "Candidate notice at least 10 business days before AEDT use identifying AEDT use, qualifications assessed, and right to request alternative process",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-872",
+          "nyc:5-304"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rule Section 5-304 and NYC LL 144 Section 20-872",
+        "jurisdiction": "nyc",
+        "label": "Notice to candidates at least 10 business days before use including AEDT disclosure, qualifications assessed, and alternative process/accommodation instructions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-872",
+          "nyc:5-304"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-874",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 4,
+    "given": 7,
+    "useful": 5,
+    "resolved": 5,
+    "priority": 0.429,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 §20-874",
+      "label": "Applies to employers/employment agencies using AEDTs for employment screening in NYC",
+      "from": "E6"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 §20-874",
+        "jurisdiction": "nyc",
+        "label": "Geographic scope: applies based on candidate/employee location, not employer HQ; covers NYC positions and NYC-resident candidates",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-874"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-874 (applicability)",
+        "jurisdiction": "nyc",
+        "label": "Law applies based on candidate location not employer location; covers employment agencies",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-874"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-874",
+        "jurisdiction": "nyc",
+        "label": "Geographic scope: LL 144 applies based on candidate location, not employer location; covers remote positions for NYC residents",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-874"
+        ],
+        "source_case": "E4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 §20-874",
+        "jurisdiction": "nyc",
+        "label": "Applies to employers/employment agencies using AEDTs for employment screening in NYC",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-874"
+        ],
+        "source_case": "E6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|texas:551.001+texas:551.101",
+    "kind": "R",
+    "jurisdiction": "texas",
+    "support": 1,
+    "given": 1,
+    "useful": 0,
+    "resolved": 0,
+    "priority": -1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "TX TRAIGA §551.001(2), §551.101",
+      "label": "No private employer disclosure/audit/impact assessment requirements; consumer definition excludes employment context; disclosure only for government agencies",
+      "from": "E1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "TX TRAIGA §551.001(2), §551.101",
+        "jurisdiction": "texas",
+        "label": "No private employer disclosure/audit/impact assessment requirements; consumer definition excludes employment context; disclosure only for government agencies",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001",
+          "texas:551.101"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|texas:551.201",
+    "kind": "R",
+    "jurisdiction": "texas",
+    "support": 4,
+    "given": 1,
+    "useful": 0,
+    "resolved": 0,
+    "priority": -1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "TRAIGA Section 551.201",
+      "label": "TRAIGA preempts only Texas local ordinances; no effect on other states laws",
+      "from": "H6"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "TX TRAIGA §551.201",
+        "jurisdiction": "texas",
+        "label": "TRAIGA preempts local TX ordinances on AI but does not preempt other states laws",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.201"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TX TRAIGA Section 551.201",
+        "jurisdiction": "texas",
+        "label": "TRAIGA preempts local AI regulations within Texas only; no effect on other states laws",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.201"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TRAIGA Section 551.201",
+        "jurisdiction": "texas",
+        "label": "TRAIGA preempts only Texas local ordinances; no effect on other states laws",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.201"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.201",
+        "jurisdiction": "texas",
+        "label": "TRAIGA preempts local Texas AI ordinances; does not preempt other states laws",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.201"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|colorado:6-1-1702",
+    "kind": "R",
+    "jurisdiction": "colorado",
+    "support": 6,
+    "given": 9,
+    "useful": 5,
+    "resolved": 2,
+    "priority": -0.556,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1702(2)",
+      "label": "Developer must provide documentation on limitations, training data, uses, and monitoring guidance",
+      "from": "M1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "CO AIA §6-1-1702",
+        "jurisdiction": "colorado",
+        "label": "Developer obligations: reasonable care, documentation to deployers on limitations/training data/uses/monitoring, public use case inventory",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1702(2)",
+        "jurisdiction": "colorado",
+        "label": "Developer must provide documentation to deployer including limitations, training data, and use guidance",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1702(2)-(3)",
+        "jurisdiction": "colorado",
+        "label": "Developer must provide deployer documentation on limitations, training data, intended uses, monitoring guidance, impact assessment support; must publish public use case inventory",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1702(2)(a)-(e)",
+        "jurisdiction": "colorado",
+        "label": "Developer must provide deployers documentation on limitations, training data, intended uses, monitoring guidance, and impact assessment support",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1702(3)",
+        "jurisdiction": "colorado",
+        "label": "Developer must publish website statement summarizing high-risk AI systems developed and available in state",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1702(1)",
+        "jurisdiction": "colorado",
+        "label": "Developer must use reasonable care to protect consumers from known or foreseeable algorithmic discrimination risks",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1702(2)",
+        "jurisdiction": "colorado",
+        "label": "Developer must provide documentation on limitations, training data, uses, and monitoring guidance",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA section 6-1-1702(1)",
+        "jurisdiction": "colorado",
+        "label": "Developer shall use reasonable care to protect consumers from known or reasonably foreseeable risks of algorithmic discrimination",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "M4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|colorado:6-1-1703",
+    "kind": "R",
+    "jurisdiction": "colorado",
+    "support": 10,
+    "given": 9,
+    "useful": 5,
+    "resolved": 1,
+    "priority": -0.778,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1703(2)(e)",
+      "label": "Pre-decision consumer notice with five required elements",
+      "from": "M5"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "CO AIA §6-1-1703(2)(a)-(g)",
+        "jurisdiction": "colorado",
+        "label": "Deployer obligations: NIST AI RMF-aligned risk management program, impact assessments, annual reviews, website statement, consumer notice, data correction, appeal rights",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA §6-1-1703(6)",
+        "jurisdiction": "colorado",
+        "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA SB 24-205 Section 6-1-1703",
+        "jurisdiction": "colorado",
+        "label": "Deployer obligations for high-risk AI systems; applies to deployers doing business in Colorado; effective June 30, 2026",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1703(6)",
+        "jurisdiction": "colorado",
+        "label": "Small deployer exception: fewer than 50 FTEs AND does not use own training data",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1703(1)",
+        "jurisdiction": "colorado",
+        "label": "Deployer duty of reasonable care to protect consumers from algorithmic discrimination",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1703(2)(b)",
+        "jurisdiction": "colorado",
+        "label": "Impact assessment required before deployment or within 90 days for pre-existing systems",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1703(2)(c)",
+        "jurisdiction": "colorado",
+        "label": "Annual review of deployment to ensure no algorithmic discrimination",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1703(2)(g)",
+        "jurisdiction": "colorado",
+        "label": "Meaningful opportunity to appeal consequential decision involving high-risk AI system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1703(3)",
+        "jurisdiction": "colorado",
+        "label": "Rebuttable presumption of reasonable care if deployer complied with section 6-1-1703",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "jurisdiction": "colorado",
+        "label": "Risk management program must be consistent with NIST AI 100-1 or substantially equivalent framework like ISO/IEC 42001; NIST 800-53 and EU AI Act are NOT sufficient",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703(2)(e)",
+        "jurisdiction": "colorado",
+        "label": "Pre-decision consumer notice required: AI system use, purpose, decision nature, contact info, plain-language description, link to public statement",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703(2)(f)-(g)",
+        "jurisdiction": "colorado",
+        "label": "Consumer right to correct data and meaningful opportunity to appeal consequential decisions",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703(2)(c)",
+        "jurisdiction": "colorado",
+        "label": "Annual review of deployment to ensure no algorithmic discrimination",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703(2)(d)",
+        "jurisdiction": "colorado",
+        "label": "Public website statement summarizing deployed high-risk AI systems and discrimination risk management",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703(6)",
+        "jurisdiction": "colorado",
+        "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(b)",
+        "jurisdiction": "colorado",
+        "label": "Impact assessment required before deployment or within 90 days of June 30 2026 for pre-existing systems; annually thereafter",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(e)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must notify consumer before consequential decision: AI use, purpose, contact info, plain-language description, public statement access",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(f)-(g)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must provide data correction opportunity and meaningful appeal opportunity for consequential decisions",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(d)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must publish website statement summarizing deployed high-risk AI systems and discrimination risk management",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(6)",
+        "jurisdiction": "colorado",
+        "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train; both conditions required",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703",
+        "jurisdiction": "colorado",
+        "label": "Deployer obligations including risk management, impact assessments, notices, and appeal rights",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(1)",
+        "jurisdiction": "colorado",
+        "label": "Deployer duty of reasonable care against algorithmic discrimination",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(b)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must complete impact assessment prior to deployment or within 90 days for pre-existing systems",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(c)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must conduct annual review for algorithmic discrimination",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(d)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must publish website statement on high-risk AI systems and discrimination risk management",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(e)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must notify consumers before AI-assisted consequential decision",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(f)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must provide data correction opportunity to consumers",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(g)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must provide meaningful appeal opportunity for AI-involved consequential decisions",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(6)",
+        "jurisdiction": "colorado",
+        "label": "Small deployer exception: fewer than 50 FTEs AND does not use own data to train",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(a)(III)",
+        "jurisdiction": "colorado",
+        "label": "Risk management program must be consistent with NIST AI 100-1 or equivalent AI framework like ISO/IEC 42001",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(b)",
+        "jurisdiction": "colorado",
+        "label": "Impact assessment required for each high-risk AI system; 90-day grace for pre-existing deployments",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(e)",
+        "jurisdiction": "colorado",
+        "label": "Pre-decision consumer notice with five required elements",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(f)",
+        "jurisdiction": "colorado",
+        "label": "Consumer right to correct incorrect personal data used by high-risk AI system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(g)",
+        "jurisdiction": "colorado",
+        "label": "Meaningful opportunity to appeal consequential decision involving high-risk AI system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(d)",
+        "jurisdiction": "colorado",
+        "label": "Website disclosure summarizing high-risk AI systems and algorithmic discrimination risk management",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(6)",
+        "jurisdiction": "colorado",
+        "label": "Small deployer exception: fewer than 50 employees AND does not use own data to train",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(1)",
+        "jurisdiction": "colorado",
+        "label": "Deployer duty of reasonable care to protect consumers from algorithmic discrimination risks",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703",
+        "jurisdiction": "colorado",
+        "label": "Deployer obligations include risk management programs, impact assessments, consumer notices, correction rights, and appeal rights",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703",
+        "jurisdiction": "colorado",
+        "label": "Deployer obligations for high-risk AI systems including impact assessments and notices",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1703(2)(d)",
+        "jurisdiction": "colorado",
+        "label": "Public website disclosure of high-risk AI systems and discrimination risk management",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1703(2)(f)",
+        "jurisdiction": "colorado",
+        "label": "Consumer right to correct incorrect personal data processed by high-risk AI system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1703(2)(a)",
+        "jurisdiction": "colorado",
+        "label": "Deployer must implement risk management policy consistent with NIST AI RMF or equivalent",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|colorado:6-1-1701",
+    "kind": "R",
+    "jurisdiction": "colorado",
+    "support": 8,
+    "given": 9,
+    "useful": 6,
+    "resolved": 4,
+    "priority": -0.111,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1701(2)",
+      "label": "Definition of artificial intelligence system",
+      "from": "M1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "CO AIA §6-1-1701(7), §6-1-1701(3)(b)",
+        "jurisdiction": "colorado",
+        "label": "High-risk AI system: AI that makes or is substantial factor in consequential decisions including employment",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1701(3)(g)",
+        "jurisdiction": "colorado",
+        "label": "Insurance is an enumerated category of consequential decision",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1701(7)",
+        "jurisdiction": "colorado",
+        "label": "Definition of high-risk AI system: makes or is substantial factor in consequential decision",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1701(9)",
+        "jurisdiction": "colorado",
+        "label": "Definition of substantial factor; human review based on AI output does not negate",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1701(5)",
+        "jurisdiction": "colorado",
+        "label": "Definition of deployer: person doing business in state deploying high-risk AI system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1701(7) and Section 6-1-1701(3)(b)",
+        "jurisdiction": "colorado",
+        "label": "High-risk AI system: AI system that makes or is substantial factor in consequential decision; employment is consequential decision",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(7),(3)(b),(5)",
+        "jurisdiction": "colorado",
+        "label": "High-risk AI system: makes or is substantial factor in consequential decision including employment; deployer defined as person doing business in state deploying such system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(9)",
+        "jurisdiction": "colorado",
+        "label": "Substantial factor: materially contributed to decision; human review insufficient if based primarily on AI output",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(2)",
+        "jurisdiction": "colorado",
+        "label": "Definition of artificial intelligence system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(8)",
+        "jurisdiction": "colorado",
+        "label": "Impact assessment must include six specified elements",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA section 6-1-1701(3)(b)",
+        "jurisdiction": "colorado",
+        "label": "Consequential decision includes decisions affecting employment or employment opportunity",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA section 6-1-1701(9)",
+        "jurisdiction": "colorado",
+        "label": "Substantial factor: factor that materially contributed to a consequential decision; human review based primarily on AI output does not negate",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA section 6-1-1701(1)",
+        "jurisdiction": "colorado",
+        "label": "Algorithmic discrimination: unlawful differential treatment or impact disfavoring individuals on basis of age or other protected classification",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(2)",
+        "jurisdiction": "colorado",
+        "label": "Definition of artificial intelligence system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(3)(g)",
+        "jurisdiction": "colorado",
+        "label": "Insurance is a consequential-decision domain",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(7)",
+        "jurisdiction": "colorado",
+        "label": "Definition of high-risk AI system with exclusions (a)-(d)",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(9)",
+        "jurisdiction": "colorado",
+        "label": "Substantial factor definition; human review does not negate if based primarily on AI output",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(7)(a)",
+        "jurisdiction": "colorado",
+        "label": "Exclusion: system performs a narrow procedural task",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(7)(c)",
+        "jurisdiction": "colorado",
+        "label": "Exclusion: system detects decision-making patterns without replacing or influencing human assessment",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(7)(d)",
+        "jurisdiction": "colorado",
+        "label": "Exclusion: system performs a preparatory task to an assessment",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(8)",
+        "jurisdiction": "colorado",
+        "label": "Impact assessment must include six specified elements (a)-(f)",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(3)(c)",
+        "jurisdiction": "colorado",
+        "label": "Consequential decision includes financial or lending service",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(7)",
+        "jurisdiction": "colorado",
+        "label": "High-risk AI system definition: makes or is substantial factor in consequential decision",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(9)",
+        "jurisdiction": "colorado",
+        "label": "Substantial factor definition: human review based primarily on AI output does not negate",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(5)",
+        "jurisdiction": "colorado",
+        "label": "Deployer definition: person doing business in state that deploys high-risk AI system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1701(6)",
+        "jurisdiction": "colorado",
+        "label": "Developer definition: person that develops or substantially modifies AI system",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA section 6-1-1701(7)",
+        "jurisdiction": "colorado",
+        "label": "High-risk AI system: any AI system that when deployed makes or is a substantial factor in making a consequential decision",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1701(7) and (9)",
+        "jurisdiction": "colorado",
+        "label": "High-risk AI system makes or is substantial factor in consequential decisions; human review does not negate substantial factor if based primarily on AI output",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|colorado:6-1-1704",
+    "kind": "R",
+    "jurisdiction": "colorado",
+    "support": 6,
+    "given": 9,
+    "useful": 5,
+    "resolved": 5,
+    "priority": 0.111,
+    "swaps": 0,
+    "shown": {
+      "citation": "Colorado AIA Section 6-1-1704",
+      "label": "90-day notification to AG and consumers if algorithmic discrimination discovered",
+      "from": "H1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "CO AIA §6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "Algorithmic discrimination notice: deployer/developer must notify AG and affected consumers within 90 days of discovery",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "90-day notification to AG and consumers if algorithmic discrimination discovered",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "Deployer or developer must notify AG and affected consumers within 90 days of discovering algorithmic discrimination",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "Notification to AG and consumers within 90 days if algorithmic discrimination discovered",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA section 6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "Developer discovering algorithmic discrimination must notify AG and affected consumers within 90 days of discovery",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "M4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "Notification to AG and consumers within 90 days if algorithmic discrimination discovered",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-871+nyc:5-301",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 2,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(a)(1) and DCWP Rule Section 5-301(a)",
+      "label": "Schedule next bias audit no more than one year after new compliant audit is completed",
+      "from": "M6"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 §20-871(a)(1); DCWP Rules §5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "Commission new valid bias audit by truly independent auditor for post-June 2024 retrained model before any further AEDT use in NYC",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-301"
+        ],
+        "source_case": "E1",
+        "status": "mandatory",
+        "deadline": "Before any further use of AEDT",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-871(a)(1) and DCWP Rule Section 5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "Schedule next bias audit no more than one year after new compliant audit is completed",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-301"
+        ],
+        "source_case": "M6",
+        "status": "mandatory",
+        "deadline": "One year from date of new compliant audit",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-871+nyc:20-873+nyc:5-303",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
+      "label": "Publish bias audit date, summary of results (data source, unknown categories, applicant counts, selection/scoring rates, impact ratios), and distribution date on employment section of website",
+      "from": "E1"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 §20-871(a)(2), §20-873; DCWP Rules §5-303",
+        "jurisdiction": "nyc",
+        "label": "Publish bias audit date, summary of results (data source, unknown categories, applicant counts, selection/scoring rates, impact ratios), and distribution date on employment section of website",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-871",
+          "nyc:20-873",
+          "nyc:5-303"
+        ],
+        "source_case": "E1",
+        "status": "mandatory",
+        "deadline": "Before any further use of AEDT",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-872+nyc:5-304",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 3,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rule Section 5-304 and NYC LL 144 Section 20-872",
+      "label": "Confirm candidate notice includes reasonable accommodation request instructions per DCWP Rule 5-304(a)",
+      "from": "M6"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 §20-872; DCWP Rules §5-304(a)-(c)",
+        "jurisdiction": "nyc",
+        "label": "Provide candidate notice at least 10 business days before AEDT use: inform of AEDT use, qualifications assessed, alternative selection process instructions",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-872",
+          "nyc:5-304"
+        ],
+        "source_case": "E1",
+        "status": "mandatory",
+        "deadline": "At least 10 business days before future AEDT use",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-872; DCWP Section 5-304",
+        "jurisdiction": "nyc",
+        "label": "Revise candidate notice to identify AEDT use, specify qualifications assessed, include alternative process instructions, and provide 10 business days advance",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-872",
+          "nyc:5-304"
+        ],
+        "source_case": "H1",
+        "status": "mandatory",
+        "deadline": "At least 10 business days before next AEDT use in NYC",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "DCWP Rule Section 5-304 and NYC LL 144 Section 20-872",
+        "jurisdiction": "nyc",
+        "label": "Confirm candidate notice includes reasonable accommodation request instructions per DCWP Rule 5-304(a)",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-872",
+          "nyc:5-304"
+        ],
+        "source_case": "M6",
+        "status": "mandatory",
+        "deadline": null,
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:5-304",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 4,
+    "given": 5,
+    "useful": 4,
+    "resolved": 1,
+    "priority": -0.6,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rules Section 5-304(d)",
+      "label": "Post instructions on website for how candidates can make written requests for AEDT data information",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "DCWP Rules §5-304(d)",
+        "jurisdiction": "nyc",
+        "label": "Post AEDT data retention policy, data types collected, data sources, and written request instructions on employment section of website",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "E1",
+        "status": "mandatory",
+        "deadline": "Before any further use of AEDT",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "DCWP Rules Section 5-304(a)-(c)",
+        "jurisdiction": "nyc",
+        "label": "Include in candidate notice instructions for requesting alternative selection process or reasonable accommodation",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "E3",
+        "status": "mandatory",
+        "deadline": "before any resumed use of AEDT",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "DCWP Rules Section 5-304(d)",
+        "jurisdiction": "nyc",
+        "label": "Publish AEDT data retention policy, data types collected, and data sources on employment section of website",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "E3",
+        "status": "mandatory",
+        "deadline": "before any resumed use of AEDT",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "DCWP Rules Section 5-304(d)",
+        "jurisdiction": "nyc",
+        "label": "Post instructions on website for how candidates can make written requests for AEDT data information",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "E3",
+        "status": "mandatory",
+        "deadline": "before any resumed use of AEDT",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "DCWP Rules Section 5-304(a)-(b)",
+        "jurisdiction": "nyc",
+        "label": "Revise candidate notice to provide 10 business days advance notice and include alternative selection process instructions",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "H6",
+        "status": "mandatory",
+        "deadline": "before any further NYC AEDT use",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "DCWP Rule Section 5-304(d)",
+        "jurisdiction": "nyc",
+        "label": "Post AEDT data retention policy, data type, data source, and written request instructions on employment website section",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "M6",
+        "status": "mandatory",
+        "deadline": null,
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|texas:551.051",
+    "kind": "O",
+    "jurisdiction": "texas",
+    "support": 3,
+    "given": 1,
+    "useful": 0,
+    "resolved": 0,
+    "priority": -1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "TX TRAIGA §551.051",
+      "label": "Maintain prohibition on intentional discrimination in AI development and deployment under TRAIGA",
+      "from": "E1"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "TX TRAIGA §551.051",
+        "jurisdiction": "texas",
+        "label": "Maintain prohibition on intentional discrimination in AI development and deployment under TRAIGA",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "E1",
+        "status": "mandatory",
+        "deadline": null,
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "TRAIGA Section 551.051(a)",
+        "jurisdiction": "texas",
+        "label": "Immediately cease ZIP-code score manipulation and preserve all evidence; conduct internal investigation; consider voluntary AG disclosure under safe harbor",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "H6",
+        "status": "mandatory",
+        "deadline": "immediate",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "Texas TRAIGA Section 551.051(a)",
+        "jurisdiction": "all",
+        "label": "Ensure federal Title VII disparate impact compliance for AI hiring tools across all jurisdictions",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "H1",
+        "status": "recommended",
+        "deadline": null,
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|texas:551.301",
+    "kind": "O",
+    "jurisdiction": "texas",
+    "support": 4,
+    "given": 2,
+    "useful": 1,
+    "resolved": 0,
+    "priority": -1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "TX TRAIGA §551.301(d)",
+      "label": "Consider implementing NIST AI RMF for TRAIGA safe harbor protection",
+      "from": "E1"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "TX TRAIGA §551.301(d)",
+        "jurisdiction": "texas",
+        "label": "Consider implementing NIST AI RMF for TRAIGA safe harbor protection",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "E1",
+        "status": "safe-harbor",
+        "deadline": null,
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "TRAIGA §551.301(e)",
+        "jurisdiction": "texas",
+        "label": "Notify Texas AG that the violation has been cured once disclosure is implemented",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "E6",
+        "status": "mandatory",
+        "deadline": "2026-05-19",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "TRAIGA §551.301(d)",
+        "jurisdiction": "texas",
+        "label": "Establish AI governance program aligned with NIST AI RMF (NIST AI 100-1) to obtain safe harbor protection",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "E6",
+        "status": "safe-harbor",
+        "deadline": null,
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "TRAIGA Section 551.301",
+        "jurisdiction": "texas",
+        "label": "Adopt NIST AI Risk Management Framework (AI 100-1) as AI governance program for TRAIGA safe harbor and future Colorado AIA readiness",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "H6",
+        "status": "safe-harbor",
+        "deadline": "within 90 days recommended",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "Texas TRAIGA Section 551.301(d)",
+        "jurisdiction": "texas",
+        "label": "Adopt NIST AI 100-1 alignment to qualify for TRAIGA safe harbor under Section 551.301(d)",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "H1",
+        "status": "safe-harbor",
+        "deadline": null,
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "TRAIGA Section 551.301",
+        "jurisdiction": "texas",
+        "label": "Proactively disclose ZIP-code violation to Texas AG under Section 551.301(c) safe harbor to mitigate penalties",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "H6",
+        "status": "recommended",
+        "deadline": "as soon as internal investigation complete",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-870",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 3,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-870 Independent Auditor definition",
+      "label": "Auditor must not have been involved in development of AEDT within past three years",
+      "from": "H6"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870 (employment decision definition)",
+        "jurisdiction": "nyc",
+        "label": "Employment decision means screening candidates or employees for promotion within the city",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870 (independent auditor definition)",
+        "jurisdiction": "nyc",
+        "label": "Independent auditor must not be involved in developing AEDT or have financial interest in vendor",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870; DCWP Rule 5-300",
+        "jurisdiction": "nyc",
+        "label": "AEDT definition: computational process from ML/AI issuing simplified output used to substantially assist or replace discretionary decision making for employment decisions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870"
+        ],
+        "source_case": "E4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870 (independent auditor definition)",
+        "jurisdiction": "nyc",
+        "label": "Independent auditor must not be employed by or have financial interest in employer, employment agency, or AEDT developer",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870"
+        ],
+        "source_case": "E4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-870 Independent Auditor definition",
+        "jurisdiction": "nyc",
+        "label": "Auditor must not have been involved in development of AEDT within past three years",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-870"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-871+nyc:20-873",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 2,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(a)(2) and Section 20-873",
+      "label": "Summary of bias audit results and distribution date must be publicly available on website",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(a)(2) and Section 20-873",
+        "jurisdiction": "nyc",
+        "label": "Summary of bias audit results and distribution date must be publicly available on website",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:20-873"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(a)(2), Section 20-873; DCWP Rule 5-303",
+        "jurisdiction": "nyc",
+        "label": "Employer must publicly post bias audit summary, results data, and AEDT distribution date on employment section of website before use",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:20-873"
+        ],
+        "source_case": "E4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:5-303",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 4,
+    "given": 7,
+    "useful": 6,
+    "resolved": 3,
+    "priority": -0.143,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rules Section 5-303",
+      "label": "Published results must include audit date, data source, unknown categories, applicant numbers, rates, and impact ratios",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-303",
+        "jurisdiction": "nyc",
+        "label": "Published results must include audit date, data source, unknown categories, applicant numbers, rates, and impact ratios",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-303"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-303(a),(b)",
+        "jurisdiction": "nyc",
+        "label": "Employer must publish audit date, results summary, and distribution date on employment section of website clearly and conspicuously",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-303"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-303(a)",
+        "jurisdiction": "nyc",
+        "label": "Published results must include audit date, summary with data source explanation, unknown category counts, applicant numbers, rates, and impact ratios",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-303"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rule Section 5-303",
+        "jurisdiction": "nyc",
+        "label": "Employer must publish bias audit date, summary with data source, unknown category count, applicant numbers, scoring/selection rates, and impact ratios before AEDT use",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-303"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-872",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 2,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-872",
+      "label": "Candidate notice required at least 10 business days before AEDT use with specified content",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-872",
+        "jurisdiction": "nyc",
+        "label": "Candidate notice required at least 10 business days before AEDT use with specified content",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-872"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-872; DCWP Rule 5-304",
+        "jurisdiction": "nyc",
+        "label": "Employer must notify NYC-resident candidates at least 10 business days before AEDT use: AEDT disclosure, characteristics assessed, alternative process instructions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-872"
+        ],
+        "source_case": "E4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:5-304",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 3,
+    "given": 3,
+    "useful": 2,
+    "resolved": 1,
+    "priority": -0.333,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rules Section 5-304(d)",
+      "label": "Website must disclose AEDT data retention policy, data types collected, and data sources",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-304(a)-(c)",
+        "jurisdiction": "nyc",
+        "label": "Notice must include instructions for alternative selection process or accommodation request",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-304(d)",
+        "jurisdiction": "nyc",
+        "label": "Website must disclose AEDT data retention policy, data types collected, and data sources",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-304(a)-(b)",
+        "jurisdiction": "nyc",
+        "label": "Notice must be provided at least 10 business days before AEDT use and include alternative selection process instructions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rule Section 5-304(d)",
+        "jurisdiction": "nyc",
+        "label": "Employer must post AEDT data retention policy, type of data collected, source of data on employment website section with written request instructions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-304"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:5-302",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 4,
+    "given": 6,
+    "useful": 3,
+    "resolved": 3,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rules Section 5-302",
+      "label": "Bias audit must use historical data; test data only if insufficient historical data available",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-302",
+        "jurisdiction": "nyc",
+        "label": "Bias audit must use historical data; test data only if insufficient historical data available",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-302"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-302(a)",
+        "jurisdiction": "nyc",
+        "label": "Employer with historical data must provide it to auditor; may rely on others data only if own data provided or never used AEDT",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-302"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-302(a)",
+        "jurisdiction": "nyc",
+        "label": "Bias audit must use historical data; employer with prior AEDT use must provide its own historical data",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-302"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-302(b)",
+        "jurisdiction": "nyc",
+        "label": "Test data permitted only if insufficient historical data available; summary must explain why and describe test data generation",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-302"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rule Section 5-302(a)",
+        "jurisdiction": "nyc",
+        "label": "Employer may rely on audit using other employers data only if employer provided its own historical data or has never used the AEDT",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-302"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rule Section 5-302(b)",
+        "jurisdiction": "nyc",
+        "label": "Employer may rely on bias audit using test data only if insufficient historical data is available for statistically significant audit",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-302"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|texas:551.001",
+    "kind": "R",
+    "jurisdiction": "texas",
+    "support": 6,
+    "given": 4,
+    "useful": 3,
+    "resolved": 2,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "Texas TRAIGA Section 551.001(2)",
+      "label": "Consumer excludes individuals acting in employment context",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.001(2)",
+        "jurisdiction": "texas",
+        "label": "Consumer excludes individuals acting in employment context",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA HB 149 Section 551.001(2)",
+        "jurisdiction": "texas",
+        "label": "Consumer definition excludes individuals in employment context; TRAIGA does not impose hiring-tool obligations on private employers",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001"
+        ],
+        "source_case": "E4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TRAIGA §551.001(1)",
+        "jurisdiction": "texas",
+        "label": "Definition of artificial intelligence system - machine-based system that infers from inputs how to generate outputs",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001"
+        ],
+        "source_case": "E6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TRAIGA §551.001(2)",
+        "jurisdiction": "texas",
+        "label": "Definition of consumer - Texas resident acting in individual or household context, excludes commercial or employment context",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001"
+        ],
+        "source_case": "E6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA HB 149 Section 551.001 et seq.",
+        "jurisdiction": "texas",
+        "label": "TRAIGA effective January 1, 2026; in force as of April 16, 2026",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.001(2)",
+        "jurisdiction": "texas",
+        "label": "Consumer excludes individuals acting in employment context; TRAIGA consumer protections do not apply to job applicants",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TX TRAIGA Section 551.001(2)",
+        "jurisdiction": "texas",
+        "label": "Consumer excludes individuals in employment context; TRAIGA consumer requirements do not apply to job applicants",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TRAIGA Section 551.001(2)",
+        "jurisdiction": "texas",
+        "label": "Consumer definition excludes individuals acting in employment context",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.001"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:5-301",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 4,
+    "given": 5,
+    "useful": 2,
+    "resolved": 2,
+    "priority": -0.2,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rules Section 5-301(a)",
+      "label": "AEDT may not be used if more than one year has passed since most recent bias audit",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "AEDT may not be used if more than one year has passed since most recent bias audit",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-301"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Section 5-301(c)",
+        "jurisdiction": "nyc",
+        "label": "Scoring AEDT bias audit must calculate median score, scoring rate per category, and impact ratio per category for sex, race/ethnicity, and intersectional categories",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-301"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-301(c)",
+        "jurisdiction": "nyc",
+        "label": "Scoring AEDT audit must calculate median score, scoring rate per category, impact ratio per category for sex, race/ethnicity, intersectional",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-301"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "AEDT may not be used if more than one year has passed since most recent bias audit",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-301"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-872",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 2,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-872",
+      "label": "Implement candidate notice procedure providing AEDT disclosure at least 10 business days before use to NYC-resident candidates",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-872",
+        "jurisdiction": "nyc",
+        "label": "Implement candidate notice procedure providing AEDT disclosure at least 10 business days before use to NYC-resident candidates",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-872"
+        ],
+        "source_case": "E3",
+        "status": "mandatory",
+        "deadline": "before any resumed use of AEDT",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-872; DCWP Rule 5-304",
+        "jurisdiction": "nyc",
+        "label": "Provide candidate notice at least 10 business days before AEDT use identifying: AEDT use, qualifications/characteristics assessed, and alternative process/accommodation request instructions",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-872"
+        ],
+        "source_case": "E4",
+        "status": "mandatory",
+        "deadline": "Ongoing - 10 business days before each use for NYC-resident candidates",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:5-301",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rules Section 5-301(a)",
+      "label": "Establish annual bias audit renewal cycle ensuring no gap exceeding 12 months between audits",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "DCWP Rules Section 5-301(a)",
+        "jurisdiction": "nyc",
+        "label": "Establish annual bias audit renewal cycle ensuring no gap exceeding 12 months between audits",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-301"
+        ],
+        "source_case": "E3",
+        "status": "mandatory",
+        "deadline": "ongoing annual",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-871+nyc:20-873",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 2,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(a)(2) and Section 20-873",
+      "label": "Retain bias audit summary on website for at least 6 months after latest use of AEDT",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-871(a)(2) and Section 20-873",
+        "jurisdiction": "nyc",
+        "label": "Retain bias audit summary on website for at least 6 months after latest use of AEDT",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-871",
+          "nyc:20-873"
+        ],
+        "source_case": "E3",
+        "status": "mandatory",
+        "deadline": "6 months after last AEDT use",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-871(a)(2), Section 20-873; DCWP Rule 5-303",
+        "jurisdiction": "nyc",
+        "label": "Publish bias audit summary including date, data source, unknown category count, applicant counts, selection/scoring rates, and impact ratios for all categories on employment section of website",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-871",
+          "nyc:20-873"
+        ],
+        "source_case": "E4",
+        "status": "mandatory",
+        "deadline": "Immediate - required before any further AEDT use",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|colorado:6-1-1703",
+    "kind": "O",
+    "jurisdiction": "colorado",
+    "support": 6,
+    "given": 9,
+    "useful": 5,
+    "resolved": 1,
+    "priority": -0.778,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1703(2)(c)",
+      "label": "Conduct annual deployment review for algorithmic discrimination",
+      "from": "M1"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "Colorado AIA SB 24-205 Section 6-1-1703",
+        "jurisdiction": "colorado",
+        "label": "Assess Colorado nexus and prepare for Colorado AIA compliance if Northlake screens Colorado-resident applicants",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E4",
+        "status": "recommended",
+        "deadline": "Before June 30, 2026",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA § 6-1-1703(2)(a)",
+        "jurisdiction": "colorado",
+        "label": "Implement risk management policy and program consistent with NIST AI RMF (NIST AI 100-1) or ISO/IEC 42001, specifying principles, processes, and personnel for algorithmic discrimination risk management",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA § 6-1-1703(2)(e)",
+        "jurisdiction": "colorado",
+        "label": "Implement pre-decision consumer notification process with all five elements: AI system use, purpose/nature of decision, contact info, plain-language system description, and link to website disclosure",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "Colorado AIA Section 6-1-1703(2)(a)(III)",
+        "jurisdiction": "colorado",
+        "label": "Develop and implement AI risk management policy aligned with NIST AI 100-1 or ISO/IEC 42001",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "Colorado AIA Section 6-1-1703(2)(e)",
+        "jurisdiction": "colorado",
+        "label": "Implement pre-decision consumer notice for Colorado applicants with all Section 6-1-1703(2)(e) elements",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "Colorado AIA Section 6-1-1703(2)(f)-(g)",
+        "jurisdiction": "colorado",
+        "label": "Implement data-correction opportunity and meaningful appeal process for Colorado applicants",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "Colorado AIA Section 6-1-1703(2)(d)",
+        "jurisdiction": "colorado",
+        "label": "Publish public website statement summarizing deployed high-risk AI systems and discrimination risk management",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "Colorado AIA Section 6-1-1703",
+        "jurisdiction": "colorado",
+        "label": "If expanding to Colorado, prepare for June 30, 2026 compliance: impact assessments, risk management program, consumer notices, appeal processes",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H6",
+        "status": "recommended",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1703(2)(c)",
+        "jurisdiction": "colorado",
+        "label": "Conduct annual deployment review for algorithmic discrimination",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "mandatory",
+        "deadline": "2027-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1703(2)(d)",
+        "jurisdiction": "colorado",
+        "label": "Publish website statement summarizing high-risk AI systems and discrimination risk management",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1703(2)(e)",
+        "jurisdiction": "colorado",
+        "label": "Implement consumer notice system with all five sub-elements before each AI-assisted lending decision",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1703(2)(g)",
+        "jurisdiction": "colorado",
+        "label": "Implement meaningful appeal process for adverse AI-involved lending decisions",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1703(1)",
+        "jurisdiction": "colorado",
+        "label": "Establish reasonable care posture through totality of compliance measures to support rebuttable presumption",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "Colorado AIA Section 6-1-1703",
+        "jurisdiction": "colorado",
+        "label": "If screening Colorado candidates after June 30 2026, prepare CO AIA compliance including impact assessments, risk management program aligned with NIST AI RMF, consumer notices, and appeal rights",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M6",
+        "status": "recommended",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA § 6-1-1703(2)(d)",
+        "jurisdiction": "colorado",
+        "label": "Publish clear and readily accessible website statement summarizing deployed high-risk AI systems and algorithmic discrimination risk management",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "E5",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1703(2)(a)",
+        "jurisdiction": "colorado",
+        "label": "Implement risk management policy and program consistent with NIST AI RMF 1.0 or ISO/IEC 42001",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1703"
+        ],
+        "source_case": "M1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "R|colorado:6-1-1706",
+    "kind": "R",
+    "jurisdiction": "colorado",
+    "support": 6,
+    "given": 9,
+    "useful": 6,
+    "resolved": 5,
+    "priority": 0.111,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1706",
+      "label": "Enforcement: deceptive trade practice, AG exclusive authority, up to $20K per violation",
+      "from": "M1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "CO AIA § 6-1-1706",
+        "jurisdiction": "colorado",
+        "label": "Enforcement: deceptive trade practice, AG exclusive authority, up to $20,000 per violation",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "E5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1706",
+        "jurisdiction": "colorado",
+        "label": "AG exclusive enforcement; up to $20,000 per violation; rebuttable presumption if self-discovered and cured within 60 days",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1706",
+        "jurisdiction": "colorado",
+        "label": "Violations are deceptive trade practices; AG exclusive enforcement; up to $20,000 per violation",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1706",
+        "jurisdiction": "colorado",
+        "label": "Enforcement: deceptive trade practice, AG exclusive authority, up to $20K per violation",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "M1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA section 6-1-1706(4)",
+        "jurisdiction": "colorado",
+        "label": "Enforcement rebuttable presumption requires self-discovery of violation AND cure plus AG notification within 60 days",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "M4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA section 6-1-1706(1)-(3)",
+        "jurisdiction": "colorado",
+        "label": "Violations are deceptive trade practices; AG exclusive enforcement; penalties up to $20,000 per violation",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "M4",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "CO AIA Section 6-1-1706",
+        "jurisdiction": "colorado",
+        "label": "Enforcement: deceptive trade practice, AG exclusive authority, up to $20,000 per violation",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "M5",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "O|colorado:6-1-1701",
+    "kind": "O",
+    "jurisdiction": "colorado",
+    "support": 2,
+    "given": 7,
+    "useful": 2,
+    "resolved": 1,
+    "priority": -0.714,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1701(9)",
+      "label": "Reassess human review protocols for $15K+ loans to ensure meaningful independent review",
+      "from": "M1"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "CO AIA § 6-1-1701(3)(g)",
+        "jurisdiction": "colorado",
+        "label": "Correct compliance officer misunderstanding that Division of Insurance regulation preempts CO AIA; insurance is explicitly covered by 6-1-1701(3)(g)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "E5",
+        "status": "mandatory",
+        "deadline": null,
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1701(9)",
+        "jurisdiction": "colorado",
+        "label": "Reassess human review protocols for $15K+ loans to ensure meaningful independent review",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1701"
+        ],
+        "source_case": "M1",
+        "status": "recommended",
+        "deadline": null,
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "R|texas:551.301",
+    "kind": "R",
+    "jurisdiction": "texas",
+    "support": 4,
+    "given": 2,
+    "useful": 1,
+    "resolved": 1,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "TRAIGA §551.301(a)",
+      "label": "Only Texas AG may enforce TRAIGA; no private right of action",
+      "from": "E6"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "TRAIGA §551.301(a)",
+        "jurisdiction": "texas",
+        "label": "Only Texas AG may enforce TRAIGA; no private right of action",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "E6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TRAIGA §551.301(b)",
+        "jurisdiction": "texas",
+        "label": "Civil penalties of $10,000 to $200,000 per violation, may accrue on continuing daily basis",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "E6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TRAIGA §551.301(e)",
+        "jurisdiction": "texas",
+        "label": "AG must provide written notice and allow 60 days to cure before initiating enforcement",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "E6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TRAIGA §551.301(c)",
+        "jurisdiction": "texas",
+        "label": "Safe harbor for violations discovered through internal testing with reasonable cure steps and AG notification",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "E6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.301",
+        "jurisdiction": "texas",
+        "label": "AG-only enforcement; $10,000-$200,000 per violation; 60-day cure period",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TRAIGA Section 551.301",
+        "jurisdiction": "texas",
+        "label": "TX AG exclusive enforcement; $10K-$200K penalties; safe harbor for internal discovery and cure; NIST AI RMF compliance safe harbor; 60-day cure period",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TX TRAIGA §551.301(d)",
+        "jurisdiction": "texas",
+        "label": "Safe harbor for substantial compliance with NIST AI RMF or recognized AI governance standards",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.301(d)",
+        "jurisdiction": "texas",
+        "label": "Safe harbor for substantial compliance with NIST AI 100-1 or recognized AI governance standards",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.301"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|texas:551.051",
+    "kind": "R",
+    "jurisdiction": "texas",
+    "support": 6,
+    "given": 1,
+    "useful": 1,
+    "resolved": 1,
+    "priority": 1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "Texas TRAIGA Section 551.051",
+      "label": "Prohibits AI deployment with intent to unlawfully discriminate; requires intentional discrimination",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "TRAIGA §551.051",
+        "jurisdiction": "texas",
+        "label": "Prohibits deploying AI with intent to unlawfully discriminate, incite harm, or infringe constitutional rights",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "E6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.051(a)",
+        "jurisdiction": "texas",
+        "label": "Prohibits deploying AI with intent to unlawfully discriminate; requires intentional discrimination, not disparate impact",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TX TRAIGA Section 551.051(a)",
+        "jurisdiction": "texas",
+        "label": "Prohibits AI deployment with intent to unlawfully discriminate; requires intentional discrimination not mere disparate impact",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "TX TRAIGA §551.051",
+        "jurisdiction": "texas",
+        "label": "Prohibited conduct: no person may develop or deploy AI with intent to unlawfully discriminate; requires intentional discrimination, not disparate impact",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "E1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.051",
+        "jurisdiction": "texas",
+        "label": "Prohibits AI deployment with intent to unlawfully discriminate; requires intentional discrimination",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.051",
+        "jurisdiction": "texas",
+        "label": "Prohibits deploying AI with intent to unlawfully discriminate; requires intentional discrimination not disparate impact",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.051"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "O|texas:551.101",
+    "kind": "O",
+    "jurisdiction": "texas",
+    "support": 1,
+    "given": 1,
+    "useful": 1,
+    "resolved": 0,
+    "priority": -1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "TRAIGA §551.101(a)",
+      "label": "Remove or supplement deceptive human persona elements (human name and photograph without AI disclosure)",
+      "from": "E6"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "TRAIGA §551.101(a)",
+        "jurisdiction": "texas",
+        "label": "Remove or supplement deceptive human persona elements (human name and photograph without AI disclosure)",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.101"
+        ],
+        "source_case": "E6",
+        "status": "mandatory",
+        "deadline": "2026-05-19",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "TRAIGA §551.101(a)",
+        "jurisdiction": "texas",
+        "label": "Audit all current and planned AI deployments for TRAIGA compliance including disclosure and prohibited conduct requirements",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.101"
+        ],
+        "source_case": "E6",
+        "status": "recommended",
+        "deadline": null,
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "TRAIGA §551.101(a)",
+        "jurisdiction": "texas",
+        "label": "Implement AI disclosure in chatbot: inform consumers before or at time of interaction that they are interacting with an AI system",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.101"
+        ],
+        "source_case": "E6",
+        "status": "mandatory",
+        "deadline": "2026-05-19",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-871+nyc:5-303",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a)",
+      "label": "Published results must be on employment section of website in clear and conspicuous manner with audit date, data source, unknowns, applicant counts, rates, impact ratios, and distribution date",
+      "from": "H1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a)",
+        "jurisdiction": "nyc",
+        "label": "Published results must be on employment section of website in clear and conspicuous manner with audit date, data source, unknowns, applicant counts, rates, impact ratios, and distribution date",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-303"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|colorado:6-1-1701+colorado:6-1-1703",
+    "kind": "R",
+    "jurisdiction": "colorado",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "Colorado AIA Section 6-1-1703(2)(b); Section 6-1-1701(8)",
+      "label": "Impact assessment required before deployment or within 90 days of effective date for pre-existing systems; must include six enumerated elements",
+      "from": "H1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "Colorado AIA Section 6-1-1703(2)(b); Section 6-1-1701(8)",
+        "jurisdiction": "colorado",
+        "label": "Impact assessment required before deployment or within 90 days of effective date for pre-existing systems; must include six enumerated elements",
+        "weight": 4.0,
+        "sections": [
+          "colorado:6-1-1701",
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "R|texas:551.101",
+    "kind": "R",
+    "jurisdiction": "texas",
+    "support": 1,
+    "given": 1,
+    "useful": 1,
+    "resolved": 1,
+    "priority": 1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "Texas TRAIGA Section 551.101",
+      "label": "AI disclosure obligation applies only to government agencies, not private employers",
+      "from": "H1"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "Texas TRAIGA Section 551.101",
+        "jurisdiction": "texas",
+        "label": "AI disclosure obligation applies only to government agencies, not private employers",
+        "weight": 4.0,
+        "sections": [
+          "texas:551.101"
+        ],
+        "source_case": "H1",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-871+nyc:5-303",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a)",
+      "label": "Repost bias audit results on employment section of website in clear and conspicuous manner with all required elements per DCWP Section 5-303(a)",
+      "from": "H1"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-871(a)(2); DCWP Section 5-303(a)",
+        "jurisdiction": "nyc",
+        "label": "Repost bias audit results on employment section of website in clear and conspicuous manner with all required elements per DCWP Section 5-303(a)",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-303"
+        ],
+        "source_case": "H1",
+        "status": "mandatory",
+        "deadline": "Before continued use of AEDT after new audit completed",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|colorado:6-1-1701+colorado:6-1-1703",
+    "kind": "O",
+    "jurisdiction": "colorado",
+    "support": 1,
+    "given": 6,
+    "useful": 3,
+    "resolved": 1,
+    "priority": -0.667,
+    "swaps": 0,
+    "shown": {
+      "citation": "Colorado AIA Section 6-1-1703(2)(b); Section 6-1-1701(8)",
+      "label": "Complete Colorado AIA-compliant impact assessment with all Section 6-1-1701(8) elements",
+      "from": "H1"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "Colorado AIA Section 6-1-1703(2)(b); Section 6-1-1701(8)",
+        "jurisdiction": "colorado",
+        "label": "Complete Colorado AIA-compliant impact assessment with all Section 6-1-1701(8) elements",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1701",
+          "colorado:6-1-1703"
+        ],
+        "source_case": "H1",
+        "status": "mandatory",
+        "deadline": "2026-09-28",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:20-871+nyc:5-304",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(b)(1); DCWP Rules Section 5-304(c)",
+      "label": "Promotion candidate notice required 10 business days before use via written policy, posting, or mail/email",
+      "from": "H3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(b)(1); DCWP Rules Section 5-304(a),(b)",
+        "jurisdiction": "nyc",
+        "label": "Candidate notice 10 business days before use: AEDT use, qualifications assessed, alternative selection process instructions",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-304"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "NYC LL 144 Section 20-871(b)(1); DCWP Rules Section 5-304(c)",
+        "jurisdiction": "nyc",
+        "label": "Promotion candidate notice required 10 business days before use via written policy, posting, or mail/email",
+        "weight": 4.0,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-304"
+        ],
+        "source_case": "H3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:5-303",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 2,
+    "given": 1,
+    "useful": 1,
+    "resolved": 1,
+    "priority": 1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rules Section 5-303(a),(b)",
+      "label": "Publish compliant bias audit results on employment section of First Meridian website with distribution date and clear audit link label",
+      "from": "H3"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "DCWP Rules Section 5-303(a),(b)",
+        "jurisdiction": "nyc",
+        "label": "Publish compliant bias audit results on employment section of First Meridian website with distribution date and clear audit link label",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-303"
+        ],
+        "source_case": "H3",
+        "status": "mandatory",
+        "deadline": "Before resuming AEDT use after new audit",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "DCWP Rules Section 5-303(a)",
+        "jurisdiction": "nyc",
+        "label": "Update published audit summary to include data source explanation, unknown category counts, applicant numbers, selection/scoring rates, and impact ratios",
+        "weight": 2.5,
+        "sections": [
+          "nyc:5-303"
+        ],
+        "source_case": "H6",
+        "status": "mandatory",
+        "deadline": "before resuming NYC AEDT use",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-871+nyc:5-304",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-871(b)(1); DCWP Rules Section 5-304(a),(b)",
+      "label": "Add alternative selection process request instructions to all NYC teller job postings",
+      "from": "H3"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-871(b)(1); DCWP Rules Section 5-304(a),(b)",
+        "jurisdiction": "nyc",
+        "label": "Add alternative selection process request instructions to all NYC teller job postings",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-871",
+          "nyc:5-304"
+        ],
+        "source_case": "H3",
+        "status": "mandatory",
+        "deadline": "Immediately",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|colorado:6-1-1702",
+    "kind": "O",
+    "jurisdiction": "colorado",
+    "support": 2,
+    "given": 1,
+    "useful": 1,
+    "resolved": 1,
+    "priority": 1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1702(2)(a)-(e)",
+      "label": "Formally demand all required developer documentation from Veridian under Section 6-1-1702(2)",
+      "from": "H3"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1702(2)(a)-(e)",
+        "jurisdiction": "colorado",
+        "label": "Formally demand all required developer documentation from Veridian under Section 6-1-1702(2)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "H3",
+        "status": "mandatory",
+        "deadline": "Immediately to enable compliance preparation",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1702(2)(a)-(e)",
+        "jurisdiction": "colorado",
+        "label": "Veridian must provide all required developer documentation to First Meridian and all deployers per Section 6-1-1702(2)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "H3",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA section 6-1-1702(2)(a)-(e)",
+        "jurisdiction": "colorado",
+        "label": "Provide deployers documentation of known limitations regarding algorithmic discrimination risks under section 6-1-1702(2)(a)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "M4",
+        "status": "mandatory",
+        "deadline": "By June 30, 2026",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA section 6-1-1702(2)(a)-(e)",
+        "jurisdiction": "colorado",
+        "label": "Provide deployers documentation describing training data including summary of 2M hiring records and known biases under section 6-1-1702(2)(b)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "M4",
+        "status": "mandatory",
+        "deadline": "By June 30, 2026",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA section 6-1-1702(2)(a)-(e)",
+        "jurisdiction": "colorado",
+        "label": "Provide deployers documentation of intended uses and known inappropriate uses under section 6-1-1702(2)(c)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "M4",
+        "status": "mandatory",
+        "deadline": "By June 30, 2026",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA section 6-1-1702(2)(a)-(e)",
+        "jurisdiction": "colorado",
+        "label": "Provide deployers all additional documentation reasonably necessary for impact assessments; trade secret claims do not excuse this obligation under section 6-1-1702(2)(e)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "M4",
+        "status": "mandatory",
+        "deadline": "By June 30, 2026",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA section 6-1-1702(1)",
+        "jurisdiction": "colorado",
+        "label": "Implement reasonable care measures to protect consumers from algorithmic discrimination including ongoing testing and monitoring under section 6-1-1702(1)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "M4",
+        "status": "mandatory",
+        "deadline": "By June 30, 2026 and ongoing",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA section 6-1-1702(2)(a)-(e)",
+        "jurisdiction": "colorado",
+        "label": "Notify all 40 deployer-customers of the age-discrimination finding and January 2026 model change to enable deployer compliance with section 6-1-1703(2)(b)(III)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1702"
+        ],
+        "source_case": "M4",
+        "status": "mandatory",
+        "deadline": "Immediately; no later than June 30, 2026",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "R|nyc:5-300",
+    "kind": "R",
+    "jurisdiction": "nyc",
+    "support": 3,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "DCWP Rules Section 5-300 (substantially assist definition)",
+      "label": "Clarification of substantially assist or replace discretionary decision making",
+      "from": "E3"
+    },
+    "items": [
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-300 AEDT definition",
+        "jurisdiction": "nyc",
+        "label": "Substantially assist or replace means relying solely on simplified output with no other factors considered",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-300"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-300 Independent Auditor definition",
+        "jurisdiction": "nyc",
+        "label": "Auditor is not independent if was involved in developing or distributing the AEDT",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-300"
+        ],
+        "source_case": "H6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rule Section 5-300 (substantially assist definition)",
+        "jurisdiction": "nyc",
+        "label": "Substantially assist means: (i) rely solely on simplified output; (ii) simplified output weighted more than any other criterion; or (iii) simplified output overrules other factors",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-300"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rule Section 5-300 (simplified output definition)",
+        "jurisdiction": "nyc",
+        "label": "Simplified output includes score, tag, classification, ranking, recommendation; excludes tools that translate or transcribe existing text",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-300"
+        ],
+        "source_case": "M6",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      },
+      {
+        "kind": "R",
+        "citation": "DCWP Rules Section 5-300 (substantially assist definition)",
+        "jurisdiction": "nyc",
+        "label": "Clarification of substantially assist or replace discretionary decision making",
+        "weight": 4.0,
+        "sections": [
+          "nyc:5-300"
+        ],
+        "source_case": "E3",
+        "status": "",
+        "deadline": null,
+        "authority": "binding"
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-874",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-874",
+      "label": "Retrain general counsel and correct legal analysis regarding TRAIGA preemption scope and LL 144 employment agency obligations",
+      "from": "H6"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-874",
+        "jurisdiction": "nyc",
+        "label": "Retrain general counsel and correct legal analysis regarding TRAIGA preemption scope and LL 144 employment agency obligations",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-874"
+        ],
+        "source_case": "H6",
+        "status": "mandatory",
+        "deadline": "immediate",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|texas:551.201",
+    "kind": "O",
+    "jurisdiction": "texas",
+    "support": 1,
+    "given": 1,
+    "useful": 0,
+    "resolved": 0,
+    "priority": -1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "TRAIGA Section 551.201",
+      "label": "No action required on Dallas ordinance - document preemption analysis for the record",
+      "from": "H6"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "TRAIGA Section 551.201",
+        "jurisdiction": "texas",
+        "label": "No action required on Dallas ordinance - document preemption analysis for the record",
+        "weight": 2.5,
+        "sections": [
+          "texas:551.201"
+        ],
+        "source_case": "H6",
+        "status": "recommended",
+        "deadline": null,
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|colorado:6-1-1704",
+    "kind": "O",
+    "jurisdiction": "colorado",
+    "support": 3,
+    "given": 6,
+    "useful": 3,
+    "resolved": 2,
+    "priority": -0.333,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1704",
+      "label": "Establish process to notify AG and consumers within 90 days if algorithmic discrimination is discovered",
+      "from": "M5"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "Establish internal protocol for detecting and reporting algorithmic discrimination to AG and consumers within 90 days",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "M1",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA section 6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "Notify the Colorado Attorney General of the December 2025 age-discrimination discovery and the January 2026 cure under section 6-1-1704(a)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "M4",
+        "status": "mandatory",
+        "deadline": "Within 90 days of June 30, 2026 (approx. September 28, 2026)",
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1704",
+        "jurisdiction": "colorado",
+        "label": "Establish process to notify AG and consumers within 90 days if algorithmic discrimination is discovered",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1704"
+        ],
+        "source_case": "M5",
+        "status": "mandatory",
+        "deadline": "2026-06-30",
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|colorado:6-1-1706",
+    "kind": "O",
+    "jurisdiction": "colorado",
+    "support": 2,
+    "given": 5,
+    "useful": 1,
+    "resolved": 0,
+    "priority": -1.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "CO AIA Section 6-1-1706",
+      "label": "Consider proactive discovery and cure of violations with AG notification within 60 days for rebuttable presumption of reasonable care",
+      "from": "M5"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "CO AIA section 6-1-1706(4)",
+        "jurisdiction": "colorado",
+        "label": "Engage counsel to assess whether voluntary early AG notification can partially preserve enforcement safe harbor under section 6-1-1706(4)",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "M4",
+        "status": "recommended",
+        "deadline": null,
+        "authority": ""
+      },
+      {
+        "kind": "O",
+        "citation": "CO AIA Section 6-1-1706",
+        "jurisdiction": "colorado",
+        "label": "Consider proactive discovery and cure of violations with AG notification within 60 days for rebuttable presumption of reasonable care",
+        "weight": 2.5,
+        "sections": [
+          "colorado:6-1-1706"
+        ],
+        "source_case": "M5",
+        "status": "safe-harbor",
+        "deadline": null,
+        "authority": ""
+      }
+    ]
+  },
+  {
+    "key": "O|nyc:20-870",
+    "kind": "O",
+    "jurisdiction": "nyc",
+    "support": 1,
+    "given": 0,
+    "useful": 0,
+    "resolved": 0,
+    "priority": 0.0,
+    "swaps": 0,
+    "shown": {
+      "citation": "NYC LL 144 Section 20-870 Independent Auditor definition",
+      "label": "Commission new bias audit by truly independent auditor using Caprock's three years of historical data; cease NYC AEDT use until valid audit completed",
+      "from": "H6"
+    },
+    "items": [
+      {
+        "kind": "O",
+        "citation": "NYC LL 144 Section 20-870 Independent Auditor definition",
+        "jurisdiction": "nyc",
+        "label": "Commission new bias audit by truly independent auditor using Caprock's three years of historical data; cease NYC AEDT use until valid audit completed",
+        "weight": 2.5,
+        "sections": [
+          "nyc:20-870"
+        ],
+        "source_case": "H6",
+        "status": "mandatory",
+        "deadline": "immediate - before any further NYC use",
+        "authority": ""
+      }
+    ]
+  }
+]

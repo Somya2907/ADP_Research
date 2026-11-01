@@ -6,6 +6,8 @@ Usage:
     poetry run python scripts/run_extraction.py --agents   # agents only (gpt5 + llama3_2b)
     poetry run python scripts/run_extraction.py --gpt5     # GPT-5 agent only
     poetry run python scripts/run_extraction.py --llama    # Llama-3.2-3B agent only
+    poetry run python scripts/run_extraction.py --teacher --skip-existing       # only cases with no graph yet
+    poetry run python scripts/run_extraction.py --teacher --cases E3 M4 H7      # named cases only
 
 Output files:
     data/outputs/graphs/{case_id}_reference.json
@@ -25,7 +27,7 @@ from rich import print as rprint
 from rich.table import Table
 
 from lex_drl.cases import load_all_cases
-from lex_drl.extraction import extract_teacher_graph, extract_agent_graph, save_graph
+from lex_drl.extraction import OUTPUT_DIR, extract_teacher_graph, extract_agent_graph, save_graph
 
 load_dotenv()
 
@@ -38,7 +40,16 @@ def main():
     parser.add_argument("--agents",  action="store_true", help="All agents only")
     parser.add_argument("--gpt5",    action="store_true", help="GPT-5 agent only")
     parser.add_argument("--llama",   action="store_true", help="Llama-3.2-3B agent only")
+    parser.add_argument("--cases", nargs="+", default=None,
+                        help="restrict to these case ids (default: every case)")
+    parser.add_argument("--skip-existing", action="store_true",
+                        help="never regenerate a graph whose output file already exists "
+                             "(keeps the frozen graphs of earlier phases untouched)")
     args = parser.parse_args()
+
+    def _exists(case_id: str, kind: str) -> bool:
+        name = f"{case_id}_reference.json" if kind == "teacher" else f"{case_id}_agent_{kind}.json"
+        return args.skip_existing and (OUTPUT_DIR / name).exists()
 
     run_teacher = not (args.agents or args.gpt5 or args.llama)
     run_gpt5    = not args.teacher and (args.gpt5 or args.agents or
@@ -53,6 +64,12 @@ def main():
         run_gpt5, run_llama, run_teacher = False, False, True
 
     cases = load_all_cases()
+    if args.cases:
+        wanted = set(args.cases)
+        unknown = wanted - {c.case_id for c in cases}
+        if unknown:
+            raise SystemExit(f"unknown case id(s): {sorted(unknown)}")
+        cases = [c for c in cases if c.case_id in wanted]
     rprint(f"[bold]Loaded {len(cases)} cases[/bold]")
     rprint(f"Running: teacher={run_teacher} gpt5={run_gpt5} llama3_2b={run_llama}\n")
 
@@ -70,7 +87,9 @@ def main():
     for case in cases:
         row = [case.case_id, case.tier, case.role]
 
-        if run_teacher:
+        if run_teacher and _exists(case.case_id, "teacher"):
+            row.append("[dim]kept[/dim]")
+        elif run_teacher:
             try:
                 g = extract_teacher_graph(case)
                 save_graph(g)
@@ -79,7 +98,9 @@ def main():
                 row.append(f"[red]✗[/red]")
                 rprint(f"[red]{case.case_id} teacher FAIL: {e}[/red]")
 
-        if run_gpt5:
+        if run_gpt5 and _exists(case.case_id, "gpt5"):
+            row.append("[dim]kept[/dim]")
+        elif run_gpt5:
             try:
                 g = extract_agent_graph(case, model_key="gpt5")
                 save_graph(g)
@@ -88,7 +109,9 @@ def main():
                 row.append(f"[red]✗[/red]")
                 rprint(f"[red]{case.case_id} gpt5 FAIL: {e}[/red]")
 
-        if run_llama:
+        if run_llama and _exists(case.case_id, "llama3_2b"):
+            row.append("[dim]kept[/dim]")
+        elif run_llama:
             try:
                 g = extract_agent_graph(case, model_key="llama3_2b")
                 save_graph(g)

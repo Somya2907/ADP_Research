@@ -6,6 +6,7 @@
 - statutes: CO AIA (SB 24-205) §6-1-1701 through §6-1-1707
 - tier: hard
 - role: test
+- parties: Helix Credit, AutoApprove, FinLogic, Morrison & Partners
 
 ## Facts
 

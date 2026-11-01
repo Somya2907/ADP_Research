@@ -61,6 +61,16 @@ class Patch(BaseModel):
     # "unverified" when no index was supplied at mining time (back-compat default).
     verification: Verification = "unverified"
 
+    # ── Iterative-loop bookkeeping (Phase 5). All default to "single-pass"
+    # values, so stores written by earlier phases load and rank unchanged. ──
+    round_added: int = 0          # loop round whose graphs this patch was mined from
+    version: int = 1              # bumped each time prevention_step is rewritten
+    history: list[str] = Field(default_factory=list)  # earlier prevention_step texts
+    n_injected: int = 0           # target gaps this version was injected against (training)
+    n_resolved: int = 0           # of those, gaps that closed in the same round
+    n_rewrite_attempts: int = 0   # rewrites tried (accepted or rejected by a guardrail)
+    priority: float = 0.0         # retrieval boost in [-1, 1]; 0 = neutral
+
     def index_text(self) -> str:
         """The text BM25 indexes for this patch."""
         return " ".join(self.trigger_keywords)
@@ -114,6 +124,8 @@ class PatchStore:
         allowed: "set[str] | frozenset[str]" = frozenset({"verified"}),
         jurisdictions: "set[str] | None" = None,
         diversify: bool = False,
+        priority_alpha: float = 0.5,
+        stopwords: "frozenset[str] | set[str]" = frozenset(),
     ) -> list[Patch]:
         """Return the top-k patches most relevant to ``query`` (raw case text).
 
@@ -133,11 +145,25 @@ class PatchStore:
         subsection key), so the top-k spans multiple obligations instead of
         returning several near-duplicate patches for the same subsection. Backfills
         with the next-best patches if fewer than k distinct duties clear the gate.
+
+        ``priority_alpha`` adds ``priority_alpha * patch.priority * spread`` to
+        each patch's BM25 score, where ``spread`` is the range of BM25 scores among
+        the eligible patches. The boost is additive because BM25 scores can be zero
+        or negative in a store this small (common terms get a negative IDF), where
+        a multiplier would have no effect or the wrong sign. Priorities are set by
+        the iterative loop; a store whose priorities are all 0 ranks exactly as before.
+
+        ``stopwords`` are removed from the query before scoring. The query is raw
+        case text, so without this a patch whose keywords contain a function word
+        (the lexicon term "private right of action" contains "of") matches every
+        case and, being a short document, outranks everything. Empty by default so
+        the Phase 2-4 retrieval logs reproduce exactly; the iterative loop passes a
+        stop-word list.
         """
         self._ensure_index()
         if not self._corpus_ids:
             return []
-        q_tokens = _tokenize(query)
+        q_tokens = [t for t in _tokenize(query) if t not in stopwords]
         q_set = set(q_tokens)
         scores = (self._bm25.get_scores(q_tokens) if self._bm25 is not None
                   else [0.0] * len(self._corpus_ids))
@@ -153,6 +179,11 @@ class PatchStore:
             if overlap == 0:
                 continue
             scored.append((pid, float(bm), overlap))
+        if scored and priority_alpha:
+            bms = [bm for _, bm, _ in scored]
+            spread = (max(bms) - min(bms)) or max(abs(b) for b in bms) or 1.0
+            scored = [(pid, bm + priority_alpha * self._patches[pid].priority * spread, overlap)
+                      for pid, bm, overlap in scored]
         scored.sort(key=lambda x: (x[1], x[2]), reverse=True)
         if not diversify:
             return [self._patches[pid] for pid, _, _ in scored[:k]]

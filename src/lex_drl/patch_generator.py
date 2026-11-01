@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import hashlib
 import os
+import re
 from datetime import date
 from typing import Callable, Iterable, Optional
 
@@ -93,6 +94,39 @@ class InsightWriter:
         text = getattr(resp, "text", None)
         return (text or draft).strip()
 
+    _FAILED_SYSTEM = (
+        "You are a US AI-law expert improving a reasoning note for a small language "
+        "model. The note below was shown to the model and the model still made the "
+        "error the note was meant to prevent. Rewrite the note so a weak model will "
+        "act on it. Requirements: (1) open with the plain-language situation that "
+        "triggers the rule; (2) state the controlling authority exactly as given; "
+        "(3) say concretely what the analysis must contain (for example: a rule "
+        "citing that authority, or an obligation the party must perform); "
+        "(4) at most 70 words; (5) rule-level and reusable: name NO parties, "
+        "products, or case facts; (6) cite NO authority other than the controlling "
+        "authority given (you may repeat a wrong citation only to say it is wrong). "
+        "Return only the note text."
+    )
+
+    def rewrite_failed(self, fields: dict, current: str, failure: str) -> str:
+        """Rewrite a patch that was injected but did not close its gap.
+
+        ``failure`` is a rule-level description of what the student still got
+        wrong (never case facts). Cached like every other call, so a re-run of
+        the loop reproduces the same text.
+        """
+        user = (
+            f"FAMILY: {fields['patch_family']}\n"
+            f"CONTROLLING AUTHORITY: {fields['controlling_authority']}\n"
+            f"JURISDICTION: {fields.get('jurisdiction', '')}\n"
+            f"CAVEAT: {fields.get('contraindication', '')}\n"
+            f"CURRENT NOTE: {current}\n"
+            f"WHAT THE MODEL STILL GOT WRONG: {failure}\n"
+        )
+        resp = self.generate(system=self._FAILED_SYSTEM, user=user)
+        text = getattr(resp, "text", None)
+        return (text or current).strip()
+
     # cached_call imported lazily to avoid a hard import at module load
     def generate(self, system: str, user: str, max_tokens: int = 400,
                  temperature: float = 0.0):
@@ -119,6 +153,38 @@ class InsightWriter:
 
 def _canon_jurisdiction(raw: str) -> str:
     return _JURIS_CANON.get((raw or "").strip().lower(), (raw or "").strip().lower())
+
+
+# Which statute a bare section number belongs to, from its shape.
+_SECTION_JURISDICTION = [
+    (re.compile(r"^20-87\d"), "nyc"),        # NYC Admin Code (LL 144)
+    (re.compile(r"^5-30\d"), "nyc"),         # DCWP Rules
+    (re.compile(r"^6-1-17\d\d"), "colorado"),
+    (re.compile(r"^551\."), "texas"),
+]
+
+
+def base_section(token: str) -> str:
+    """'6-1-1703(2)(a)-(g)' → '6-1-1703'; '551.001(2)' → '551.001'."""
+    return re.split(r"[(\s]", token.strip().lower(), maxsplit=1)[0].rstrip(".,;:-")
+
+
+def canonical_citation(citation: str, jurisdiction: str = "") -> frozenset[str]:
+    """One key per statute section, whatever format the citation was written in.
+
+    'CO AIA § 6-1-1703(3)(a)', 'Colorado AIA Section 6-1-1703' and
+    'C.R.S. §6-1-1703(2)' all give {'colorado:6-1-1703'}. A citation naming
+    several sections gives one key per section. Empty set if nothing parses.
+    """
+    keys = set()
+    fallback = _canon_jurisdiction(jurisdiction)
+    for tok in extract_citation_tokens(citation):
+        base = base_section(tok)
+        if not base:
+            continue
+        juris = next((j for pat, j in _SECTION_JURISDICTION if pat.match(base)), fallback)
+        keys.add(f"{juris}:{base}" if juris else base)
+    return frozenset(keys)
 
 
 def _concept_terms(label: str) -> list[str]:
@@ -319,17 +385,20 @@ def generate_patches(
     return patches
 
 
-def dedup_merge(patches: Iterable[Patch]) -> list[Patch]:
+def dedup_merge(patches: Iterable[Patch], *, canonical: bool = False) -> list[Patch]:
     """D3: merge patches that describe the same authority + family + node types.
 
     source_cases and trigger_keywords are unioned; the textual fields are taken
     from the first contributor (deterministic), avoiding a second LLM call.
+    With ``canonical=True`` two citations of the same section in different
+    formats ("§20-871(a)(1)", "Section 20-871") count as the same authority.
     """
     buckets: dict[tuple, Patch] = {}
     for p in patches:
+        cite = (canonical_citation(p.controlling_authority, p.jurisdiction) if canonical
+                else extract_citation_tokens(p.controlling_authority))
         key = (p.patch_family,
-               frozenset(extract_citation_tokens(p.controlling_authority)
-                         or {p.controlling_authority.strip().lower()}),
+               frozenset(cite or {p.controlling_authority.strip().lower()}),
                tuple(sorted(p.node_types_addressed)))
         if key not in buckets:
             buckets[key] = p.model_copy(deep=True)
@@ -361,6 +430,6 @@ def generate_all(
 
 
 __all__ = [
-    "InsightWriter", "Patch", "generate_patches", "dedup_merge", "generate_all",
+    "InsightWriter", "Patch", "base_section", "canonical_citation", "generate_patches", "dedup_merge", "generate_all",
     "LEGAL_LEXICON", "OPERATIVE_DATE",
 ]

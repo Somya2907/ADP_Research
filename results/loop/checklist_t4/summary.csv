@@ -1,0 +1,5 @@
+round,mean_training,ro_recovery_training,unparsed_training,rules_training,mean_test,ro_recovery_test,unparsed_test,rules_test,test_easy,test_medium,test_hard
+0,141.6,0.1931,0,3.5,133.63,0.1784,0,3.1,114.2,123.5,163.2
+1,129.97,0.3747,0,9,115.17,0.402,0,8.6,95.7,102.7,147.1
+2,131.37,0.3218,1,7.5,122.27,0.3141,0,6.7,101.3,113.9,151.6
+3,126.23,0.354,0,8.7,118.43,0.3844,0,8.8,94.6,111.8,148.9

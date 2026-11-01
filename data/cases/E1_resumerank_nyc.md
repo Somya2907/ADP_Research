@@ -6,6 +6,7 @@
 - statutes: NYC LL 144 §20-870 et seq., DCWP Final Rules
 - tier: easy
 - role: training
+- parties: HireFlow, Greenleaf, ResumeRank, TalentMetrics
 
 ## Facts
 

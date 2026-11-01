@@ -6,6 +6,7 @@
 - statutes: NYC LL 144 §20-870 et seq., CO AIA §6-1-1701–1707, TX TRAIGA (HB 149)
 - tier: hard
 - role: training
+- parties: TalentMatrix, PeopleScore, RetailCo, TM Analytics
 
 ## Facts
 

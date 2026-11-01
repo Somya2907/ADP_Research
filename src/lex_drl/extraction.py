@@ -36,6 +36,10 @@ VALID_CONFIDENCE = {"high", "medium", "low"}
 VALID_AUTHORITY = {"binding", "persuasive", "advisory", "overruled"}
 VALID_DETERMINATION = {"compliant", "non-compliant", "conditional"}
 VALID_APP_RESULT = {"satisfied", "violated", "requires-fact", "partial"}
+VALID_ISSUE_STATUS = {"dispositive", "collateral", "waived"}
+VALID_POLARITY = {"present", "disputed", "absent", "unknown"}
+_ID_FIELDS = {"facts": "fid", "issues": "iid", "rules": "rid",
+              "applications": "aid", "conclusions": "cid", "obligations": "oid"}
 
 
 def _ensure_dirs():
@@ -123,11 +127,11 @@ def _sanitize_raw_graph(raw: dict, case_id: str, source_label: str) -> dict:
 
     # ── Edges ──
     for edge in raw.get("edges", []):
-        if isinstance(edge, dict) and "type" in edge:
-            et = edge["type"]
+        if isinstance(edge, dict):
+            et = edge.get("type")
             if et not in VALID_EDGE_TYPES:
-                edge["type"] = "supports"  # safest default
-                changes.append(f"edge {edge.get('eid', '?')}: type '{et}' → 'supports'")
+                edge["type"] = "supports"  # safest default (also when missing)
+                changes.append(f"edge {edge.get('eid', '?')}: type {et!r} → 'supports'")
 
     # ── Conclusions ──
     for conc in raw.get("conclusions", []):
@@ -167,10 +171,47 @@ def _sanitize_raw_graph(raw: dict, case_id: str, source_label: str) -> dict:
         if not isinstance(app, dict):
             continue
         aid = app.get("aid", "?")
+        for key, default in (("reasoning", ""), ("fact_refs", [])):
+            if key not in app:
+                app[key] = default
+                changes.append(f"application {aid}: added missing {key}")
         if "result" in app and app["result"] not in VALID_APP_RESULT:
             old = app["result"]
             app["result"] = "partial"
             changes.append(f"application {aid}: result '{old}' → 'partial'")
+
+    # ── Issues / Facts ── (a small model sometimes writes an application
+    # result such as "violated" where an issue status belongs)
+    for issue in raw.get("issues", []):
+        if isinstance(issue, dict) and "status" in issue and issue["status"] not in VALID_ISSUE_STATUS:
+            old = issue["status"]
+            issue["status"] = "dispositive"
+            changes.append(f"issue {issue.get('iid', '?')}: status '{old}' → 'dispositive'")
+    for fact in raw.get("facts", []):
+        if isinstance(fact, dict) and "polarity" in fact and fact["polarity"] not in VALID_POLARITY:
+            old = fact["polarity"]
+            fact["polarity"] = "present"
+            changes.append(f"fact {fact.get('fid', '?')}: polarity '{old}' → 'present'")
+
+    # ── Dangling edges ── one edge pointing at a node that was never defined
+    # used to reject the whole graph. Drop the edge, keep the graph.
+    node_ids = {
+        node[id_field]
+        for list_name, id_field in _ID_FIELDS.items()
+        for node in raw.get(list_name, []) or []
+        if isinstance(node, dict) and id_field in node
+    }
+    edges = raw.get("edges")
+    if isinstance(edges, list):
+        kept = []
+        for edge in edges:
+            if (isinstance(edge, dict)
+                    and edge.get("src") in node_ids and edge.get("dst") in node_ids):
+                kept.append(edge)
+            else:
+                eid = edge.get("eid", "?") if isinstance(edge, dict) else "?"
+                changes.append(f"edge {eid}: dropped (endpoint is not a node in the graph)")
+        raw["edges"] = kept
 
     if changes:
         rprint(f"[yellow]Note: {case_id}/{source_label} sanitized "
